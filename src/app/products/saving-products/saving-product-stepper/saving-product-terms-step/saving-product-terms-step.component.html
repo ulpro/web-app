@@ -37,7 +37,10 @@
         matTooltip="{{ 'tooltips.The period at which interest rate' | translate }}"
         required
       >
-        @for (interestCompoundingPeriodType of interestCompoundingPeriodTypeData; track interestCompoundingPeriodType) {
+        @for (
+          interestCompoundingPeriodType of interestCompoundingPeriodTypeData;
+          track interestCompoundingPeriodType.id
+        ) {
           <mat-option [value]="interestCompoundingPeriodType.id">
             {{ interestCompoundingPeriodType.value | translateKey: 'catalogs' }}
           </mat-option>
@@ -56,7 +59,7 @@
         matTooltip="{{ 'tooltips.Interest rate is posted or credited to a saving account' | translate }}"
         required
       >
-        @for (interestPostingPeriodType of interestPostingPeriodTypeData; track interestPostingPeriodType) {
+        @for (interestPostingPeriodType of interestPostingPeriodTypeData; track interestPostingPeriodType.id) {
           <mat-option [value]="interestPostingPeriodType.id">
             {{ interestPostingPeriodType.value | translateKey: 'catalogs' }}
           </mat-option>
@@ -75,7 +78,7 @@
         matTooltip="{{ 'tooltips.The method used to calculate interest' | translate }}"
         required
       >
-        @for (interestCalculationType of interestCalculationTypeData; track interestCalculationType) {
+        @for (interestCalculationType of interestCalculationTypeData; track interestCalculationType.id) {
           <mat-option [value]="interestCalculationType.id">
             {{ interestCalculationType.value | translateKey: 'catalogs' }}
           </mat-option>
@@ -96,7 +99,7 @@
       >
         @for (
           interestCalculationDaysInYearType of interestCalculationDaysInYearTypeData;
-          track interestCalculationDaysInYearType
+          track interestCalculationDaysInYearType.id
         ) {
           <mat-option [value]="interestCalculationDaysInYearType.id">
             {{ interestCalculationDaysInYearType.value | translateKey: 'catalogs' }}

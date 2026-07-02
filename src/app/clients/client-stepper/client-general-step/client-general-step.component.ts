@@ -259,7 +259,7 @@ export class ClientGeneralStepComponent implements OnInit, OnDestroy {
    * Client General Details
    */
   get clientGeneralDetails() {
-    const generalDetails = this.createClientForm.value;
+    const generalDetails = this.createClientForm.getRawValue();
     const dateFormat = this.settingsService.dateFormat;
     const locale = this.settingsService.language.code;
     for (const key in generalDetails) {

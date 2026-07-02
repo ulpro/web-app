@@ -1,0 +1,80 @@
+<div class="dialog-header-modern">
+  <h2><mat-icon class="m-r-10" style="vertical-align: middle;">find_in_page</mat-icon> Process KYC Document</h2>
+</div>
+
+<mat-dialog-content class="dialog-content-modern">
+  <div class="info-grid">
+    <div class="info-item">
+      <span class="info-label">Client ID</span>
+      <span class="info-value">{{ document?.clientId }}</span>
+    </div>
+    <div class="info-item">
+      <span class="info-label">Document Type</span>
+      <span class="info-value font-medium">{{ documentTypeName }}</span>
+    </div>
+    <div class="info-item">
+      <span class="info-label">Document Number</span>
+      <span class="info-value">{{ document?.documentNumber || 'N/A' }}</span>
+    </div>
+    <div class="info-item">
+      <span class="info-label">Issue Date</span>
+      <span class="info-value">{{ document?.issueDate || 'N/A' }}</span>
+    </div>
+    <div class="info-item">
+      <span class="info-label">Expiry Date</span>
+      <span class="info-value">{{ document?.expiryDate || 'N/A' }}</span>
+    </div>
+    <div class="info-item">
+      <span class="info-label">Current Status</span>
+      <span class="info-value status-badge">{{ statusLabel }}</span>
+    </div>
+    
+    @if (document?.remarks) {
+      <div class="info-item full-width">
+        <span class="info-label">Remarks</span>
+        <span class="info-value info-remarks">"{{ document?.remarks }}"</span>
+      </div>
+    }
+  </div>
+
+  <div class="file-action m-t-20">
+    @if (document?.fileLocation) {
+      <button mat-stroked-button color="primary" (click)="openDocument()">
+        <mat-icon>visibility</mat-icon> View Attached File
+      </button>
+    }
+    @if (!document?.fileLocation) {
+      <div class="no-file">
+        <mat-icon>insert_drive_file</mat-icon>
+        <span>No file attached</span>
+      </div>
+    }
+  </div>
+
+  <div class="action-help-text">
+    <mat-icon>info</mat-icon>
+    <p>Select an action below. <strong>Submit</strong> sends it for review, <strong>Approve</strong> verifies it, and <strong>Reject</strong> rejects the document.</p>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="dialog-actions-modern">
+  <button mat-button mat-dialog-close [disabled]="isProcessing">Cancel</button>
+
+  <button mat-stroked-button color="accent"
+          (click)="process('submit')"
+          [disabled]="isProcessing">
+    Submit for Review
+  </button>
+
+  <button mat-stroked-button color="warn"
+          (click)="process('reject')"
+          [disabled]="isProcessing">
+    Reject
+  </button>
+
+  <button mat-raised-button color="primary"
+          (click)="process('approve')"
+          [disabled]="isProcessing">
+    Approve Document
+  </button>
+</mat-dialog-actions>

@@ -415,6 +415,10 @@ export class EditLoanProductComponent extends LoanProductBaseComponent implement
       delete loanProduct['useDueForRepaymentsConfigurations'];
     }
 
+    if (this.loanProductService.isWorkingCapital) {
+      loanProduct['accountingRule'] = 'NONE';
+    }
+
     this.productsService
       .updateLoanProduct(this.loanProductService.loanProductPath, this.loanProductAndTemplate.id, loanProduct)
       .subscribe((response: any) => {

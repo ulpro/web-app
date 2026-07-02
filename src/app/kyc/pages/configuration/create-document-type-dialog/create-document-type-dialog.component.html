@@ -1,0 +1,39 @@
+<div class="dialog-header-modern">
+  <h2><mat-icon class="m-r-10" style="vertical-align: middle;">folder_special</mat-icon> Create KYC Document Type</h2>
+</div>
+
+<mat-dialog-content class="dialog-content-modern">
+  <form [formGroup]="documentTypeForm" class="layout-column gap-16">
+    <!-- Name -->
+    <mat-form-field appearance="outline" class="full-width m-t-10">
+      <mat-label>Document Name</mat-label>
+      <input matInput formControlName="name" placeholder="e.g. National ID, Passport" required />
+      <mat-icon matPrefix>badge</mat-icon>
+      @if (documentTypeForm.get('name')?.hasError('required')) {
+        <mat-error>Name is required</mat-error>
+      }
+    </mat-form-field>
+
+    <!-- Description -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" rows="3" placeholder="Provide details about this document type..."></textarea>
+      <mat-icon matPrefix>description</mat-icon>
+    </mat-form-field>
+
+    <!-- Active -->
+    <div class="active-checkbox-container">
+      <mat-checkbox formControlName="active" color="primary">
+        <span class="font-medium">Active Status</span>
+      </mat-checkbox>
+      <span class="checkbox-hint">Enable this document type for immediate use in KYC reviews.</span>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="dialog-actions-modern">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" (click)="submit()" [disabled]="!documentTypeForm.valid">
+    <mat-icon>save</mat-icon> Save Document
+  </button>
+</mat-dialog-actions>

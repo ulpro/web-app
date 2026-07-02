@@ -1,0 +1,103 @@
+<div class="dialog-header">
+  <div class="header-content">
+    <mat-icon>file_upload</mat-icon>
+    <h2>Soumettre un Document KYC</h2>
+  </div>
+  <button mat-icon-button mat-dialog-close class="close-btn">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<mat-dialog-content class="dialog-content">
+  <form [formGroup]="documentForm" class="upload-form">
+
+    <!-- Type de Document -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Type de Document</mat-label>
+      <mat-icon matPrefix class="form-field-icon">description</mat-icon>
+      <mat-select formControlName="documentTypeId" required>
+        <mat-option *ngFor="let type of documentTypes" [value]="type.id">
+          {{ type.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="documentForm.get('documentTypeId')?.hasError('required')">
+        Le type de document est requis
+      </mat-error>
+    </mat-form-field>
+
+    <div class="form-row">
+      <!-- Document ID -->
+      <mat-form-field appearance="outline">
+        <mat-label>Numéro du Document</mat-label>
+        <mat-icon matPrefix class="form-field-icon">badge</mat-icon>
+        <input matInput formControlName="documentNumber" placeholder="Ex: AB123456">
+      </mat-form-field>
+
+      <!-- Date de Délivrance -->
+      <mat-form-field appearance="outline">
+        <mat-label>Date de Délivrance</mat-label>
+        <mat-icon matPrefix class="form-field-icon">event</mat-icon>
+        <input matInput [matDatepicker]="issueDatePicker" formControlName="issueDate">
+        <mat-datepicker-toggle matSuffix [for]="issueDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #issueDatePicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <!-- Date d'Expiration -->
+      <mat-form-field appearance="outline">
+        <mat-label>Date d'Expiration</mat-label>
+        <mat-icon matPrefix class="form-field-icon">event_busy</mat-icon>
+        <input matInput [matDatepicker]="expiryDatePicker" formControlName="expiryDate">
+        <mat-datepicker-toggle matSuffix [for]="expiryDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #expiryDatePicker></mat-datepicker>
+      </mat-form-field>
+
+      <div class="form-spacer"></div>
+    </div>
+
+    <div *ngIf="documentForm.hasError('invalidDateRange')" class="date-error">
+      <mat-icon>error_outline</mat-icon>
+      La date d'expiration doit être postérieure à la date de délivrance.
+    </div>
+
+    <!-- File Upload -->
+    <div class="file-drop-zone" [class.has-file]="selectedFile" [class.has-error]="fileError">
+      <input type="file" (change)="onFileSelected($event)" accept=".pdf,image/*"
+        id="kyc-file-input" title="Sélectionner un fichier">
+
+      <div class="drop-content">
+        <mat-icon class="drop-icon" *ngIf="!selectedFile && !fileError">cloud_upload</mat-icon>
+        <mat-icon class="drop-icon success" *ngIf="selectedFile">check_circle</mat-icon>
+        <mat-icon class="drop-icon error" *ngIf="fileError">error</mat-icon>
+
+        <p class="drop-main" *ngIf="!selectedFile && !fileError">Cliquez ou glissez un fichier ici</p>
+        <p class="drop-sub" *ngIf="!selectedFile && !fileError">PDF, JPG, PNG — Max 5 Mo</p>
+
+        <p class="drop-main success-text" *ngIf="selectedFile">{{ selectedFile?.name }}</p>
+        <p class="drop-sub" *ngIf="selectedFile">{{ selectedFile ? (selectedFile.size / 1024 / 1024).toFixed(2) : 0 }} Mo</p>
+
+        <p class="drop-main error-text" *ngIf="fileError">{{ fileError }}</p>
+      </div>
+    </div>
+
+    <!-- Remarques -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Remarques</mat-label>
+      <mat-icon matPrefix class="form-field-icon">comment</mat-icon>
+      <textarea matInput formControlName="remarks" rows="2" placeholder="Notes complémentaires..."></textarea>
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="dialog-actions">
+  <button mat-button mat-dialog-close [disabled]="isUploading">Annuler</button>
+  <button mat-raised-button color="primary"
+    [disabled]="!documentForm.valid || !selectedFile || isUploading"
+    (click)="submit()">
+    <mat-icon *ngIf="!isUploading" class="btn-icon">upload</mat-icon>
+    <mat-icon *ngIf="isUploading" class="btn-icon spinning">sync</mat-icon>
+    {{ isUploading ? 'Envoi en cours...' : 'Enregistrer' }}
+  </button>
+</mat-dialog-actions>

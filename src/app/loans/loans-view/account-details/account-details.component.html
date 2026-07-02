@@ -39,6 +39,36 @@
           <span class="flex-50">{{ loanDetails.discount | formatNumber }}</span>
         </div>
       }
+
+      @if (loanDetails.delinquencyGraceDays !== null) {
+        <div class="flex-fill layout-row">
+          <span class="flex-50"> {{ 'labels.inputs.Delinquency Grace Days' | translate }} </span>
+          <span class="flex-50">{{ loanDetails.delinquencyGraceDays | formatNumber }}</span>
+        </div>
+      }
+
+      @if (loanDetails.delinquencyStartType) {
+        <div class="flex-fill layout-row">
+          <span class="flex-50"> {{ 'labels.inputs.Delinquency Start Type' | translate }} </span>
+          <span class="flex-50">{{ loanDetails.delinquencyStartType?.value | translateKey: 'catalogs' }}</span>
+        </div>
+      }
+
+      @if (loanDetails.breach) {
+        <div class="flex-fill layout-row">
+          <span class="flex-50"> {{ 'labels.inputs.Breach' | translate }} </span>
+          <span class="flex-50"><mifosx-breach-display [singleRow]="false" [breach]="loanDetails.breach" /></span>
+        </div>
+      }
+
+      @if (loanDetails.nearBreach) {
+        <div class="flex-fill layout-row">
+          <span class="flex-50"> {{ 'labels.inputs.Near Breach' | translate }} </span>
+          <span class="flex-50"
+            ><mifosx-breach-display [singleRow]="false" [nearBreach]="loanDetails.nearBreach"
+          /></span>
+        </div>
+      }
     }
 
     @if (loanProductService.isLoanProduct) {

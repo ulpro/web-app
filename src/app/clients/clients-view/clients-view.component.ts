@@ -25,6 +25,7 @@ import { CaptureImageDialogComponent } from './custom-dialogs/capture-image-dial
 
 /** Custom Services */
 import { ClientsService } from '../clients.service';
+import { KycService } from '../../kyc/services/kyc.service';
 import { LegalFormId } from '../models/legal-form.enum';
 import {
   MatCard,
@@ -136,12 +137,14 @@ export class ClientsViewComponent implements OnInit {
   private router = inject(Router);
   private clientsService = inject(ClientsService);
   private _sanitizer = inject(DomSanitizer);
+  private kycService = inject(KycService);
   dialog = inject(MatDialog);
 
   clientViewData: any;
   clientDatatables: any;
   clientImage: any;
   clientTemplateData: any;
+  kycTierName: string = '';
 
   constructor() {
     this.route.data.subscribe((data: { clientViewData: any; clientTemplateData: any; clientDatatables: any }) => {
@@ -180,6 +183,20 @@ export class ClientsViewComponent implements OnInit {
         // Handle any unexpected errors
         console.error('Error loading client profile image:', error);
         this.clientImage = null;
+      }
+    });
+
+    this.kycService.getCases({ clientId: this.clientViewData.id }).subscribe({
+      next: (casesData: any) => {
+        if (casesData && casesData.pageItems && casesData.pageItems.length > 0) {
+          const latestCase = casesData.pageItems[0]; // Assuming latest is first or only one
+          if (latestCase.tierName) {
+            this.kycTierName = latestCase.tierName;
+          }
+        }
+      },
+      error: (err: any) => {
+        console.log('No KYC case or error', err);
       }
     });
   }

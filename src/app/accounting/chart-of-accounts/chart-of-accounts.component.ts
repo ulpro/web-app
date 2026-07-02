@@ -8,6 +8,7 @@
 
 /** Angular Imports */
 import { Component, OnInit, TemplateRef, ElementRef, ViewChild, AfterViewInit, inject } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import {
@@ -44,6 +45,7 @@ import { GLAccountNode } from './gl-account-node.model';
 
 /** Custom Services */
 import { GlAccountTreeService } from './gl-account-tree.service';
+import { SyscohadadBulkImportDialogComponent } from './syscohada-bulk-import/syscohada-bulk-import.dialog';
 import { PopoverService } from '../../configuration-wizard/popover/popover.service';
 import { ConfigurationWizardService } from '../../configuration-wizard/configuration-wizard.service';
 import { TreeControlService } from 'app/shared/common-logic/tree-control.service';
@@ -95,6 +97,7 @@ export class ChartOfAccountsComponent implements AfterViewInit, OnInit {
   private treeControlService = inject(TreeControlService);
   private configurationWizardService = inject(ConfigurationWizardService);
   private popoverService = inject(PopoverService);
+  private dialog = inject(MatDialog);
 
   /** Button toggle group form control for type of view. (list/tree) */
   viewGroup = new UntypedFormControl('listView');
@@ -200,6 +203,16 @@ export class ChartOfAccountsComponent implements AfterViewInit, OnInit {
    */
   applyFilter(filterValue: string) {
     this.tableDataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  /**
+   * Opens the SYSCOHADA bulk import dialog which loads all SYSCOHADA accounts and creates them via the API.
+   */
+  importAllSYSCOHADA(): void {
+    this.dialog.open(SyscohadadBulkImportDialogComponent, {
+      width: '600px',
+      disableClose: true
+    });
   }
 
   /**

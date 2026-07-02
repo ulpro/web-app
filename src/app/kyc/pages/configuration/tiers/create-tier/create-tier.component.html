@@ -1,0 +1,127 @@
+<div class="container m-b-20">
+  <div class="modern-card content-card">
+    <div class="card-header">
+      <h3><mat-icon class="m-r-5" style="vertical-align: middle; color: var(--mat-sys-primary);">add_circle</mat-icon> Create New Tier</h3>
+    </div>
+    
+    <div class="card-body">
+      <form [formGroup]="tierForm" (ngSubmit)="submit()" class="layout-column gap-16">
+
+        <div class="layout-row gap-20px responsive-column">
+          <!-- Code -->
+          <mat-form-field class="flex-fill" appearance="outline">
+            <mat-label>Code *</mat-label>
+            <input matInput formControlName="code" placeholder="ex: TIER_1" />
+            <mat-icon matPrefix>code</mat-icon>
+            @if (tierForm.get('code')?.hasError('required')) {
+              <mat-error>Code is required</mat-error>
+            }
+            <mat-hint>Unique identifier, no spaces (ex: TIER_1)</mat-hint>
+          </mat-form-field>
+
+          <!-- Level -->
+          <mat-form-field class="flex-fill" appearance="outline">
+            <mat-label>Level *</mat-label>
+            <input matInput type="number" formControlName="level" min="1" />
+            <mat-icon matPrefix>format_list_numbered</mat-icon>
+            @if (tierForm.get('level')?.hasError('required')) {
+              <mat-error>Level is required</mat-error>
+            }
+            @if (tierForm.get('level')?.hasError('min')) {
+              <mat-error>Level must be greater than 0</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="layout-row responsive-column">
+          <!-- Name -->
+          <mat-form-field class="flex-fill full-width" appearance="outline">
+            <mat-label>Tier Name *</mat-label>
+            <input matInput formControlName="name" required />
+            <mat-icon matPrefix>label</mat-icon>
+            @if (tierForm.get('name')?.hasError('required')) {
+              <mat-error>Name is required</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="layout-row gap-20px responsive-column">
+          <!-- Description -->
+          <mat-form-field class="flex-fill" appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description" rows="2"></textarea>
+            <mat-icon matPrefix>description</mat-icon>
+          </mat-form-field>
+
+          <!-- Validity Days -->
+          <mat-form-field class="flex-fill" appearance="outline">
+            <mat-label>Periodic Review Validity (Days)</mat-label>
+            <input matInput type="number" formControlName="validityDays" min="1" />
+            <mat-icon matPrefix>event</mat-icon>
+            <mat-hint>E.g. 365 for 1 year, 1825 for 5 years</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="layout-row gap-20px responsive-column">
+          <!-- Max Balance -->
+          <mat-form-field class="flex-fill" appearance="outline">
+            <mat-label>Max Balance</mat-label>
+            <input matInput type="number" formControlName="maxBalance" />
+            <mat-icon matPrefix>account_balance</mat-icon>
+          </mat-form-field>
+
+          <!-- Max Transaction Amount -->
+          <mat-form-field class="flex-fill" appearance="outline">
+            <mat-label>Max Transaction Amount</mat-label>
+            <input matInput type="number" formControlName="maxTransactionAmount" />
+            <mat-icon matPrefix>swap_horiz</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <!-- Required Document Types -->
+        <div class="layout-row gap-20px responsive-column">
+          <mat-form-field class="flex-fill" appearance="outline">
+            <mat-label>Required Document Types</mat-label>
+            <mat-select formControlName="selectedDocumentTypes" multiple>
+              @for (docType of documentTypes; track docType.id) {
+                <mat-option [value]="docType.id">{{ docType.name }} ({{ docType.code }})</mat-option>
+              }
+            </mat-select>
+            <mat-icon matPrefix>folder</mat-icon>
+            <mat-hint>All selected types will be mandatory</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="flex-fill" appearance="outline">
+            <mat-label>Required Profile Fields</mat-label>
+            <mat-select formControlName="requiredFields" multiple>
+              @for (group of availableKycFields; track group.group) {
+                <mat-optgroup [label]="group.group">
+                  @for (field of group.fields; track field.id) {
+                    <mat-option [value]="field.id">{{ field.label }}</mat-option>
+                  }
+                </mat-optgroup>
+              }
+            </mat-select>
+            <mat-icon matPrefix>assignment</mat-icon>
+            <mat-hint>Required fields from client profile</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="layout-row m-t-10 m-b-20 active-checkbox-container">
+          <mat-checkbox formControlName="active" color="primary">
+            <span class="font-medium">Active</span>
+          </mat-checkbox>
+          <span class="checkbox-hint">Make this tier immediately available.</span>
+        </div>
+
+        <div class="form-actions-modern">
+          <button mat-button type="button" [routerLink]="['../']">Cancel</button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="!tierForm.valid">
+            <mat-icon>save</mat-icon> Submit
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

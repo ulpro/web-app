@@ -1,0 +1,11 @@
+'\\wsl.localhost\Ubuntu\home\fressie\Neobt\web-app'
+CMD.EXE a ‚t‚ d‚marr‚ avec le chemin d'accŠs comme r‚pertoire en
+cours. Les chemins d'accŠs UNC ne sont pas prise en charge. Utilisation
+du r‚pertoire Windows par d‚faut.
+[33m>[39m Building...
+[1m[33mOne or more browsers which are configured in the project's Browserslist configuration will be ignored as ES5 output is not supported by the Angular CLI.
+Ignored browsers:
+kaios 2.5, op_mini all[39m[22m
+[1m[33mOne or more browsers which are configured in the project's Browserslist configuration fall outside Angular's browser support for this version.
+Unsupported browsers:
+and_qq 14.9, and_uc 15.5, android 147, kaios 3.0-3.1, op_mob 80, opera 131, opera 127, samsung 29, samsung 28[39m[22m

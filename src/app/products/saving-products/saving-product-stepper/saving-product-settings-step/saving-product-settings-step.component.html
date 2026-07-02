@@ -65,7 +65,7 @@
         <mat-form-field class="flex-48">
           <mat-label>{{ 'labels.inputs.Type' | translate }}</mat-label>
           <mat-select formControlName="lockinPeriodFrequencyType" required>
-            @for (lockinPeriodFrequencyType of lockinPeriodFrequencyTypeData; track lockinPeriodFrequencyType) {
+            @for (lockinPeriodFrequencyType of lockinPeriodFrequencyTypeData; track lockinPeriodFrequencyType.id) {
               <mat-option [value]="lockinPeriodFrequencyType.id">
                 {{ lockinPeriodFrequencyType.value | translateKey: 'catalogs' }}
               </mat-option>
@@ -145,7 +145,7 @@
       <mat-form-field class="flex-48">
         <mat-label>{{ 'labels.inputs.Tax Group' | translate }}</mat-label>
         <mat-select formControlName="taxGroupId" required>
-          @for (taxGroup of taxGroupData; track taxGroup) {
+          @for (taxGroup of taxGroupData; track taxGroup.id) {
             <mat-option [value]="taxGroup.id">
               {{ taxGroup.name }}
             </mat-option>

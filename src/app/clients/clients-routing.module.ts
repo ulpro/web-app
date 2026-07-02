@@ -168,6 +168,11 @@ const routes: Routes = [
               }
             },
             {
+              path: 'kyc',
+              loadComponent: () => import('./clients-view/kyc-tab/kyc-tab.component').then(m => m.KycTabComponent),
+              data: { title: 'KYC', breadcrumb: 'KYC', routeParamBreadcrumb: false }
+            },
+            {
               path: 'notes',
               component: NotesTabComponent,
               data: { title: 'Notes', breadcrumb: 'Notes', routeParamBreadcrumb: false },

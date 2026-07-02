@@ -10,8 +10,8 @@
   window["env"] = window["env"] || {};
 
   // BackEnd Environment variables
-  window["env"]["fineractApiUrls"] = '';
-  window["env"]["fineractApiUrl"] = '';
+  window["env"]["fineractApiUrls"] = 'https://localhost:8443,https://demo.mifos.community,https://neobt.duckdns.org:10543';
+  window["env"]["fineractApiUrl"] = 'https://localhost:8443';
 
   window["env"]["apiProvider"] = '';
   window["env"]["apiVersion"] = '';
@@ -111,6 +111,10 @@
   window['env']['externalNationalIdSystemApiHeader'] = '';
   window['env']['externalNationalIdSystemApiKey'] = '';
   window['env']['externalNationalIdRegex'] = '';
+
+  // Postal Code Lookup (auto-fill address from postal code via external API)
+  // Set to 'true' to enable, 'false' (default) to disable
+  window['env']['enablePostalCodeLookup'] = 'false';
 
   // Password Configuration
   window['env']['minPasswordLength'] = 8;

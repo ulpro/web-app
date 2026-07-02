@@ -50,6 +50,7 @@ import { TasksModule } from './tasks/tasks.module';
 import { ConfigurationWizardModule } from './configuration-wizard/configuration-wizard.module';
 import { RemittancesModule } from './remittances/remittances.module';
 import { PortalModule } from '@angular/cdk/portal';
+import { KycModule } from './kyc/kyc.module';
 
 /** Main Routing Module */
 import { AppRoutingModule } from './app-routing.module';
@@ -129,6 +130,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     TasksModule,
     ConfigurationWizardModule,
     RemittancesModule,
+    KycModule,
     AppRoutingModule,
     NotFoundComponent,
     CallbackComponent,

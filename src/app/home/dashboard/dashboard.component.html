@@ -25,6 +25,30 @@
       </mat-card-content>
     </mat-card>
 
+    <!-- KYC Quick Access Widget -->
+    <div class="kyc-dashboard-widget" *ngIf="pendingKyc > 0 || eddKyc > 0">
+      <div class="kyc-widget-header">
+        <h3><fa-icon icon="shield-alt" class="m-r-5 text-primary"></fa-icon> Alertes Conformité (KYC)</h3>
+        <button mat-button color="primary" [routerLink]="['/kyc/cases']">Voir tous les dossiers</button>
+      </div>
+      <div class="kyc-widget-content">
+        <div class="kyc-kpi pending" [routerLink]="['/kyc/cases']" [queryParams]="{status: '100'}">
+          <div class="kpi-icon"><fa-icon icon="clock"></fa-icon></div>
+          <div class="kpi-text">
+            <span class="value">{{ pendingKyc }}</span>
+            <span class="label">Dossiers en attente / révision</span>
+          </div>
+        </div>
+        <div class="kyc-kpi edd" [routerLink]="['/kyc/cases']" [queryParams]="{status: '400'}">
+          <div class="kpi-icon"><fa-icon icon="exclamation-triangle"></fa-icon></div>
+          <div class="kpi-text">
+            <span class="value">{{ eddKyc }}</span>
+            <span class="label">Dossiers en vigilance renforcée</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <mifosx-analytics-dashboard [dashboard]="dashboardDefinition" [offices]="offices"></mifosx-analytics-dashboard>
   </div>
 </div>

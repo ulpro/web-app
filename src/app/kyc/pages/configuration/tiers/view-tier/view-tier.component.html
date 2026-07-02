@@ -1,0 +1,98 @@
+<div class="container">
+  @if (isLoading) {
+    <div class="layout-row justify-content-center m-t-20">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
+  }
+  @if (!isLoading && tier) {
+    <mat-card class="tier-detail-card">
+      <mat-card-content>
+        <div class="tier-header">
+          <div class="tier-header-left">
+            <div class="tier-icon-wrap">
+              <fa-icon icon="layer-group"></fa-icon>
+            </div>
+            <div>
+              <h2 class="tier-name">{{ tier.name }}</h2>
+              <span class="tier-code">{{ tier.code }}</span>
+            </div>
+          </div>
+          <div class="tier-header-right">
+            <span class="tier-level-badge">Level {{ tier.level }}</span>
+            @if (tier.active) {
+              <span class="tier-status-badge active"><fa-icon icon="check-circle" class="m-r-5"></fa-icon>Active</span>
+            }
+            @if (!tier.active) {
+              <span class="tier-status-badge inactive"><fa-icon icon="times-circle" class="m-r-5"></fa-icon>Inactive</span>
+            }
+            <button mat-raised-button color="primary" [routerLink]="['edit']" class="edit-btn">
+              <fa-icon icon="edit" class="m-r-5"></fa-icon> Edit
+            </button>
+          </div>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="tier-details-grid">
+          <div class="detail-card">
+            <div class="detail-icon bg-blue"><fa-icon icon="wallet"></fa-icon></div>
+            <div class="detail-info">
+              <span class="detail-label">Max Balance</span>
+              <span class="detail-value">{{ tier.maxBalance | number }}</span>
+            </div>
+          </div>
+          <div class="detail-card">
+            <div class="detail-icon bg-purple"><fa-icon icon="exchange-alt"></fa-icon></div>
+            <div class="detail-info">
+              <span class="detail-label">Max Transaction Amount</span>
+              <span class="detail-value">{{ tier.maxTransactionAmount | number }}</span>
+            </div>
+          </div>
+          <div class="detail-card" *ngIf="tier.validityDays">
+            <div class="detail-icon bg-orange"><fa-icon icon="calendar-alt"></fa-icon></div>
+            <div class="detail-info">
+              <span class="detail-label">Review Validity</span>
+              <span class="detail-value">{{ tier.validityDays }} days</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tier-requirements">
+          <div class="req-section">
+            <h3><fa-icon icon="file-alt" class="m-r-5 text-primary"></fa-icon> Required Document Types</h3>
+            @if (tier.documentRequirements?.length > 0) {
+              <div class="req-chips">
+                @for (doc of tier.documentRequirements; track doc.documentTypeId) {
+                  <span class="req-chip doc-chip">
+                    <fa-icon icon="id-card" class="m-r-5"></fa-icon>{{ doc.documentTypeName || doc.documentTypeId }}
+                    @if (doc.mandatory) {
+                      <span class="mandatory-dot"></span>
+                    }
+                  </span>
+                }
+              </div>
+            }
+            @if (!tier.documentRequirements || tier.documentRequirements.length === 0) {
+              <p class="text-muted">No required document types</p>
+            }
+          </div>
+
+          <div class="req-section">
+            <h3><fa-icon icon="user" class="m-r-5 text-primary"></fa-icon> Required Profile Fields</h3>
+            @if (tier.requiredFields?.length > 0) {
+              <div class="req-chips">
+                @for (field of tier.requiredFields; track field) {
+                  <span class="req-chip field-chip">{{ field.fieldName || field }}</span>
+                }
+              </div>
+            }
+            @if (!tier.requiredFields || tier.requiredFields.length === 0) {
+              <p class="text-muted">No required profile fields</p>
+            }
+          </div>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  }
+</div>

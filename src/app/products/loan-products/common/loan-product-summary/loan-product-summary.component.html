@@ -103,6 +103,24 @@
           }})
         </span>
       </div>
+      <div class="flex-fill layout-row">
+        <span class="flex-40">{{ 'labels.inputs.Discount' | translate }}:</span>
+        <span class="flex-60">{{ loanProduct.discount | formatNumber }}</span>
+      </div>
+      <div class="flex-fill layout-row">
+        <span class="flex-40">{{ 'labels.inputs.Breach' | translate }}:</span>
+        <span class="flex-60"><mifosx-breach-display [singleRow]="false" [breach]="getBreach()" /></span>
+      </div>
+      <div class="flex-fill layout-row">
+        <span class="flex-40">{{ 'labels.inputs.Enable Near Breach' | translate }}:</span>
+        <span class="flex-60">{{ enableNearBreach() | yesNo }}</span>
+      </div>
+      @if (enableNearBreach()) {
+        <div class="flex-fill layout-row">
+          <span class="flex-40">{{ 'labels.inputs.Near Breach' | translate }}:</span>
+          <span class="flex-60"><mifosx-breach-display [singleRow]="false" [nearBreach]="getNearBreach()" /></span>
+        </div>
+      }
     }
     @if (loanProductService.isLoanProduct) {
       <div class="flex-fill layout-row">
@@ -511,6 +529,20 @@
         <span class="flex-60">{{ loanProduct.enableInstallmentLevelDelinquency | yesNo }}</span>
       </div>
     }
+    @if (loanProductService.isWorkingCapital) {
+      @if (loanProduct.delinquencyGraceDays) {
+        <div class="flex-fill layout-row">
+          <span class="flex-40">{{ 'labels.inputs.Delinquency Grace Days' | translate }}:</span>
+          <span class="flex-60">{{ loanProduct.delinquencyGraceDays | formatNumber }}</span>
+        </div>
+      }
+      @if (loanProduct.delinquencyStartType) {
+        <div class="flex-fill layout-row">
+          <span class="flex-40">{{ 'labels.inputs.Delinquency Start Type' | translate }}:</span>
+          <span class="flex-60">{{ loanProduct.delinquencyStartType.value | translateKey: 'catalogs' }}</span>
+        </div>
+      }
+    }
     @if (loanProductService.isLoanProduct) {
       @if (loanProduct.graceOnPrincipalPayment) {
         <div class="flex-fill layout-row">
@@ -878,6 +910,10 @@
       }
       @if (loanProductService.isWorkingCapital) {
         <div>
+          <div class="flex-fill layout-row">
+            <span class="flex-40">{{ 'labels.inputs.Breach' | translate }}:</span>
+            <span class="flex-60">{{ loanProduct.allowAttributeOverrides.breach | yesNo }}</span>
+          </div>
           <div class="flex-fill layout-row">
             <span class="flex-40">{{ 'labels.inputs.Delinquency Bucket Classification' | translate }}:</span>
             <span class="flex-60">{{
