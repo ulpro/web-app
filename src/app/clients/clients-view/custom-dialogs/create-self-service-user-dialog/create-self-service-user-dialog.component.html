@@ -1,0 +1,71 @@
+<!--
+  Copyright since 2025 Mifos Initiative
+
+  This Source Code Form is subject to the terms of the Mozilla Public
+  License, v. 2.0. If a copy of the MPL was not distributed with this
+  file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-->
+
+<h1 mat-dialog-title>{{ 'labels.heading.Create Self Service User' | translate }}</h1>
+
+<div mat-dialog-content>
+  <p style="margin-bottom: 20px;">
+    {{ 'labels.text.Create self service access for client' | translate }} <strong>{{ data.displayName }}</strong>.
+  </p>
+
+  <form [formGroup]="selfServiceUserForm" class="layout-column" (ngSubmit)="submit()">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>{{ 'labels.inputs.Username' | translate }}</mat-label>
+      <input matInput formControlName="username" placeholder="e.g. john.doe" required>
+      @if (selfServiceUserForm.get('username')?.hasError('required')) {
+        <mat-error>{{ 'validation.msg.username.required' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>{{ 'labels.inputs.Email' | translate }}</mat-label>
+      <input matInput type="email" formControlName="email" placeholder="e.g. john@example.com" required>
+      @if (selfServiceUserForm.get('email')?.hasError('required')) {
+        <mat-error>{{ 'validation.msg.email.required' | translate }}</mat-error>
+      }
+      @if (selfServiceUserForm.get('email')?.hasError('email')) {
+        <mat-error>{{ 'validation.msg.email.invalid' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>{{ 'labels.inputs.Password' | translate }}</mat-label>
+      <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" required>
+      <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button" tabindex="-1">
+        <i class="fa" [ngClass]="hidePassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+      </button>
+      @if (selfServiceUserForm.get('password')?.hasError('required')) {
+        <mat-error>{{ 'validation.msg.password.required' | translate }}</mat-error>
+      }
+      @if (selfServiceUserForm.get('password')?.hasError('minlength')) {
+        <mat-error>{{ 'validation.msg.password.minlength' | translate }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>{{ 'labels.inputs.Repeat Password' | translate }}</mat-label>
+      <input matInput [type]="hideRepeatPassword ? 'password' : 'text'" formControlName="repeatPassword" required>
+      <button mat-icon-button matSuffix (click)="hideRepeatPassword = !hideRepeatPassword" type="button" tabindex="-1">
+        <i class="fa" [ngClass]="hideRepeatPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+      </button>
+      @if (selfServiceUserForm.get('repeatPassword')?.hasError('required')) {
+        <mat-error>{{ 'validation.msg.repeatPassword.required' | translate }}</mat-error>
+      }
+      @if (selfServiceUserForm.hasError('passwordMismatch') && selfServiceUserForm.get('repeatPassword')?.touched) {
+        <mat-error>{{ 'validation.msg.passwords.must.match' | translate }}</mat-error>
+      }
+    </mat-form-field>
+  </form>
+</div>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close>{{ 'labels.buttons.Cancel' | translate }}</button>
+  <button mat-raised-button color="primary" [disabled]="selfServiceUserForm.invalid" (click)="submit()">
+    {{ 'labels.buttons.Create' | translate }}
+  </button>
+</mat-dialog-actions>

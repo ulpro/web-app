@@ -24,7 +24,8 @@ import {
   MatRowDef,
   MatRow
 } from '@angular/material/table';
-import { UntypedFormGroup, UntypedFormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 /** Custom Imports */
 import { OrganizationService } from '../../organization.service';
@@ -69,6 +70,7 @@ export class ViewBulkImportComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private formBuilder = inject(UntypedFormBuilder);
   private organizationService = inject(OrganizationService);
+  private snackBar = inject(MatSnackBar);
 
   /** offices Data */
   officeData: any;
@@ -136,7 +138,7 @@ export class ViewBulkImportComponent implements OnInit {
     this.bulkImportForm = this.formBuilder.group({
       officeId: [''],
       staffId: [''],
-      legalForm: ['']
+      legalForm: ['', this.bulkImport.name === 'Clients' ? [Validators.required] : []]
     });
   }
 
@@ -209,11 +211,56 @@ export class ViewBulkImportComponent implements OnInit {
         legalFormType = 'CLIENTS_ENTITY';
       } else if (this.template.name.toLowerCase().includes('person')) {
         legalFormType = 'CLIENTS_PERSON';
+      } else {
+        // Fallback to the form dropdown value if filename doesn't contain 'entity' or 'person'
+        const formValue = this.bulkImportForm.get('legalForm').value;
+        if (formValue === 'Entity') {
+          legalFormType = 'CLIENTS_ENTITY';
+        } else if (formValue === 'Person') {
+          legalFormType = 'CLIENTS_PERSON';
+        }
+      }
+
+      if (!legalFormType) {
+        this.bulkImportForm.get('legalForm').markAsTouched();
+        this.snackBar.open(
+          'Please select a Legal Form in the dropdown or ensure the filename contains "person" or "entity" before uploading.',
+          'Close',
+          {
+            duration: 7000,
+            verticalPosition: 'top',
+            horizontalPosition: 'right',
+            panelClass: 'custom-snackbar-top-right'
+          }
+        );
+        return;
       }
     }
     this.organizationService
       .uploadImportDocument(this.template, this.bulkImport.urlSuffix, legalFormType)
-      .subscribe(() => {});
+      .subscribe({
+        next: () => {
+          this.snackBar.open('File uploaded successfully.', 'Close', {
+            duration: 5000,
+            verticalPosition: 'top',
+            horizontalPosition: 'right',
+            panelClass: 'custom-snackbar-top-right'
+          });
+          this.refreshDocuments();
+        },
+        error: (err: any) => {
+          this.snackBar.open(
+            err?.error?.defaultUserMessage || err?.error?.message || 'An error occurred during file upload. Please try again.',
+            'Close',
+            {
+              duration: 7000,
+              verticalPosition: 'top',
+              horizontalPosition: 'right',
+              panelClass: 'custom-snackbar-top-right'
+            }
+          );
+        }
+      });
   }
 
   /**

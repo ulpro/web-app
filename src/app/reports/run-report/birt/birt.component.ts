@@ -7,7 +7,7 @@
  */
 
 /** Angular Imports */
-import { Component, OnChanges, Input, inject } from '@angular/core';
+import { Component, OnChanges, OnDestroy, Input, inject } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 /** rxjs Imports */
@@ -30,7 +30,7 @@ import { STANDALONE_SHARED_IMPORTS } from 'app/standalone-shared.module';
     ...STANDALONE_SHARED_IMPORTS
   ]
 })
-export class BirtComponent implements OnChanges {
+export class BirtComponent implements OnChanges, OnDestroy {
   private sanitizer = inject(DomSanitizer);
   private reportsService = inject(ReportsService);
   private settingsService = inject(SettingsService);
@@ -43,6 +43,8 @@ export class BirtComponent implements OnChanges {
   hideOutput = true;
   /** trusted resource url for BIRT output */
   birtUrl: any;
+  /** current blob URL to track and revoke */
+  private currentBlobUrl: string | null = null;
 
   /**
    * Fetches run report data post changes in run report form.
@@ -73,11 +75,49 @@ export class BirtComponent implements OnChanges {
       .subscribe((res: any) => {
         if (res) {
           const contentType = res.headers.get('Content-Type');
-          const file = new Blob([res.body], { type: contentType });
-          const filecontent = URL.createObjectURL(file);
-          this.birtUrl = this.sanitizer.bypassSecurityTrustResourceUrl(filecontent);
-          this.hideOutput = false;
+          const outputType = this.dataObject.formData['output-type'] || 'HTML';
+          const isDownloadFormat = ['XLS', 'XLSX', 'CSV'].includes(outputType);
+
+          if (isDownloadFormat) {
+            const file = new Blob([res.body], { type: contentType });
+            const filecontent = URL.createObjectURL(file);
+            
+            const link = document.createElement('a');
+            link.href = filecontent;
+            
+            let ext = 'xls';
+            if (outputType === 'XLSX') ext = 'xlsx';
+            if (outputType === 'CSV') ext = 'csv';
+            
+            link.download = `${this.dataObject.report.name}.${ext}`;
+            document.body.appendChild(link);
+            link.click();
+            
+            setTimeout(() => {
+              document.body.removeChild(link);
+              URL.revokeObjectURL(filecontent);
+            }, 0);
+
+            this.hideOutput = true;
+          } else {
+            const file = new Blob([res.body], { type: contentType });
+
+            if (this.currentBlobUrl) {
+              URL.revokeObjectURL(this.currentBlobUrl);
+            }
+
+            const filecontent = URL.createObjectURL(file);
+            this.currentBlobUrl = filecontent;
+            this.birtUrl = this.sanitizer.bypassSecurityTrustResourceUrl(filecontent);
+            this.hideOutput = false;
+          }
         }
       });
+  }
+
+  ngOnDestroy() {
+    if (this.currentBlobUrl) {
+      URL.revokeObjectURL(this.currentBlobUrl);
+    }
   }
 }

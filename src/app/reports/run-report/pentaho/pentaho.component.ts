@@ -60,24 +60,57 @@ export class PentahoComponent implements OnChanges, OnDestroy {
         this.settingsService.language.code,
         this.settingsService.dateFormat
       )
-      .subscribe((res: any) => {
-        const contentType = res.headers.get('Content-Type');
-        const file = new Blob([res.body], { type: contentType });
+      .subscribe({
+        next: (res: any) => {
+          const contentType = res.headers.get('Content-Type');
+          const outputType = this.dataObject.formData['output-type'] || 'HTML';
+          const isDownloadFormat = ['XLS', 'XLSX', 'CSV'].includes(outputType);
 
-        if (this.currentBlobUrl) {
-          URL.revokeObjectURL(this.currentBlobUrl);
+          if (isDownloadFormat) {
+            const file = new Blob([res.body], { type: contentType });
+            const filecontent = URL.createObjectURL(file);
+            
+            const link = document.createElement('a');
+            link.href = filecontent;
+            
+            let ext = 'xls';
+            if (outputType === 'XLSX') ext = 'xlsx';
+            if (outputType === 'CSV') ext = 'csv';
+            
+            link.download = `${this.dataObject.report.name}.${ext}`;
+            document.body.appendChild(link);
+            link.click();
+            
+            setTimeout(() => {
+              document.body.removeChild(link);
+              URL.revokeObjectURL(filecontent);
+            }, 0);
+
+            this.hideOutput = true;
+            this.progressBarService.decrease();
+          } else {
+            const file = new Blob([res.body], { type: contentType });
+
+            if (this.currentBlobUrl) {
+              URL.revokeObjectURL(this.currentBlobUrl);
+            }
+
+            let filecontent = URL.createObjectURL(file);
+            this.currentBlobUrl = filecontent;
+
+            if (this.isTicketReport()) {
+              filecontent += '#zoom=500';
+            }
+
+            this.pentahoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(filecontent);
+            this.hideOutput = false;
+            this.progressBarService.decrease();
+          }
+        },
+        error: (err: any) => {
+          console.error('Error executing Pentaho report:', err);
+          this.progressBarService.decrease();
         }
-
-        let filecontent = URL.createObjectURL(file);
-        this.currentBlobUrl = filecontent;
-
-        if (this.isTicketReport()) {
-          filecontent += '#zoom=500';
-        }
-
-        this.pentahoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(filecontent);
-        this.hideOutput = false;
-        this.progressBarService.decrease();
       });
   }
 

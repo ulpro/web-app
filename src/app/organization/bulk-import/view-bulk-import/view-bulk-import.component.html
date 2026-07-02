@@ -65,6 +65,7 @@
         <button
           mat-raised-button
           color="primary"
+          [disabled]="!bulkImportForm.valid"
           (click)="downloadTemplate()"
           *mifosxHasPermission="bulkImport.permission"
         >

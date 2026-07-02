@@ -17,9 +17,13 @@ import {
 } from '@angular/forms';
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { MatAutocomplete, MatAutocompleteTrigger } from '@angular/material/autocomplete';
+import { of } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap, tap, catchError } from 'rxjs/operators';
 
 /** Custom Services */
 import { UsersService } from '../users.service';
+import { ClientsService } from 'app/clients/clients.service';
 import { PopoverService } from '../../configuration-wizard/popover/popover.service';
 
 /** Custom Dialog Component */
@@ -39,7 +43,9 @@ import { STANDALONE_SHARED_IMPORTS } from 'app/standalone-shared.module';
   styleUrls: ['./create-user.component.scss'],
   imports: [
     ...STANDALONE_SHARED_IMPORTS,
-    MatCheckbox
+    MatCheckbox,
+    MatAutocomplete,
+    MatAutocompleteTrigger
   ]
 })
 export class CreateUserComponent implements OnInit, AfterViewInit {
@@ -60,6 +66,13 @@ export class CreateUserComponent implements OnInit, AfterViewInit {
   rolesData: any;
   /** Staff data. */
   staffData: any;
+
+  /** Self Service Client AutoComplete fields */
+  clientSearchControl = new UntypedFormControl('');
+  filteredClients: any[] = [];
+  isSearchingClients = false;
+  selectedClientId: number | null = null;
+  private clientsService = inject(ClientsService);
 
   /* Reference of create user form */
   @ViewChild('userFormRef') userFormRef: ElementRef<any>;
@@ -89,6 +102,7 @@ export class CreateUserComponent implements OnInit, AfterViewInit {
     this.createUserForm();
     this.setStaffData();
     this.setConditionalControls();
+    this.setupClientAutocomplete();
   }
 
   /**
@@ -132,7 +146,8 @@ export class CreateUserComponent implements OnInit, AfterViewInit {
         roles: [
           '',
           Validators.required
-        ]
+        ],
+        isSelfServiceUser: [false]
       },
       { validator: confirmPasswordValidator }
     );
@@ -175,6 +190,16 @@ export class CreateUserComponent implements OnInit, AfterViewInit {
       }
       this.userForm.get('email').updateValueAndValidity();
     });
+
+    this.userForm.get('isSelfServiceUser').valueChanges.subscribe((isSelfService: boolean) => {
+      const rolesControl = this.userForm.get('roles');
+      if (isSelfService) {
+        rolesControl.clearValidators();
+      } else {
+        rolesControl.setValidators([Validators.required]);
+      }
+      rolesControl.updateValueAndValidity();
+    });
   }
 
   /**
@@ -186,20 +211,45 @@ export class CreateUserComponent implements OnInit, AfterViewInit {
     if (this.userForm.value.staffId == null || this.userForm.value.staffId === '') {
       delete user.staffId;
     }
-    this.usersService.createUser(user).subscribe((response: any) => {
-      if (this.configurationWizardService.showUsersForm) {
-        this.configurationWizardService.showUsersForm = false;
-        this.openDialog();
-      } else {
-        this.router.navigate(
-          [
-            '../',
-            response.resourceId
-          ],
-          { relativeTo: this.route }
-        );
+
+    if (user.isSelfServiceUser) {
+      const payload: any = {
+        username: user.username,
+        email: user.email,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        officeId: user.officeId,
+        sendPasswordToEmail: user.sendPasswordToEmail,
+        passwordNeverExpires: user.passwordNeverExpires,
+        clientId: this.selectedClientId
+      };
+      if (user.staffId) {
+        payload.staffId = user.staffId;
       }
-    });
+      if (!user.sendPasswordToEmail) {
+        payload.password = user.password;
+      }
+
+      this.clientsService.createSelfServiceUser(payload).subscribe(() => {
+        this.router.navigate(['/clients', this.selectedClientId]);
+      });
+    } else {
+      delete user.isSelfServiceUser;
+      this.usersService.createUser(user).subscribe((response: any) => {
+        if (this.configurationWizardService.showUsersForm) {
+          this.configurationWizardService.showUsersForm = false;
+          this.openDialog();
+        } else {
+          this.router.navigate(
+            [
+              '../',
+              response.resourceId
+            ],
+            { relativeTo: this.route }
+          );
+        }
+      });
+    }
   }
 
   /**
@@ -245,6 +295,44 @@ export class CreateUserComponent implements OnInit, AfterViewInit {
     this.configurationWizardService.showUsersForm = false;
     this.configurationWizardService.showUsersList = true;
     this.router.navigate(['/appusers']);
+  }
+
+  setupClientAutocomplete() {
+    this.clientSearchControl.valueChanges.pipe(
+      debounceTime(400),
+      distinctUntilChanged(),
+      tap(() => {
+        this.isSearchingClients = true;
+        this.filteredClients = [];
+      }),
+      switchMap((term: any) => {
+        const officeId = this.userForm.get('officeId')?.value;
+        if (typeof term === 'string' && term.trim().length >= 2 && officeId) {
+          return this.clientsService.getFilteredClients('displayName', 'ASC', false, term, officeId).pipe(
+            catchError(() => of({ pageItems: [] }))
+          );
+        } else {
+          return of({ pageItems: [] });
+        }
+      })
+    ).subscribe({
+      next: (data: any) => {
+        this.filteredClients = data.pageItems || [];
+        this.isSearchingClients = false;
+      },
+      error: () => {
+        this.isSearchingClients = false;
+      }
+    });
+  }
+
+  displayClientFn(client: any): string {
+    return client ? `${client.displayName} (${client.accountNo})` : '';
+  }
+
+  onClientSelected(event: any) {
+    const client = event.option.value;
+    this.selectedClientId = client ? client.id : null;
   }
 
   /**

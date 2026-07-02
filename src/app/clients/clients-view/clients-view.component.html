@@ -126,6 +126,30 @@
                       <td>{{ 'labels.inputs.Unassigned' | translate }}</td>
                     }
                   </tr>
+                  <tr>
+                    <td>
+                      <b>{{ 'labels.inputs.Self Service User' | translate }}</b>
+                    </td>
+                    <td>
+                      @if (selfServiceLoading) {
+                        <mat-spinner [diameter]="18" style="display: inline-block; vertical-align: middle;"></mat-spinner>
+                      }
+                      @if (!selfServiceLoading && !selfServiceUser) {
+                        <button mat-flat-button color="primary" style="height: 28px; line-height: 28px; padding: 0 12px; font-size: 12px;" (click)="createSelfServiceUser()" *mifosxHasPermission="'CREATE_SELFSERVICEUSER'">
+                          <i class="fa fa-user-plus"></i> {{ 'labels.buttons.Create Self Service' | translate }}
+                        </button>
+                      }
+                      @if (!selfServiceLoading && selfServiceUser) {
+                        <span style="display: inline-flex; align-items: center; gap: 8px;">
+                          <span>{{ selfServiceUser.username }}</span>
+                          <i class="fa fa-circle" [style.color]="selfServiceUser.active ? '#4caf50' : '#f44336'" matTooltip="{{ (selfServiceUser.active ? 'labels.status.Active' : 'labels.status.Inactive') | translate }}"></i>
+                          <button mat-icon-button style="width: 24px; height: 24px; line-height: 24px;" (click)="toggleSelfServiceStatus()" *mifosxHasPermission="'UPDATE_SELFSERVICEUSER'" [matTooltip]="(selfServiceUser.active ? 'labels.buttons.Deactivate' : 'labels.buttons.Activate') | translate">
+                            <mat-icon style="font-size: 20px; width: 20px; height: 20px;">{{ selfServiceUser.active ? 'toggle_on' : 'toggle_off' }}</mat-icon>
+                          </button>
+                        </span>
+                      }
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>

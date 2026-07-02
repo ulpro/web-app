@@ -404,8 +404,23 @@ export class ClientsService {
   /**
    * @param userData User Data.
    */
-  createSelfServiceUser(userData: any) {
-    return this.http.post(`/users`, userData);
+  createSelfServiceUser(userData: any): Observable<any> {
+    return this.http.post(`/selfserviceusers`, userData);
+  }
+
+  /**
+   * @param clientId Client ID.
+   */
+  getSelfServiceUserForClient(clientId: string): Observable<any> {
+    return this.http.get(`/selfserviceusers/client/${clientId}`);
+  }
+
+  /**
+   * @param userId User ID.
+   * @param active User status (active/inactive).
+   */
+  updateSelfServiceUserStatus(userId: string, active: boolean): Observable<any> {
+    return this.http.put(`/selfserviceusers/${userId}/status`, { active });
   }
 
   /**

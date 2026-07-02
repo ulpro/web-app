@@ -85,6 +85,12 @@
             </mat-checkbox>
           </div>
 
+          <div class="is-self-service-user-wrapper flex-48">
+            <mat-checkbox labelPosition="before" formControlName="isSelfServiceUser">
+              {{ 'labels.inputs.Is Self Service User' | translate }}
+            </mat-checkbox>
+          </div>
+
           @if (!userForm.controls.sendPasswordToEmail.value) {
             <mat-form-field class="flex-48">
               <mat-label>{{ 'labels.inputs.Password' | translate }}</mat-label>
@@ -174,22 +180,47 @@
             </mat-select>
           </mat-form-field>
 
-          <mat-form-field class="flex-48">
-            <mat-label>{{ 'labels.inputs.Roles' | translate }}</mat-label>
-            <mat-select required formControlName="roles" multiple>
-              @for (role of rolesData; track role) {
-                <mat-option [value]="role.id">
-                  {{ role.name }}
-                </mat-option>
+          @if (!userForm.controls.isSelfServiceUser.value) {
+            <mat-form-field class="flex-48">
+              <mat-label>{{ 'labels.inputs.Roles' | translate }}</mat-label>
+              <mat-select required formControlName="roles" multiple>
+                @for (role of rolesData; track role) {
+                  <mat-option [value]="role.id">
+                    {{ role.name }}
+                  </mat-option>
+                }
+              </mat-select>
+              @if (userForm.controls.roles.hasError('required')) {
+                <mat-error>
+                  {{ 'labels.commons.At least one role' | translate }}
+                  <strong>{{ 'labels.commons.must be selected' | translate }}</strong>
+                </mat-error>
               }
-            </mat-select>
-            @if (userForm.controls.roles.hasError('required')) {
-              <mat-error>
-                {{ 'labels.commons.At least one role' | translate }}
-                <strong>{{ 'labels.commons.must be selected' | translate }}</strong>
-              </mat-error>
-            }
-          </mat-form-field>
+            </mat-form-field>
+          }
+
+          @if (userForm.controls.isSelfServiceUser.value) {
+            <mat-form-field class="flex-48">
+              <mat-label>{{ 'labels.inputs.Select Client' | translate }}</mat-label>
+              <input
+                matInput
+                required
+                [formControl]="clientSearchControl"
+                [matAutocomplete]="auto"
+                placeholder="Search Client..."
+              />
+              @if (isSearchingClients) {
+                <mat-icon matSuffix><i class="fa fa-spinner fa-spin"></i></mat-icon>
+              }
+              <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayClientFn" (optionSelected)="onClientSelected($event)">
+                @for (client of filteredClients; track client) {
+                  <mat-option [value]="client">
+                    {{ client.displayName }} ({{ client.accountNo }})
+                  </mat-option>
+                }
+              </mat-autocomplete>
+            </mat-form-field>
+          }
         </div>
       </mat-card-content>
 

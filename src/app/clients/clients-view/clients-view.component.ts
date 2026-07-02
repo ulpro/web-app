@@ -22,6 +22,8 @@ import { DrawSignatureDialogComponent } from './custom-dialogs/draw-signature-di
 import { DeleteDialogComponent } from 'app/shared/delete-dialog/delete-dialog.component';
 import { UploadImageDialogComponent } from './custom-dialogs/upload-image-dialog/upload-image-dialog.component';
 import { CaptureImageDialogComponent } from './custom-dialogs/capture-image-dialog/capture-image-dialog.component';
+import { CreateSelfServiceUserDialogComponent } from './custom-dialogs/create-self-service-user-dialog/create-self-service-user-dialog.component';
+import { MatSpinner } from '@angular/material/progress-spinner';
 
 /** Custom Services */
 import { ClientsService } from '../clients.service';
@@ -78,7 +80,8 @@ import { formatTabLabel } from 'app/shared/utils/format-tab-label.util';
     MatTabNavPanel,
     RouterOutlet,
     StatusLookupPipe,
-    DateFormatPipe
+    DateFormatPipe,
+    MatSpinner
   ]
 })
 export class ClientsViewComponent implements OnInit {
@@ -140,6 +143,8 @@ export class ClientsViewComponent implements OnInit {
 
   clientViewData: any;
   clientDatatables: any;
+  selfServiceLoading = true;
+  selfServiceUser: any = null;
   clientImage: any;
   clientTemplateData: any;
 
@@ -182,6 +187,7 @@ export class ClientsViewComponent implements OnInit {
         this.clientImage = null;
       }
     });
+    this.checkSelfServiceUser();
   }
 
   isActive(): boolean {
@@ -413,5 +419,61 @@ export class ClientsViewComponent implements OnInit {
         });
       }
     });
+  }
+
+  checkSelfServiceUser() {
+    this.selfServiceLoading = true;
+    this.clientsService.getSelfServiceUserForClient(this.clientViewData.id).subscribe({
+      next: (response: any) => {
+        if (response && response.exists) {
+          this.selfServiceUser = response;
+        } else {
+          this.selfServiceUser = null;
+        }
+        this.selfServiceLoading = false;
+      },
+      error: (error: any) => {
+        console.error('Error fetching self-service user mapping:', error);
+        this.selfServiceUser = null;
+        this.selfServiceLoading = false;
+      }
+    });
+  }
+
+  createSelfServiceUser() {
+    const dialogRef = this.dialog.open(CreateSelfServiceUserDialogComponent, {
+      data: this.clientViewData,
+      width: '400px'
+    });
+    dialogRef.afterClosed().subscribe((response: any) => {
+      if (response && response.confirm) {
+        this.selfServiceLoading = true;
+        this.clientsService.createSelfServiceUser(response.payload).subscribe({
+          next: () => {
+            this.checkSelfServiceUser();
+          },
+          error: (error: any) => {
+            console.error('Error creating self-service user:', error);
+            this.selfServiceLoading = false;
+          }
+        });
+      }
+    });
+  }
+
+  toggleSelfServiceStatus() {
+    if (this.selfServiceUser) {
+      this.selfServiceLoading = true;
+      const nextActiveState = !this.selfServiceUser.active;
+      this.clientsService.updateSelfServiceUserStatus(this.selfServiceUser.id, nextActiveState).subscribe({
+        next: () => {
+          this.checkSelfServiceUser();
+        },
+        error: (error: any) => {
+          console.error('Error updating self-service user status:', error);
+          this.selfServiceLoading = false;
+        }
+      });
+    }
   }
 }
