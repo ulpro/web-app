@@ -1,0 +1,174 @@
+/* Upload KYC Document Dialog Styles */
+
+:host {
+  display: block;
+}
+
+.dialog-header {
+  padding: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    h2 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
+
+  .close-btn {
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    &:hover { opacity: 1; }
+  }
+}
+
+.dialog-content {
+  .form-field-icon {
+    color: var(--mat-sys-primary);
+    margin-right: 8px;
+  }
+  
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 16px;
+
+    mat-form-field {
+      flex: 1;
+    }
+
+    .form-spacer {
+      flex: 1;
+    }
+  }
+
+  /* Date validation error */
+  .date-error {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--mat-sys-error);
+    font-size: 12px;
+    margin: -4px 0 12px 0;
+  }
+
+  /* File Upload Drop Zone */
+  .file-drop-zone {
+    position: relative;
+    border: 2px dashed var(--mat-sys-outline);
+    border-radius: 4px;
+    padding: 24px;
+    text-align: center;
+    background: var(--mat-sys-surface-variant);
+    margin-top: 8px;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--mat-sys-primary);
+      background: var(--mat-sys-surface-container);
+    }
+
+    &.has-file {
+      border-color: #4caf50;
+      border-style: solid;
+      background: rgba(76, 175, 80, 0.05);
+    }
+
+    &.has-error {
+      border-color: var(--mat-sys-error);
+      background: rgba(244, 67, 54, 0.05);
+    }
+
+    input[type="file"] {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+      z-index: 5;
+    }
+
+    .drop-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      pointer-events: none;
+    }
+
+    .drop-icon {
+      font-size: 32px;
+      color: var(--mat-sys-primary);
+      margin-bottom: 4px;
+
+      &.success { color: #4caf50; }
+      &.error { color: var(--mat-sys-error); }
+    }
+
+    .drop-main {
+      font-size: 14px;
+      font-weight: 500;
+      margin: 0;
+
+      &.success-text {
+        color: #4caf50;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      &.error-text {
+        color: var(--mat-sys-error);
+      }
+    }
+
+    .drop-sub {
+      font-size: 12px;
+      opacity: 0.7;
+      margin: 0;
+    }
+  }
+}
+
+.dialog-actions {
+  padding: 16px 0 0 0;
+  
+  button {
+    .btn-icon {
+      font-size: 18px;
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+
+    .spinning {
+      animation: spin-icon 0.8s linear infinite;
+    }
+  }
+}
+
+@keyframes spin-icon {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .dialog-content .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}

@@ -43,6 +43,8 @@ export class DisburseComponent extends LoanAccountActionsBaseComponent implement
   paymentTypes: any;
   /** Show payment details */
   showPaymentDetails = false;
+  /** Prevents multiple form submissions */
+  isSubmitting = false;
   /** Minimum Date allowed. */
   minDate = new Date(2000, 0, 1);
   /** Maximum Date allowed. */
@@ -63,7 +65,6 @@ export class DisburseComponent extends LoanAccountActionsBaseComponent implement
     this.maxDate = this.settingsService.maxFutureDate;
     this.createDisbursementLoanForm();
     this.setDisbursementLoanDetails();
-    console.log(this.dataObject);
     if (this.dataObject.currency) {
       this.currency = this.dataObject.currency;
     }
@@ -86,6 +87,9 @@ export class DisburseComponent extends LoanAccountActionsBaseComponent implement
       paymentTypeId: '',
       note: ''
     });
+    if (this.isWorkingCapital) {
+      this.disbursementLoanForm.addControl('discountAmount', new UntypedFormControl());
+    }
   }
 
   setDisbursementLoanDetails() {
@@ -128,18 +132,40 @@ export class DisburseComponent extends LoanAccountActionsBaseComponent implement
         dateFormat
       );
     }
-    const data = {
+    const payload = {
       ...disbursementLoanFormData,
       dateFormat,
       locale
     };
-    data['transactionAmount'] = data['transactionAmount'] * 1;
+    payload['transactionAmount'] = payload['transactionAmount'] * 1;
+    if (this.isWorkingCapital) {
+      const paymentDetails: Record<string, any> = {};
+      if (payload['paymentTypeId']) {
+        paymentDetails['paymentTypeId'] = payload['paymentTypeId'];
+      }
+      if (this.showPaymentDetails) {
+        if (payload['accountNumber']) paymentDetails['accountNumber'] = payload['accountNumber'];
+        if (payload['checkNumber']) paymentDetails['checkNumber'] = payload['checkNumber'];
+        if (payload['routingCode']) paymentDetails['routingCode'] = payload['routingCode'];
+        if (payload['receiptNumber']) paymentDetails['receiptNumber'] = payload['receiptNumber'];
+        if (payload['bankNumber']) paymentDetails['bankNumber'] = payload['bankNumber'];
+      }
+      if (Object.keys(paymentDetails).length > 0) {
+        payload['paymentDetails'] = paymentDetails;
+      }
+      delete payload['paymentTypeId'];
+      delete payload['accountNumber'];
+      delete payload['checkNumber'];
+      delete payload['routingCode'];
+      delete payload['receiptNumber'];
+      delete payload['bankNumber'];
+    }
 
     const loanCommand: string = 'disburse';
     const request$ = this.isLoanProduct
-      ? this.loanService.loanActionButtons(this.loanId, loanCommand, data)
+      ? this.loanService.loanActionButtons(this.loanId, loanCommand, payload)
       : this.isWorkingCapital
-        ? this.loanService.applyWorkingCapitalLoanAccountCommand(this.loanId, loanCommand, data)
+        ? this.loanService.applyWorkingCapitalLoanAccountCommand(this.loanId, loanCommand, payload)
         : undefined;
 
     if (!request$) {
@@ -147,9 +173,13 @@ export class DisburseComponent extends LoanAccountActionsBaseComponent implement
       return;
     }
 
+    this.isSubmitting = true;
     request$.subscribe({
       next: () => this.gotoLoanDefaultView(),
-      error: () => this.disbursementLoanForm.setErrors({ submitFailed: true })
+      error: () => {
+        this.disbursementLoanForm.setErrors({ submitFailed: true });
+        this.isSubmitting = false;
+      }
     });
   }
 }

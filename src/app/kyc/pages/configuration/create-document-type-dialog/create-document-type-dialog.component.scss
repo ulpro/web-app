@@ -1,0 +1,71 @@
+.dialog-header-modern {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--mat-sys-outline-variant);
+  background: var(--mat-sys-surface);
+  
+  h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--mat-sys-on-surface);
+    display: flex;
+    align-items: center;
+    mat-icon {
+      color: var(--mat-sys-primary);
+    }
+  }
+}
+
+.dialog-content-modern {
+  padding: 24px !important;
+  color: var(--mat-sys-on-surface);
+
+  .layout-column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .gap-16 {
+    gap: 16px;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+
+  .m-t-10 {
+    margin-top: 10px;
+  }
+
+  .active-checkbox-container {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 12px;
+    background: var(--mat-sys-surface-variant);
+    border: 1px solid var(--mat-sys-outline-variant);
+    border-radius: 4px;
+    
+    .font-medium {
+      font-weight: 500;
+      color: var(--mat-sys-on-surface);
+    }
+    
+    .checkbox-hint {
+      margin-left: 28px;
+      font-size: 12px;
+      color: var(--mat-sys-on-surface-variant);
+      margin-top: 4px;
+    }
+  }
+}
+
+.dialog-actions-modern {
+  padding: 16px 24px !important;
+  border-top: 1px solid var(--mat-sys-outline-variant);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  background: var(--mat-sys-surface);
+}
+
+.m-r-10 { margin-right: 10px; }

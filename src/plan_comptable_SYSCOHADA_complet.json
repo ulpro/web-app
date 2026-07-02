@@ -1,0 +1,2737 @@
+{
+  "titre": "Plan Comptable Général OHADA - SYSCOHADA Révisé",
+  "reference": "Acte Uniforme OHADA portant organisation et harmonisation des comptabilités des entreprises",
+  "classes": [
+    {
+      "numero": "1",
+      "intitule": "Comptes de Ressources Durables",
+      "comptes": [
+        {
+          "numero": "10",
+          "intitule": "Capital",
+          "sous_comptes": [
+            {
+              "numero": "101",
+              "intitule": "Capital social",
+              "details": [
+                { "numero": "1011", "intitule": "Capital souscrit non appelé" },
+                { "numero": "1012", "intitule": "Capital souscrit appelé, non versé" },
+                { "numero": "1013", "intitule": "Capital souscrit appelé, versé" }
+              ]
+            },
+            {
+              "numero": "102",
+              "intitule": "Capital par dotation",
+              "details": []
+            },
+            {
+              "numero": "103",
+              "intitule": "Capital individuel (entreprises individuelles)",
+              "details": []
+            },
+            {
+              "numero": "104",
+              "intitule": "Comptes d'associés - Apports en société",
+              "details": []
+            },
+            {
+              "numero": "105",
+              "intitule": "Primes liées au capital social",
+              "details": [
+                { "numero": "1051", "intitule": "Prime d'émission" },
+                { "numero": "1052", "intitule": "Prime de fusion" },
+                { "numero": "1053", "intitule": "Prime d'apport" },
+                { "numero": "1054", "intitule": "Prime de conversion" }
+              ]
+            },
+            {
+              "numero": "106",
+              "intitule": "Écarts de réévaluation",
+              "details": [
+                { "numero": "1061", "intitule": "Écarts de réévaluation légale" },
+                { "numero": "1068", "intitule": "Autres écarts de réévaluation" }
+              ]
+            },
+            {
+              "numero": "109",
+              "intitule": "Actionnaires - Capital souscrit non appelé",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "11",
+          "intitule": "Réserves",
+          "sous_comptes": [
+            {
+              "numero": "111",
+              "intitule": "Réserves légales",
+              "details": []
+            },
+            {
+              "numero": "112",
+              "intitule": "Réserves statutaires ou contractuelles",
+              "details": []
+            },
+            {
+              "numero": "113",
+              "intitule": "Réserves réglementées",
+              "details": []
+            },
+            {
+              "numero": "114",
+              "intitule": "Réserves facultatives",
+              "details": []
+            },
+            {
+              "numero": "118",
+              "intitule": "Autres réserves",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "12",
+          "intitule": "Report à nouveau",
+          "sous_comptes": [
+            {
+              "numero": "121",
+              "intitule": "Report à nouveau créditeur",
+              "details": []
+            },
+            {
+              "numero": "129",
+              "intitule": "Report à nouveau débiteur",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "13",
+          "intitule": "Résultat net de l'exercice",
+          "sous_comptes": [
+            {
+              "numero": "131",
+              "intitule": "Résultat net : Bénéfice",
+              "details": []
+            },
+            {
+              "numero": "139",
+              "intitule": "Résultat net : Perte",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "14",
+          "intitule": "Subventions d'investissement",
+          "sous_comptes": [
+            {
+              "numero": "141",
+              "intitule": "Subventions d'équipement",
+              "details": []
+            },
+            {
+              "numero": "142",
+              "intitule": "Autres subventions d'investissement",
+              "details": []
+            },
+            {
+              "numero": "148",
+              "intitule": "Subventions d'investissement inscrites au compte de résultat",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "15",
+          "intitule": "Provisions réglementées et fonds assimilés",
+          "sous_comptes": [
+            {
+              "numero": "151",
+              "intitule": "Amortissements dérogatoires",
+              "details": []
+            },
+            {
+              "numero": "152",
+              "intitule": "Provision pour hausse des prix",
+              "details": []
+            },
+            {
+              "numero": "153",
+              "intitule": "Provisions pour investissements",
+              "details": []
+            },
+            {
+              "numero": "154",
+              "intitule": "Provisions pour fluctuations des cours",
+              "details": []
+            },
+            {
+              "numero": "155",
+              "intitule": "Provisions pour propre assureur",
+              "details": []
+            },
+            {
+              "numero": "158",
+              "intitule": "Autres provisions réglementées",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "16",
+          "intitule": "Emprunts et dettes financières diverses",
+          "sous_comptes": [
+            {
+              "numero": "161",
+              "intitule": "Emprunts obligataires",
+              "details": [
+                { "numero": "1611", "intitule": "Emprunt obligataire converti" },
+                { "numero": "1618", "intitule": "Autres emprunts obligataires" }
+              ]
+            },
+            {
+              "numero": "162",
+              "intitule": "Emprunts et dettes auprès des établissements de crédit",
+              "details": [
+                { "numero": "1621", "intitule": "Dettes en monnaie nationale" },
+                { "numero": "1622", "intitule": "Dettes en monnaies étrangères" }
+              ]
+            },
+            {
+              "numero": "163",
+              "intitule": "Emprunts et dettes financières divers",
+              "details": []
+            },
+            {
+              "numero": "164",
+              "intitule": "Dettes de location-financement",
+              "details": [
+                { "numero": "1641", "intitule": "Dettes de crédit-bail immobilier" },
+                { "numero": "1643", "intitule": "Dettes de crédit-bail mobilier" }
+              ]
+            },
+            {
+              "numero": "165",
+              "intitule": "Dépôts et cautionnements reçus",
+              "details": []
+            },
+            {
+              "numero": "166",
+              "intitule": "Intérêts courus",
+              "details": [
+                { "numero": "1661", "intitule": "Intérêts courus sur emprunts obligataires" },
+                { "numero": "1662", "intitule": "Intérêts courus sur emprunts auprès des établissements de crédit" },
+                { "numero": "1663", "intitule": "Intérêts courus sur emprunts et dettes financières divers" },
+                { "numero": "1664", "intitule": "Intérêts courus sur dettes de location-financement" }
+              ]
+            },
+            {
+              "numero": "167",
+              "intitule": "Dettes rattachées à des participations",
+              "details": []
+            },
+            {
+              "numero": "168",
+              "intitule": "Autres emprunts et dettes assimilées",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "17",
+          "intitule": "Dettes liées à des participations et comptes de liaison",
+          "sous_comptes": [
+            {
+              "numero": "171",
+              "intitule": "Dettes de financement intra-groupe",
+              "details": []
+            },
+            {
+              "numero": "172",
+              "intitule": "Dettes de financement associés",
+              "details": []
+            },
+            {
+              "numero": "178",
+              "intitule": "Autres dettes liées à des participations",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "18",
+          "intitule": "Comptes de liaison des établissements et succursales",
+          "sous_comptes": [
+            {
+              "numero": "181",
+              "intitule": "Comptes de liaison des établissements et succursales",
+              "details": []
+            },
+            {
+              "numero": "188",
+              "intitule": "Intérêts courus sur comptes de liaison",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "19",
+          "intitule": "Provisions financières pour risques et charges",
+          "sous_comptes": [
+            {
+              "numero": "191",
+              "intitule": "Provisions pour litiges",
+              "details": []
+            },
+            {
+              "numero": "192",
+              "intitule": "Provisions pour garanties données aux clients",
+              "details": []
+            },
+            {
+              "numero": "193",
+              "intitule": "Provisions pour amendes et pénalités",
+              "details": []
+            },
+            {
+              "numero": "194",
+              "intitule": "Provisions pour pertes de change",
+              "details": []
+            },
+            {
+              "numero": "195",
+              "intitule": "Provisions pour impôts",
+              "details": []
+            },
+            {
+              "numero": "196",
+              "intitule": "Provisions pour renouvellement des immobilisations",
+              "details": []
+            },
+            {
+              "numero": "197",
+              "intitule": "Provisions pour charges à répartir sur plusieurs exercices",
+              "details": []
+            },
+            {
+              "numero": "198",
+              "intitule": "Autres provisions financières pour risques et charges",
+              "details": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "2",
+      "intitule": "Comptes d'Actif Immobilisé",
+      "comptes": [
+        {
+          "numero": "20",
+          "intitule": "Charges immobilisées",
+          "sous_comptes": [
+            {
+              "numero": "201",
+              "intitule": "Frais de développement et de prospection",
+              "details": [
+                { "numero": "2011", "intitule": "Frais de développement" },
+                { "numero": "2012", "intitule": "Frais de prospection" }
+              ]
+            },
+            {
+              "numero": "202",
+              "intitule": "Charges à répartir sur plusieurs exercices",
+              "details": []
+            },
+            {
+              "numero": "204",
+              "intitule": "Frais d'émission et d'augmentation de capital",
+              "details": []
+            },
+            {
+              "numero": "206",
+              "intitule": "Primes de remboursement des obligations",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "21",
+          "intitule": "Immobilisations incorporelles",
+          "sous_comptes": [
+            {
+              "numero": "211",
+              "intitule": "Brevets, licences, logiciels et droits similaires",
+              "details": [
+                { "numero": "2111", "intitule": "Brevets" },
+                { "numero": "2112", "intitule": "Licences" },
+                { "numero": "2113", "intitule": "Logiciels" },
+                { "numero": "2118", "intitule": "Autres droits similaires" }
+              ]
+            },
+            {
+              "numero": "212",
+              "intitule": "Fonds commercial",
+              "details": []
+            },
+            {
+              "numero": "213",
+              "intitule": "Droit au bail",
+              "details": []
+            },
+            {
+              "numero": "214",
+              "intitule": "Marques et droits assimilés",
+              "details": []
+            },
+            {
+              "numero": "215",
+              "intitule": "Concessions et droits similaires",
+              "details": []
+            },
+            {
+              "numero": "218",
+              "intitule": "Autres immobilisations incorporelles",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "22",
+          "intitule": "Terrains",
+          "sous_comptes": [
+            {
+              "numero": "221",
+              "intitule": "Terrains agricoles et forestiers",
+              "details": []
+            },
+            {
+              "numero": "222",
+              "intitule": "Terrains nus",
+              "details": []
+            },
+            {
+              "numero": "223",
+              "intitule": "Terrains bâtis",
+              "details": []
+            },
+            {
+              "numero": "224",
+              "intitule": "Travaux de mise en valeur des terrains",
+              "details": []
+            },
+            {
+              "numero": "225",
+              "intitule": "Terrains de gisement",
+              "details": []
+            },
+            {
+              "numero": "228",
+              "intitule": "Autres terrains",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "23",
+          "intitule": "Bâtiments, installations techniques et agencements",
+          "sous_comptes": [
+            {
+              "numero": "231",
+              "intitule": "Bâtiments industriels, agricoles, administratifs et commerciaux sur sol propre",
+              "details": [
+                { "numero": "2311", "intitule": "Bâtiments industriels" },
+                { "numero": "2312", "intitule": "Bâtiments agricoles" },
+                { "numero": "2313", "intitule": "Bâtiments administratifs et commerciaux" },
+                { "numero": "2314", "intitule": "Bâtiments affectés au logement du personnel" },
+                { "numero": "2315", "intitule": "Immeubles de rapport" }
+              ]
+            },
+            {
+              "numero": "232",
+              "intitule": "Ouvrages d'infrastructure",
+              "details": []
+            },
+            {
+              "numero": "233",
+              "intitule": "Installations techniques",
+              "details": [
+                { "numero": "2331", "intitule": "Installations complexes spécialisées" },
+                { "numero": "2335", "intitule": "Installations à caractère spécifique" }
+              ]
+            },
+            {
+              "numero": "234",
+              "intitule": "Installations et agencements",
+              "details": [
+                { "numero": "2341", "intitule": "Installations générales" },
+                { "numero": "2345", "intitule": "Agencements et aménagements" }
+              ]
+            },
+            {
+              "numero": "238",
+              "intitule": "Autres bâtiments et installations",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "24",
+          "intitule": "Matériel",
+          "sous_comptes": [
+            {
+              "numero": "241",
+              "intitule": "Matériel et outillage industriel et commercial",
+              "details": [
+                { "numero": "2411", "intitule": "Matériel industriel" },
+                { "numero": "2415", "intitule": "Outillage industriel et commercial" }
+              ]
+            },
+            {
+              "numero": "242",
+              "intitule": "Matériel et outillage agricole",
+              "details": []
+            },
+            {
+              "numero": "243",
+              "intitule": "Matériel de transport",
+              "details": [
+                { "numero": "2431", "intitule": "Matériel de transport sur rail" },
+                { "numero": "2432", "intitule": "Matériel de transport routier" },
+                { "numero": "2433", "intitule": "Matériel de transport aérien" },
+                { "numero": "2434", "intitule": "Matériel de transport maritime, fluvial, lacustre" },
+                { "numero": "2438", "intitule": "Autres matériels de transport" }
+              ]
+            },
+            {
+              "numero": "244",
+              "intitule": "Matériel et mobilier de bureau",
+              "details": [
+                { "numero": "2441", "intitule": "Mobilier de bureau" },
+                { "numero": "2445", "intitule": "Matériel de bureau" }
+              ]
+            },
+            {
+              "numero": "245",
+              "intitule": "Matériel informatique",
+              "details": [
+                { "numero": "2451", "intitule": "Matériel informatique - unités centrales et périphériques" },
+                { "numero": "2455", "intitule": "Matériel informatique - réseaux et accessoires" }
+              ]
+            },
+            {
+              "numero": "246",
+              "intitule": "Emballages récupérables",
+              "details": []
+            },
+            {
+              "numero": "248",
+              "intitule": "Autres matériels",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "25",
+          "intitule": "Avances et acomptes versés sur immobilisations",
+          "sous_comptes": [
+            {
+              "numero": "251",
+              "intitule": "Avances et acomptes versés sur immobilisations incorporelles",
+              "details": []
+            },
+            {
+              "numero": "252",
+              "intitule": "Avances et acomptes versés sur immobilisations corporelles",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "26",
+          "intitule": "Titres de participation",
+          "sous_comptes": [
+            {
+              "numero": "261",
+              "intitule": "Titres de participation",
+              "details": [
+                { "numero": "2611", "intitule": "Titres de participation cotés" },
+                { "numero": "2618", "intitule": "Titres de participation non cotés" }
+              ]
+            },
+            {
+              "numero": "262",
+              "intitule": "Titres de participation - versements restant à effectuer",
+              "details": []
+            },
+            {
+              "numero": "265",
+              "intitule": "Dépôts de garantie sur titres de participation",
+              "details": []
+            },
+            {
+              "numero": "266",
+              "intitule": "Autres formes de participation",
+              "details": []
+            },
+            {
+              "numero": "268",
+              "intitule": "Créances rattachées à des participations",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "27",
+          "intitule": "Autres immobilisations financières",
+          "sous_comptes": [
+            {
+              "numero": "271",
+              "intitule": "Titres immobilisés (droit de propriété)",
+              "details": []
+            },
+            {
+              "numero": "272",
+              "intitule": "Titres immobilisés (droit de créance)",
+              "details": []
+            },
+            {
+              "numero": "273",
+              "intitule": "Prêts et créances non commerciales",
+              "details": [
+                { "numero": "2731", "intitule": "Prêts au personnel" },
+                { "numero": "2732", "intitule": "Prêts aux associés" },
+                { "numero": "2738", "intitule": "Autres prêts" }
+              ]
+            },
+            {
+              "numero": "274",
+              "intitule": "Dépôts et cautionnements versés",
+              "details": []
+            },
+            {
+              "numero": "275",
+              "intitule": "Intérêts courus sur prêts et titres immobilisés",
+              "details": []
+            },
+            {
+              "numero": "276",
+              "intitule": "Écart de conversion actif",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "28",
+          "intitule": "Amortissements",
+          "sous_comptes": [
+            {
+              "numero": "281",
+              "intitule": "Amortissements des charges immobilisées",
+              "details": [
+                { "numero": "2811", "intitule": "Amortissements des frais de développement" },
+                { "numero": "2812", "intitule": "Amortissements des charges à répartir" }
+              ]
+            },
+            {
+              "numero": "282",
+              "intitule": "Amortissements des immobilisations incorporelles",
+              "details": [
+                { "numero": "2821", "intitule": "Amortissements des brevets, licences, logiciels" },
+                { "numero": "2828", "intitule": "Amortissements des autres immobilisations incorporelles" }
+              ]
+            },
+            {
+              "numero": "283",
+              "intitule": "Amortissements des bâtiments, installations techniques et agencements",
+              "details": [
+                { "numero": "2831", "intitule": "Amortissements des bâtiments" },
+                { "numero": "2833", "intitule": "Amortissements des installations techniques" },
+                { "numero": "2834", "intitule": "Amortissements des installations et agencements" }
+              ]
+            },
+            {
+              "numero": "284",
+              "intitule": "Amortissements du matériel",
+              "details": [
+                { "numero": "2841", "intitule": "Amortissements du matériel et outillage industriel" },
+                { "numero": "2843", "intitule": "Amortissements du matériel de transport" },
+                { "numero": "2844", "intitule": "Amortissements du matériel et mobilier de bureau" },
+                { "numero": "2845", "intitule": "Amortissements du matériel informatique" }
+              ]
+            }
+          ]
+        },
+        {
+          "numero": "29",
+          "intitule": "Provisions pour dépréciation",
+          "sous_comptes": [
+            {
+              "numero": "291",
+              "intitule": "Provisions pour dépréciation des immobilisations incorporelles",
+              "details": []
+            },
+            {
+              "numero": "292",
+              "intitule": "Provisions pour dépréciation des terrains",
+              "details": []
+            },
+            {
+              "numero": "293",
+              "intitule": "Provisions pour dépréciation des bâtiments",
+              "details": []
+            },
+            {
+              "numero": "294",
+              "intitule": "Provisions pour dépréciation du matériel",
+              "details": []
+            },
+            {
+              "numero": "296",
+              "intitule": "Provisions pour dépréciation des titres de participation",
+              "details": []
+            },
+            {
+              "numero": "297",
+              "intitule": "Provisions pour dépréciation des autres immobilisations financières",
+              "details": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "3",
+      "intitule": "Comptes de Stocks",
+      "comptes": [
+        {
+          "numero": "30",
+          "intitule": "Marchandises en cours de route et achats en cours",
+          "sous_comptes": [
+            {
+              "numero": "301",
+              "intitule": "Marchandises en cours de route",
+              "details": []
+            },
+            {
+              "numero": "302",
+              "intitule": "Matières premières en cours de route",
+              "details": []
+            },
+            {
+              "numero": "308",
+              "intitule": "Autres achats en cours de route",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "31",
+          "intitule": "Marchandises",
+          "sous_comptes": [
+            {
+              "numero": "311",
+              "intitule": "Marchandises A",
+              "details": [
+                { "numero": "3111", "intitule": "Marchandises A - groupe 1" },
+                { "numero": "3118", "intitule": "Marchandises A - autres" }
+              ]
+            },
+            {
+              "numero": "312",
+              "intitule": "Marchandises B",
+              "details": []
+            },
+            {
+              "numero": "318",
+              "intitule": "Autres marchandises",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "32",
+          "intitule": "Matières premières et fournitures liées",
+          "sous_comptes": [
+            {
+              "numero": "321",
+              "intitule": "Matières premières A",
+              "details": [
+                { "numero": "3211", "intitule": "Matières premières A - groupe 1" },
+                { "numero": "3218", "intitule": "Matières premières A - autres" }
+              ]
+            },
+            {
+              "numero": "322",
+              "intitule": "Matières premières B",
+              "details": []
+            },
+            {
+              "numero": "324",
+              "intitule": "Fournitures liées à la production",
+              "details": []
+            },
+            {
+              "numero": "328",
+              "intitule": "Autres matières premières et fournitures liées",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "33",
+          "intitule": "Autres approvisionnements",
+          "sous_comptes": [
+            {
+              "numero": "331",
+              "intitule": "Matières et fournitures consommables",
+              "details": [
+                { "numero": "3311", "intitule": "Combustibles" },
+                { "numero": "3312", "intitule": "Produits d'entretien" },
+                { "numero": "3318", "intitule": "Autres matières consommables" }
+              ]
+            },
+            {
+              "numero": "332",
+              "intitule": "Fournitures de bureau",
+              "details": []
+            },
+            {
+              "numero": "333",
+              "intitule": "Fournitures d'atelier et d'usine",
+              "details": []
+            },
+            {
+              "numero": "334",
+              "intitule": "Emballages récupérables non identifiables",
+              "details": []
+            },
+            {
+              "numero": "338",
+              "intitule": "Autres fournitures",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "34",
+          "intitule": "Produits en cours",
+          "sous_comptes": [
+            {
+              "numero": "341",
+              "intitule": "Produits en cours (biens)",
+              "details": [
+                { "numero": "3411", "intitule": "Produits finis en cours" },
+                { "numero": "3415", "intitule": "Produits intermédiaires en cours" }
+              ]
+            },
+            {
+              "numero": "345",
+              "intitule": "Produits en cours (services)",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "35",
+          "intitule": "Services en cours",
+          "sous_comptes": [
+            {
+              "numero": "351",
+              "intitule": "Études en cours",
+              "details": []
+            },
+            {
+              "numero": "355",
+              "intitule": "Travaux en cours",
+              "details": []
+            },
+            {
+              "numero": "358",
+              "intitule": "Autres services en cours",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "36",
+          "intitule": "Stocks de produits",
+          "sous_comptes": [
+            {
+              "numero": "361",
+              "intitule": "Produits finis A",
+              "details": [
+                { "numero": "3611", "intitule": "Produits finis A - groupe 1" },
+                { "numero": "3618", "intitule": "Produits finis A - autres" }
+              ]
+            },
+            {
+              "numero": "362",
+              "intitule": "Produits finis B",
+              "details": []
+            },
+            {
+              "numero": "365",
+              "intitule": "Produits intermédiaires",
+              "details": []
+            },
+            {
+              "numero": "367",
+              "intitule": "Produits résiduels ou matières de récupération",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "37",
+          "intitule": "Stocks en cours de route, en consignation ou en dépôt",
+          "sous_comptes": [
+            {
+              "numero": "371",
+              "intitule": "Stocks en cours de route",
+              "details": []
+            },
+            {
+              "numero": "372",
+              "intitule": "Stocks en consignation ou en dépôt",
+              "details": []
+            },
+            {
+              "numero": "378",
+              "intitule": "Autres stocks hors établissement",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "38",
+          "intitule": "Stocks dans des tiers",
+          "sous_comptes": [
+            {
+              "numero": "381",
+              "intitule": "Achats en cours",
+              "details": []
+            },
+            {
+              "numero": "382",
+              "intitule": "Stocks chez des tiers",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "39",
+          "intitule": "Dépréciation des stocks",
+          "sous_comptes": [
+            {
+              "numero": "391",
+              "intitule": "Dépréciations des stocks de marchandises",
+              "details": []
+            },
+            {
+              "numero": "392",
+              "intitule": "Dépréciations des stocks de matières premières",
+              "details": []
+            },
+            {
+              "numero": "393",
+              "intitule": "Dépréciations des autres approvisionnements",
+              "details": []
+            },
+            {
+              "numero": "394",
+              "intitule": "Dépréciations des produits en cours",
+              "details": []
+            },
+            {
+              "numero": "395",
+              "intitule": "Dépréciations des services en cours",
+              "details": []
+            },
+            {
+              "numero": "396",
+              "intitule": "Dépréciations des stocks de produits",
+              "details": []
+            },
+            {
+              "numero": "397",
+              "intitule": "Dépréciations des stocks en cours de route",
+              "details": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "4",
+      "intitule": "Comptes de Tiers",
+      "comptes": [
+        {
+          "numero": "40",
+          "intitule": "Fournisseurs et comptes rattachés",
+          "sous_comptes": [
+            {
+              "numero": "401",
+              "intitule": "Fournisseurs",
+              "details": [
+                { "numero": "4011", "intitule": "Fournisseurs - Achats de biens et prestations de services" },
+                { "numero": "4017", "intitule": "Fournisseurs - Retenues de garantie" }
+              ]
+            },
+            {
+              "numero": "402",
+              "intitule": "Fournisseurs - Effets à payer",
+              "details": []
+            },
+            {
+              "numero": "403",
+              "intitule": "Fournisseurs - Effets escomptés non échus",
+              "details": []
+            },
+            {
+              "numero": "404",
+              "intitule": "Fournisseurs d'immobilisations",
+              "details": []
+            },
+            {
+              "numero": "408",
+              "intitule": "Fournisseurs - Factures non parvenues",
+              "details": []
+            },
+            {
+              "numero": "409",
+              "intitule": "Fournisseurs débiteurs",
+              "details": [
+                { "numero": "4091", "intitule": "Fournisseurs - Avances et acomptes versés" },
+                { "numero": "4094", "intitule": "Fournisseurs - Créances pour emballages et matériel à rendre" },
+                {
+                  "numero": "4098",
+                  "intitule": "Rabais, remises, ristournes à obtenir et autres avoirs non encore reçus"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "numero": "41",
+          "intitule": "Clients et comptes rattachés",
+          "sous_comptes": [
+            {
+              "numero": "411",
+              "intitule": "Clients",
+              "details": [
+                { "numero": "4111", "intitule": "Clients - Ventes de biens et prestations de services" },
+                { "numero": "4117", "intitule": "Clients - Retenues de garantie" }
+              ]
+            },
+            {
+              "numero": "412",
+              "intitule": "Clients - Effets à recevoir",
+              "details": []
+            },
+            {
+              "numero": "413",
+              "intitule": "Clients - Effets escomptés non échus",
+              "details": []
+            },
+            {
+              "numero": "414",
+              "intitule": "Clients douteux ou litigieux",
+              "details": []
+            },
+            {
+              "numero": "418",
+              "intitule": "Clients - Produits non encore facturés",
+              "details": []
+            },
+            {
+              "numero": "419",
+              "intitule": "Clients créditeurs",
+              "details": [
+                { "numero": "4191", "intitule": "Clients - Avances et acomptes reçus" },
+                { "numero": "4194", "intitule": "Clients - Dettes pour emballages et matériel consignés" },
+                { "numero": "4198", "intitule": "Rabais, remises, ristournes à accorder et autres avoirs à établir" }
+              ]
+            }
+          ]
+        },
+        {
+          "numero": "42",
+          "intitule": "Personnel",
+          "sous_comptes": [
+            {
+              "numero": "421",
+              "intitule": "Personnel - Avances et acomptes",
+              "details": [
+                { "numero": "4211", "intitule": "Avances" },
+                { "numero": "4215", "intitule": "Acomptes" }
+              ]
+            },
+            {
+              "numero": "422",
+              "intitule": "Personnel - Rémunérations dues",
+              "details": []
+            },
+            {
+              "numero": "423",
+              "intitule": "Personnel - Oppositions, saisies, cessions",
+              "details": []
+            },
+            {
+              "numero": "424",
+              "intitule": "Personnel - Œuvres sociales",
+              "details": []
+            },
+            {
+              "numero": "425",
+              "intitule": "Représentants du personnel",
+              "details": []
+            },
+            {
+              "numero": "426",
+              "intitule": "Personnel - Participation aux résultats",
+              "details": []
+            },
+            {
+              "numero": "427",
+              "intitule": "Personnel - Charges à payer et produits à recevoir",
+              "details": []
+            },
+            {
+              "numero": "428",
+              "intitule": "Personnel - Charges à payer et produits à recevoir (autres)",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "43",
+          "intitule": "Organismes sociaux",
+          "sous_comptes": [
+            {
+              "numero": "431",
+              "intitule": "Sécurité sociale",
+              "details": [
+                { "numero": "4311", "intitule": "Sécurité sociale - Cotisations patronales" },
+                { "numero": "4312", "intitule": "Sécurité sociale - Cotisations salariales" }
+              ]
+            },
+            {
+              "numero": "432",
+              "intitule": "Caisses de retraite",
+              "details": []
+            },
+            {
+              "numero": "433",
+              "intitule": "Autres organismes sociaux",
+              "details": []
+            },
+            {
+              "numero": "438",
+              "intitule": "Organismes sociaux - Charges à payer et produits à recevoir",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "44",
+          "intitule": "État et collectivités publiques",
+          "sous_comptes": [
+            {
+              "numero": "441",
+              "intitule": "État, impôts sur les bénéfices",
+              "details": [
+                { "numero": "4411", "intitule": "Impôts sur les bénéfices exigibles" },
+                { "numero": "4412", "intitule": "Impôts sur les bénéfices différés" }
+              ]
+            },
+            {
+              "numero": "442",
+              "intitule": "État, autres impôts et taxes",
+              "details": []
+            },
+            {
+              "numero": "443",
+              "intitule": "État, TVA facturée",
+              "details": [
+                { "numero": "4431", "intitule": "TVA collectée sur ventes" },
+                { "numero": "4432", "intitule": "TVA sur prestations de services" }
+              ]
+            },
+            {
+              "numero": "444",
+              "intitule": "État, TVA due ou crédit de TVA",
+              "details": []
+            },
+            {
+              "numero": "445",
+              "intitule": "État, TVA récupérable",
+              "details": [
+                { "numero": "4451", "intitule": "TVA récupérable sur immobilisations" },
+                { "numero": "4452", "intitule": "TVA récupérable sur achats" },
+                { "numero": "4453", "intitule": "TVA récupérable sur services extérieurs" },
+                { "numero": "4454", "intitule": "TVA récupérable sur autres charges" }
+              ]
+            },
+            {
+              "numero": "446",
+              "intitule": "État, autres taxes sur le chiffre d'affaires",
+              "details": []
+            },
+            {
+              "numero": "447",
+              "intitule": "État - Impôts retenus à la source",
+              "details": []
+            },
+            {
+              "numero": "448",
+              "intitule": "État - Charges à payer et produits à recevoir",
+              "details": []
+            },
+            {
+              "numero": "449",
+              "intitule": "État - Créances et dettes diverses",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "45",
+          "intitule": "Groupe et associés",
+          "sous_comptes": [
+            {
+              "numero": "451",
+              "intitule": "Groupe",
+              "details": []
+            },
+            {
+              "numero": "452",
+              "intitule": "Associés",
+              "details": []
+            },
+            {
+              "numero": "453",
+              "intitule": "Sociétés en participation",
+              "details": []
+            },
+            {
+              "numero": "454",
+              "intitule": "Associés - Opérations faites en commun",
+              "details": []
+            },
+            {
+              "numero": "455",
+              "intitule": "Associés - Comptes courants",
+              "details": []
+            },
+            {
+              "numero": "456",
+              "intitule": "Associés - Opérations sur le capital",
+              "details": []
+            },
+            {
+              "numero": "457",
+              "intitule": "Associés - Dividendes à payer",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "46",
+          "intitule": "Débiteurs et créditeurs divers",
+          "sous_comptes": [
+            {
+              "numero": "461",
+              "intitule": "Créances sur cessions d'immobilisations",
+              "details": []
+            },
+            {
+              "numero": "462",
+              "intitule": "Créances sur cessions de titres de placement",
+              "details": []
+            },
+            {
+              "numero": "464",
+              "intitule": "Dettes sur acquisitions de valeurs mobilières",
+              "details": []
+            },
+            {
+              "numero": "465",
+              "intitule": "Créances sur contrats de location-financement",
+              "details": []
+            },
+            {
+              "numero": "467",
+              "intitule": "Autres comptes débiteurs ou créditeurs",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "47",
+          "intitule": "Comptes transitoires ou d'attente",
+          "sous_comptes": [
+            {
+              "numero": "471",
+              "intitule": "Charges constatées d'avance",
+              "details": []
+            },
+            {
+              "numero": "472",
+              "intitule": "Produits constatés d'avance",
+              "details": []
+            },
+            {
+              "numero": "476",
+              "intitule": "Différences de conversion - Actif",
+              "details": []
+            },
+            {
+              "numero": "477",
+              "intitule": "Différences de conversion - Passif",
+              "details": []
+            },
+            {
+              "numero": "478",
+              "intitule": "Autres comptes transitoires",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "48",
+          "intitule": "Créances et dettes hors activités ordinaires (HAO)",
+          "sous_comptes": [
+            {
+              "numero": "481",
+              "intitule": "Fournisseurs d'investissements",
+              "details": []
+            },
+            {
+              "numero": "482",
+              "intitule": "Clients d'investissements",
+              "details": []
+            },
+            {
+              "numero": "485",
+              "intitule": "Débiteurs divers hors activités ordinaires",
+              "details": []
+            },
+            {
+              "numero": "486",
+              "intitule": "Créditeurs divers hors activités ordinaires",
+              "details": []
+            },
+            {
+              "numero": "488",
+              "intitule": "Produits et charges à imputer HAO",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "49",
+          "intitule": "Dépréciations et provisions pour risques à court terme",
+          "sous_comptes": [
+            {
+              "numero": "491",
+              "intitule": "Dépréciations des comptes clients",
+              "details": []
+            },
+            {
+              "numero": "492",
+              "intitule": "Dépréciations des comptes débiteurs divers",
+              "details": []
+            },
+            {
+              "numero": "495",
+              "intitule": "Provisions pour risques à court terme",
+              "details": []
+            },
+            {
+              "numero": "499",
+              "intitule": "Dépréciations et provisions HAO",
+              "details": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "5",
+      "intitule": "Comptes de Trésorerie",
+      "comptes": [
+        {
+          "numero": "50",
+          "intitule": "Titres de placement",
+          "sous_comptes": [
+            {
+              "numero": "501",
+              "intitule": "Titres de placement (actions)",
+              "details": [
+                { "numero": "5011", "intitule": "Actions cotées" },
+                { "numero": "5018", "intitule": "Actions non cotées" }
+              ]
+            },
+            {
+              "numero": "502",
+              "intitule": "Titres de placement (obligations)",
+              "details": [
+                { "numero": "5021", "intitule": "Obligations cotées" },
+                { "numero": "5028", "intitule": "Obligations non cotées" }
+              ]
+            },
+            {
+              "numero": "503",
+              "intitule": "Titres de placement (bons de caisse)",
+              "details": []
+            },
+            {
+              "numero": "506",
+              "intitule": "Intérêts courus sur titres de placement",
+              "details": []
+            },
+            {
+              "numero": "509",
+              "intitule": "Versements restant à effectuer sur titres de placement",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "51",
+          "intitule": "Valeurs à encaisser",
+          "sous_comptes": [
+            {
+              "numero": "511",
+              "intitule": "Effets à encaisser",
+              "details": []
+            },
+            {
+              "numero": "512",
+              "intitule": "Effets à l'escompte",
+              "details": []
+            },
+            {
+              "numero": "514",
+              "intitule": "Chèques à encaisser",
+              "details": []
+            },
+            {
+              "numero": "515",
+              "intitule": "Cartes de paiement à l'encaissement",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "52",
+          "intitule": "Banques",
+          "sous_comptes": [
+            {
+              "numero": "521",
+              "intitule": "Banques locales - Monnaie nationale",
+              "details": []
+            },
+            {
+              "numero": "522",
+              "intitule": "Banques locales - Devises",
+              "details": []
+            },
+            {
+              "numero": "523",
+              "intitule": "Banques étrangères - Monnaie nationale",
+              "details": []
+            },
+            {
+              "numero": "524",
+              "intitule": "Banques étrangères - Devises",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "53",
+          "intitule": "Établissements financiers et assimilés",
+          "sous_comptes": [
+            {
+              "numero": "531",
+              "intitule": "Chèques postaux",
+              "details": []
+            },
+            {
+              "numero": "532",
+              "intitule": "Comptes courants postaux",
+              "details": []
+            },
+            {
+              "numero": "533",
+              "intitule": "Trésor public",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "54",
+          "intitule": "Instruments de monnaie électronique",
+          "sous_comptes": [
+            {
+              "numero": "541",
+              "intitule": "Mobile money et portefeuilles électroniques",
+              "details": [
+                { "numero": "5411", "intitule": "Mobile money" },
+                { "numero": "5418", "intitule": "Autres portefeuilles électroniques" }
+              ]
+            }
+          ]
+        },
+        {
+          "numero": "55",
+          "intitule": "Instruments financiers de trésorerie",
+          "sous_comptes": [
+            {
+              "numero": "551",
+              "intitule": "Valeurs à l'encaissement - chèques",
+              "details": []
+            },
+            {
+              "numero": "558",
+              "intitule": "Autres instruments financiers de trésorerie",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "56",
+          "intitule": "Banques, crédits de trésorerie et d'escompte",
+          "sous_comptes": [
+            {
+              "numero": "561",
+              "intitule": "Banques - crédits de trésorerie",
+              "details": []
+            },
+            {
+              "numero": "564",
+              "intitule": "Banques - crédits d'escompte",
+              "details": []
+            },
+            {
+              "numero": "565",
+              "intitule": "Banques - découverts",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "57",
+          "intitule": "Caisse",
+          "sous_comptes": [
+            {
+              "numero": "571",
+              "intitule": "Caisse siège social",
+              "details": []
+            },
+            {
+              "numero": "572",
+              "intitule": "Caisse succursale ou établissement",
+              "details": []
+            },
+            {
+              "numero": "578",
+              "intitule": "Autres caisses",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "58",
+          "intitule": "Régies d'avances et accréditifs",
+          "sous_comptes": [
+            {
+              "numero": "581",
+              "intitule": "Régies d'avances",
+              "details": []
+            },
+            {
+              "numero": "582",
+              "intitule": "Accréditifs",
+              "details": []
+            },
+            {
+              "numero": "585",
+              "intitule": "Virements de fonds",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "59",
+          "intitule": "Dépréciations des titres de placement",
+          "sous_comptes": [
+            {
+              "numero": "591",
+              "intitule": "Dépréciations des titres de placement - actions",
+              "details": []
+            },
+            {
+              "numero": "592",
+              "intitule": "Dépréciations des titres de placement - obligations",
+              "details": []
+            },
+            {
+              "numero": "598",
+              "intitule": "Dépréciations des autres titres de placement",
+              "details": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "6",
+      "intitule": "Comptes de Charges des Activités Ordinaires",
+      "comptes": [
+        {
+          "numero": "60",
+          "intitule": "Achats et variations de stocks",
+          "sous_comptes": [
+            {
+              "numero": "601",
+              "intitule": "Achats de marchandises",
+              "details": [
+                { "numero": "6011", "intitule": "Achats de marchandises A" },
+                { "numero": "6012", "intitule": "Achats de marchandises B" },
+                { "numero": "6018", "intitule": "Achats d'autres marchandises" }
+              ]
+            },
+            {
+              "numero": "602",
+              "intitule": "Achats de matières premières et fournitures liées",
+              "details": [
+                { "numero": "6021", "intitule": "Achats de matières premières A" },
+                { "numero": "6022", "intitule": "Achats de matières premières B" },
+                { "numero": "6024", "intitule": "Achats de fournitures liées" }
+              ]
+            },
+            {
+              "numero": "603",
+              "intitule": "Variations de stocks de biens achetés",
+              "details": [
+                { "numero": "6031", "intitule": "Variation des stocks de marchandises" },
+                { "numero": "6032", "intitule": "Variation des stocks de matières premières et fournitures liées" },
+                { "numero": "6033", "intitule": "Variation des stocks de fournitures consommables" }
+              ]
+            },
+            {
+              "numero": "604",
+              "intitule": "Achats de matières et fournitures consommables",
+              "details": []
+            },
+            {
+              "numero": "605",
+              "intitule": "Achats de matériels, équipements et travaux",
+              "details": []
+            },
+            {
+              "numero": "608",
+              "intitule": "Autres achats",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "61",
+          "intitule": "Transports",
+          "sous_comptes": [
+            {
+              "numero": "611",
+              "intitule": "Transports sur achats",
+              "details": []
+            },
+            {
+              "numero": "612",
+              "intitule": "Transports sur ventes",
+              "details": []
+            },
+            {
+              "numero": "613",
+              "intitule": "Transports pour le compte de tiers",
+              "details": []
+            },
+            {
+              "numero": "614",
+              "intitule": "Transports du personnel",
+              "details": []
+            },
+            {
+              "numero": "618",
+              "intitule": "Autres frais de transport",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "62",
+          "intitule": "Services extérieurs A",
+          "sous_comptes": [
+            {
+              "numero": "621",
+              "intitule": "Sous-traitance générale",
+              "details": []
+            },
+            {
+              "numero": "622",
+              "intitule": "Locations et charges locatives",
+              "details": [
+                { "numero": "6221", "intitule": "Locations et charges locatives - terrains et constructions" },
+                { "numero": "6222", "intitule": "Locations et charges locatives - matériel" },
+                { "numero": "6228", "intitule": "Autres locations" }
+              ]
+            },
+            {
+              "numero": "623",
+              "intitule": "Redevances de crédit-bail et contrats assimilés",
+              "details": [
+                { "numero": "6231", "intitule": "Redevances de crédit-bail immobilier" },
+                { "numero": "6232", "intitule": "Redevances de crédit-bail mobilier" }
+              ]
+            },
+            {
+              "numero": "624",
+              "intitule": "Entretien et réparations",
+              "details": [
+                { "numero": "6241", "intitule": "Entretien et réparations - biens immobiliers" },
+                { "numero": "6242", "intitule": "Entretien et réparations - biens mobiliers" },
+                { "numero": "6248", "intitule": "Entretien et réparations - autres biens" }
+              ]
+            },
+            {
+              "numero": "625",
+              "intitule": "Primes d'assurance",
+              "details": [
+                { "numero": "6251", "intitule": "Assurances multirisques" },
+                { "numero": "6252", "intitule": "Assurances transport" },
+                { "numero": "6258", "intitule": "Autres primes d'assurance" }
+              ]
+            },
+            {
+              "numero": "626",
+              "intitule": "Études, recherches et documentation",
+              "details": []
+            },
+            {
+              "numero": "627",
+              "intitule": "Publicité, publications et relations publiques",
+              "details": []
+            },
+            {
+              "numero": "628",
+              "intitule": "Frais de télécommunications",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "63",
+          "intitule": "Services extérieurs B",
+          "sous_comptes": [
+            {
+              "numero": "631",
+              "intitule": "Frais bancaires",
+              "details": []
+            },
+            {
+              "numero": "632",
+              "intitule": "Rémunération des intermédiaires et conseils",
+              "details": [
+                { "numero": "6321", "intitule": "Honoraires" },
+                { "numero": "6322", "intitule": "Commissions" },
+                { "numero": "6328", "intitule": "Rémunérations diverses" }
+              ]
+            },
+            {
+              "numero": "633",
+              "intitule": "Frais de formation du personnel",
+              "details": []
+            },
+            {
+              "numero": "634",
+              "intitule": "Redevances pour brevets, licences et logiciels",
+              "details": []
+            },
+            {
+              "numero": "635",
+              "intitule": "Cotisations",
+              "details": []
+            },
+            {
+              "numero": "638",
+              "intitule": "Divers services extérieurs",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "64",
+          "intitule": "Impôts et taxes",
+          "sous_comptes": [
+            {
+              "numero": "641",
+              "intitule": "Impôts et taxes directs",
+              "details": [
+                { "numero": "6411", "intitule": "Patentes et licences" },
+                { "numero": "6412", "intitule": "Impôts fonciers" },
+                { "numero": "6418", "intitule": "Autres impôts directs" }
+              ]
+            },
+            {
+              "numero": "642",
+              "intitule": "Droits de douanes",
+              "details": []
+            },
+            {
+              "numero": "643",
+              "intitule": "Taxes à l'exportation",
+              "details": []
+            },
+            {
+              "numero": "644",
+              "intitule": "Taxes sur les chiffres d'affaires non récupérables",
+              "details": []
+            },
+            {
+              "numero": "645",
+              "intitule": "Taxes diverses",
+              "details": []
+            },
+            {
+              "numero": "646",
+              "intitule": "Droits d'enregistrement et de timbre",
+              "details": []
+            },
+            {
+              "numero": "648",
+              "intitule": "Autres impôts et taxes",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "65",
+          "intitule": "Autres charges",
+          "sous_comptes": [
+            {
+              "numero": "651",
+              "intitule": "Pertes sur créances clients",
+              "details": []
+            },
+            {
+              "numero": "652",
+              "intitule": "Pertes sur stocks hors exploitation",
+              "details": []
+            },
+            {
+              "numero": "653",
+              "intitule": "Jetons de présence et tantièmes",
+              "details": []
+            },
+            {
+              "numero": "658",
+              "intitule": "Charges diverses",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "66",
+          "intitule": "Charges de personnel",
+          "sous_comptes": [
+            {
+              "numero": "661",
+              "intitule": "Rémunérations directes versées au personnel national",
+              "details": [
+                { "numero": "6611", "intitule": "Salaires et appointements" },
+                { "numero": "6612", "intitule": "Congés payés" },
+                { "numero": "6618", "intitule": "Autres rémunérations" }
+              ]
+            },
+            {
+              "numero": "662",
+              "intitule": "Rémunérations directes versées au personnel non national",
+              "details": []
+            },
+            {
+              "numero": "663",
+              "intitule": "Indemnités forfaitaires versées au personnel",
+              "details": []
+            },
+            {
+              "numero": "664",
+              "intitule": "Charges sociales",
+              "details": [
+                { "numero": "6641", "intitule": "Cotisations à la charge de l'employeur" },
+                { "numero": "6645", "intitule": "Cotisations à la charge du personnel (retenues)" }
+              ]
+            },
+            {
+              "numero": "665",
+              "intitule": "Charges de retraite",
+              "details": []
+            },
+            {
+              "numero": "666",
+              "intitule": "Charges sociales couvertes par l'État",
+              "details": []
+            },
+            {
+              "numero": "667",
+              "intitule": "Rémunération de l'exploitant",
+              "details": []
+            },
+            {
+              "numero": "668",
+              "intitule": "Autres charges de personnel",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "67",
+          "intitule": "Frais financiers et charges assimilées",
+          "sous_comptes": [
+            {
+              "numero": "671",
+              "intitule": "Intérêts des emprunts",
+              "details": [
+                { "numero": "6711", "intitule": "Intérêts des emprunts obligataires" },
+                { "numero": "6712", "intitule": "Intérêts des emprunts bancaires" },
+                { "numero": "6718", "intitule": "Intérêts des autres emprunts" }
+              ]
+            },
+            {
+              "numero": "672",
+              "intitule": "Intérêts des dettes de crédit-bail",
+              "details": []
+            },
+            {
+              "numero": "673",
+              "intitule": "Intérêts des comptes courants et dépôts créditeurs",
+              "details": []
+            },
+            {
+              "numero": "674",
+              "intitule": "Escomptes accordés",
+              "details": []
+            },
+            {
+              "numero": "675",
+              "intitule": "Escomptes des effets et créances",
+              "details": []
+            },
+            {
+              "numero": "676",
+              "intitule": "Pertes de change",
+              "details": []
+            },
+            {
+              "numero": "677",
+              "intitule": "Pertes sur cessions de titres de placement",
+              "details": []
+            },
+            {
+              "numero": "678",
+              "intitule": "Autres charges financières",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "68",
+          "intitule": "Dotations aux amortissements et aux provisions",
+          "sous_comptes": [
+            {
+              "numero": "681",
+              "intitule": "Dotations aux amortissements des charges immobilisées",
+              "details": []
+            },
+            {
+              "numero": "682",
+              "intitule": "Dotations aux amortissements des immobilisations incorporelles",
+              "details": []
+            },
+            {
+              "numero": "683",
+              "intitule": "Dotations aux amortissements des immobilisations corporelles",
+              "details": [
+                { "numero": "6831", "intitule": "Dotations aux amortissements des bâtiments" },
+                { "numero": "6832", "intitule": "Dotations aux amortissements des installations techniques" },
+                { "numero": "6833", "intitule": "Dotations aux amortissements du matériel" }
+              ]
+            },
+            {
+              "numero": "684",
+              "intitule": "Dotations aux provisions pour dépréciation des immobilisations",
+              "details": []
+            },
+            {
+              "numero": "685",
+              "intitule": "Dotations aux provisions pour dépréciation des stocks et en-cours",
+              "details": []
+            },
+            {
+              "numero": "686",
+              "intitule": "Dotations aux provisions pour dépréciation des créances",
+              "details": []
+            },
+            {
+              "numero": "687",
+              "intitule": "Dotations aux provisions financières pour risques et charges",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "69",
+          "intitule": "Impôts sur le résultat et taxes assimilées",
+          "sous_comptes": [
+            {
+              "numero": "691",
+              "intitule": "Participation des travailleurs",
+              "details": []
+            },
+            {
+              "numero": "695",
+              "intitule": "Impôts sur le résultat",
+              "details": [
+                { "numero": "6951", "intitule": "Impôts sur les bénéfices exigibles" },
+                { "numero": "6952", "intitule": "Impôts sur les bénéfices différés" }
+              ]
+            },
+            {
+              "numero": "699",
+              "intitule": "Impôts différés passif",
+              "details": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "7",
+      "intitule": "Comptes de Produits des Activités Ordinaires",
+      "comptes": [
+        {
+          "numero": "70",
+          "intitule": "Ventes",
+          "sous_comptes": [
+            {
+              "numero": "701",
+              "intitule": "Ventes de marchandises",
+              "details": [
+                { "numero": "7011", "intitule": "Ventes de marchandises A" },
+                { "numero": "7012", "intitule": "Ventes de marchandises B" },
+                { "numero": "7018", "intitule": "Ventes d'autres marchandises" }
+              ]
+            },
+            {
+              "numero": "702",
+              "intitule": "Ventes de produits finis",
+              "details": [
+                { "numero": "7021", "intitule": "Ventes de produits finis A" },
+                { "numero": "7022", "intitule": "Ventes de produits finis B" }
+              ]
+            },
+            {
+              "numero": "703",
+              "intitule": "Ventes de produits intermédiaires",
+              "details": []
+            },
+            {
+              "numero": "704",
+              "intitule": "Ventes de produits résiduels",
+              "details": []
+            },
+            {
+              "numero": "705",
+              "intitule": "Travaux facturés",
+              "details": []
+            },
+            {
+              "numero": "706",
+              "intitule": "Services vendus",
+              "details": []
+            },
+            {
+              "numero": "707",
+              "intitule": "Produits accessoires",
+              "details": []
+            },
+            {
+              "numero": "708",
+              "intitule": "Remises, rabais et ristournes accordés",
+              "details": [
+                { "numero": "7081", "intitule": "Remises sur ventes de marchandises" },
+                { "numero": "7082", "intitule": "Remises sur ventes de produits finis" },
+                { "numero": "7088", "intitule": "Autres remises et ristournes accordées" }
+              ]
+            }
+          ]
+        },
+        {
+          "numero": "71",
+          "intitule": "Subventions d'exploitation",
+          "sous_comptes": [
+            {
+              "numero": "711",
+              "intitule": "Subventions d'exploitation",
+              "details": []
+            },
+            {
+              "numero": "712",
+              "intitule": "Subventions d'équilibre",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "72",
+          "intitule": "Production immobilisée",
+          "sous_comptes": [
+            {
+              "numero": "721",
+              "intitule": "Immobilisations incorporelles produites",
+              "details": []
+            },
+            {
+              "numero": "722",
+              "intitule": "Immobilisations corporelles produites",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "73",
+          "intitule": "Variations de stocks de biens et services produits",
+          "sous_comptes": [
+            {
+              "numero": "731",
+              "intitule": "Variations de stocks de produits finis",
+              "details": []
+            },
+            {
+              "numero": "732",
+              "intitule": "Variations de stocks de produits intermédiaires",
+              "details": []
+            },
+            {
+              "numero": "733",
+              "intitule": "Variations de stocks de produits en cours",
+              "details": []
+            },
+            {
+              "numero": "735",
+              "intitule": "Variations de stocks de services en cours",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "74",
+          "intitule": "Produits accessoires",
+          "sous_comptes": [
+            {
+              "numero": "741",
+              "intitule": "Revenus des terrains",
+              "details": []
+            },
+            {
+              "numero": "742",
+              "intitule": "Revenus des immeubles",
+              "details": []
+            },
+            {
+              "numero": "743",
+              "intitule": "Revenus des brevets et licences",
+              "details": []
+            },
+            {
+              "numero": "744",
+              "intitule": "Revenus des autres immobilisations",
+              "details": []
+            },
+            {
+              "numero": "745",
+              "intitule": "Rémunérations pour prestations de services",
+              "details": []
+            },
+            {
+              "numero": "746",
+              "intitule": "Bonis sur reprises d'emballages consignés",
+              "details": []
+            },
+            {
+              "numero": "748",
+              "intitule": "Autres produits accessoires",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "75",
+          "intitule": "Autres produits",
+          "sous_comptes": [
+            {
+              "numero": "751",
+              "intitule": "Gains sur créances clients",
+              "details": []
+            },
+            {
+              "numero": "752",
+              "intitule": "Gains sur stocks hors exploitation",
+              "details": []
+            },
+            {
+              "numero": "758",
+              "intitule": "Produits divers",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "76",
+          "intitule": "Reprises de provisions et dépréciations",
+          "sous_comptes": [
+            {
+              "numero": "761",
+              "intitule": "Reprises d'amortissements",
+              "details": []
+            },
+            {
+              "numero": "762",
+              "intitule": "Reprises de dépréciations des immobilisations financières",
+              "details": []
+            },
+            {
+              "numero": "764",
+              "intitule": "Reprises de dépréciations des stocks et en-cours",
+              "details": []
+            },
+            {
+              "numero": "765",
+              "intitule": "Reprises de dépréciations des créances",
+              "details": []
+            },
+            {
+              "numero": "766",
+              "intitule": "Reprises de provisions pour risques et charges",
+              "details": []
+            },
+            {
+              "numero": "767",
+              "intitule": "Reprises de provisions financières pour risques et charges",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "77",
+          "intitule": "Revenus financiers et produits assimilés",
+          "sous_comptes": [
+            {
+              "numero": "771",
+              "intitule": "Intérêts de prêts",
+              "details": []
+            },
+            {
+              "numero": "772",
+              "intitule": "Revenus de créances",
+              "details": []
+            },
+            {
+              "numero": "773",
+              "intitule": "Revenus des titres de placement",
+              "details": []
+            },
+            {
+              "numero": "774",
+              "intitule": "Revenus des titres de participation",
+              "details": []
+            },
+            {
+              "numero": "775",
+              "intitule": "Escomptes obtenus",
+              "details": []
+            },
+            {
+              "numero": "776",
+              "intitule": "Gains de change",
+              "details": []
+            },
+            {
+              "numero": "777",
+              "intitule": "Gains sur cessions de titres de placement",
+              "details": []
+            },
+            {
+              "numero": "778",
+              "intitule": "Autres revenus financiers",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "78",
+          "intitule": "Transferts de charges",
+          "sous_comptes": [
+            {
+              "numero": "781",
+              "intitule": "Transferts de charges d'exploitation",
+              "details": []
+            },
+            {
+              "numero": "786",
+              "intitule": "Transferts de charges financières",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "79",
+          "intitule": "Reprises de charges - charges à répartir",
+          "sous_comptes": [
+            {
+              "numero": "791",
+              "intitule": "Reprises de charges sur charges à répartir",
+              "details": []
+            },
+            {
+              "numero": "798",
+              "intitule": "Autres reprises de charges",
+              "details": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "8",
+      "intitule": "Comptes des Autres Charges et des Autres Produits (HAO)",
+      "comptes": [
+        {
+          "numero": "80",
+          "intitule": "Compte de résultat HAO - compte de regroupement",
+          "sous_comptes": [
+            {
+              "numero": "801",
+              "intitule": "Résultat HAO de l'exercice",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "81",
+          "intitule": "Valeurs comptables des cessions d'immobilisations",
+          "sous_comptes": [
+            {
+              "numero": "811",
+              "intitule": "Valeurs comptables des cessions d'immobilisations incorporelles",
+              "details": []
+            },
+            {
+              "numero": "812",
+              "intitule": "Valeurs comptables des cessions d'immobilisations corporelles",
+              "details": []
+            },
+            {
+              "numero": "813",
+              "intitule": "Valeurs comptables des cessions d'immobilisations financières",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "82",
+          "intitule": "Produits des cessions d'immobilisations",
+          "sous_comptes": [
+            {
+              "numero": "821",
+              "intitule": "Produits des cessions d'immobilisations incorporelles",
+              "details": []
+            },
+            {
+              "numero": "822",
+              "intitule": "Produits des cessions d'immobilisations corporelles",
+              "details": []
+            },
+            {
+              "numero": "823",
+              "intitule": "Produits des cessions d'immobilisations financières",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "83",
+          "intitule": "Charges HAO diverses",
+          "sous_comptes": [
+            {
+              "numero": "831",
+              "intitule": "Charges HAO sur exercices antérieurs",
+              "details": []
+            },
+            {
+              "numero": "832",
+              "intitule": "Abandons de créances accordés",
+              "details": []
+            },
+            {
+              "numero": "833",
+              "intitule": "Amendes, pénalités et dommages et intérêts",
+              "details": []
+            },
+            {
+              "numero": "834",
+              "intitule": "Dotations HAO aux amortissements",
+              "details": []
+            },
+            {
+              "numero": "835",
+              "intitule": "Dotations HAO aux provisions",
+              "details": []
+            },
+            {
+              "numero": "838",
+              "intitule": "Autres charges HAO",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "84",
+          "intitule": "Produits HAO divers",
+          "sous_comptes": [
+            {
+              "numero": "841",
+              "intitule": "Produits HAO sur exercices antérieurs",
+              "details": []
+            },
+            {
+              "numero": "842",
+              "intitule": "Abandons de créances reçus",
+              "details": []
+            },
+            {
+              "numero": "843",
+              "intitule": "Rentrées sur créances amorties",
+              "details": []
+            },
+            {
+              "numero": "844",
+              "intitule": "Reprises HAO sur amortissements",
+              "details": []
+            },
+            {
+              "numero": "845",
+              "intitule": "Reprises HAO sur provisions",
+              "details": []
+            },
+            {
+              "numero": "848",
+              "intitule": "Autres produits HAO",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "85",
+          "intitule": "Dotations HAO aux amortissements",
+          "sous_comptes": [
+            {
+              "numero": "851",
+              "intitule": "Dotations HAO aux amortissements des immobilisations incorporelles",
+              "details": []
+            },
+            {
+              "numero": "852",
+              "intitule": "Dotations HAO aux amortissements des immobilisations corporelles",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "86",
+          "intitule": "Reprises HAO sur amortissements",
+          "sous_comptes": [
+            {
+              "numero": "861",
+              "intitule": "Reprises HAO sur amortissements des immobilisations incorporelles",
+              "details": []
+            },
+            {
+              "numero": "862",
+              "intitule": "Reprises HAO sur amortissements des immobilisations corporelles",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "87",
+          "intitule": "Dotations HAO aux provisions",
+          "sous_comptes": [
+            {
+              "numero": "871",
+              "intitule": "Dotations HAO aux provisions pour risques et charges",
+              "details": []
+            },
+            {
+              "numero": "878",
+              "intitule": "Autres dotations HAO aux provisions",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "88",
+          "intitule": "Reprises HAO sur provisions",
+          "sous_comptes": [
+            {
+              "numero": "881",
+              "intitule": "Reprises HAO sur provisions pour risques et charges",
+              "details": []
+            },
+            {
+              "numero": "888",
+              "intitule": "Autres reprises HAO sur provisions",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "89",
+          "intitule": "Résultat HAO (compte de regroupement)",
+          "sous_comptes": [
+            {
+              "numero": "891",
+              "intitule": "Résultat HAO",
+              "details": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "numero": "9",
+      "intitule": "Comptes Analytiques (Comptabilité de Gestion)",
+      "comptes": [
+        {
+          "numero": "90",
+          "intitule": "Comptes de réflexion - miroir de la comptabilité générale",
+          "sous_comptes": [
+            {
+              "numero": "901",
+              "intitule": "Charges incorporées - compte de réflexion",
+              "details": []
+            },
+            {
+              "numero": "902",
+              "intitule": "Produits incorporés - compte de réflexion",
+              "details": []
+            },
+            {
+              "numero": "909",
+              "intitule": "Compte de liaison avec la comptabilité générale",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "91",
+          "intitule": "Coûts d'achat",
+          "sous_comptes": [
+            {
+              "numero": "911",
+              "intitule": "Coûts d'achat des matières et fournitures",
+              "details": [
+                { "numero": "9111", "intitule": "Coûts d'achat des matières premières" },
+                { "numero": "9112", "intitule": "Coûts d'achat des marchandises" }
+              ]
+            },
+            {
+              "numero": "918",
+              "intitule": "Autres coûts d'achat",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "92",
+          "intitule": "Centres d'analyse",
+          "sous_comptes": [
+            {
+              "numero": "921",
+              "intitule": "Centres auxiliaires",
+              "details": [
+                { "numero": "9211", "intitule": "Centre d'entretien et maintenance" },
+                { "numero": "9212", "intitule": "Centre administration générale" },
+                { "numero": "9218", "intitule": "Autres centres auxiliaires" }
+              ]
+            },
+            {
+              "numero": "922",
+              "intitule": "Centres principaux",
+              "details": [
+                { "numero": "9221", "intitule": "Centre approvisionnement" },
+                { "numero": "9222", "intitule": "Centre production" },
+                { "numero": "9223", "intitule": "Centre distribution" },
+                { "numero": "9228", "intitule": "Autres centres principaux" }
+              ]
+            }
+          ]
+        },
+        {
+          "numero": "93",
+          "intitule": "Coûts de production",
+          "sous_comptes": [
+            {
+              "numero": "931",
+              "intitule": "Coûts de production des produits",
+              "details": [
+                { "numero": "9311", "intitule": "Coûts de production des produits finis A" },
+                { "numero": "9312", "intitule": "Coûts de production des produits finis B" }
+              ]
+            },
+            {
+              "numero": "935",
+              "intitule": "Coûts de production des services",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "94",
+          "intitule": "Coûts de distribution",
+          "sous_comptes": [
+            {
+              "numero": "941",
+              "intitule": "Coûts de distribution par produit",
+              "details": [
+                { "numero": "9411", "intitule": "Coûts de distribution - produits A" },
+                { "numero": "9418", "intitule": "Coûts de distribution - autres produits" }
+              ]
+            },
+            {
+              "numero": "945",
+              "intitule": "Coûts de distribution par canal",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "95",
+          "intitule": "Coûts hors production",
+          "sous_comptes": [
+            {
+              "numero": "951",
+              "intitule": "Coûts de la direction générale",
+              "details": []
+            },
+            {
+              "numero": "952",
+              "intitule": "Coûts de la gestion du personnel",
+              "details": []
+            },
+            {
+              "numero": "953",
+              "intitule": "Coûts de la gestion financière",
+              "details": []
+            },
+            {
+              "numero": "958",
+              "intitule": "Autres coûts hors production",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "96",
+          "intitule": "Différences d'incorporation",
+          "sous_comptes": [
+            {
+              "numero": "961",
+              "intitule": "Différences sur charges",
+              "details": [
+                { "numero": "9611", "intitule": "Charges supplétives" },
+                { "numero": "9612", "intitule": "Charges non incorporables" }
+              ]
+            },
+            {
+              "numero": "962",
+              "intitule": "Différences sur produits",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "97",
+          "intitule": "Différences d'inventaire",
+          "sous_comptes": [
+            {
+              "numero": "971",
+              "intitule": "Différences d'inventaire sur stocks",
+              "details": [
+                { "numero": "9711", "intitule": "Différences d'inventaire - matières premières" },
+                { "numero": "9712", "intitule": "Différences d'inventaire - produits finis" },
+                { "numero": "9718", "intitule": "Différences d'inventaire - autres stocks" }
+              ]
+            }
+          ]
+        },
+        {
+          "numero": "98",
+          "intitule": "Résultats analytiques",
+          "sous_comptes": [
+            {
+              "numero": "981",
+              "intitule": "Résultats analytiques par produit",
+              "details": [
+                { "numero": "9811", "intitule": "Résultat analytique - produit A" },
+                { "numero": "9812", "intitule": "Résultat analytique - produit B" }
+              ]
+            },
+            {
+              "numero": "985",
+              "intitule": "Résultats analytiques par activité",
+              "details": []
+            },
+            {
+              "numero": "988",
+              "intitule": "Résultats analytiques divers",
+              "details": []
+            }
+          ]
+        },
+        {
+          "numero": "99",
+          "intitule": "Comptes réciproques de la comptabilité analytique",
+          "sous_comptes": [
+            {
+              "numero": "991",
+              "intitule": "Comptes réfléchis",
+              "details": [
+                { "numero": "9911", "intitule": "Charges réfléchies" },
+                { "numero": "9912", "intitule": "Produits réfléchis" }
+              ]
+            },
+            {
+              "numero": "998",
+              "intitule": "Autres comptes réciproques",
+              "details": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

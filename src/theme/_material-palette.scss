@@ -9,9 +9,9 @@
 /* ############ Light mode palettes ################ */
 
 $primary-palette: (
-  100: #5ba2ec,
-  500: #1074b9,
-  700: #004989,
+  100: #cfe5b5,
+  500: #83b952,
+  700: #4f7f2c,
   contrast: (
     100: rgb(0 0 0 / 87%),
     500: white,
@@ -20,35 +20,57 @@ $primary-palette: (
 );
 
 $accent-palette: (
-  100: #e7ffa5,
-  500: #b4d575,
-  700: #83a447,
+  100: #d8ebf7,
+  500: #73b1e1,
+  700: #3d7db0,
   contrast: (
     100: rgb(0 0 0 / 87%),
-    500: rgb(0 0 0 / 87%),
-    700: rgb(0 0 0 / 87%)
+    500: white,
+    700: white
+  )
+);
+
+$warn-palette: (
+  100: #f3c4af,
+  500: #b15336,
+  700: #7b2b1f,
+  contrast: (
+    100: rgb(0 0 0 / 87%),
+    500: white,
+    700: white
   )
 );
 
 /* ############ Dark mode palettes ################ */
 
 $dark-primary-palette: (
-  100: #5ba2ec,
-  500: #1074b9,
-  700: #004989,
+  100: #d8edbb,
+  500: #83b952,
+  700: #5e8a3f,
   contrast: (
-    100: white,
-    500: rgb(255 255 255 / 87%),
-    700: rgb(255 255 255 / 87%)
+    100: rgb(0 0 0 / 87%),
+    500: white,
+    700: white
   )
 );
 
 $dark-accent-palette: (
-  100: #e7ffa5,
-  500: #b4d575,
-  700: #83a447,
+  100: #b9daf3,
+  500: #73b1e1,
+  700: #2b5f92,
   contrast: (
-    100: white,
+    100: rgb(0 0 0 / 87%),
+    500: white,
+    700: white
+  )
+);
+
+$dark-warn-palette: (
+  100: #d39a84,
+  500: #b15336,
+  700: #8a3e2a,
+  contrast: (
+    100: rgb(0 0 0 / 87%),
     500: white,
     700: white
   )

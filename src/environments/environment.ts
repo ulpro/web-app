@@ -29,7 +29,8 @@ export const environment = {
   fineractPlatformTenantIds: loadedEnv.fineractPlatformTenantIds || 'default',
   // For connecting to others servers running elsewhere update the base API URL
   baseApiUrls:
-    loadedEnv.fineractApiUrls || 'https://demo.mifos.community,https://localhost:8443,' + window.location.origin,
+    loadedEnv.fineractApiUrls ||
+    'https://localhost:8443,https://demo.mifos.community,https://neobt.duckdns.org:10543,' + window.location.origin,
   // For connecting to server running elsewhere set the base API URL
   baseApiUrl:
     loadedEnv.fineractApiUrl ||
@@ -110,6 +111,13 @@ export const environment = {
   externalNationalIdSystemApiHeader: loadedEnv.externalNationalIdSystemApiHeader || '',
   externalNationalIdSystemApiKey: loadedEnv.externalNationalIdSystemApiKey || '',
   externalNationalIdRegex: loadedEnv.externalNationalIdRegex || '',
+
+  /**
+   * Postal Code Lookup — auto-fill city/state/country from postal code.
+   * Uses external Zippopotam.us API. Disable for deployments with strict privacy requirements.
+   */
+  enablePostalCodeLookup:
+    loadedEnv.enablePostalCodeLookup === 'true' || loadedEnv.enablePostalCodeLookup === true || false,
 
   minPasswordLength: resolvedMinPasswordLength,
   passwordRegex:

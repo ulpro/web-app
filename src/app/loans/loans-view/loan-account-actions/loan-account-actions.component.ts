@@ -42,6 +42,7 @@ import { UndoWriteOffComponent } from './undo-write-off/undo-write-off.component
 import { STANDALONE_SHARED_IMPORTS } from 'app/standalone-shared.module';
 import { AttachOriginatorComponent } from './attach-originator/attach-originator.component';
 import { LoanProductBaseComponent } from 'app/products/loan-products/common/loan-product-base.component';
+import { UpdateDiscountComponent } from './update-discount/update-discount.component';
 
 /**
  * Loan Account Actions component.
@@ -82,7 +83,8 @@ import { LoanProductBaseComponent } from 'app/products/loan-products/common/loan
     LoanReamortizeComponent,
     AddInterestPauseComponent,
     UndoWriteOffComponent,
-    AttachOriginatorComponent
+    AttachOriginatorComponent,
+    UpdateDiscountComponent
   ]
 })
 export class LoanAccountActionsComponent {
@@ -134,6 +136,7 @@ export class LoanAccountActionsComponent {
     'Buy Down Fee': boolean;
     'Undo Write-off': boolean;
     'Attach Loan Originator': boolean;
+    'Update discount': boolean;
   } = {
     Close: false,
     'Undo Approval': false,
@@ -174,7 +177,8 @@ export class LoanAccountActionsComponent {
     'Contract Termination': false,
     'Buy Down Fee': false,
     'Undo Write-off': false,
-    'Attach Loan Originator': false
+    'Attach Loan Originator': false,
+    'Update discount': false
   };
 
   actionButtonData: any;

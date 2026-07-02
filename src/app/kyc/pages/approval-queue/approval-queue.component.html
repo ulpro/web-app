@@ -1,0 +1,85 @@
+<div class="container m-b-20 layout-row align-end gap-20px">
+  <div>
+    <button mat-icon-button color="primary" (click)="loadPendingDocuments()" matTooltip="Refresh Queue">
+      <fa-icon icon="sync"></fa-icon>
+    </button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="layout-row">
+    <mat-form-field class="flex-fill">
+      <mat-label>Filter Pending Documents</mat-label>
+      <input matInput (keyup)="applyFilter($event.target.value)" />
+    </mat-form-field>
+  </div>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+      
+      <ng-container matColumnDef="clientId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Client ID </th>
+        <td mat-cell *matCellDef="let doc">
+          <a [routerLink]="['/clients', doc.clientId, 'kyc']" target="_blank">{{ doc.clientId }}</a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="documentTypeName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Document Type </th>
+        <td mat-cell *matCellDef="let doc"> {{ doc.documentTypeName }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="documentNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Document Number </th>
+        <td mat-cell *matCellDef="let doc"> {{ doc.documentNumber }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="issueDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Issue Date </th>
+        <td mat-cell *matCellDef="let doc"> {{ (doc.issueDate | date) || 'N/A' }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="verificationStatus">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+        <td mat-cell *matCellDef="let doc"> 
+          <span class="status-badge pending">
+            {{ doc.verificationStatusName || 'Pending' }}
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let doc">
+          <button mat-raised-button color="primary" (click)="processDocument(doc)">
+            <fa-icon icon="tasks" class="m-r-10"></fa-icon> Process
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    @if (dataSource.data.length === 0) {
+      <div class="p-20 text-center">
+        <p class="text-muted">No pending KYC documents to review.</p>
+      </div>
+    }
+
+    <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>
+
+<style>
+  .status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .status-badge.pending {
+    background-color: #fef7e0;
+    color: #f29900;
+  }
+</style>

@@ -1,0 +1,130 @@
+<!--
+  Copyright since 2025 Mifos Initiative
+
+  This Source Code Form is subject to the terms of the Mozilla Public
+  License, v. 2.0. If a copy of the MPL was not distributed with this
+  file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-->
+
+<h2 mat-dialog-title>Import from SYSCOHADA</h2>
+
+<mat-dialog-content class="syscohada-import-content">
+  @if (syscohada) {
+  <div class="syscohada-tree">
+    @for (classe of syscohada.classes; track classe.numero) {
+    <div class="classe-node">
+      <button type="button" mat-icon-button (click)="toggleClass(classe.numero)" class="expand-button">
+        @if (expandedClasses.has(classe.numero)) {
+        <mat-icon>expand_more</mat-icon>
+        } @else {
+        <mat-icon>chevron_right</mat-icon>
+        }
+      </button>
+
+      <div class="classe-header">
+        <strong>{{ classe.numero }} - {{ classe.intitule }}</strong>
+      </div>
+
+      @if (expandedClasses.has(classe.numero)) {
+      <div class="classe-content">
+        @for (compte of classe.comptes; track compte.numero) {
+        <div class="compte-node">
+          <button
+            type="button"
+            mat-icon-button
+            (click)="toggleCompte(classe.numero + '_' + compte.numero)"
+            class="expand-button indent-1"
+          >
+            @if (expandedComptes.has(classe.numero + '_' + compte.numero)) {
+            <mat-icon>expand_more</mat-icon>
+            } @else {
+            <mat-icon>chevron_right</mat-icon>
+            }
+          </button>
+
+          <div class="compte-header">
+            <strong>{{ compte.numero }} - {{ compte.intitule }}</strong>
+          </div>
+
+          @if (expandedComptes.has(classe.numero + '_' + compte.numero)) {
+          <div class="compte-content">
+            @for (sousCompte of compte.sous_comptes; track sousCompte.numero) {
+            <div class="sous-compte-node">
+              @if (sousCompte.details && sousCompte.details.length > 0) {
+              <button
+                type="button"
+                mat-icon-button
+                (click)="toggleSousCompte(classe.numero + '_' + sousCompte.numero)"
+                class="expand-button indent-2"
+              >
+                @if ( expandedSousComptes.has( classe.numero + '_' + sousCompte.numero ) ) {
+                <mat-icon>expand_more</mat-icon>
+                } @else {
+                <mat-icon>chevron_right</mat-icon>
+                }
+              </button>
+              } @else {
+              <div style="width: 40px"></div>
+              }
+
+              <button
+                type="button"
+                mat-button
+                (click)="selectAccount(sousCompte.numero, sousCompte.intitule, classe.numero)"
+                [class.selected]="isSelected(sousCompte.numero, sousCompte.intitule)"
+                class="account-row indent-2"
+              >
+                {{ sousCompte.numero }} - {{ sousCompte.intitule }}
+              </button>
+
+              @if ( expandedSousComptes.has( classe.numero + '_' + sousCompte.numero ) && sousCompte.details &&
+              sousCompte.details.length > 0 ) {
+              <div class="details-content">
+                @for (detail of sousCompte.details; track detail.numero) {
+                <button
+                  type="button"
+                  mat-button
+                  (click)="selectAccount(detail.numero, detail.intitule, classe.numero)"
+                  [class.selected]="isSelected(detail.numero, detail.intitule)"
+                  class="account-row indent-3"
+                >
+                  {{ detail.numero }} - {{ detail.intitule }}
+                </button>
+                }
+              </div>
+              }
+            </div>
+            }
+          </div>
+          }
+        </div>
+        }
+      </div>
+      }
+    </div>
+    }
+  </div>
+  } @else {
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  } @if (selectedAccount) {
+  <div class="selected-account-summary">
+    <h3>Selected Account</h3>
+    <p><strong>{{ 'labels.inputs.GL Code' | translate }}:</strong> {{ selectedAccount.glCode }}</p>
+    <p><strong>{{ 'labels.inputs.Account Name' | translate }}:</strong> {{ selectedAccount.name }}</p>
+    <p>
+      <strong>{{ 'labels.inputs.Account Type' | translate }}:</strong>
+      @switch (selectedAccount.type) { @case (1) { {{ 'labels.inputs.accounting.ASSET' | translate }} } @case (2) { {{
+      'labels.inputs.accounting.LIABILITY' | translate }} } @case (3) { {{ 'labels.inputs.accounting.EQUITY' | translate
+      }} } @case (4) { {{ 'labels.inputs.accounting.INCOME' | translate }} } @case (5) { {{
+      'labels.inputs.accounting.EXPENSE' | translate }} } }
+    </p>
+  </div>
+  }
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="gap-2px">
+  <button type="button" mat-raised-button (click)="cancel()">{{ 'labels.buttons.Cancel' | translate }}</button>
+  <button type="button" mat-raised-button color="primary" (click)="confirm()" [disabled]="!selectedAccount">
+    {{ 'labels.buttons.Import' | translate }}
+  </button>
+</mat-dialog-actions>

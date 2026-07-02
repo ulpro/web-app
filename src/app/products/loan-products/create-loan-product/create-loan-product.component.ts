@@ -376,6 +376,8 @@ export class CreateLoanProductComponent extends LoanProductBaseComponent impleme
   submitWCProduct(): void {
     const loanProduct = this.loanProducts.buildPayload(this.loanProduct, this.itemsByDefault);
 
+    loanProduct['accountingRule'] = 'NONE';
+
     this.productsService
       .createLoanProduct(this.loanProductService.loanProductPath, loanProduct)
       .subscribe((response: any) => {

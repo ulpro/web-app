@@ -1,0 +1,90 @@
+/* Modern Form Styling */
+.content-card {
+  background: #ffffff;
+  border: 1px solid var(--mat-sys-outline-variant);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08) !important;
+  border-radius: 8px !important;
+  padding: 0;
+  
+  .card-header {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--mat-sys-outline-variant);
+    display: flex;
+    align-items: center;
+    background: var(--mat-sys-surface);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    
+    h3 { 
+      margin: 0; 
+      font-size: 20px; 
+      font-weight: 500; 
+      color: var(--mat-sys-on-surface); 
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .card-body {
+    padding: 32px 24px;
+  }
+}
+
+.layout-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.gap-16 { gap: 16px; }
+.gap-20px { gap: 20px; }
+.flex-fill { flex: 1; }
+.full-width { width: 100%; }
+
+.m-b-20 { margin-bottom: 20px; }
+.m-t-10 { margin-top: 10px; }
+.m-t-20 { margin-top: 20px; }
+.m-r-5 { margin-right: 5px; }
+
+.active-checkbox-container {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+  background: var(--mat-sys-surface-variant);
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 4px;
+  margin-top: 8px;
+  
+  .font-medium {
+    font-weight: 500;
+    color: var(--mat-sys-on-surface);
+  }
+  
+  .checkbox-hint {
+    margin-left: 28px;
+    font-size: 12px;
+    color: var(--mat-sys-on-surface-variant);
+    margin-top: 4px;
+  }
+}
+
+.form-actions-modern {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--mat-sys-outline-variant);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* Make it responsive */
+@media (max-width: 768px) {
+  .responsive-column {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+}

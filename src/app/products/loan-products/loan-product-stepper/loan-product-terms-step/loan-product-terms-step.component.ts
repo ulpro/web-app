@@ -203,7 +203,8 @@ export class LoanProductTermsStepComponent extends LoanProductBaseComponent impl
         repaymentEvery: this.loanProductsTemplate.repaymentEvery,
         repaymentFrequencyType: this.loanProductsTemplate.repaymentFrequencyType
           ? this.loanProductsTemplate.repaymentFrequencyType.id
-          : null
+          : null,
+        discount: this.loanProductsTemplate.discount
       });
     }
   }
@@ -349,6 +350,12 @@ export class LoanProductTermsStepComponent extends LoanProductBaseComponent impl
         repaymentFrequencyType: [
           '',
           Validators.required
+        ],
+        discount: [
+          '',
+          [
+            Validators.min(0)
+          ]
         ]
       });
     }

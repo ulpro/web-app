@@ -257,12 +257,19 @@ export class LoansViewComponent extends LoanProductBaseComponent implements OnIn
       return;
     }
     this.buttonConfig = new LoansAccountButtonConfiguration(this.status, this.loanSubStatus);
+    if (this.canShowWorkingCapitalDiscountUpdate()) {
+      this.buttonConfig.addButton({
+        name: 'Update discount',
+        icon: 'edit',
+        taskPermissionName: 'UPDATEDISCOUNT_WORKINGCAPITALLOAN'
+      });
+    }
 
     if (this.status === 'Submitted and pending approval') {
       this.buttonConfig.addOption({
         name: this.loanDetailsData.loanOfficerName ? 'Change Loan Officer' : 'Assign Loan Officer',
         icon: 'user-tie',
-        taskPermissionName: 'DISBURSE_LOAN'
+        taskPermissionName: 'UPDATELOANOFFICER_LOAN'
       });
 
       if (this.loanDetailsData.isVariableInstallmentsAllowed) {
@@ -276,7 +283,7 @@ export class LoansViewComponent extends LoanProductBaseComponent implements OnIn
       this.buttonConfig.addButton({
         name: this.loanDetailsData.loanOfficerName ? 'Change Loan Officer' : 'Assign Loan Officer',
         icon: 'user-tie',
-        taskPermissionName: 'DISBURSE_LOAN'
+        taskPermissionName: 'UPDATELOANOFFICER_LOAN'
       });
     } else if (this.status === 'Active') {
       if (this.loanDetailsData.enableBuyDownFee) {
@@ -570,5 +577,12 @@ export class LoansViewComponent extends LoanProductBaseComponent implements OnIn
       return false;
     }
     return substatus.code === 'loanSubStatus.loanSubStatusType.contractTermination';
+  }
+
+  private canShowWorkingCapitalDiscountUpdate(): boolean {
+    if (!this.loanProductService.isWorkingCapital || !this.loanDetailsData) {
+      return false;
+    }
+    return this.loanDetailsData?.status?.active === true;
   }
 }

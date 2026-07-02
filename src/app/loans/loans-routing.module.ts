@@ -112,7 +112,7 @@ const routes: Routes = [
           {
             path: 'general',
             component: GeneralTabComponent,
-            data: { title: 'General', breadcrumb: 'General', routeParamBreadcrumb: false },
+            data: { title: 'Loan Account Details', breadcrumb: 'General', routeParamBreadcrumb: false },
             resolve: {}
           },
           {
@@ -179,7 +179,7 @@ const routes: Routes = [
           },
           {
             path: 'loan-reschedules',
-            data: {},
+            data: { title: 'Loan Reschedules', breadcrumb: 'Loan Reschedules', routeParamBreadcrumb: false },
             resolve: {
               loanRescheduleData: LoanReschedulesResolver
             },
@@ -279,7 +279,7 @@ const routes: Routes = [
           },
           {
             path: 'originators',
-            data: { title: 'Loans Originators', breadcrumb: 'Originators', routeParamBreadcrumb: false },
+            data: { title: 'Loan Originators', breadcrumb: 'Originators', routeParamBreadcrumb: false },
             resolve: {
               loanOriginatorsData: LoanOriginatorsResolver
             },

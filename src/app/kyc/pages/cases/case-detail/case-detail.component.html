@@ -1,0 +1,224 @@
+<div class="kyc-profile-container" *ngIf="kycCase">
+  
+  <!-- Profile Header (Fiche Cliente) -->
+  <div class="profile-header">
+    <div class="profile-header-inner">
+      <div class="profile-avatar">{{ kycCase.clientName?.charAt(0) || 'C' }}</div>
+      <div class="profile-info">
+        <h2 class="profile-name">{{ kycCase.clientName }}</h2>
+        <div class="profile-meta">
+          <span><fa-icon icon="hashtag" class="m-r-5"></fa-icon> Case: {{ kycCase.id }}</span>
+          <span class="meta-divider">|</span>
+          <span><fa-icon icon="user" class="m-r-5"></fa-icon> Client: {{ kycCase.clientId }}</span>
+          <span class="meta-divider">|</span>
+          <a class="profile-link" [routerLink]="['/clients', kycCase.clientId]">
+            <fa-icon icon="external-link-alt" class="m-r-5"></fa-icon> View Client Profile
+          </a>
+        </div>
+      </div>
+      
+      <div class="profile-status">
+        <div class="status-badge" [ngClass]="'badge-' + kycCase.workflowStatusId">
+          {{ kycCase.workflowStatusValue }}
+        </div>
+        <div class="tier-badge" *ngIf="kycCase.tier?.name">Tier: {{ kycCase.tier.name }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-body">
+    <!-- Left Column (General Info) -->
+    <div class="profile-column-left">
+      <!-- Assignment & Details -->
+      <div class="modern-card">
+        <h3 class="card-title"><fa-icon icon="info-circle" class="text-primary m-r-5"></fa-icon> General Information</h3>
+        <div class="info-list">
+          <div class="info-row">
+            <span class="info-label">Assignment</span>
+            <span class="info-value">
+              <ng-container *ngIf="kycCase.assignedAgentId">
+                <fa-icon icon="user-check" class="text-success m-r-5"></fa-icon>
+                {{ kycCase.assignedAgentName || 'Agent ' + kycCase.assignedAgentId }}
+              </ng-container>
+              <ng-container *ngIf="!kycCase.assignedAgentId">
+                <span class="text-danger font-medium"><fa-icon icon="exclamation-triangle" class="m-r-5"></fa-icon> Unassigned</span>
+                <button mat-stroked-button color="primary" class="m-l-10 btn-small" (click)="assignAgent()">Assign to me</button>
+              </ng-container>
+            </span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Documents</span>
+            <span class="info-value font-medium">
+              <span *ngIf="kycCase.requiredDocumentCount > 0">{{ kycCase.submittedDocumentCount }} / {{ kycCase.requiredDocumentCount }} Required Submitted</span>
+              <span *ngIf="!kycCase.requiredDocumentCount">{{ kycCase.submittedDocumentCount }} Submitted</span>
+            </span>
+          </div>
+          <div class="info-row" *ngIf="kycCase.nextReviewDate">
+            <span class="info-label">Next Review</span>
+            <span class="info-value" [class.text-danger]="isReviewDue">{{ kycCase.nextReviewDate | date:'mediumDate' }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compliance Flags -->
+      <div class="modern-card">
+        <div class="card-header-flex">
+          <h3 class="card-title text-danger" style="margin: 0;"><fa-icon icon="flag" class="m-r-5"></fa-icon> Compliance Flags</h3>
+          <button mat-icon-button color="warn" *ngIf="!showAddFlagForm && kycCase.workflowStatusId < 600 && kycCase.assignedAgentId" (click)="showAddFlagForm = true">
+            <fa-icon icon="plus"></fa-icon>
+          </button>
+        </div>
+
+        <!-- Add Flag Form -->
+        <div class="add-flag-container" *ngIf="showAddFlagForm">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Flag Type</mat-label>
+            <mat-select [(ngModel)]="newFlagType">
+              <mat-option value="PEP">Politically Exposed Person</mat-option>
+              <mat-option value="EDD_REQUIRED">Enhanced Due Diligence</mat-option>
+              <mat-option value="FRAUD_SUSPECTED">Fraud Suspected</mat-option>
+              <mat-option value="SANCTION_MATCH">Sanctions / Embargoes</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Remarks</mat-label>
+            <textarea matInput rows="2" [(ngModel)]="newFlagRemarks"></textarea>
+          </mat-form-field>
+
+          <div class="flex-actions">
+            <button mat-button (click)="showAddFlagForm = false">Cancel</button>
+            <button mat-raised-button color="primary" [disabled]="!newFlagType" (click)="addFlag()">Add</button>
+          </div>
+        </div>
+
+        <!-- Flags List -->
+        <div class="flags-list">
+          <div class="flag-card" *ngFor="let flag of kycCase.flags" [ngClass]="{'resolved': flag.status?.id !== 100}">
+            <div class="flag-header">
+              <span class="flag-badge" [ngClass]="{'active': flag.status?.id === 100}">{{ flag.flagType?.name || flag.flagType?.code }}</span>
+            </div>
+            <div class="flag-body" *ngIf="flag.remarks">{{ flag.remarks }}</div>
+
+            <div class="flag-actions" *ngIf="flag.status?.id === 100 && kycCase.workflowStatusId < 600">
+              <button mat-button class="text-success btn-xs" (click)="resolveFlag(flag)">Resolve</button>
+              <button mat-button class="text-muted btn-xs" (click)="markFlagFalsePositive(flag)">False Positive</button>
+            </div>
+
+            <div class="flag-footer" *ngIf="flag.status?.id !== 100 && flag.resolutionRemarks">
+              <em>{{ flag.status?.value }} : {{ flag.resolutionRemarks }}</em>
+            </div>
+          </div>
+          <div class="empty-state-sm" *ngIf="!kycCase.flags || !kycCase.flags.length">
+            <fa-icon icon="check-circle" class="text-success m-r-5"></fa-icon> No active compliance flags.
+          </div>
+        </div>
+      </div>
+
+      <!-- Audit Trail -->
+      <div class="modern-card">
+        <h3 class="card-title"><fa-icon icon="history" class="text-muted m-r-5"></fa-icon> Audit Trail</h3>
+        <div class="modern-timeline" *ngIf="history.length > 0">
+          <div class="timeline-item" *ngFor="let h of history; let last = last" [class.is-last]="last">
+            <div class="timeline-marker" [class.marker-success]="last"></div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <span class="timeline-action">
+                  <fa-icon [icon]="h.icon || 'circle'" [ngStyle]="{'color': h.color || 'var(--mat-sys-primary)'}" class="m-r-5"></fa-icon>
+                  {{ h.action }}
+                </span>
+                <span class="timeline-date">{{ h.date | date:'dd MMM yyyy, HH:mm' }}</span>
+              </div>
+              <div class="timeline-actor"><fa-icon icon="user" class="m-r-5"></fa-icon> {{ h.actor || 'System' }}</div>
+              <div class="timeline-comment" *ngIf="h.comments">"{{ h.comments }}"</div>
+            </div>
+          </div>
+        </div>
+        <p class="text-muted text-center" *ngIf="history.length === 0">Loading history...</p>
+      </div>
+    </div>
+
+    <!-- Right Column (Documents & Actions) -->
+    <div class="profile-column-right">
+      <!-- Quick Actions -->
+      <div class="modern-card">
+        <h3 class="card-title"><fa-icon icon="bolt" class="text-primary m-r-5"></fa-icon> Quick Actions</h3>
+        <div class="quick-actions-grid" *ngIf="kycCase.workflowStatusId < 500 && kycCase.assignedAgentId; else noActions">
+          <button mat-stroked-button class="action-btn full-width" (click)="updateWorkflow(200)">
+            <fa-icon icon="check-circle" class="m-r-5 text-success"></fa-icon> Mark Compliant
+          </button>
+          <button mat-stroked-button class="action-btn full-width" (click)="updateWorkflow(500)">
+            <fa-icon icon="times-circle" class="m-r-5 text-danger"></fa-icon> Reject Case
+          </button>
+          <button mat-stroked-button class="action-btn full-width" (click)="updateWorkflow(600)">
+            <fa-icon icon="lock" class="m-r-5 text-muted"></fa-icon> Close Case
+          </button>
+        </div>
+        <ng-template #noActions>
+          <div class="alert-box" *ngIf="!kycCase.assignedAgentId && kycCase.workflowStatusId < 500">
+            Assign the case to yourself to enable actions.
+          </div>
+          <div class="alert-box alert-danger" *ngIf="kycCase.workflowStatusId === 500">
+            Case is currently REJECTED.
+          </div>
+          <div class="alert-box alert-secondary" *ngIf="kycCase.workflowStatusId === 600">
+            Case is currently CLOSED.
+          </div>
+          <button mat-stroked-button color="primary" class="full-width m-t-10" *ngIf="kycCase.workflowStatusId === 500" (click)="updateWorkflow(100)">
+            <fa-icon icon="undo" class="m-r-5"></fa-icon> Reopen Case
+          </button>
+        </ng-template>
+      </div>
+
+      <!-- Submitted Documents -->
+      <div class="modern-card">
+        <h3 class="card-title"><fa-icon icon="paperclip" class="text-muted m-r-5"></fa-icon> Submitted Documents</h3>
+        <p class="text-muted" *ngIf="!kycCase.documents || kycCase.documents.length === 0">No documents submitted.</p>
+
+        <div class="doc-list" *ngIf="kycCase.documents && kycCase.documents.length > 0">
+          <div class="doc-item" *ngFor="let doc of kycCase.documents">
+            <div class="doc-info">
+              <span class="doc-name">
+                {{ doc?.documentTypeName || 'Document' }}
+                <span *ngIf="doc && isDocumentNew(doc)" class="badge-new-inline">NEW</span>
+              </span>
+              <div class="doc-meta">
+                <span>ID: {{ doc?.documentNumber || 'N/A' }}</span>
+                <span *ngIf="doc?.expiryDate">&bull; Exp: {{ doc?.expiryDate | date:'shortDate' }}</span>
+              </div>
+              <div class="doc-remarks" *ngIf="doc?.verificationStatus?.id === 400 && doc?.remarks">
+                <fa-icon icon="exclamation-circle" class="text-danger m-r-5"></fa-icon> 
+                <span class="text-muted" style="font-size: 11px; font-style: italic;">Motif : {{ doc.remarks }}</span>
+              </div>
+              <div class="doc-badges">
+                <span class="status-pill-sm" [ngClass]="'pill-' + doc?.verificationStatus?.id">{{ doc?.verificationStatus?.value || 'Pending' }}</span>
+                <span *ngIf="doc && isDocumentExpired(doc)" class="badge-expired">EXPIRED</span>
+              </div>
+            </div>
+            <div class="doc-actions" *ngIf="doc">
+              <button mat-icon-button color="primary" matTooltip="Preview" (click)="viewDocument(doc)">
+                <fa-icon icon="eye"></fa-icon>
+              </button>
+              <ng-container *ngIf="doc?.verificationStatus?.id === 300 || doc?.verificationStatus?.id === 400; else evaluateBtns">
+                <button mat-icon-button color="accent" matTooltip="Re-evaluate" (click)="updateDocumentStatus(doc, 200)">
+                  <fa-icon icon="undo"></fa-icon>
+                </button>
+              </ng-container>
+              <ng-template #evaluateBtns>
+                <button mat-icon-button class="text-success" matTooltip="Approve" (click)="updateDocumentStatus(doc, 300)" [disabled]="isDocumentExpired(doc)">
+                  <fa-icon icon="check"></fa-icon>
+                </button>
+                <button mat-icon-button class="text-danger" matTooltip="Reject" (click)="updateDocumentStatus(doc, 400)">
+                  <fa-icon icon="times"></fa-icon>
+                </button>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LightGallery root -->
+<div #lightboxRoot></div>

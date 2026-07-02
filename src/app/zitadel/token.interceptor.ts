@@ -23,9 +23,18 @@ export class TokenInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.authService.getAccessToken();
     let headersConfig: { [key: string]: string } = {
-      'Fineract-Platform-TenantId': this.FINERACT_PLATFORM_TENANT_IDENTIFIER,
-      'Content-Type': req.headers.get('Content-Type') || 'application/json'
+      'Fineract-Platform-TenantId': this.FINERACT_PLATFORM_TENANT_IDENTIFIER
     };
+    
+    const isFormData = req.body instanceof FormData || (req.body && typeof req.body.append === 'function');
+    
+    // N'ajouter application/json que si ce n'est pas un FormData
+    if (!isFormData) {
+      headersConfig['Content-Type'] = req.headers.get('Content-Type') || 'application/json';
+    } else if (req.headers.has('Content-Type')) {
+      headersConfig['Content-Type'] = req.headers.get('Content-Type') as string;
+    }
+
     const publicEndpoints = [
       '/auth/test',
       '/health'
@@ -53,12 +62,19 @@ export class TokenInterceptor implements HttpInterceptor {
       await this.authService.refreshToken();
       const newToken = this.authService.getAccessToken();
       if (newToken) {
-        const retriedReq = request.clone({
-          setHeaders: {
+        let retryHeaders: { [key: string]: string } = {
             Authorization: `Bearer ${newToken}`,
-            'Fineract-Platform-TenantId': this.FINERACT_PLATFORM_TENANT_IDENTIFIER,
-            'Content-Type': request.headers.get('Content-Type') || 'application/json'
-          }
+            'Fineract-Platform-TenantId': this.FINERACT_PLATFORM_TENANT_IDENTIFIER
+        };
+        const isRetriedFormData = request.body instanceof FormData || (request.body && typeof request.body.append === 'function');
+        if (!isRetriedFormData) {
+          retryHeaders['Content-Type'] = request.headers.get('Content-Type') || 'application/json';
+        } else if (request.headers.has('Content-Type')) {
+          retryHeaders['Content-Type'] = request.headers.get('Content-Type') as string;
+        }
+
+        const retriedReq = request.clone({
+          setHeaders: retryHeaders
         });
         return next.handle(retriedReq).toPromise() as Promise<HttpEvent<any>>;
       } else {

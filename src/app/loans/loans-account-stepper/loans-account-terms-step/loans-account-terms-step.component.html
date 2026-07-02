@@ -27,17 +27,23 @@
     @if (loanProductService.isWorkingCapital) {
       <mat-form-field class="flex-48">
         <mat-label>{{ 'labels.inputs.Total Payment' | translate }} {{ 'labels.inputs.Volume' | translate }}</mat-label>
-        <input type="number" matInput required formControlName="totalPayment" />
+        <input type="number" matInput mifosxPositiveNumber min="0" required formControlName="totalPayment" />
+        @if (loansAccountTermsForm.controls.totalPayment.hasError('highAmountValue')) {
+          <mat-error>
+            {{ 'labels.inputs.Total Payment' | translate }} {{ 'labels.commons.is' | translate }}
+            <strong>{{ 'labels.commons.higher than allowed' | translate }}</strong>
+          </mat-error>
+        }
       </mat-form-field>
 
-      <mat-form-field class="flex-48">
+      <mat-form-field class="flex-23">
         <mat-label>{{ 'labels.inputs.Discount' | translate }}</mat-label>
-        <input type="number" matInput formControlName="discount" />
+        <input type="number" matInput mifosxPositiveNumber min="0" formControlName="discount" />
       </mat-form-field>
 
-      <mat-form-field class="flex-28">
+      <mat-form-field class="flex-23">
         <mat-label>{{ 'labels.inputs.Period Payment Rate' | translate }}</mat-label>
-        <input type="number" matInput formControlName="periodPaymentRate" />
+        <input type="number" matInput mifosxPositiveNumber min="0" formControlName="periodPaymentRate" />
       </mat-form-field>
 
       <mat-form-field class="flex-23">
@@ -46,6 +52,8 @@
           type="number"
           matInput
           required
+          mifosxPositiveNumber
+          min="1"
           formControlName="repaymentEvery"
           matTooltip="{{ 'tooltips.Fields are input to calculating the repayment schedule' | translate }}"
         />
@@ -67,12 +75,72 @@
           }
         </mat-select>
       </mat-form-field>
+
+      <mat-form-field class="flex-23">
+        <mat-label>{{ 'labels.inputs.Delinquency Grace Days' | translate }}</mat-label>
+        <input type="number" min="0" matInput formControlName="delinquencyGraceDays" />
+      </mat-form-field>
+
+      <mat-form-field class="flex-23">
+        <mat-label>{{ 'labels.inputs.Delinquency Start Type' | translate }}</mat-label>
+        <mat-select formControlName="delinquencyStartType">
+          @for (delinquencyStartType of delinquencyStartTypeOptions; track delinquencyStartType) {
+            <mat-option [value]="delinquencyStartType.id">
+              {{ delinquencyStartType.value | translateKey: 'catalogs' }}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="flex-48">
+        <mat-label>{{ 'labels.inputs.Breach' | translate }}</mat-label>
+        <mat-select formControlName="breachId" class="breach-id-select" panelClass="breach-select-panel">
+          <mat-select-trigger>
+            @if (selectedBreach) {
+              <mifosx-breach-display [singleRow]="true" [breach]="selectedBreach" />
+            }
+          </mat-select-trigger>
+          @for (breach of breachOptions; track breach) {
+            <mat-option [value]="breach.id">
+              <mifosx-breach-display [singleRow]="true" [breach]="breach" />
+            </mat-option>
+          }
+        </mat-select>
+        @if (loansAccountTermsForm.controls.breachId) {
+          <button matSuffix mat-icon-button aria-label="Clear" (click)="clearProperty($event, 'breachId')">
+            <fa-icon icon="close" size="md"></fa-icon>
+          </button>
+        }
+      </mat-form-field>
+
+      @if (loansAccountTermsForm.value.breachId) {
+        <mat-form-field class="flex-48">
+          <mat-label>{{ 'labels.inputs.Near Breach' | translate }}</mat-label>
+          <mat-select formControlName="nearBreachId" class="breach-id-select" panelClass="breach-select-panel">
+            <mat-select-trigger>
+              @if (selectedNearBreach) {
+                <mifosx-breach-display [singleRow]="true" [nearBreach]="selectedNearBreach" />
+              }
+            </mat-select-trigger>
+            @for (nearBreach of nearBreachOptions; track nearBreach) {
+              <mat-option [value]="nearBreach.id">
+                <mifosx-breach-display [singleRow]="true" [nearBreach]="nearBreach" />
+              </mat-option>
+            }
+          </mat-select>
+          @if (loansAccountTermsForm.controls.nearBreachId) {
+            <button matSuffix mat-icon-button aria-label="Clear" (click)="clearProperty($event, 'nearBreachId')">
+              <fa-icon icon="close" size="md"></fa-icon>
+            </button>
+          }
+        </mat-form-field>
+      }
     }
 
     @if (loanProductService.isLoanProduct) {
       <mat-form-field class="flex-fill flex-23">
         <mat-label>{{ 'labels.inputs.Loan Term' | translate }}</mat-label>
-        <input type="number" matInput required formControlName="loanTermFrequency" />
+        <input type="number" matInput required formControlName="loanTermFrequency" min="0" />
         @if (loansAccountTermsForm.controls.loanTermFrequency.hasError('required')) {
           <mat-error>
             {{ 'labels.inputs.Loan Term' | translate }} {{ 'labels.commons.is' | translate }}
@@ -117,7 +185,9 @@
         <input
           type="number"
           matInput
+          required
           formControlName="numberOfRepayments"
+          min="0"
           matTooltip="{{ 'tooltips.Enter the total count of repayments' | translate }}"
         />
         @if (loansAccountTermsForm.controls.numberOfRepayments.hasError('required')) {
@@ -178,6 +248,7 @@
           matInput
           required
           formControlName="repaymentEvery"
+          min="0"
           matTooltip="{{ 'tooltips.Fields are input to calculating the repayment schedule' | translate }}"
         />
         @if (loansAccountTermsForm.controls.repaymentEvery.hasError('required')) {
@@ -247,7 +318,7 @@
       @if (!loansAccountTermsData?.isLoanProductLinkedToFloatingRate) {
         <mat-form-field class="flex-fill flex-23">
           <mat-label>{{ 'labels.inputs.Nominal interest rate' | translate }} %</mat-label>
-          <input type="number" matInput formControlName="interestRatePerPeriod" />
+          <input type="number" matInput formControlName="interestRatePerPeriod" min="0.01" step="0.01" />
         </mat-form-field>
         <mat-form-field class="flex-fill flex-23">
           <mat-label>{{ 'labels.inputs.Frequency' | translate }}</mat-label>
@@ -428,6 +499,7 @@
           matInput
           type="number"
           formControlName="inArrearsTolerance"
+          min="0"
           matTooltip="{{ 'tooltips.With Arrears tolerance' | translate }}"
         />
       </mat-form-field>
@@ -436,7 +508,9 @@
         <mat-label>{{ 'labels.inputs.Interest free period' | translate }}</mat-label>
         <input
           matInput
+          type="number"
           formControlName="graceOnInterestCharged"
+          min="0"
           matTooltip="{{ 'tooltips.If the Interest Free Period' | translate }}"
         />
       </mat-form-field>
@@ -448,17 +522,17 @@
 
       <mat-form-field class="flex-fill flex-23">
         <mat-label>{{ 'labels.inputs.Grace on principal payment' | translate }}</mat-label>
-        <input type="number" matInput formControlName="graceOnPrincipalPayment" />
+        <input type="number" matInput formControlName="graceOnPrincipalPayment" min="0" />
       </mat-form-field>
 
       <mat-form-field class="flex-fill flex-23">
         <mat-label>{{ 'labels.inputs.Grace on interest payment' | translate }}</mat-label>
-        <input type="number" matInput formControlName="graceOnInterestPayment" />
+        <input type="number" matInput formControlName="graceOnInterestPayment" min="0" />
       </mat-form-field>
 
       <mat-form-field class="flex-48">
         <mat-label>{{ 'labels.inputs.On arrears ageing' | translate }}</mat-label>
-        <input type="number" matInput formControlName="graceOnArrearsAgeing" />
+        <input type="number" matInput formControlName="graceOnArrearsAgeing" min="0" />
       </mat-form-field>
 
       @if (isDelinquencyEnabled()) {
@@ -615,7 +689,7 @@
         <div class="flex-100 layout-row">
           <mat-form-field class="flex-48">
             <mat-label>{{ 'labels.inputs.Maximum allowed outstanding balance' | translate }}</mat-label>
-            <input matInput type="number" formControlName="maxOutstandingLoanBalance" />
+            <input matInput type="number" formControlName="maxOutstandingLoanBalance" min="0" />
             @if (loansAccountTermsForm.controls.maxOutstandingLoanBalance.hasError('required')) {
               <mat-error>
                 {{ 'labels.inputs.Maximum allowed outstanding balance' | translate }}
@@ -791,7 +865,11 @@
       <fa-icon icon="arrow-right" class="m-l-10"></fa-icon>
     </button>
     @if (loanId) {
-      <button mat-raised-button [routerLink]="['../', 'general']">
+      <button
+        mat-raised-button
+        [routerLink]="['../', 'general']"
+        [queryParams]="{ productType: loanProductService.productType.value }"
+      >
         {{ 'labels.buttons.Cancel' | translate }}
       </button>
     }

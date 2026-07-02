@@ -18,6 +18,9 @@ import { AsyncPipe } from '@angular/common';
 import { STANDALONE_SHARED_IMPORTS } from 'app/standalone-shared.module';
 import { DashboardEngineComponent } from 'app/analytics/dashboard-engine/dashboard-engine.component';
 import { GLOBAL_ANALYTICS_DASHBOARD } from 'app/analytics/global-dashboard.config';
+import { KycService } from 'app/kyc/services/kyc.service';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { RouterModule } from '@angular/router';
 
 /**
  * Dashboard component.
@@ -32,7 +35,9 @@ import { GLOBAL_ANALYTICS_DASHBOARD } from 'app/analytics/global-dashboard.confi
     MatAutocompleteTrigger,
     MatAutocomplete,
     DashboardEngineComponent,
-    AsyncPipe
+    AsyncPipe,
+    FaIconComponent,
+    RouterModule
   ]
 })
 export class DashboardComponent implements OnInit {
@@ -49,6 +54,11 @@ export class DashboardComponent implements OnInit {
   /** Office options from resolver */
   offices: any[] = [];
 
+  /** KYC Quick Stats */
+  pendingKyc: number = 0;
+  eddKyc: number = 0;
+  private kycService = inject(KycService);
+
   constructor() {
     this.route.data.subscribe((data: { offices: any[] }) => {
       this.offices = data.offices || [];
@@ -57,6 +67,15 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.setFilteredActivities();
+    this.fetchKycSummary();
+  }
+
+  fetchKycSummary() {
+    this.kycService.getCases().subscribe(data => {
+      const cases = data?.pageItems || data || [];
+      this.pendingKyc = cases.filter((c: any) => c.workflowStatusCode === 'EN_ATTENTE' || c.workflowStatusCode === 'EN_REVISION').length;
+      this.eddKyc = cases.filter((c: any) => c.workflowStatusCode === 'RENFORCE').length;
+    });
   }
 
   /**

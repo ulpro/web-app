@@ -19,6 +19,7 @@ import { ConfigurationWizardService } from '../../../configuration-wizard/config
 
 /** Custom Dialog Component */
 import { ContinueSetupDialogComponent } from '../../../configuration-wizard/continue-setup-dialog/continue-setup-dialog.component';
+import { SyscohadadImportDialogComponent } from '../syscohada-import/syscohada-import.dialog';
 import { GLAccount } from 'app/shared/models/general.model';
 import { GlAccountSelectorComponent } from '../../../shared/accounting/gl-account-selector/gl-account-selector.component';
 import { MatCheckbox } from '@angular/material/checkbox';
@@ -162,6 +163,37 @@ export class CreateGlAccountComponent implements OnInit, AfterViewInit {
           break;
       }
     });
+  }
+
+  /**
+   * Opens SYSCOHADA import dialog.
+   */
+  importFromSYSCOHADA(): void {
+    const dialogRef = this.dialog.open(SyscohadadImportDialogComponent, {
+      width: '600px',
+      maxHeight: '80vh',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        this.populateFormFromSYSCOHADA(result);
+      }
+    });
+  }
+
+  /**
+   * Populates the form with SYSCOHADA account data.
+   */
+  private populateFormFromSYSCOHADA(syscohada: any): void {
+    this.glAccountForm.patchValue({
+      glCode: syscohada.glCode,
+      name: syscohada.name,
+      type: syscohada.type
+    });
+
+    // Mark form as touched to show any validation errors
+    this.glAccountForm.markAsTouched();
   }
 
   /**

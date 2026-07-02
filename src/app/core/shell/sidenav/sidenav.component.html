@@ -146,6 +146,18 @@
           <a matLine>{{ 'labels.menus.Remittances' | translate }}</a>
         </mat-list-item>
         <mat-list-item
+          [routerLink]="['/kyc']"
+          [matTooltipPosition]="tooltipPosition"
+          matTooltip="KYC"
+          routerLinkActive="active-menu"
+          [routerLinkActiveOptions]="{ exact: false }"
+        >
+          <mat-icon matListIcon>
+            <fa-icon icon="id-card" size="sm"></fa-icon>
+          </mat-icon>
+          <a matLine>KYC</a>
+        </mat-list-item>
+        <mat-list-item
           [routerLink]="['/notifications']"
           [matTooltipPosition]="tooltipPosition"
           matTooltip="{{ 'tooltips.Notifications' | translate }}"

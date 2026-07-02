@@ -28,6 +28,12 @@
       {{ 'labels.buttons.Add Account' | translate }}
     </button>
   </div>
+  <div>
+    <button mat-raised-button (click)="importAllSYSCOHADA()" *mifosxHasPermission="'CREATE_GLACCOUNT'">
+      <fa-icon icon="upload" class="m-r-10"></fa-icon>
+      {{ 'labels.buttons.Import' | translate }} SYSCOHADA
+    </button>
+  </div>
 </div>
 
 <!-- List View -->

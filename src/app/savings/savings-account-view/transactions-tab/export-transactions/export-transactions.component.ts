@@ -8,6 +8,7 @@
 
 /** Angular Imports */
 import { Component, OnInit, inject } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UntypedFormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -49,8 +50,10 @@ export class ExportTransactionsComponent implements OnInit {
   hideOutput = true;
   /** trusted resource url for pentaho output */
   pentahoUrl: any;
-  /** Savings Account Id */
-  savingsAccountId: any;
+  /** Savings account number required by Pentaho template (R_accountNo). */
+  savingsAccountNo: string;
+  /** Office id used by legacy Pentaho templates (R_OfficeId). */
+  officeId: number | null = null;
 
   /**
    * Fetches savings account data from grandparent's `resolve`
@@ -63,7 +66,8 @@ export class ExportTransactionsComponent implements OnInit {
    */
   constructor() {
     this.route.parent.parent.data.subscribe((data: { savingsAccountData: any }) => {
-      this.savingsAccountId = data.savingsAccountData.accountNo;
+      this.savingsAccountNo = data.savingsAccountData.accountNo;
+      this.officeId = data.savingsAccountData.officeId ?? null;
     });
   }
 
@@ -92,23 +96,19 @@ export class ExportTransactionsComponent implements OnInit {
    * Generates client savings transactions report.
    */
   generate() {
-    const data = {
+    const enDatePipe = new DatePipe('en-US');
+    const dateFormat = this.settingsService.dateFormat;
+    const data: any = {
       'output-type': 'PDF',
-      R_startDate: this.dateUtils.formatDate(
-        this.transactionsReportForm.value.fromDate,
-        this.settingsService.dateFormat
-      ),
-      R_endDate: this.dateUtils.formatDate(this.transactionsReportForm.value.toDate, this.settingsService.dateFormat),
-      R_savingsAccountId: this.savingsAccountId
+      R_startDate: enDatePipe.transform(this.transactionsReportForm.value.fromDate, dateFormat),
+      R_endDate: enDatePipe.transform(this.transactionsReportForm.value.toDate, dateFormat),
+      R_accountNo: this.savingsAccountNo
     };
+    if (this.officeId !== null) {
+      data.R_OfficeId = this.officeId;
+    }
     this.reportsService
-      .getPentahoRunReportData(
-        'Client Saving Transactions',
-        data,
-        'default',
-        this.settingsService.language.code,
-        this.settingsService.dateFormat
-      )
+      .getPentahoRunReportData('Client Saving Transactions', data, 'default', 'en', this.settingsService.dateFormat)
       .subscribe((res: any) => {
         const contentType = res.headers.get('Content-Type');
         const file = new Blob([res.body], { type: contentType });

@@ -133,17 +133,19 @@ export class CollectionSheetComponent implements OnInit {
       .subscribe((response: CollectionSheetData[]) => {
         if (response.length > 0) {
           this.meetingFallCenters = response[0].meetingFallCenters;
-          const payload = {
-            calendarId: this.meetingFallCenters[0].collectionMeetingCalendar.calendarInstanceId,
-            transactionDate: meetingDate,
-            locale,
-            dateFormat
-          };
-          this.collectionsService
-            .generateCollectionSheetData(this.meetingFallCenters[0].id, payload)
-            .subscribe((jlgGroupData: JLGGroupData) => {
-              this.log.debug('JLG Group Data:', jlgGroupData);
-            });
+          if (this.meetingFallCenters?.length > 0) {
+            const payload = {
+              calendarId: this.meetingFallCenters[0].collectionMeetingCalendar?.calendarInstanceId,
+              transactionDate: meetingDate,
+              locale,
+              dateFormat
+            };
+            this.collectionsService
+              .generateCollectionSheetData(this.meetingFallCenters[0].id, payload)
+              .subscribe((jlgGroupData: JLGGroupData) => {
+                this.log.debug('JLG Group Data:', jlgGroupData);
+              });
+          }
         }
       });
   }

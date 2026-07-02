@@ -1,0 +1,8 @@
+
+> mifosx-web-app@1.0.0 start
+> npm run env -s && ng serve --proxy-config proxy.conf.js
+
+'\\wsl.localhost\Ubuntu\home\fressie\Neobt\web-app'
+CMD.EXE a ‚t‚ d‚marr‚ avec le chemin d'accŠs comme r‚pertoire en
+cours. Les chemins d'accŠs UNC ne sont pas prise en charge. Utilisation
+du r‚pertoire Windows par d‚faut.

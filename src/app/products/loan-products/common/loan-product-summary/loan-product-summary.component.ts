@@ -7,7 +7,7 @@
  */
 
 import { Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
-import { DelinquencyBucket, LoanProduct } from '../../models/loan-product.model';
+import { Breach, DelinquencyBucket, LoanProduct, NearBreach } from '../../models/loan-product.model';
 import {
   AccountingMapping,
   Charge,
@@ -52,6 +52,7 @@ import { YesnoPipe } from '../../../../pipes/yesno.pipe';
 import { STANDALONE_SHARED_IMPORTS } from 'app/standalone-shared.module';
 import { LoanProductService } from '../../services/loan-product.service';
 import { LoanProductBaseComponent } from '../loan-product-base.component';
+import { BreachDisplayComponent } from 'app/shared/loan/breach-display/breach-display.component';
 
 @Component({
   selector: 'mifosx-loan-product-summary',
@@ -77,7 +78,8 @@ import { LoanProductBaseComponent } from '../loan-product-base.component';
     ChargesPenaltyFilterPipe,
     DateFormatPipe,
     FormatNumberPipe,
-    YesnoPipe
+    YesnoPipe,
+    BreachDisplayComponent
   ]
 })
 export class LoanProductSummaryComponent extends LoanProductBaseComponent implements OnInit, OnChanges {
@@ -536,6 +538,16 @@ export class LoanProductSummaryComponent extends LoanProductBaseComponent implem
           };
         }
       }
+
+      if (this.loanProductService.isWorkingCapital) {
+        /*
+        let optionValue: OptionData = this.optionDataLookUp(
+          this.loanProduct.nearBreach.frequencyType,
+          this.loanProductsTemplate.periodFrequencyTypeOptions
+        );
+        this.loanProduct.nearBreachEvalFrequencyType = optionValue;
+        */
+      }
     }
   }
 
@@ -673,11 +685,37 @@ export class LoanProductSummaryComponent extends LoanProductBaseComponent implem
     );
   }
 
+  enableNearBreach(): boolean {
+    return this.loanProductService.isWorkingCapital && this.getNearBreach() !== null;
+  }
+
   getAccountingRuleName(value: string): string {
     return this.loanProductService.isWorkingCapital ? '' : this.accounting.getAccountRuleName(value.toUpperCase());
   }
 
   mapHumanReadableValueStringEnumOptionDataList(incomingParameter: StringEnumOptionData[]): string[] {
     return incomingParameter.map((v) => v.value);
+  }
+
+  getBreach(): Breach | null {
+    if (this.loanProduct.breach) {
+      return this.loanProduct.breach;
+    }
+    if (this.loanProduct.breachId === null || this.loanProduct.breachId === undefined) {
+      return null;
+    }
+    return this.loanProductsTemplate.breachOptions?.find((b: Breach) => b.id === this.loanProduct.breachId) || null;
+  }
+
+  getNearBreach(): NearBreach | null {
+    if (this.loanProduct.nearBreach) {
+      return this.loanProduct.nearBreach;
+    }
+    if (this.loanProduct.nearBreachId === null || this.loanProduct.nearBreachId === undefined) {
+      return null;
+    }
+    return (
+      this.loanProductsTemplate.nearBreachOptions?.find((b: Breach) => b.id === this.loanProduct.nearBreachId) || null
+    );
   }
 }

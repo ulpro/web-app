@@ -15,7 +15,7 @@
         matTooltip="{{ 'tooltips.The currency to be used' | translate }}"
         required
       >
-        @for (currency of currencyData; track currency) {
+        @for (currency of currencyData; track currency.code) {
           <mat-option [value]="currency.code">
             {{ currency.name }}
           </mat-option>

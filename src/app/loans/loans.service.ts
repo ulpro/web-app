@@ -16,6 +16,13 @@ import { Dates } from 'app/core/utils/dates';
 import { SettingsService } from 'app/settings/settings.service';
 import { DisbursementData } from './models/loan-account.model';
 
+export interface WorkingCapitalLoanDiscountUpdateRequest {
+  discountAmount: number;
+  note?: string;
+  locale: string;
+  dateFormat: string;
+}
+
 /**
  * Loans service.
  */
@@ -103,8 +110,8 @@ export class LoansService {
     return this.http.delete(`/loans/${loanId}`);
   }
 
-  getDelinquencyTags(loanId: string): Observable<any> {
-    return this.http.get(`/loans/${loanId}/delinquencytags`);
+  getDelinquencyTags(productType: string, loanId: string): Observable<any> {
+    return this.http.get(`/${productType}/${loanId}/delinquencytags`);
   }
 
   getDelinquencyData(loanId: string) {
@@ -122,8 +129,8 @@ export class LoansService {
     return this.http.get(`/loans/${loanId}`, { params: httpParams });
   }
 
-  getDelinquencyActions(loanId: string) {
-    return this.http.get(`/loans/${loanId}/delinquency-actions`);
+  getDelinquencyActions(productType: string, loanId: string) {
+    return this.http.get(`/${productType}/${loanId}/delinquency-actions`);
   }
 
   createDelinquencyActions(loanId: string, delinquencyActions: any) {
@@ -203,7 +210,7 @@ export class LoansService {
     return this.http.get(`/loans/${loanId}`, { params: httpParams });
   }
 
-  getWorkingCapitalLoannDetails(loanId: string) {
+  getWorkingCapitalLoanDetails(loanId: string) {
     const httpParams = new HttpParams().set('associations', 'all');
     return this.http.get(`/working-capital-loans/${loanId}`, { params: httpParams });
   }
@@ -536,8 +543,8 @@ export class LoansService {
     return this.http.get(`/standinginstructions`, { params: httpParams });
   }
 
-  updateLoansAccount(loanId: any, loanData: any): Observable<any> {
-    return this.http.put(`/loans/${loanId}`, loanData);
+  updateLoansAccount(productType: string, loanId: any, loanData: any): Observable<any> {
+    return this.http.put(`/${productType}/${loanId}`, loanData);
   }
 
   getTemplateData(templateId: any, loanId: any): Observable<any> {
@@ -558,6 +565,13 @@ export class LoansService {
   getWorkingCapitalLoanActionTemplate(loanId: string, actionName: string): Observable<any> {
     const httpParams = new HttpParams().set('templateType', actionName);
     return this.http.get(`/working-capital-loans/${loanId}/template`, { params: httpParams });
+  }
+
+  updateWorkingCapitalLoanDiscount(
+    loanId: string | number,
+    data: WorkingCapitalLoanDiscountUpdateRequest
+  ): Observable<any> {
+    return this.http.put(`/working-capital-loans/${loanId}/discount`, data);
   }
 
   guarantorAccountResource(loanId: string, clientId: any): Observable<any> {

@@ -13,6 +13,7 @@ import { FormatNumberPipe } from '../../../pipes/format-number.pipe';
 import { YesnoPipe } from '../../../pipes/yesno.pipe';
 import { STANDALONE_SHARED_IMPORTS } from 'app/standalone-shared.module';
 import { LoanProductBaseComponent } from 'app/products/loan-products/common/loan-product-base.component';
+import { BreachDisplayComponent } from 'app/shared/loan/breach-display/breach-display.component';
 
 @Component({
   selector: 'mifosx-account-details',
@@ -22,7 +23,8 @@ import { LoanProductBaseComponent } from 'app/products/loan-products/common/loan
     ...STANDALONE_SHARED_IMPORTS,
     DateFormatPipe,
     FormatNumberPipe,
-    YesnoPipe
+    YesnoPipe,
+    BreachDisplayComponent
   ]
 })
 export class AccountDetailsComponent extends LoanProductBaseComponent {
