@@ -34,6 +34,18 @@
       {{ 'labels.buttons.Import' | translate }} SYSCOHADA
     </button>
   </div>
+  <div>
+    <button mat-raised-button (click)="importAllCEMAC()" *mifosxHasPermission="'CREATE_CEMACCODE'">
+      <fa-icon icon="upload" class="m-r-10"></fa-icon>
+      {{ 'labels.buttons.Import' | translate }} CEMAC
+    </button>
+  </div>
+  <div>
+    <button mat-raised-button color="accent" [routerLink]="['cemac-codes']" *mifosxHasPermission="'READ_CEMACCODE'">
+      <fa-icon icon="eye" class="m-r-10"></fa-icon>
+      Voir CEMAC
+    </button>
+  </div>
 </div>
 
 <!-- List View -->

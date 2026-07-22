@@ -12,6 +12,7 @@ services:
         - NPM_REGISTRY_URL=https://registry.npmjs.org/
         - PUPPETEER_DOWNLOAD_HOST_ARG=https://storage.googleapis.com
         - PUPPETEER_CHROMIUM_REVISION_ARG=1011831
+        - PUPPETEER_SKIP_DOWNLOAD_ARG=true
     ports:
       - '4200:80'
     environment:

@@ -1,0 +1,2753 @@
+[
+    {
+        "cobacCode": "A0A0",
+        "pcemfCode": "101",
+        "libelleCobac": "Capital souscrit non appelé",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A0B0",
+        "pcemfCode": "1011",
+        "libelleCobac": "Capital",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A0C0",
+        "pcemfCode": "1012",
+        "libelleCobac": "Capital non versé",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A0D0",
+        "pcemfCode": "1013",
+        "libelleCobac": "Actionnaires restant dus",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A0E0",
+        "pcemfCode": "1019",
+        "libelleCobac": "Capital souscrit non appelé réseau",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A1A0",
+        "pcemfCode": "111",
+        "libelleCobac": "Réserve légale",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A1B0",
+        "pcemfCode": "112",
+        "libelleCobac": "Réserve statutaire",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A1C0",
+        "pcemfCode": "113",
+        "libelleCobac": "Réserves affectées à des couvertures",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A1D0",
+        "pcemfCode": "114",
+        "libelleCobac": "Réserves facultatives et ordinaires",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A1E0",
+        "pcemfCode": "116",
+        "libelleCobac": "Réserve mutualiste",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A1F0",
+        "pcemfCode": "117",
+        "libelleCobac": "Réserves spéciales",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A1G0",
+        "pcemfCode": "118",
+        "libelleCobac": "Autres réserves",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A2A0",
+        "pcemfCode": "121",
+        "libelleCobac": "Primes d'émission",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A2B0",
+        "pcemfCode": "122",
+        "libelleCobac": "Primes de fusion",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A2C0",
+        "pcemfCode": "123",
+        "libelleCobac": "Primes d'apport",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A2D0",
+        "pcemfCode": "124",
+        "libelleCobac": "Primes de conversion d'obligations en actions",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A3A0",
+        "pcemfCode": "131",
+        "libelleCobac": "Bénéfice de l'exercice",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A3B0",
+        "pcemfCode": "132",
+        "libelleCobac": "Perte de l'exercice",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A3C0",
+        "pcemfCode": "133",
+        "libelleCobac": "Report à nouveau bénéficiaire",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A3D0",
+        "pcemfCode": "134",
+        "libelleCobac": "Report à nouveau déficitaire",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A4A0",
+        "pcemfCode": "141",
+        "libelleCobac": "Subventions d'investissement reçues",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A4B0",
+        "pcemfCode": "142",
+        "libelleCobac": "Amortissements dérogatoires",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A4C0",
+        "pcemfCode": "143",
+        "libelleCobac": "Provisions réglementées relatives aux stocks",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A4D0",
+        "pcemfCode": "144",
+        "libelleCobac": "Provisions réglementées relatives aux autres éléments",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A4E0",
+        "pcemfCode": "145",
+        "libelleCobac": "Provisions spéciales de réévaluation",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A4F0",
+        "pcemfCode": "146",
+        "libelleCobac": "Plus-values de cession à réinvestir",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A5A0",
+        "pcemfCode": "151",
+        "libelleCobac": "Fonds de dotation",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A5B0",
+        "pcemfCode": "153",
+        "libelleCobac": "Fonds d'aide et de garantie",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A5C0",
+        "pcemfCode": "154",
+        "libelleCobac": "Autres fonds",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A6A0",
+        "pcemfCode": "161",
+        "libelleCobac": "Emprunts obligataires",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A6B0",
+        "pcemfCode": "162",
+        "libelleCobac": "Emprunts auprès d'institutions financières",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A6C0",
+        "pcemfCode": "163",
+        "libelleCobac": "Emprunts auprès d'institutions de microfinance",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A6D0",
+        "pcemfCode": "164",
+        "libelleCobac": "Emprunts auprès d'autres créanciers",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A6E0",
+        "pcemfCode": "165",
+        "libelleCobac": "Dettes rattachées aux emprunts",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A7A0",
+        "pcemfCode": "171",
+        "libelleCobac": "Charges à payer sur emprunts à LT",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A7B0",
+        "pcemfCode": "172",
+        "libelleCobac": "Charges à payer sur dettes subordonnées",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A8A0",
+        "pcemfCode": "181",
+        "libelleCobac": "Emprunts participatifs",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A8B0",
+        "pcemfCode": "182",
+        "libelleCobac": "Dettes subordonnées",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A8C0",
+        "pcemfCode": "1821",
+        "libelleCobac": "Comptes bloqués actionnaires",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A8D0",
+        "pcemfCode": "1822",
+        "libelleCobac": "Comptes bloqués associés (1ère catégorie)",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A8E0",
+        "pcemfCode": "1823",
+        "libelleCobac": "Comptes bloqués EMF affiliés",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A8F0",
+        "pcemfCode": "1831",
+        "libelleCobac": "Ligne de financement reçue de l'Etat assortie d'une clause",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A8G0",
+        "pcemfCode": "1832",
+        "libelleCobac": "Ligne de financement reçue d'organismes assortie d'une clause",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A8H0",
+        "pcemfCode": "1833",
+        "libelleCobac": "Autres comptes bloqués",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A8I0",
+        "pcemfCode": "184",
+        "libelleCobac": "Titres de créances négociables",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A8J0",
+        "pcemfCode": "1851",
+        "libelleCobac": "Emprunt LT",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A8K0",
+        "pcemfCode": "1852",
+        "libelleCobac": "Emprunt MT",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A8L0",
+        "pcemfCode": "186",
+        "libelleCobac": "Dettes de crédit-bail et contrats assimilés",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A8M0",
+        "pcemfCode": "1860",
+        "libelleCobac": "Emprunts équivalents de crédit-bail mobilier",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A8N0",
+        "pcemfCode": "1861",
+        "libelleCobac": "Emprunts équivalents de crédit-bail immobilier",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A8O0",
+        "pcemfCode": "1862",
+        "libelleCobac": "Emprunts équivalents - autres contrats",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A8P0",
+        "pcemfCode": "187",
+        "libelleCobac": "Dépôts et cautionnements non commerciaux reçus",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A8Q0",
+        "pcemfCode": "1870",
+        "libelleCobac": "Dépôts de garantie reçus",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A8R0",
+        "pcemfCode": "1871",
+        "libelleCobac": "Cautionnements reçus",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A8S0",
+        "pcemfCode": "188",
+        "libelleCobac": "Dettes rattachées aux emprunts à LT et MT",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A9A0",
+        "pcemfCode": "190",
+        "libelleCobac": "Provisions pour risques généraux",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A9B0",
+        "pcemfCode": "1901",
+        "libelleCobac": "Provisions pour risques bancaires généraux",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A9C0",
+        "pcemfCode": "1902",
+        "libelleCobac": "Autres provisions pour risques généraux",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A9D0",
+        "pcemfCode": "191",
+        "libelleCobac": "Provisions pour charges",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "A9E0",
+        "pcemfCode": "1911",
+        "libelleCobac": "Provisions pour litiges en cours",
+        "classePcemf": 1,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B0A0",
+        "pcemfCode": "201",
+        "libelleCobac": "Frais d'établissement",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B0B0",
+        "pcemfCode": "202",
+        "libelleCobac": "Frais de recherche et de développement",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B0C0",
+        "pcemfCode": "203",
+        "libelleCobac": "Logiciels informatiques",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B0D0",
+        "pcemfCode": "204",
+        "libelleCobac": "Brevets, licences, marques, droits et valeurs similaires",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B0E0",
+        "pcemfCode": "205",
+        "libelleCobac": "Fonds commercial et droit au bail",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B0F0",
+        "pcemfCode": "206",
+        "libelleCobac": "Autres immobilisations incorporelles",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B0G0",
+        "pcemfCode": "209",
+        "libelleCobac": "Immobilisations incorporelles en cours",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B1A0",
+        "pcemfCode": "211",
+        "libelleCobac": "Amortissements frais d'établissement",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B1B0",
+        "pcemfCode": "212",
+        "libelleCobac": "Amortissements frais de recherche et développement",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B1C0",
+        "pcemfCode": "213",
+        "libelleCobac": "Amortissements logiciels informatiques",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B1D0",
+        "pcemfCode": "214",
+        "libelleCobac": "Amortissements brevets, licences et droits",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B1E0",
+        "pcemfCode": "215",
+        "libelleCobac": "Amortissements fonds commercial et droit au bail",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B1F0",
+        "pcemfCode": "216",
+        "libelleCobac": "Amortissements autres immobilisations incorporelles",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B2A0",
+        "pcemfCode": "221",
+        "libelleCobac": "Immeubles affectés au crédit-bail et location avec option d'achat",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B2B0",
+        "pcemfCode": "222",
+        "libelleCobac": "Immeubles destinés au crédit-bail",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B2C0",
+        "pcemfCode": "223",
+        "libelleCobac": "Matériel affecté au crédit-bail",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B2D0",
+        "pcemfCode": "224",
+        "libelleCobac": "Matériel destiné au crédit-bail",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B2E0",
+        "pcemfCode": "225",
+        "libelleCobac": "Autres biens affectés au crédit-bail",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B2F0",
+        "pcemfCode": "231",
+        "libelleCobac": "Amortissements immeubles affectés au crédit-bail",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B2G0",
+        "pcemfCode": "232",
+        "libelleCobac": "Amortissements immeubles destinés au crédit-bail",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B2H0",
+        "pcemfCode": "233",
+        "libelleCobac": "Amortissements matériel affecté au crédit-bail",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B3A0",
+        "pcemfCode": "237",
+        "libelleCobac": "Matériel et mobilier affecté au crédit-bail (preneur)",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B3B0",
+        "pcemfCode": "243",
+        "libelleCobac": "Avances et acomptes sur immob. destinés au crédit-bail",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B3C0",
+        "pcemfCode": "247",
+        "libelleCobac": "Avances et acomptes sur matériel et mobilier crédit-bail",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B4A0",
+        "pcemfCode": "251",
+        "libelleCobac": "Terrains",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B4B0",
+        "pcemfCode": "261",
+        "libelleCobac": "Immeubles d'exploitation",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B4C0",
+        "pcemfCode": "262",
+        "libelleCobac": "Immeubles en cours",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B4D0",
+        "pcemfCode": "263",
+        "libelleCobac": "Mobilier d'exploitation",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B4E0",
+        "pcemfCode": "264",
+        "libelleCobac": "Matériel informatique",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B4F0",
+        "pcemfCode": "265",
+        "libelleCobac": "Matériel de transport",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B4G0",
+        "pcemfCode": "266",
+        "libelleCobac": "Autres matériels",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B4H0",
+        "pcemfCode": "271",
+        "libelleCobac": "Amortissements immeubles d'exploitation",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B4I0",
+        "pcemfCode": "272",
+        "libelleCobac": "Amortissements mobilier d'exploitation",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B4J0",
+        "pcemfCode": "273",
+        "libelleCobac": "Amortissements matériel informatique",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B4K0",
+        "pcemfCode": "274",
+        "libelleCobac": "Amortissements matériel de transport",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B4L0",
+        "pcemfCode": "275",
+        "libelleCobac": "Amortissements autres matériels",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B5A0",
+        "pcemfCode": "291",
+        "libelleCobac": "Terrains immobilisations financières",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B5B0",
+        "pcemfCode": "2921",
+        "libelleCobac": "Immeubles d'exploitation",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B5C0",
+        "pcemfCode": "2922",
+        "libelleCobac": "Immeubles en location simple",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B5D0",
+        "pcemfCode": "2925",
+        "libelleCobac": "Matériel et mobilier d'exploitation",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B5E0",
+        "pcemfCode": "2929",
+        "libelleCobac": "Autres immobilisations corporelles",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B5F0",
+        "pcemfCode": "2951",
+        "libelleCobac": "Dépôts de garantie",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B5G0",
+        "pcemfCode": "2952",
+        "libelleCobac": "Cautionnements",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B5H0",
+        "pcemfCode": "2962",
+        "libelleCobac": "Actions et parts d'établissements de crédit",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B5I0",
+        "pcemfCode": "2963",
+        "libelleCobac": "Autres titres de participation",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B5J0",
+        "pcemfCode": "2964",
+        "libelleCobac": "Titres de l'activité de portefeuille",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B5K0",
+        "pcemfCode": "2965",
+        "libelleCobac": "Titres d'investissement",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B5L0",
+        "pcemfCode": "2971",
+        "libelleCobac": "Titres publics et assimilés",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B5M0",
+        "pcemfCode": "2972",
+        "libelleCobac": "Autres prêts et titres publics",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "B5N0",
+        "pcemfCode": "2973",
+        "libelleCobac": "Prêts et titres impayés",
+        "classePcemf": 2,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C0A0",
+        "pcemfCode": "301",
+        "libelleCobac": "Crédits à court terme (≤ 1 an)",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C0B0",
+        "pcemfCode": "302",
+        "libelleCobac": "Crédits à moyen terme (1 à 5 ans)",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C0C0",
+        "pcemfCode": "303",
+        "libelleCobac": "Crédits à long terme (> 5 ans)",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C0D0",
+        "pcemfCode": "304",
+        "libelleCobac": "Crédits de campagne",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C0E0",
+        "pcemfCode": "305",
+        "libelleCobac": "Crédits sur stocks nantis",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C0F0",
+        "pcemfCode": "306",
+        "libelleCobac": "Autres crédits aux membres/clients",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C0G0",
+        "pcemfCode": "307",
+        "libelleCobac": "Créances sur crédit-bail",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C0H0",
+        "pcemfCode": "309",
+        "libelleCobac": "Autres créances sur la clientèle",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C1A0",
+        "pcemfCode": "311",
+        "libelleCobac": "Créances douteuses à court terme",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C1B0",
+        "pcemfCode": "312",
+        "libelleCobac": "Créances douteuses à moyen terme",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C1C0",
+        "pcemfCode": "313",
+        "libelleCobac": "Créances douteuses à long terme",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C2A0",
+        "pcemfCode": "321",
+        "libelleCobac": "Intérêts à recevoir sur crédits CT",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C2B0",
+        "pcemfCode": "322",
+        "libelleCobac": "Intérêts à recevoir sur crédits MT",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C2C0",
+        "pcemfCode": "323",
+        "libelleCobac": "Intérêts à recevoir sur crédits LT",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C3A0",
+        "pcemfCode": "331",
+        "libelleCobac": "Provisions sur créances douteuses CT",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C3B0",
+        "pcemfCode": "332",
+        "libelleCobac": "Provisions sur créances douteuses MT",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C3C0",
+        "pcemfCode": "333",
+        "libelleCobac": "Provisions sur créances douteuses LT",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C3D0",
+        "pcemfCode": "336",
+        "libelleCobac": "Créances impayées sur crédit-bail",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C3E0",
+        "pcemfCode": "337",
+        "libelleCobac": "Créances douteuses sur crédit-bail",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C4A0",
+        "pcemfCode": "401",
+        "libelleCobac": "Dépôts à vue des membres/clients",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "C4B0",
+        "pcemfCode": "4011",
+        "libelleCobac": "Comptes courants créditeurs",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "C4C0",
+        "pcemfCode": "4012",
+        "libelleCobac": "Comptes d'épargne à vue",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "C4D0",
+        "pcemfCode": "4013",
+        "libelleCobac": "Comptes de dépôts ordinaires",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "C4E0",
+        "pcemfCode": "402",
+        "libelleCobac": "Dépôts à terme des membres/clients",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "C4F0",
+        "pcemfCode": "4021",
+        "libelleCobac": "Dépôts à terme",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "C4G0",
+        "pcemfCode": "4022",
+        "libelleCobac": "Bons de caisse",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "C4H0",
+        "pcemfCode": "403",
+        "libelleCobac": "Comptes de dépôts à régime spécial",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "C4I0",
+        "pcemfCode": "4031",
+        "libelleCobac": "Plans d'épargne",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "C4J0",
+        "pcemfCode": "4032",
+        "libelleCobac": "Comptes sur livrets",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "C4K0",
+        "pcemfCode": "404",
+        "libelleCobac": "Comptes d'épargne affectés",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "C4L0",
+        "pcemfCode": "405",
+        "libelleCobac": "Autres dépôts",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "C4M0",
+        "pcemfCode": "406",
+        "libelleCobac": "Parts sociales",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "C5A0",
+        "pcemfCode": "411",
+        "libelleCobac": "Charges à payer sur dépôts à vue",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "C5B0",
+        "pcemfCode": "412",
+        "libelleCobac": "Charges à payer sur dépôts à terme",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "C5C0",
+        "pcemfCode": "413",
+        "libelleCobac": "Charges à payer sur comptes à régime spécial",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "C6A0",
+        "pcemfCode": "421",
+        "libelleCobac": "Comptes débiteurs de la clientèle divers",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C6B0",
+        "pcemfCode": "422",
+        "libelleCobac": "Comptes créditeurs de la clientèle divers",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "C7A0",
+        "pcemfCode": "431",
+        "libelleCobac": "Sommes dues aux membres/clients",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "C7B0",
+        "pcemfCode": "432",
+        "libelleCobac": "Mandats à payer",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "C7C0",
+        "pcemfCode": "433",
+        "libelleCobac": "Autres sommes dues",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "C8A0",
+        "pcemfCode": "381",
+        "libelleCobac": "Comptes d'ajustement sur opérations en devises",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C8B0",
+        "pcemfCode": "382",
+        "libelleCobac": "Charges constatées d'avance",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C8C0",
+        "pcemfCode": "383",
+        "libelleCobac": "Produits à recevoir",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C8D0",
+        "pcemfCode": "384",
+        "libelleCobac": "Intérêts courus non échus à recevoir",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C8E0",
+        "pcemfCode": "385",
+        "libelleCobac": "Charges à répartir sur plusieurs exercices",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "C9A0",
+        "pcemfCode": "391",
+        "libelleCobac": "Comptes d'ajustement sur opérations en devises (passif)",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "C9B0",
+        "pcemfCode": "392",
+        "libelleCobac": "Produits constatés d'avance",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "C9C0",
+        "pcemfCode": "393",
+        "libelleCobac": "Charges à payer",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "C9D0",
+        "pcemfCode": "394",
+        "libelleCobac": "Intérêts courus non échus à payer",
+        "classePcemf": 3,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "D0A0",
+        "pcemfCode": "391",
+        "libelleCobac": "Provisions sur créances douteuses couvertes sûretés réelles",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "D0B0",
+        "pcemfCode": "392",
+        "libelleCobac": "Provisions sur autres créances douteuses",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "D0C0",
+        "pcemfCode": "393",
+        "libelleCobac": "Provisions sur créances douteuses sur crédit-bail",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "D0D0",
+        "pcemfCode": "3921",
+        "libelleCobac": "Prov. créances douv. couv. sûretés depuis < 1 an",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "D0E0",
+        "pcemfCode": "3922",
+        "libelleCobac": "Prov. créances douv. couv. sûretés depuis 1 à 2 ans",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "D0F0",
+        "pcemfCode": "3923",
+        "libelleCobac": "Prov. créances douv. couv. sûretés depuis 2 à 3 ans",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "D0G0",
+        "pcemfCode": "3924",
+        "libelleCobac": "Prov. créances douv. couv. sûretés depuis > 3 ans",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "D0H0",
+        "pcemfCode": "3931",
+        "libelleCobac": "Prov. autres créances douteuses depuis < 1 an",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "D0I0",
+        "pcemfCode": "3932",
+        "libelleCobac": "Prov. autres créances douteuses depuis 1 à 2 ans",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "D0J0",
+        "pcemfCode": "3933",
+        "libelleCobac": "Prov. autres créances douteuses depuis > 2 ans",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "D0K0",
+        "pcemfCode": "3940",
+        "libelleCobac": "Prov. créances douteuses crédit-bail hors réseau",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "D0L0",
+        "pcemfCode": "397",
+        "libelleCobac": "Provisions sur dépréciation de stocks",
+        "classePcemf": 3,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "D1A0",
+        "pcemfCode": "4011",
+        "libelleCobac": "Compte courant BEAC",
+        "classePcemf": 4,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "D1B0",
+        "pcemfCode": "4012",
+        "libelleCobac": "Caisse de dépôt et virements BEAC",
+        "classePcemf": 4,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "D1C0",
+        "pcemfCode": "4013",
+        "libelleCobac": "Compte ordinaire BEAC",
+        "classePcemf": 4,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "D1D0",
+        "pcemfCode": "4021",
+        "libelleCobac": "Comptes nostri établissements de crédit locaux",
+        "classePcemf": 4,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "D1E0",
+        "pcemfCode": "4022",
+        "libelleCobac": "Comptes nostri établissements de crédit étrangers",
+        "classePcemf": 4,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "D1F0",
+        "pcemfCode": "4031",
+        "libelleCobac": "Comptes loro établissements de crédit locaux",
+        "classePcemf": 4,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "D1G0",
+        "pcemfCode": "4032",
+        "libelleCobac": "Comptes loro établissements de crédit étrangers",
+        "classePcemf": 4,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "D2A0",
+        "pcemfCode": "411",
+        "libelleCobac": "Comptes courants EMF réseau (débiteur)",
+        "classePcemf": 4,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "D2B0",
+        "pcemfCode": "412",
+        "libelleCobac": "Comptes courants EMF réseau (créditeur)",
+        "classePcemf": 4,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "D2C0",
+        "pcemfCode": "413",
+        "libelleCobac": "Opérations en cours avec EMF réseau",
+        "classePcemf": 4,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "D3A0",
+        "pcemfCode": "421",
+        "libelleCobac": "Prêts interbancaires à CT",
+        "classePcemf": 4,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "D3B0",
+        "pcemfCode": "422",
+        "libelleCobac": "Prêts interbancaires à MT",
+        "classePcemf": 4,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "D3C0",
+        "pcemfCode": "431",
+        "libelleCobac": "Emprunts interbancaires à CT",
+        "classePcemf": 4,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "D3D0",
+        "pcemfCode": "432",
+        "libelleCobac": "Emprunts interbancaires à MT",
+        "classePcemf": 4,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "E7D0",
+        "pcemfCode": "5111",
+        "libelleCobac": "Caisse FCFA",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E7E0",
+        "pcemfCode": "5112",
+        "libelleCobac": "Caisse devises",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E7F0",
+        "pcemfCode": "5113",
+        "libelleCobac": "Caisse en or",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E7G0",
+        "pcemfCode": "5119",
+        "libelleCobac": "Autres fonds en caisse",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E7H0",
+        "pcemfCode": "5121",
+        "libelleCobac": "Banques - comptes ordinaires",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E7I0",
+        "pcemfCode": "5122",
+        "libelleCobac": "Banques - comptes sur livrets",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E7J0",
+        "pcemfCode": "5123",
+        "libelleCobac": "Banques - comptes à terme",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E7K0",
+        "pcemfCode": "5124",
+        "libelleCobac": "Banques - comptes à préavis",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E7L0",
+        "pcemfCode": "5125",
+        "libelleCobac": "Banques - autres comptes",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E7M0",
+        "pcemfCode": "5131",
+        "libelleCobac": "Services financiers postaux",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E7N0",
+        "pcemfCode": "514",
+        "libelleCobac": "Instruments de paiement en cours d'encaissement",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E1A0",
+        "pcemfCode": "5121",
+        "libelleCobac": "Titres de placement - Actions et parts",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E1B0",
+        "pcemfCode": "5122",
+        "libelleCobac": "Titres de placement - Obligations et assimilés",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E1C0",
+        "pcemfCode": "5123",
+        "libelleCobac": "Bons du Trésor",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E1D0",
+        "pcemfCode": "5124",
+        "libelleCobac": "Autres titres de placement",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E2A0",
+        "pcemfCode": "521",
+        "libelleCobac": "Concours à décaissement immédiat",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E2B0",
+        "pcemfCode": "522",
+        "libelleCobac": "Prises en pension",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E2C0",
+        "pcemfCode": "523",
+        "libelleCobac": "Prêts au jour le jour",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E2D0",
+        "pcemfCode": "531",
+        "libelleCobac": "Emprunts au jour le jour",
+        "classePcemf": 5,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "E2E0",
+        "pcemfCode": "532",
+        "libelleCobac": "Mises en pension",
+        "classePcemf": 5,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "E2F0",
+        "pcemfCode": "533",
+        "libelleCobac": "Emprunts à terme",
+        "classePcemf": 5,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "E3A0",
+        "pcemfCode": "541",
+        "libelleCobac": "Comptes de correspondants débiteurs réseau",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E3B0",
+        "pcemfCode": "542",
+        "libelleCobac": "Comptes de correspondants créditeurs réseau",
+        "classePcemf": 5,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "E3C0",
+        "pcemfCode": "543",
+        "libelleCobac": "Créances immobilisées sur correspondants",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E3D0",
+        "pcemfCode": "544",
+        "libelleCobac": "Créances douteuses sur correspondants",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E4A0",
+        "pcemfCode": "571",
+        "libelleCobac": "Valeurs à l'encaissement",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E4B0",
+        "pcemfCode": "572",
+        "libelleCobac": "Valeurs données en garantie",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E4C0",
+        "pcemfCode": "573",
+        "libelleCobac": "Valeurs à payer",
+        "classePcemf": 5,
+        "etatSesame": "FM1108"
+    },
+    {
+        "cobacCode": "E5A0",
+        "pcemfCode": "591",
+        "libelleCobac": "Provisions pour dépréciation des titres de placement",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E5B0",
+        "pcemfCode": "5911",
+        "libelleCobac": "Prov. dépréciation actions et parts Ets de crédit",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E5C0",
+        "pcemfCode": "5912",
+        "libelleCobac": "Prov. dépréciation Bons du Trésor",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E5D0",
+        "pcemfCode": "5913",
+        "libelleCobac": "Prov. dépréciation autres actions et parts négociables",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E5E0",
+        "pcemfCode": "5914",
+        "libelleCobac": "Prov. dépréciation obligations et bons assimilés",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E5F0",
+        "pcemfCode": "5916",
+        "libelleCobac": "Prov. dépréciation autres titres à CT",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E5G0",
+        "pcemfCode": "5917",
+        "libelleCobac": "Prov. dépréciation titres douteux",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "E5H0",
+        "pcemfCode": "5921",
+        "libelleCobac": "Prov. dépréciation créances douteuses sur correspondants",
+        "classePcemf": 5,
+        "etatSesame": "FM1107"
+    },
+    {
+        "cobacCode": "F0A0",
+        "pcemfCode": "601",
+        "libelleCobac": "Intérêts sur opérations de trésorerie",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F0B0",
+        "pcemfCode": "6011",
+        "libelleCobac": "Intérêts sur emprunts interbancaires CT",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F0C0",
+        "pcemfCode": "6012",
+        "libelleCobac": "Intérêts sur emprunts au jour le jour",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F0D0",
+        "pcemfCode": "6013",
+        "libelleCobac": "Intérêts sur emprunts à terme",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F0E0",
+        "pcemfCode": "6014",
+        "libelleCobac": "Intérêts sur mises en pension",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F0F0",
+        "pcemfCode": "6015",
+        "libelleCobac": "Commissions sur opérations de trésorerie",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F0G0",
+        "pcemfCode": "6019",
+        "libelleCobac": "Autres charges sur opérations de trésorerie",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F1A0",
+        "pcemfCode": "611",
+        "libelleCobac": "Intérêts sur dépôts à vue",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F1B0",
+        "pcemfCode": "612",
+        "libelleCobac": "Intérêts sur dépôts à terme",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F1C0",
+        "pcemfCode": "613",
+        "libelleCobac": "Intérêts sur comptes à régime spécial",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F1D0",
+        "pcemfCode": "614",
+        "libelleCobac": "Commissions sur opérations clientèle",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F1E0",
+        "pcemfCode": "615",
+        "libelleCobac": "Charges sur parts sociales",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F1F0",
+        "pcemfCode": "616",
+        "libelleCobac": "Charges sur dépôts affectés",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F1G0",
+        "pcemfCode": "619",
+        "libelleCobac": "Autres charges sur opérations avec la clientèle",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F2A0",
+        "pcemfCode": "621",
+        "libelleCobac": "Charges sur titres de placement",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F2B0",
+        "pcemfCode": "622",
+        "libelleCobac": "Charges sur portefeuille de transaction",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F2C0",
+        "pcemfCode": "623",
+        "libelleCobac": "Charges sur engagements par signature",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F2D0",
+        "pcemfCode": "624",
+        "libelleCobac": "Charges de crédit-bail",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F2E0",
+        "pcemfCode": "629",
+        "libelleCobac": "Autres charges bancaires diverses",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F3A0",
+        "pcemfCode": "631",
+        "libelleCobac": "Appointements et salaires",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F3B0",
+        "pcemfCode": "6311",
+        "libelleCobac": "Salaires de base",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F3C0",
+        "pcemfCode": "6312",
+        "libelleCobac": "Primes et gratifications",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F3D0",
+        "pcemfCode": "6313",
+        "libelleCobac": "Congés payés",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F3E0",
+        "pcemfCode": "6314",
+        "libelleCobac": "Avantages en nature",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F3F0",
+        "pcemfCode": "632",
+        "libelleCobac": "Charges sociales",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F3G0",
+        "pcemfCode": "6321",
+        "libelleCobac": "Cotisations de sécurité sociale",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F3H0",
+        "pcemfCode": "6322",
+        "libelleCobac": "Mutuelles et prévoyances",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F3I0",
+        "pcemfCode": "6323",
+        "libelleCobac": "Retraites",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F3J0",
+        "pcemfCode": "633",
+        "libelleCobac": "Autres charges de personnel",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F4A0",
+        "pcemfCode": "641",
+        "libelleCobac": "Charges de fonctionnement",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F4B0",
+        "pcemfCode": "6411",
+        "libelleCobac": "Loyers et charges locatives",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F4C0",
+        "pcemfCode": "6412",
+        "libelleCobac": "Charges d'eau, électricité, gaz",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F4D0",
+        "pcemfCode": "6413",
+        "libelleCobac": "Entretien et réparations",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F4E0",
+        "pcemfCode": "6414",
+        "libelleCobac": "Primes d'assurance",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F4F0",
+        "pcemfCode": "6415",
+        "libelleCobac": "Transports",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F4G0",
+        "pcemfCode": "6416",
+        "libelleCobac": "Missions et réceptions",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F4H0",
+        "pcemfCode": "6417",
+        "libelleCobac": "Publicité et communication",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F4I0",
+        "pcemfCode": "6418",
+        "libelleCobac": "Services bancaires et charges assimilées",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F4J0",
+        "pcemfCode": "6419",
+        "libelleCobac": "Autres charges de fonctionnement",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F4K0",
+        "pcemfCode": "642",
+        "libelleCobac": "Charges sur opérations accessoires",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F5A0",
+        "pcemfCode": "651",
+        "libelleCobac": "Impôts et taxes sur rémunérations",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F5B0",
+        "pcemfCode": "652",
+        "libelleCobac": "Autres impôts et taxes",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F6A0",
+        "pcemfCode": "661",
+        "libelleCobac": "Dotations aux amortissements des immobilisations",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F6B0",
+        "pcemfCode": "662",
+        "libelleCobac": "Dotations aux provisions pour dépréciation des créances",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F6C0",
+        "pcemfCode": "663",
+        "libelleCobac": "Dotations aux provisions pour risques et charges",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F6D0",
+        "pcemfCode": "664",
+        "libelleCobac": "Dotations aux provisions pour dépréciation des immobilisations",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F6E0",
+        "pcemfCode": "665",
+        "libelleCobac": "Dotations aux provisions réglementées",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F7A0",
+        "pcemfCode": "670",
+        "libelleCobac": "Charges exceptionnelles sur opérations de trésorerie",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F7B0",
+        "pcemfCode": "671",
+        "libelleCobac": "Charges diverses sur exercices antérieurs",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F7C0",
+        "pcemfCode": "672",
+        "libelleCobac": "Pertes sur créances irrécouvrables",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F7D0",
+        "pcemfCode": "673",
+        "libelleCobac": "Moins-values de cession",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F7E0",
+        "pcemfCode": "674",
+        "libelleCobac": "Pénalités et amendes",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F7F0",
+        "pcemfCode": "678",
+        "libelleCobac": "Autres charges exceptionnelles",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F8A0",
+        "pcemfCode": "681",
+        "libelleCobac": "Dot. amortissements frais et valeurs immobilisées",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F8B0",
+        "pcemfCode": "682",
+        "libelleCobac": "Dot. amortissements immobilisations corporelles",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F9A0",
+        "pcemfCode": "691",
+        "libelleCobac": "Impôts sur les sociétés",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "F9B0",
+        "pcemfCode": "692",
+        "libelleCobac": "Acomptes et crédits d'impôt",
+        "classePcemf": 6,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G0A0",
+        "pcemfCode": "701",
+        "libelleCobac": "Intérêts sur opérations de trésorerie",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G0B0",
+        "pcemfCode": "7011",
+        "libelleCobac": "Intérêts sur prêts interbancaires CT",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G0C0",
+        "pcemfCode": "7012",
+        "libelleCobac": "Intérêts sur prêts au jour le jour",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G0D0",
+        "pcemfCode": "7013",
+        "libelleCobac": "Intérêts sur prêts à terme",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G0E0",
+        "pcemfCode": "7014",
+        "libelleCobac": "Intérêts sur prises en pension",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G0F0",
+        "pcemfCode": "7015",
+        "libelleCobac": "Commissions sur opérations de trésorerie",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G0G0",
+        "pcemfCode": "7019",
+        "libelleCobac": "Autres produits sur opérations de trésorerie",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G1A0",
+        "pcemfCode": "711",
+        "libelleCobac": "Intérêts sur crédits à court terme",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G1B0",
+        "pcemfCode": "712",
+        "libelleCobac": "Intérêts sur crédits à moyen terme",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G1C0",
+        "pcemfCode": "713",
+        "libelleCobac": "Intérêts sur crédits à long terme",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G1D0",
+        "pcemfCode": "714",
+        "libelleCobac": "Commissions sur opérations avec la clientèle",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G1E0",
+        "pcemfCode": "715",
+        "libelleCobac": "Produits sur crédits de campagne",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G1F0",
+        "pcemfCode": "716",
+        "libelleCobac": "Produits sur crédit-bail",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G1G0",
+        "pcemfCode": "719",
+        "libelleCobac": "Autres produits sur opérations avec la clientèle",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G2A0",
+        "pcemfCode": "721",
+        "libelleCobac": "Produits sur titres de placement",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G2B0",
+        "pcemfCode": "722",
+        "libelleCobac": "Produits sur portefeuille de transaction",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G2C0",
+        "pcemfCode": "723",
+        "libelleCobac": "Produits sur engagements par signature",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G2D0",
+        "pcemfCode": "724",
+        "libelleCobac": "Produits sur opérations de change",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G2E0",
+        "pcemfCode": "729",
+        "libelleCobac": "Autres produits bancaires divers",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G4A0",
+        "pcemfCode": "741",
+        "libelleCobac": "Produits accessoires divers",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G4B0",
+        "pcemfCode": "742",
+        "libelleCobac": "Loyers et produits assimilés",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G4C0",
+        "pcemfCode": "743",
+        "libelleCobac": "Subventions d'exploitation",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G4D0",
+        "pcemfCode": "744",
+        "libelleCobac": "Redevances pour concessions, brevets et licences",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G4E0",
+        "pcemfCode": "749",
+        "libelleCobac": "Autres produits accessoires",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G5A0",
+        "pcemfCode": "751",
+        "libelleCobac": "Produits sur cessions d'immobilisations",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G5B0",
+        "pcemfCode": "752",
+        "libelleCobac": "Quotes-parts de subventions d'investissement",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G5C0",
+        "pcemfCode": "753",
+        "libelleCobac": "Produits de participation",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G6A0",
+        "pcemfCode": "760",
+        "libelleCobac": "Subventions d'exploitation reçues",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G6B0",
+        "pcemfCode": "761",
+        "libelleCobac": "Subventions de fonctionnement",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G6C0",
+        "pcemfCode": "762",
+        "libelleCobac": "Subventions d'équilibre",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G6D0",
+        "pcemfCode": "7631",
+        "libelleCobac": "Subventions d'exploitation et d'équilibre EMF hors réseau",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G6E0",
+        "pcemfCode": "7632",
+        "libelleCobac": "Subventions d'exploitation et d'équilibre EMF réseau",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G7A0",
+        "pcemfCode": "770",
+        "libelleCobac": "Produits d'exploitation bancaire sur exercices antérieurs",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G7B0",
+        "pcemfCode": "7701",
+        "libelleCobac": "Produits sur opérations de trésorerie antérieures",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G7C0",
+        "pcemfCode": "7702",
+        "libelleCobac": "Produits sur opérations clientèle et crédit-bail antérieures",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G7D0",
+        "pcemfCode": "7703",
+        "libelleCobac": "Produits sur opérations bancaires diverses antérieures",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G7E0",
+        "pcemfCode": "771",
+        "libelleCobac": "Produits divers sur exercices antérieurs",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G7F0",
+        "pcemfCode": "7711",
+        "libelleCobac": "Produits du portefeuille titres antérieurs",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G7G0",
+        "pcemfCode": "7712",
+        "libelleCobac": "Produits accessoires antérieurs",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G7H0",
+        "pcemfCode": "772",
+        "libelleCobac": "Indemnités d'assurance",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G7I0",
+        "pcemfCode": "773",
+        "libelleCobac": "Provisions spéciales et réserves de réévaluation reprises",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G7J0",
+        "pcemfCode": "774",
+        "libelleCobac": "Subventions d'investissement reprises",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G7K0",
+        "pcemfCode": "775",
+        "libelleCobac": "Prix de cession des éléments d'actif immobilisés",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G7L0",
+        "pcemfCode": "778",
+        "libelleCobac": "Divers profits exceptionnels",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G7M0",
+        "pcemfCode": "7781",
+        "libelleCobac": "Profits sur opérations de trésorerie exceptionnels",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G7N0",
+        "pcemfCode": "7782",
+        "libelleCobac": "Profits sur opérations avec la clientèle exceptionnels",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G7O0",
+        "pcemfCode": "7786",
+        "libelleCobac": "Excédents de caisse",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G7P0",
+        "pcemfCode": "7787",
+        "libelleCobac": "Escompte de règlement",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G7Q0",
+        "pcemfCode": "7788",
+        "libelleCobac": "Dons et libéralités effectivement obtenus",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G8A0",
+        "pcemfCode": "780",
+        "libelleCobac": "Reprises d'amortissements des frais et valeurs immobilisées",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G8B0",
+        "pcemfCode": "782",
+        "libelleCobac": "Reprises d'amortissements des immobilisations corporelles",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G9A0",
+        "pcemfCode": "791",
+        "libelleCobac": "Reprises de provisions",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G9B0",
+        "pcemfCode": "7911",
+        "libelleCobac": "Reprises prov. pour risques et charges",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G9C0",
+        "pcemfCode": "7912",
+        "libelleCobac": "Reprises prov. dépréciation valeurs immobilisées",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G9D0",
+        "pcemfCode": "7913",
+        "libelleCobac": "Reprises prov. dépréciation comptes clientèle",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G9E0",
+        "pcemfCode": "7914",
+        "libelleCobac": "Reprises prov. dépréciation comptes tiers et régularisation",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G9F0",
+        "pcemfCode": "7915",
+        "libelleCobac": "Reprises prov. dépréciation comptes trésorerie",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G9G0",
+        "pcemfCode": "7917",
+        "libelleCobac": "Reprises prov. dépréciation des stocks",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "G9H0",
+        "pcemfCode": "792",
+        "libelleCobac": "Récupération sur créances abandonnées",
+        "classePcemf": 7,
+        "etatSesame": "FM1110"
+    },
+    {
+        "cobacCode": "H0A0",
+        "pcemfCode": "801",
+        "libelleCobac": "Produit Net Bancaire",
+        "classePcemf": 8,
+        "etatSesame": "FM1111"
+    },
+    {
+        "cobacCode": "H0B0",
+        "pcemfCode": "802",
+        "libelleCobac": "Résultat brut d'exploitation",
+        "classePcemf": 8,
+        "etatSesame": "FM1111"
+    },
+    {
+        "cobacCode": "H0C0",
+        "pcemfCode": "803",
+        "libelleCobac": "Résultat d'exploitation",
+        "classePcemf": 8,
+        "etatSesame": "FM1111"
+    },
+    {
+        "cobacCode": "H0D0",
+        "pcemfCode": "804",
+        "libelleCobac": "Résultat courant avant impôts",
+        "classePcemf": 8,
+        "etatSesame": "FM1111"
+    },
+    {
+        "cobacCode": "H0E0",
+        "pcemfCode": "805",
+        "libelleCobac": "Résultat exceptionnel",
+        "classePcemf": 8,
+        "etatSesame": "FM1111"
+    },
+    {
+        "cobacCode": "H0F0",
+        "pcemfCode": "806",
+        "libelleCobac": "Résultat avant impôts",
+        "classePcemf": 8,
+        "etatSesame": "FM1111"
+    },
+    {
+        "cobacCode": "H0G0",
+        "pcemfCode": "807",
+        "libelleCobac": "Résultat net de l'exercice",
+        "classePcemf": 8,
+        "etatSesame": "FM1111"
+    },
+    {
+        "cobacCode": "H0H0",
+        "pcemfCode": "811",
+        "libelleCobac": "Affectation aux réserves légales",
+        "classePcemf": 8,
+        "etatSesame": "FM1111"
+    },
+    {
+        "cobacCode": "H0I0",
+        "pcemfCode": "812",
+        "libelleCobac": "Affectation aux réserves statutaires",
+        "classePcemf": 8,
+        "etatSesame": "FM1111"
+    },
+    {
+        "cobacCode": "H0J0",
+        "pcemfCode": "813",
+        "libelleCobac": "Affectation à la réserve mutualiste",
+        "classePcemf": 8,
+        "etatSesame": "FM1111"
+    },
+    {
+        "cobacCode": "H0K0",
+        "pcemfCode": "814",
+        "libelleCobac": "Dividendes et ristournes",
+        "classePcemf": 8,
+        "etatSesame": "FM1111"
+    },
+    {
+        "cobacCode": "H0L0",
+        "pcemfCode": "815",
+        "libelleCobac": "Report à nouveau",
+        "classePcemf": 8,
+        "etatSesame": "FM1111"
+    },
+    {
+        "cobacCode": "H0M0",
+        "pcemfCode": "816",
+        "libelleCobac": "Autres affectations",
+        "classePcemf": 8,
+        "etatSesame": "FM1111"
+    },
+    {
+        "cobacCode": "I0A0",
+        "pcemfCode": "901",
+        "libelleCobac": "Engagements de financement en faveur d'établissements de crédit",
+        "classePcemf": 9,
+        "etatSesame": "FM1109"
+    },
+    {
+        "cobacCode": "I0B0",
+        "pcemfCode": "902",
+        "libelleCobac": "Engagements de financement en faveur de la clientèle",
+        "classePcemf": 9,
+        "etatSesame": "FM1109"
+    },
+    {
+        "cobacCode": "I0C0",
+        "pcemfCode": "9021",
+        "libelleCobac": "Ouvertures de crédits confirmés",
+        "classePcemf": 9,
+        "etatSesame": "FM1109"
+    },
+    {
+        "cobacCode": "I0D0",
+        "pcemfCode": "9022",
+        "libelleCobac": "Lignes de crédit confirmées",
+        "classePcemf": 9,
+        "etatSesame": "FM1109"
+    },
+    {
+        "cobacCode": "I1A0",
+        "pcemfCode": "911",
+        "libelleCobac": "Garanties d'ordre d'établissements de crédit",
+        "classePcemf": 9,
+        "etatSesame": "FM1109"
+    },
+    {
+        "cobacCode": "I1B0",
+        "pcemfCode": "912",
+        "libelleCobac": "Garanties d'ordre de la clientèle",
+        "classePcemf": 9,
+        "etatSesame": "FM1109"
+    },
+    {
+        "cobacCode": "I1C0",
+        "pcemfCode": "9121",
+        "libelleCobac": "Cautions et avals",
+        "classePcemf": 9,
+        "etatSesame": "FM1109"
+    },
+    {
+        "cobacCode": "I1D0",
+        "pcemfCode": "9122",
+        "libelleCobac": "Garanties de remboursement",
+        "classePcemf": 9,
+        "etatSesame": "FM1109"
+    },
+    {
+        "cobacCode": "I1E0",
+        "pcemfCode": "913",
+        "libelleCobac": "Autres engagements par signature donnés",
+        "classePcemf": 9,
+        "etatSesame": "FM1109"
+    },
+    {
+        "cobacCode": "I2A0",
+        "pcemfCode": "921",
+        "libelleCobac": "Engagements de financement reçus d'établissements de crédit",
+        "classePcemf": 9,
+        "etatSesame": "FM1109"
+    },
+    {
+        "cobacCode": "I2B0",
+        "pcemfCode": "922",
+        "libelleCobac": "Engagements de garantie reçus d'établissements de crédit",
+        "classePcemf": 9,
+        "etatSesame": "FM1109"
+    },
+    {
+        "cobacCode": "I2C0",
+        "pcemfCode": "923",
+        "libelleCobac": "Garanties reçues de la clientèle",
+        "classePcemf": 9,
+        "etatSesame": "FM1109"
+    },
+    {
+        "cobacCode": "I2D0",
+        "pcemfCode": "9231",
+        "libelleCobac": "Hypothèques",
+        "classePcemf": 9,
+        "etatSesame": "FM1109"
+    },
+    {
+        "cobacCode": "I2E0",
+        "pcemfCode": "9232",
+        "libelleCobac": "Nantissements",
+        "classePcemf": 9,
+        "etatSesame": "FM1109"
+    },
+    {
+        "cobacCode": "I2F0",
+        "pcemfCode": "9233",
+        "libelleCobac": "Cautionnements reçus de la clientèle",
+        "classePcemf": 9,
+        "etatSesame": "FM1109"
+    },
+    {
+        "cobacCode": "I4A0",
+        "pcemfCode": "941",
+        "libelleCobac": "Engagements de crédit-bail donnés",
+        "classePcemf": 9,
+        "etatSesame": "FM1109"
+    },
+    {
+        "cobacCode": "I4B0",
+        "pcemfCode": "942",
+        "libelleCobac": "Engagements de crédit-bail reçus",
+        "classePcemf": 9,
+        "etatSesame": "FM1109"
+    },
+    {
+        "cobacCode": "I7A0",
+        "pcemfCode": "971",
+        "libelleCobac": "Valeurs reçues en dépôt non comptabilisées",
+        "classePcemf": 9,
+        "etatSesame": "FM1109"
+    },
+    {
+        "cobacCode": "I7B0",
+        "pcemfCode": "972",
+        "libelleCobac": "Valeurs données en dépôt non comptabilisées",
+        "classePcemf": 9,
+        "etatSesame": "FM1109"
+    },
+    {
+        "cobacCode": "I7C0",
+        "pcemfCode": "973",
+        "libelleCobac": "Effets remis à l'encaissement",
+        "classePcemf": 9,
+        "etatSesame": "FM1109"
+    },
+    {
+        "cobacCode": "I7D0",
+        "pcemfCode": "974",
+        "libelleCobac": "Valeurs remises à l'escompte",
+        "classePcemf": 9,
+        "etatSesame": "FM1109"
+    },
+    {
+        "cobacCode": "C2Q1",
+        "pcemfCode": "4011",
+        "libelleCobac": "Dépôts à vue membres/clients — Couverture risques",
+        "classePcemf": 4,
+        "etatSesame": "FM1112"
+    },
+    {
+        "cobacCode": "C2Q2",
+        "pcemfCode": "4012",
+        "libelleCobac": "Comptes d'épargne à vue — Couverture risques",
+        "classePcemf": 4,
+        "etatSesame": "FM1112"
+    },
+    {
+        "cobacCode": "C2Q3",
+        "pcemfCode": "402",
+        "libelleCobac": "Dépôts à terme — Couverture risques",
+        "classePcemf": 4,
+        "etatSesame": "FM1112"
+    },
+    {
+        "cobacCode": "L1A0",
+        "pcemfCode": "301",
+        "libelleCobac": "Crédits CT — Ratio de liquidité",
+        "classePcemf": 3,
+        "etatSesame": "FM1113"
+    },
+    {
+        "cobacCode": "L1B0",
+        "pcemfCode": "302",
+        "libelleCobac": "Crédits MT — Ratio de liquidité",
+        "classePcemf": 3,
+        "etatSesame": "FM1113"
+    },
+    {
+        "cobacCode": "L1C0",
+        "pcemfCode": "5111",
+        "libelleCobac": "Caisse — Ratio de liquidité",
+        "classePcemf": 5,
+        "etatSesame": "FM1113"
+    },
+    {
+        "cobacCode": "L1D0",
+        "pcemfCode": "5121",
+        "libelleCobac": "Banques — Ratio de liquidité",
+        "classePcemf": 5,
+        "etatSesame": "FM1113"
+    },
+    {
+        "cobacCode": "T1A0",
+        "pcemfCode": "303",
+        "libelleCobac": "Crédits LT — Ratio de transformation",
+        "classePcemf": 3,
+        "etatSesame": "FM1114"
+    },
+    {
+        "cobacCode": "T1B0",
+        "pcemfCode": "185",
+        "libelleCobac": "Emprunts LT et MT — Ratio de transformation",
+        "classePcemf": 1,
+        "etatSesame": "FM1114"
+    },
+    {
+        "cobacCode": "R1A0",
+        "pcemfCode": "301",
+        "libelleCobac": "Portefeuille global crédits — Limitation",
+        "classePcemf": 3,
+        "etatSesame": "FM1115"
+    },
+    {
+        "cobacCode": "R1B0",
+        "pcemfCode": "311",
+        "libelleCobac": "Grandes expositions — Créances douteuses",
+        "classePcemf": 3,
+        "etatSesame": "FM1115"
+    },
+    {
+        "cobacCode": "S1A0",
+        "pcemfCode": "101",
+        "libelleCobac": "Fonds propres de base",
+        "classePcemf": 1,
+        "etatSesame": "FM1116"
+    },
+    {
+        "cobacCode": "S1B0",
+        "pcemfCode": "111",
+        "libelleCobac": "Réserves — Fonds propres de base",
+        "classePcemf": 1,
+        "etatSesame": "FM1116"
+    },
+    {
+        "cobacCode": "S1C0",
+        "pcemfCode": "131",
+        "libelleCobac": "Bénéfice non distribué",
+        "classePcemf": 1,
+        "etatSesame": "FM1116"
+    },
+    {
+        "cobacCode": "S2A0",
+        "pcemfCode": "141",
+        "libelleCobac": "Subventions — Fonds propres complémentaires",
+        "classePcemf": 1,
+        "etatSesame": "FM1116"
+    },
+    {
+        "cobacCode": "S2B0",
+        "pcemfCode": "181",
+        "libelleCobac": "Dettes subordonnées — Fonds propres complémentaires",
+        "classePcemf": 1,
+        "etatSesame": "FM1116"
+    },
+    {
+        "cobacCode": "S3A0",
+        "pcemfCode": "301",
+        "libelleCobac": "Total crédits pondérés — Ratio solvabilité",
+        "classePcemf": 3,
+        "etatSesame": "FM1116"
+    },
+    {
+        "cobacCode": "V1A0",
+        "pcemfCode": "185",
+        "libelleCobac": "Ressources à MT et LT — Couverture emplois LT",
+        "classePcemf": 1,
+        "etatSesame": "FM1117"
+    },
+    {
+        "cobacCode": "V1B0",
+        "pcemfCode": "181",
+        "libelleCobac": "Ressources permanentes — Couverture emplois LT",
+        "classePcemf": 1,
+        "etatSesame": "FM1117"
+    },
+    {
+        "cobacCode": "V2A0",
+        "pcemfCode": "302",
+        "libelleCobac": "Crédits MT — Emplois LT à couvrir",
+        "classePcemf": 3,
+        "etatSesame": "FM1117"
+    },
+    {
+        "cobacCode": "V2B0",
+        "pcemfCode": "303",
+        "libelleCobac": "Crédits LT — Emplois LT à couvrir",
+        "classePcemf": 3,
+        "etatSesame": "FM1117"
+    },
+    {
+        "cobacCode": "V2C0",
+        "pcemfCode": "291",
+        "libelleCobac": "Immobilisations nettes — Emplois LT à couvrir",
+        "classePcemf": 2,
+        "etatSesame": "FM1117"
+    }
+]

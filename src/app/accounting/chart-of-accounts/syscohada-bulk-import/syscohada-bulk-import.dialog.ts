@@ -197,7 +197,7 @@ export class SyscohadadBulkImportDialogComponent implements OnInit {
     from(this.accounts)
       .pipe(
         concatMap((account) =>
-          this.accountingService.createGlAccount(account).pipe(
+          this.accountingService.createGlAccount({ ...account, locale: 'en' }).pipe(
             catchError((err) => {
               const msg = err?.error?.errors?.[0]?.defaultUserMessage ?? err?.message ?? 'Unknown error';
               this.errors.push(`${account.glCode} – ${msg}`);

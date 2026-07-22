@@ -29,6 +29,7 @@ import { ChartOfAccountsComponent } from './chart-of-accounts/chart-of-accounts.
 import { CreateGlAccountComponent } from './chart-of-accounts/create-gl-account/create-gl-account.component';
 import { ViewGlAccountComponent } from './chart-of-accounts/view-gl-account/view-gl-account.component';
 import { EditGlAccountComponent } from './chart-of-accounts/edit-gl-account/edit-gl-account.component';
+import { CemacCodesComponent } from './chart-of-accounts/cemac-codes/cemac-codes.component';
 import { ClosingEntriesComponent } from './closing-entries/closing-entries.component';
 import { CreateClosureComponent } from './closing-entries/create-closure/create-closure.component';
 import { ViewClosureComponent } from './closing-entries/view-closure/view-closure.component';
@@ -69,6 +70,7 @@ import { PipesModule } from 'app/pipes/pipes.module';
     CreateGlAccountComponent,
     ViewGlAccountComponent,
     EditGlAccountComponent,
+    CemacCodesComponent,
     ClosingEntriesComponent,
     CreateClosureComponent,
     ViewClosureComponent,

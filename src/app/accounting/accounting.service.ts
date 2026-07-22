@@ -396,4 +396,26 @@ export class AccountingService {
     const httpParams = new HttpParams().set('command', 'recreateprovisioningentry');
     return this.http.post(`/provisioningentries/${provisioningEntryId}`, {}, { params: httpParams });
   }
+  /**
+   * @returns {Observable<any>} CEMAC Codes.
+   */
+  getCemacCodes(): Observable<any> {
+    return this.http.get('/cemaccodes');
+  }
+
+  /**
+   * @param {any} cemacCode CEMAC code to be created.
+   * @returns {Observable<any>}
+   */
+  createCemacCode(cemacCode: any): Observable<any> {
+    return this.http.post('/cemaccodes', cemacCode);
+  }
+
+  /**
+   * @param {string} cemacCodeId CEMAC code ID to be deleted.
+   * @returns {Observable<any>}
+   */
+  deleteCemacCode(cemacCodeId: string): Observable<any> {
+    return this.http.delete(`/cemaccodes/${cemacCodeId}`);
+  }
 }

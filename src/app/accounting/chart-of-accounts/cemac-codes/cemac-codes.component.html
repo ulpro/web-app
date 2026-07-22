@@ -1,0 +1,60 @@
+<!--
+  Copyright since 2025 Mifos Initiative
+
+  This Source Code Form is subject to the terms of the Mozilla Public
+  License, v. 2.0. If a copy of the MPL was not distributed with this
+  file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-->
+
+<div class="container m-b-20 layout-row align-end gap-20px">
+  <div #buttonBack>
+    <button mat-raised-button color="primary" [routerLink]="['/accounting/chart-of-accounts']">
+      <fa-icon icon="arrow-left" class="m-r-10"></fa-icon>
+      Retour au plan comptable
+    </button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="layout-row gap-20px">
+    <mat-form-field class="flex-fill">
+      <mat-label>Rechercher un code CEMAC</mat-label>
+      <input matInput (keyup)="applyFilter($event.target.value)" />
+    </mat-form-field>
+  </div>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+      
+      <ng-container matColumnDef="pcemfCode">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Code PCEMF </th>
+        <td mat-cell *matCellDef="let code"> {{ code.pcemfCode }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="cobacCode">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Code COBAC </th>
+        <td mat-cell *matCellDef="let code"> {{ code.cobacCode }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="libelleCobac">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Libellé COBAC </th>
+        <td mat-cell *matCellDef="let code"> {{ code.libelleCobac }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="classePcemf">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Classe </th>
+        <td mat-cell *matCellDef="let code"> {{ code.classePcemf }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="etatSesame">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> État Sésame </th>
+        <td mat-cell *matCellDef="let code"> {{ code.etatSesame }} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns" class="select-row"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>

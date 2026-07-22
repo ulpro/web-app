@@ -1,0 +1,2644 @@
+{
+  "_meta": {
+    "source": "UNITED_CREDIT_Config_Demo_NEOBT.docx (R\u00e9f. DITROS-DEMO-NEOBT-UC-001)",
+    "tenant": "united_credit_demo",
+    "prefix": "DEMO-",
+    "note": "Toutes les valeurs marqu\u00e9es TODO_* ne sont pas explicitement fournies par le cahier et doivent \u00eatre valid\u00e9es avant ex\u00e9cution."
+  },
+  "currencies": {
+    "activate": [
+      "XAF",
+      "USD",
+      "EUR"
+    ],
+    "rates_demo": {
+      "XAF": 1.0,
+      "USD": 610.0,
+      "EUR": 655.957
+    }
+  },
+  "offices": [
+    {
+      "code": "UC-DG",
+      "name": "Direction G\u00e9n\u00e9rale (QG)",
+      "city": "Douala",
+      "region": "Littoral",
+      "parent": null,
+      "role": "Bureau racine"
+    },
+    {
+      "code": "UC-AKL",
+      "name": "Douala Akwa Libert\u00e9",
+      "city": "Douala",
+      "region": "Littoral",
+      "parent": "UC-DG",
+      "role": "Agence"
+    },
+    {
+      "code": "UC-LGQ",
+      "name": "Douala LGQ",
+      "city": "Douala",
+      "region": "Littoral",
+      "parent": "UC-DG",
+      "role": "Agence"
+    },
+    {
+      "code": "UC-YAS",
+      "name": "Douala Yassa",
+      "city": "Douala",
+      "region": "Littoral",
+      "parent": "UC-DG",
+      "role": "Agence"
+    },
+    {
+      "code": "UC-MBP",
+      "name": "Douala Mboppi",
+      "city": "Douala",
+      "region": "Littoral",
+      "parent": "UC-DG",
+      "role": "Agence"
+    },
+    {
+      "code": "UC-DEI",
+      "name": "Douala Deido",
+      "city": "Douala",
+      "region": "Littoral",
+      "parent": "UC-DG",
+      "role": "Agence"
+    },
+    {
+      "code": "UC-DSC",
+      "name": "Dschang (Si\u00e8ge Social)",
+      "city": "Dschang",
+      "region": "Ouest",
+      "parent": "UC-DG",
+      "role": "Agence + Si\u00e8ge social"
+    },
+    {
+      "code": "UC-TBL",
+      "name": "Yaound\u00e9 T-Bella",
+      "city": "Yaound\u00e9",
+      "region": "Centre",
+      "parent": "UC-DG",
+      "role": "Agence"
+    },
+    {
+      "code": "UC-DAM",
+      "name": "Yaound\u00e9 Damas",
+      "city": "Yaound\u00e9",
+      "region": "Centre",
+      "parent": "UC-DG",
+      "role": "Agence"
+    },
+    {
+      "code": "UC-BAF",
+      "name": "Bafoussam",
+      "city": "Bafoussam",
+      "region": "Ouest",
+      "parent": "UC-DG",
+      "role": "Agence"
+    },
+    {
+      "code": "UC-KRI",
+      "name": "Kribi",
+      "city": "Kribi",
+      "region": "Sud",
+      "parent": "UC-DG",
+      "role": "Agence"
+    },
+    {
+      "code": "UC-BER",
+      "name": "Bertoua",
+      "city": "Bertoua",
+      "region": "Est",
+      "parent": "UC-DG",
+      "role": "Agence"
+    }
+  ],
+  "offices_note": "openingDate exact non fourni par le cahier pour les agences (seule la date de cr\u00e9ation de l'institution, 2013, est connue). TODO_OPENING_DATE : \u00e0 fixer (proposition par d\u00e9faut : 01 January 2020, align\u00e9e sur la date d'agr\u00e9ment COBAC-MINFIN N\u00b0 0206 du 26/03/2020).",
+  "gl_accounts": {
+    "headers": [
+      {
+        "code": "10000",
+        "name": "Capitaux propres",
+        "type": "EQUITY",
+        "usage": "HEADER"
+      },
+      {
+        "code": "20000",
+        "name": "Immobilisations",
+        "type": "ASSET",
+        "usage": "HEADER"
+      },
+      {
+        "code": "30000",
+        "name": "Cr\u00e9ances client\u00e8le",
+        "type": "ASSET",
+        "usage": "HEADER"
+      },
+      {
+        "code": "40000",
+        "name": "Dettes envers la client\u00e8le",
+        "type": "LIABILITY",
+        "usage": "HEADER"
+      },
+      {
+        "code": "50000",
+        "name": "Tr\u00e9sorerie",
+        "type": "ASSET",
+        "usage": "HEADER"
+      },
+      {
+        "code": "60000",
+        "name": "Charges",
+        "type": "EXPENSE",
+        "usage": "HEADER"
+      },
+      {
+        "code": "70000",
+        "name": "Produits",
+        "type": "INCOME",
+        "usage": "HEADER"
+      }
+    ],
+    "details": [
+      {
+        "code": "10100",
+        "name": "Capital social souscrit et vers\u00e9",
+        "classe": 1,
+        "type": "EQUITY",
+        "parent": "10000"
+      },
+      {
+        "code": "11200",
+        "name": "R\u00e9serves l\u00e9gales et statutaires",
+        "classe": 1,
+        "type": "EQUITY",
+        "parent": "10000"
+      },
+      {
+        "code": "21100",
+        "name": "Immobilisations incorporelles (logiciels)",
+        "classe": 2,
+        "type": "ASSET",
+        "parent": "20000"
+      },
+      {
+        "code": "24100",
+        "name": "Mat\u00e9riel informatique et mobilier de bureau",
+        "classe": 2,
+        "type": "ASSET",
+        "parent": "20000"
+      },
+      {
+        "code": "30100",
+        "name": "Cr\u00e9dits \u00e0 court terme \u2014 Microcr\u00e9dit",
+        "classe": 3,
+        "type": "ASSET",
+        "parent": "30000"
+      },
+      {
+        "code": "30200",
+        "name": "Cr\u00e9dits \u00e0 court terme \u2014 Nanocr\u00e9dit",
+        "classe": 3,
+        "type": "ASSET",
+        "parent": "30000"
+      },
+      {
+        "code": "31100",
+        "name": "Cr\u00e9dits \u00e0 moyen terme \u2014 Pr\u00eat group\u00e9 JLG",
+        "classe": 3,
+        "type": "ASSET",
+        "parent": "30000"
+      },
+      {
+        "code": "32100",
+        "name": "Cr\u00e9dits \u00e0 moyen terme \u2014 Cr\u00e9dit agricole",
+        "classe": 3,
+        "type": "ASSET",
+        "parent": "30000"
+      },
+      {
+        "code": "35100",
+        "name": "Cr\u00e9ances en souffrance sur client\u00e8le",
+        "classe": 3,
+        "type": "ASSET",
+        "parent": "30000"
+      },
+      {
+        "code": "39100",
+        "name": "Provisions pour cr\u00e9ances douteuses et litigieuses",
+        "classe": 3,
+        "type": "ASSET",
+        "parent": "30000",
+        "usage_note": "compte correctif (contra-actif)"
+      },
+      {
+        "code": "40100",
+        "name": "D\u00e9p\u00f4ts \u00e0 vue \u2014 Comptes \u00e9pargne client\u00e8le",
+        "classe": 4,
+        "type": "LIABILITY",
+        "parent": "40000"
+      },
+      {
+        "code": "40200",
+        "name": "D\u00e9p\u00f4ts \u00e0 terme \u2014 Bons de caisse",
+        "classe": 4,
+        "type": "LIABILITY",
+        "parent": "40000"
+      },
+      {
+        "code": "44100",
+        "name": "Fournisseurs et comptes rattach\u00e9s",
+        "classe": 4,
+        "type": "LIABILITY",
+        "parent": "40000"
+      },
+      {
+        "code": "47100",
+        "name": "Comptes d'attente et de r\u00e9gularisation",
+        "classe": 4,
+        "type": "ASSET",
+        "parent": "40000",
+        "usage_note": "re\u00e7oit les \u00e9carts de caisse en attente de r\u00e9gularisation"
+      },
+      {
+        "code": "57100",
+        "name": "Caisse XAF \u2014 Agences (par bureau)",
+        "classe": 5,
+        "type": "ASSET",
+        "parent": "50000",
+        "per_office": true
+      },
+      {
+        "code": "57200",
+        "name": "Caisse devises \u2014 USD",
+        "classe": 5,
+        "type": "ASSET",
+        "parent": "50000"
+      },
+      {
+        "code": "57300",
+        "name": "Caisse devises \u2014 EUR",
+        "classe": 5,
+        "type": "ASSET",
+        "parent": "50000"
+      },
+      {
+        "code": "52100",
+        "name": "Banque \u2014 Compte courant BEAC / correspondant",
+        "classe": 5,
+        "type": "ASSET",
+        "parent": "50000"
+      },
+      {
+        "code": "61100",
+        "name": "Charges de personnel",
+        "classe": 6,
+        "type": "EXPENSE",
+        "parent": "60000"
+      },
+      {
+        "code": "65100",
+        "name": "Dotations aux provisions pour cr\u00e9ances douteuses",
+        "classe": 6,
+        "type": "EXPENSE",
+        "parent": "60000"
+      },
+      {
+        "code": "65200",
+        "name": "Pertes sur cr\u00e9ances irr\u00e9couvrables",
+        "classe": 6,
+        "type": "EXPENSE",
+        "parent": "60000"
+      },
+      {
+        "code": "68100",
+        "name": "Dotations aux amortissements",
+        "classe": 6,
+        "type": "EXPENSE",
+        "parent": "60000"
+      },
+      {
+        "code": "71100",
+        "name": "Int\u00e9r\u00eats et commissions sur cr\u00e9dits court terme",
+        "classe": 7,
+        "type": "INCOME",
+        "parent": "70000"
+      },
+      {
+        "code": "71200",
+        "name": "Int\u00e9r\u00eats et commissions sur cr\u00e9dits moyen terme",
+        "classe": 7,
+        "type": "INCOME",
+        "parent": "70000"
+      },
+      {
+        "code": "71600",
+        "name": "Commissions sur transferts et moyens de paiement",
+        "classe": 7,
+        "type": "INCOME",
+        "parent": "70000"
+      },
+      {
+        "code": "70200",
+        "name": "P\u00e9nalit\u00e9s de retard",
+        "classe": 7,
+        "type": "INCOME",
+        "parent": "70000"
+      },
+      {
+        "code": "75100",
+        "name": "Produits de change (op\u00e9rations FX)",
+        "classe": 7,
+        "type": "INCOME",
+        "parent": "70000"
+      }
+    ]
+  },
+  "gl_accounts_note": "Le compte 57100 est d\u00e9crit comme 'par bureau' : le cahier ne pr\u00e9cise pas si Fineract doit recevoir un compte 57100 unique (les tellers assurant la ventilation par office_id en interne) ou un compte enfant 57100-xx par agence. TODO_GL_PER_OFFICE : ce script cr\u00e9e un compte 57100 unique et laisse Fineract ventiler par office via les tellers, \u00e0 confirmer avec l'\u00e9quipe comptable.",
+  "tellers": [
+    {
+      "office": "UC-AKL",
+      "name": "Caisse Principale AKL",
+      "currencies": [
+        "XAF",
+        "USD",
+        "EUR"
+      ],
+      "cash_limit_xaf": 5000000
+    },
+    {
+      "office": "UC-LGQ",
+      "name": "Caisse Principale LGQ",
+      "currencies": [
+        "XAF"
+      ],
+      "cash_limit_xaf": 3000000
+    },
+    {
+      "office": "UC-YAS",
+      "name": "Caisse Principale YAS",
+      "currencies": [
+        "XAF"
+      ],
+      "cash_limit_xaf": 2000000
+    },
+    {
+      "office": "UC-MBP",
+      "name": "Caisse Principale MBP",
+      "currencies": [
+        "XAF"
+      ],
+      "cash_limit_xaf": 2500000
+    },
+    {
+      "office": "UC-DEI",
+      "name": "Caisse Principale DEI",
+      "currencies": [
+        "XAF"
+      ],
+      "cash_limit_xaf": 2000000
+    },
+    {
+      "office": "UC-DSC",
+      "name": "Caisse Principale DSC",
+      "currencies": [
+        "XAF",
+        "EUR"
+      ],
+      "cash_limit_xaf": 4000000
+    },
+    {
+      "office": "UC-TBL",
+      "name": "Caisse Principale TBL",
+      "currencies": [
+        "XAF"
+      ],
+      "cash_limit_xaf": 3000000
+    },
+    {
+      "office": "UC-DAM",
+      "name": "Caisse Principale DAM",
+      "currencies": [
+        "XAF"
+      ],
+      "cash_limit_xaf": 2500000
+    },
+    {
+      "office": "UC-BAF",
+      "name": "Caisse Principale BAF",
+      "currencies": [
+        "XAF"
+      ],
+      "cash_limit_xaf": 2000000
+    },
+    {
+      "office": "UC-KRI",
+      "name": "Caisse Principale KRI",
+      "currencies": [
+        "XAF"
+      ],
+      "cash_limit_xaf": 1500000
+    },
+    {
+      "office": "UC-BER",
+      "name": "Caisse Principale BER",
+      "currencies": [
+        "XAF"
+      ],
+      "cash_limit_xaf": 1500000
+    }
+  ],
+  "tellers_note": "Le cahier ne fournit pas de cashLimitAmount pour les devises secondaires (USD/EUR \u00e0 AKL et DSC), ni de staffId cassier par caisse. TODO_TELLER_STAFF : \u00e0 compl\u00e9ter (le staff demo.caissier.akl est mentionn\u00e9 mais sans donn\u00e9es d'\u00e9tat civil).",
+  "roles_users": [
+    {
+      "username": "demo.dg.admin",
+      "role": "Super User / Administrateur SI",
+      "office": "UC-DG",
+      "usage": "Configuration globale, param\u00e9trage"
+    },
+    {
+      "username": "demo.dir.credit",
+      "role": "Directeur du Cr\u00e9dit \u2014 Comit\u00e9 Central",
+      "office": "UC-DG",
+      "usage": "Approbation Niveau 3"
+    },
+    {
+      "username": "demo.chef.akl",
+      "role": "Chef d'Agence",
+      "office": "UC-AKL",
+      "usage": "Comit\u00e9 d'Agence \u2014 Niveau 1"
+    },
+    {
+      "username": "demo.caissier.akl",
+      "role": "Caissier / Teller",
+      "office": "UC-AKL",
+      "usage": "Op\u00e9rations de caisse"
+    },
+    {
+      "username": "demo.agent.credit",
+      "role": "Agent de Cr\u00e9dit",
+      "office": "UC-AKL",
+      "usage": "Instruction des dossiers"
+    },
+    {
+      "username": "demo.conformite",
+      "role": "Responsable Conformit\u00e9 / LBC-FT",
+      "office": "UC-DG",
+      "usage": "Validation KYC, EDD, PPE"
+    },
+    {
+      "username": "demo.agent.terrain",
+      "role": "Agent Mobile / Terrain",
+      "office": "UC-DSC",
+      "usage": "Collecte et enr\u00f4lement offline"
+    }
+  ],
+  "roles_users_note": "Mots de passe, adresses e-mail et staffId ne sont pas fournis par le cahier. TODO_USER_CREDENTIALS et TODO_ROLE_PERMISSIONS (les r\u00f4les Fineract natifs 'Chef d'Agence', 'Responsable Conformit\u00e9', etc. n'existent pas nativement et doivent \u00eatre cr\u00e9\u00e9s via /v1/roles avant la cr\u00e9ation des utilisateurs).",
+  "savings_products": [
+    {
+      "name": "\u00c9pargne Classique",
+      "rate_annual_pct": 2.5,
+      "min_balance_xaf": 5000,
+      "compounding": "Mensuelle"
+    },
+    {
+      "name": "Bon de Caisse 12 mois",
+      "rate_annual_pct": 5.5,
+      "min_balance_xaf": 100000,
+      "compounding": "\u00c0 l'\u00e9ch\u00e9ance"
+    },
+    {
+      "name": "Compte \u00c9pargne Jeunes",
+      "rate_annual_pct": 3.0,
+      "min_balance_xaf": 1000,
+      "compounding": "Trimestrielle"
+    }
+  ],
+  "savings_products_note": "TODO_SAVINGS_GL_MAPPING : le cahier ne fournit pas de compte de charge d'int\u00e9r\u00eats sur d\u00e9p\u00f4ts (poste 'interestOnSavingsAccountId' de Fineract attend normalement un compte EXPENSE ; le seul candidat plausible dans le plan comptable fourni serait \u00e0 cr\u00e9er, ex. 66100 'Charges d'int\u00e9r\u00eats sur d\u00e9p\u00f4ts', absent de la liste \u00a75.2). incomeFromFeeAccountId propos\u00e9 : 71600. incomeFromPenaltyAccountId propos\u00e9 : 70200. savingsReferenceAccountId / savingsControlAccountId / transfersInSuspenseAccountId propos\u00e9s : 40100 / 40100 / 47100.",
+  "loan_products": [
+    {
+      "name": "Microcr\u00e9dit Commerce",
+      "gl_account": "30100",
+      "target": "Commer\u00e7ants, artisans",
+      "min_xaf": 50000,
+      "max_xaf": 2000000,
+      "duration_months_min": 3,
+      "duration_months_max": 12,
+      "rate_annual_pct": 18,
+      "modality": "Individuel, comit\u00e9 agence"
+    },
+    {
+      "name": "Nanocr\u00e9dit Express",
+      "gl_account": "30200",
+      "target": "Micro-entrepreneurs, urgence",
+      "min_xaf": 10000,
+      "max_xaf": 150000,
+      "duration_months_min": 1,
+      "duration_months_max": 3,
+      "rate_annual_pct": 24,
+      "modality": "Individuel, d\u00e9cision 24h"
+    },
+    {
+      "name": "Cr\u00e9dit Agricole Saisonnier",
+      "gl_account": "32100",
+      "target": "Producteurs agricoles",
+      "min_xaf": 100000,
+      "max_xaf": 1500000,
+      "duration_months_min": 6,
+      "duration_months_max": 9,
+      "rate_annual_pct": 16,
+      "modality": "Individuel, diff\u00e9r\u00e9 partiel"
+    },
+    {
+      "name": "Pr\u00eat Group\u00e9 JLG",
+      "gl_account": "31100",
+      "target": "Groupes de solidarit\u00e9 (5 \u00e0 10 membres)",
+      "min_xaf": 500000,
+      "max_xaf": 3000000,
+      "duration_months_min": 6,
+      "duration_months_max": 12,
+      "rate_annual_pct": 20,
+      "modality": "Caution solidaire, comit\u00e9 agence"
+    }
+  ],
+  "loan_products_note": "TODO_LOAN_GL_MAPPING : fundSourceAccountId (source de financement, ex. 52100 Banque BEAC), transfersInSuspenseAccountId (47100), writeOffAccountId et overpaymentLiabilityAccountId ne sont pas explicit\u00e9s dans le cahier. incomeFromFeeAccountId propos\u00e9 71600, incomeFromPenaltyAccountId propos\u00e9 70200, interestOnLoanAccountId selon dur\u00e9e : 71100 (court terme) ou 71200 (moyen terme).",
+  "charges_note": "TODO_CHARGES : le cahier mentionne des 'frais de dossier' et 'p\u00e9nalit\u00e9s' dans l'analyse de seed g\u00e9n\u00e9rale mais ne fournit aucun montant/pourcentage pr\u00e9cis pour UNITED CREDIT SA ; \u00e0 d\u00e9faut, seule la p\u00e9nalit\u00e9 de retard (compte 70200) est actionnable directement via les int\u00e9r\u00eats de retard du produit de pr\u00eat.",
+  "clients": [
+    {
+      "id": "DEMO-CL-0001",
+      "name": "NGONO Marie Solange",
+      "type": "Particulier",
+      "office": "UC-AKL",
+      "profession": "Commer\u00e7ante (march\u00e9 Sandaga)",
+      "kyc_status": "CONFORME",
+      "risk": "Standard"
+    },
+    {
+      "id": "DEMO-CL-0002",
+      "name": "TCHOUPO Jean-Baptiste",
+      "type": "Particulier",
+      "office": "UC-DSC",
+      "profession": "Agriculteur (caf\u00e9iculture)",
+      "kyc_status": "CONFORME",
+      "risk": "Faible"
+    },
+    {
+      "id": "DEMO-CL-0003",
+      "name": "FOTSO Paul",
+      "type": "Particulier",
+      "office": "UC-BAF",
+      "profession": "Transporteur (moto-taxi)",
+      "kyc_status": "EN_ATTENTE",
+      "risk": "Standard"
+    },
+    {
+      "id": "DEMO-CL-0004",
+      "name": "MBALLA Christine",
+      "type": "Particulier",
+      "office": "UC-YAS",
+      "profession": "Enseignante (\u00e9cole priv\u00e9e)",
+      "kyc_status": "CONFORME",
+      "risk": "Faible"
+    },
+    {
+      "id": "DEMO-CL-0005",
+      "name": "ABENA Rose",
+      "type": "Particulier",
+      "office": "UC-MBP",
+      "profession": "Coiffeuse / salon de beaut\u00e9",
+      "kyc_status": "CONFORME",
+      "risk": "Standard"
+    },
+    {
+      "id": "DEMO-CL-0006",
+      "name": "NDONGO Emmanuel",
+      "type": "Particulier - PPE",
+      "office": "UC-TBL",
+      "profession": "Fonctionnaire (Minist\u00e8re)",
+      "kyc_status": "RENFORCE",
+      "risk": "\u00c9lev\u00e9",
+      "special_case": "PPE \u2014 R\u00e8glement COBAC R-2023/01, EDD obligatoire, retraits plafonn\u00e9s"
+    },
+    {
+      "id": "DEMO-CL-0007",
+      "name": "ETOUNDI DISTRIBUTION SARL",
+      "type": "Entreprise",
+      "office": "UC-DAM",
+      "profession": "Distribution agroalimentaire",
+      "kyc_status": "CONFORME",
+      "risk": "Standard",
+      "special_case": "B\u00e9n\u00e9ficiaires effectifs d\u00e9clar\u00e9s (seuil GAFI >25%)",
+      "beneficial_owners": [
+        {
+          "name": "ETOUNDI Marc",
+          "function": "G\u00e9rant statutaire",
+          "share_pct": 45
+        },
+        {
+          "name": "ETOUNDI Julie",
+          "function": "Associ\u00e9e",
+          "share_pct": 30
+        },
+        {
+          "name": "MBIA Robert",
+          "function": "Associ\u00e9 minoritaire",
+          "share_pct": 25
+        }
+      ]
+    },
+    {
+      "id": "DEMO-CL-0008",
+      "name": "BELLO Aminatou",
+      "type": "Particulier",
+      "office": "UC-KRI",
+      "profession": "Mareyeuse (produits de la mer)",
+      "kyc_status": "CONFORME",
+      "risk": "Faible"
+    },
+    {
+      "id": "DEMO-CL-0009",
+      "name": "NANA Fr\u00e9d\u00e9ric",
+      "type": "Particulier",
+      "office": "UC-BER",
+      "profession": "Agriculteur (cacaoculture)",
+      "kyc_status": "EN_REVISION",
+      "risk": "Standard",
+      "special_case": "Pi\u00e8ce d'identit\u00e9 expirant sous 30 jours \u2014 bascule CONFORME \u2192 EN_REVISION"
+    },
+    {
+      "id": "DEMO-CL-0010",
+      "name": "KAMDEM Solange",
+      "type": "Particulier",
+      "office": "UC-DEI",
+      "profession": "Restauratrice",
+      "kyc_status": "CONFORME",
+      "risk": "Standard"
+    },
+    {
+      "id": "DEMO-CL-0011",
+      "name": "GROUPE \u00ab ESPOIR \u00bb (JLG)",
+      "type": "Groupe solidaire",
+      "office": "UC-LGQ",
+      "profession": "Commerce / couture \u2014 6 membres",
+      "kyc_status": "CONFORME",
+      "risk": "Standard"
+    },
+    {
+      "id": "DEMO-CL-0012",
+      "name": "ONANA Serge",
+      "type": "Particulier",
+      "office": "UC-AKL",
+      "profession": "Importateur pi\u00e8ces d\u00e9tach\u00e9es",
+      "kyc_status": "REJETE",
+      "risk": "\u00c9lev\u00e9",
+      "special_case": "Justificatifs d'origine des fonds non fournis \u2014 dossier bloquant"
+    },
+    {
+      "id": "DEMO-CL-0013",
+      "name": "MVONDO Alice",
+      "type": "Particulier",
+      "office": "UC-DSC",
+      "profession": "\u00c9tudiante (\u00c9pargne Jeunes)",
+      "kyc_status": "CONFORME",
+      "risk": "Faible"
+    },
+    {
+      "id": "DEMO-CL-0014",
+      "name": "DJOMO Herv\u00e9",
+      "type": "Particulier",
+      "office": "UC-BAF",
+      "profession": "\u00c9leveur de volaille",
+      "kyc_status": "CONFORME",
+      "risk": "Standard"
+    },
+    {
+      "id": "DEMO-CL-0015",
+      "name": "TALLA Brigitte",
+      "type": "Particulier - Relation internationale",
+      "office": "UC-YAS",
+      "profession": "Diaspora \u2014 transferts internationaux",
+      "kyc_status": "RENFORCE",
+      "risk": "\u00c9lev\u00e9"
+    }
+  ],
+  "clients_note": "Dates de naissance, num\u00e9ros CNI et num\u00e9ros de t\u00e9l\u00e9phone ne sont pas fournis (le cahier pr\u00e9cise seulement qu'ils doivent \u00eatre 'fictifs mais conformes au format camerounais'). TODO_CLIENT_IDENTIFIERS : \u00e0 g\u00e9n\u00e9rer.",
+  "treasury_operations": [
+    {
+      "ref": "CU-01-XAF",
+      "type": "ouverture_caisse",
+      "office": "UC-AKL",
+      "currency": "XAF",
+      "amount": 3500000,
+      "validated_by": "demo.chef.akl"
+    },
+    {
+      "ref": "CU-01-USD",
+      "type": "ouverture_caisse",
+      "office": "UC-AKL",
+      "currency": "USD",
+      "amount": 1200,
+      "validated_by": "demo.chef.akl"
+    },
+    {
+      "ref": "CU-01-EUR",
+      "type": "ouverture_caisse",
+      "office": "UC-AKL",
+      "currency": "EUR",
+      "amount": 800,
+      "validated_by": "demo.chef.akl"
+    },
+    {
+      "ref": "OP-001",
+      "client": "DEMO-CL-0001",
+      "office": "UC-AKL",
+      "type": "versement_epargne",
+      "amount_xaf": 150000,
+      "gl_account": "40100"
+    },
+    {
+      "ref": "OP-002",
+      "client": "DEMO-CL-0005",
+      "office": "UC-MBP",
+      "type": "retrait_epargne",
+      "amount_xaf": 45000,
+      "gl_account": "40100"
+    },
+    {
+      "ref": "OP-003",
+      "client": "DEMO-CL-0010",
+      "office": "UC-DEI",
+      "type": "versement_bon_de_caisse",
+      "amount_xaf": 500000,
+      "gl_account": "40200"
+    },
+    {
+      "ref": "OP-004",
+      "client": "DEMO-CL-0004",
+      "office": "UC-YAS",
+      "type": "versement_epargne",
+      "amount_xaf": 75000,
+      "gl_account": "40100"
+    },
+    {
+      "ref": "OP-005",
+      "client": "DEMO-CL-0008",
+      "office": "UC-KRI",
+      "type": "retrait_epargne",
+      "amount_xaf": 20000,
+      "gl_account": "40100"
+    },
+    {
+      "ref": "OP-006",
+      "client": "DEMO-CL-0014",
+      "office": "UC-BAF",
+      "type": "versement_epargne",
+      "amount_xaf": 60000,
+      "gl_account": "40100"
+    },
+    {
+      "ref": "CU-08",
+      "type": "transfert_inter_agences",
+      "from_office": "UC-DG",
+      "to_office": "UC-BER",
+      "amount_xaf": 1000000,
+      "maker": "demo.dg.admin",
+      "checker": "demo.dir.credit"
+    },
+    {
+      "ref": "CU-11",
+      "client": "DEMO-CL-0015",
+      "office": "UC-YAS",
+      "type": "change_devise",
+      "amount_eur": 500,
+      "rate": 655.957,
+      "amount_xaf_equivalent": 327978.5
+    }
+  ],
+  "credit_files": [
+    {
+      "ref": "CR-001",
+      "client": "DEMO-CL-0001",
+      "product": "Microcr\u00e9dit Commerce",
+      "amount_xaf": 800000,
+      "status": "D\u00e9caiss\u00e9 \u2014 en remboursement",
+      "committee_level": 1,
+      "office": "UC-AKL"
+    },
+    {
+      "ref": "CR-002",
+      "client": "DEMO-CL-0003",
+      "product": "Nanocr\u00e9dit Express",
+      "amount_xaf": 80000,
+      "status": "Approuv\u00e9 \u2014 d\u00e9caissement J+0",
+      "committee_level": null,
+      "office": "UC-BAF"
+    },
+    {
+      "ref": "CR-003",
+      "client": "DEMO-CL-0002",
+      "product": "Cr\u00e9dit Agricole Saisonnier",
+      "amount_xaf": 900000,
+      "status": "En instruction \u2014 comit\u00e9 en attente",
+      "committee_level": 1,
+      "office": "UC-DSC"
+    },
+    {
+      "ref": "CR-004",
+      "client": "DEMO-CL-0011",
+      "product": "Pr\u00eat Group\u00e9 JLG",
+      "amount_xaf": 1800000,
+      "status": "D\u00e9caiss\u00e9 \u2014 en remboursement",
+      "committee_level": 2,
+      "office": "UC-LGQ"
+    },
+    {
+      "ref": "CR-005",
+      "client": "DEMO-CL-0014",
+      "product": "Microcr\u00e9dit Commerce",
+      "amount_xaf": 650000,
+      "status": "Cr\u00e9ance en souffrance (bucket 30-60j)",
+      "committee_level": 1,
+      "office": "UC-BAF"
+    },
+    {
+      "ref": "CR-006",
+      "client": "DEMO-CL-0010",
+      "product": "Microcr\u00e9dit Commerce",
+      "amount_xaf": 1200000,
+      "status": "Demande soumise \u2014 Niveau 3 requis",
+      "committee_level": 3,
+      "office": "UC-DEI"
+    }
+  ],
+  "credit_files_note": "TODO_LOAN_TERMS : dur\u00e9e exacte, nombre d'\u00e9ch\u00e9ances et date de d\u00e9caissement par dossier ne sont pas syst\u00e9matiquement fournis (seul CR-001 est d\u00e9taill\u00e9 \u00a710.2 : 9 mois). Les autres dossiers devront reprendre les param\u00e8tres par d\u00e9faut du produit associ\u00e9.",
+  "staff": [
+    {
+      "officeName": "Direction G\u00e9n\u00e9rale (QG)",
+      "firstname": "Jean",
+      "lastname": "Kengne",
+      "isLoanOfficer": false,
+      "mobileNo": "237672356787",
+      "joiningDate": "03 April 2022",
+      "externalId": "DG-ADM-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-DG"
+    },
+    {
+      "officeName": "Direction G\u00e9n\u00e9rale (QG)",
+      "firstname": "Alain",
+      "lastname": "Essomba",
+      "isLoanOfficer": false,
+      "mobileNo": "237694671858",
+      "joiningDate": "28 June 2021",
+      "externalId": "DG-CRE-02",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-DG"
+    },
+    {
+      "officeName": "Direction G\u00e9n\u00e9rale (QG)",
+      "firstname": "Sandrine",
+      "lastname": "Nkeng",
+      "isLoanOfficer": false,
+      "mobileNo": "237651329258",
+      "joiningDate": "22 April 2022",
+      "externalId": "DG-CON-03",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-DG"
+    },
+    {
+      "officeName": "Dschang",
+      "firstname": "Landry",
+      "lastname": "Ngo Bissa",
+      "isLoanOfficer": false,
+      "mobileNo": "237694781453",
+      "joiningDate": "01 January 2022",
+      "externalId": "DSC-CHA-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-DSC"
+    },
+    {
+      "officeName": "Dschang",
+      "firstname": "Larissa",
+      "lastname": "Wamba",
+      "isLoanOfficer": false,
+      "mobileNo": "237691391704",
+      "joiningDate": "16 July 2025",
+      "externalId": "DSC-CAI-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-DSC"
+    },
+    {
+      "officeName": "Dschang",
+      "firstname": "Serge",
+      "lastname": "Nana",
+      "isLoanOfficer": false,
+      "mobileNo": "237677456778",
+      "joiningDate": "24 July 2022",
+      "externalId": "DSC-CAI-02",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-DSC"
+    },
+    {
+      "officeName": "Dschang",
+      "firstname": "Franck",
+      "lastname": "Mekongo",
+      "isLoanOfficer": true,
+      "mobileNo": "237675207175",
+      "joiningDate": "09 July 2021",
+      "externalId": "DSC-AGC-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-DSC"
+    },
+    {
+      "officeName": "Dschang",
+      "firstname": "Odile",
+      "lastname": "Kenfack",
+      "isLoanOfficer": true,
+      "mobileNo": "237696460663",
+      "joiningDate": "21 May 2024",
+      "externalId": "DSC-AGC-02",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-DSC"
+    },
+    {
+      "officeName": "Dschang",
+      "firstname": "Sandrine",
+      "lastname": "Kengne",
+      "isLoanOfficer": true,
+      "mobileNo": "237680662275",
+      "joiningDate": "01 January 2022",
+      "externalId": "DSC-AGT-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-DSC"
+    },
+    {
+      "officeName": "Douala Akwa Libert\u00e9",
+      "firstname": "Aicha",
+      "lastname": "Nguemo",
+      "isLoanOfficer": false,
+      "mobileNo": "237672969693",
+      "joiningDate": "11 July 2024",
+      "externalId": "AKL-CHA-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-AKL"
+    },
+    {
+      "officeName": "Douala Akwa Libert\u00e9",
+      "firstname": "Solange",
+      "lastname": "Ngo Bissa",
+      "isLoanOfficer": false,
+      "mobileNo": "237694172933",
+      "joiningDate": "04 April 2021",
+      "externalId": "AKL-CAI-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-AKL"
+    },
+    {
+      "officeName": "Douala Akwa Libert\u00e9",
+      "firstname": "Herve",
+      "lastname": "Mballa",
+      "isLoanOfficer": false,
+      "mobileNo": "237696344098",
+      "joiningDate": "01 January 2022",
+      "externalId": "AKL-CAI-02",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-AKL"
+    },
+    {
+      "officeName": "Douala Akwa Libert\u00e9",
+      "firstname": "Blaise",
+      "lastname": "Ebogo",
+      "isLoanOfficer": true,
+      "mobileNo": "237680766563",
+      "joiningDate": "01 January 2022",
+      "externalId": "AKL-AGC-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-AKL"
+    },
+    {
+      "officeName": "Douala Akwa Libert\u00e9",
+      "firstname": "Josiane",
+      "lastname": "Kenfack",
+      "isLoanOfficer": true,
+      "mobileNo": "237675319684",
+      "joiningDate": "04 October 2024",
+      "externalId": "AKL-AGC-02",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-AKL"
+    },
+    {
+      "officeName": "Douala Akwa Libert\u00e9",
+      "firstname": "Aicha",
+      "lastname": "Atangana",
+      "isLoanOfficer": true,
+      "mobileNo": "237693279451",
+      "joiningDate": "01 January 2022",
+      "externalId": "AKL-AGT-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-AKL"
+    },
+    {
+      "officeName": "Douala Logbaba Quartier",
+      "firstname": "Serge",
+      "lastname": "Wamba",
+      "isLoanOfficer": false,
+      "mobileNo": "237677383060",
+      "joiningDate": "11 March 2026",
+      "externalId": "LGQ-CHA-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-LGQ"
+    },
+    {
+      "officeName": "Douala Logbaba Quartier",
+      "firstname": "Christian",
+      "lastname": "Tsafack",
+      "isLoanOfficer": false,
+      "mobileNo": "237695913694",
+      "joiningDate": "25 April 2021",
+      "externalId": "LGQ-CAI-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-LGQ"
+    },
+    {
+      "officeName": "Douala Logbaba Quartier",
+      "firstname": "Paul",
+      "lastname": "Sonkeng",
+      "isLoanOfficer": false,
+      "mobileNo": "237675520651",
+      "joiningDate": "03 July 2022",
+      "externalId": "LGQ-CAI-02",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-LGQ"
+    },
+    {
+      "officeName": "Douala Logbaba Quartier",
+      "firstname": "Franck",
+      "lastname": "Belinga",
+      "isLoanOfficer": true,
+      "mobileNo": "237691852787",
+      "joiningDate": "07 October 2022",
+      "externalId": "LGQ-AGC-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-LGQ"
+    },
+    {
+      "officeName": "Douala Logbaba Quartier",
+      "firstname": "Fabrice",
+      "lastname": "Tabi",
+      "isLoanOfficer": true,
+      "mobileNo": "237699774079",
+      "joiningDate": "29 July 2023",
+      "externalId": "LGQ-AGC-02",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-LGQ"
+    },
+    {
+      "officeName": "Douala Logbaba Quartier",
+      "firstname": "Bertrand",
+      "lastname": "Kamdem",
+      "isLoanOfficer": true,
+      "mobileNo": "237670881177",
+      "joiningDate": "24 February 2024",
+      "externalId": "LGQ-AGT-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-LGQ"
+    },
+    {
+      "officeName": "Douala Yassa",
+      "firstname": "Solange",
+      "lastname": "Ndongo",
+      "isLoanOfficer": false,
+      "mobileNo": "237699711878",
+      "joiningDate": "29 March 2023",
+      "externalId": "YAS-CHA-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-YAS"
+    },
+    {
+      "officeName": "Douala Yassa",
+      "firstname": "Larissa",
+      "lastname": "Kamdem",
+      "isLoanOfficer": false,
+      "mobileNo": "237690617488",
+      "joiningDate": "06 July 2021",
+      "externalId": "YAS-CAI-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-YAS"
+    },
+    {
+      "officeName": "Douala Yassa",
+      "firstname": "Alain",
+      "lastname": "Kamdem",
+      "isLoanOfficer": false,
+      "mobileNo": "237693267753",
+      "joiningDate": "11 June 2025",
+      "externalId": "YAS-CAI-02",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-YAS"
+    },
+    {
+      "officeName": "Douala Yassa",
+      "firstname": "Yvette",
+      "lastname": "Mballa",
+      "isLoanOfficer": true,
+      "mobileNo": "237677500156",
+      "joiningDate": "05 May 2024",
+      "externalId": "YAS-AGC-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-YAS"
+    },
+    {
+      "officeName": "Douala Yassa",
+      "firstname": "Nicole",
+      "lastname": "Ebogo",
+      "isLoanOfficer": true,
+      "mobileNo": "237690112038",
+      "joiningDate": "25 October 2024",
+      "externalId": "YAS-AGC-02",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-YAS"
+    },
+    {
+      "officeName": "Douala Yassa",
+      "firstname": "Landry",
+      "lastname": "Mekongo",
+      "isLoanOfficer": true,
+      "mobileNo": "237672905934",
+      "joiningDate": "05 August 2024",
+      "externalId": "YAS-AGT-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-YAS"
+    },
+    {
+      "officeName": "Douala Mboppi",
+      "firstname": "Odile",
+      "lastname": "Onana",
+      "isLoanOfficer": false,
+      "mobileNo": "237677265840",
+      "joiningDate": "19 July 2023",
+      "externalId": "MBP-CHA-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-MBP"
+    },
+    {
+      "officeName": "Douala Mboppi",
+      "firstname": "Bertrand",
+      "lastname": "Manga",
+      "isLoanOfficer": false,
+      "mobileNo": "237695287330",
+      "joiningDate": "01 January 2022",
+      "externalId": "MBP-CAI-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-MBP"
+    },
+    {
+      "officeName": "Douala Mboppi",
+      "firstname": "Herve",
+      "lastname": "Tsafack",
+      "isLoanOfficer": false,
+      "mobileNo": "237693632323",
+      "joiningDate": "01 June 2024",
+      "externalId": "MBP-CAI-02",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-MBP"
+    },
+    {
+      "officeName": "Douala Mboppi",
+      "firstname": "Yves",
+      "lastname": "Kenfack",
+      "isLoanOfficer": true,
+      "mobileNo": "237695269396",
+      "joiningDate": "10 January 2024",
+      "externalId": "MBP-AGC-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-MBP"
+    },
+    {
+      "officeName": "Douala Mboppi",
+      "firstname": "Olivier",
+      "lastname": "Fongang",
+      "isLoanOfficer": true,
+      "mobileNo": "237680120422",
+      "joiningDate": "18 August 2021",
+      "externalId": "MBP-AGC-02",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-MBP"
+    },
+    {
+      "officeName": "Douala Mboppi",
+      "firstname": "Chantal",
+      "lastname": "Tchoumi",
+      "isLoanOfficer": true,
+      "mobileNo": "237650352572",
+      "joiningDate": "01 January 2022",
+      "externalId": "MBP-AGT-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-MBP"
+    },
+    {
+      "officeName": "Douala Deido",
+      "firstname": "Eric",
+      "lastname": "Kengne",
+      "isLoanOfficer": false,
+      "mobileNo": "237680955662",
+      "joiningDate": "22 May 2021",
+      "externalId": "DEI-CHA-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-DEI"
+    },
+    {
+      "officeName": "Douala Deido",
+      "firstname": "Yves",
+      "lastname": "Essomba",
+      "isLoanOfficer": false,
+      "mobileNo": "237680676510",
+      "joiningDate": "01 January 2022",
+      "externalId": "DEI-CAI-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-DEI"
+    },
+    {
+      "officeName": "Douala Deido",
+      "firstname": "Nicole",
+      "lastname": "Youmbi",
+      "isLoanOfficer": false,
+      "mobileNo": "237691543692",
+      "joiningDate": "30 May 2026",
+      "externalId": "DEI-CAI-02",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-DEI"
+    },
+    {
+      "officeName": "Douala Deido",
+      "firstname": "Herve",
+      "lastname": "Tabi",
+      "isLoanOfficer": true,
+      "mobileNo": "237693781446",
+      "joiningDate": "04 February 2023",
+      "externalId": "DEI-AGC-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-DEI"
+    },
+    {
+      "officeName": "Douala Deido",
+      "firstname": "Nicole",
+      "lastname": "Wamba",
+      "isLoanOfficer": true,
+      "mobileNo": "237651359947",
+      "joiningDate": "06 April 2022",
+      "externalId": "DEI-AGC-02",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-DEI"
+    },
+    {
+      "officeName": "Douala Deido",
+      "firstname": "Christian",
+      "lastname": "Nkeng",
+      "isLoanOfficer": true,
+      "mobileNo": "237691680828",
+      "joiningDate": "17 April 2022",
+      "externalId": "DEI-AGT-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-DEI"
+    },
+    {
+      "officeName": "Yaound\u00e9 T-Beli",
+      "firstname": "Jean",
+      "lastname": "Mballa",
+      "isLoanOfficer": false,
+      "mobileNo": "237694761759",
+      "joiningDate": "01 May 2021",
+      "externalId": "YTB-CHA-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-TBL"
+    },
+    {
+      "officeName": "Yaound\u00e9 T-Beli",
+      "firstname": "Eric",
+      "lastname": "Abomo",
+      "isLoanOfficer": false,
+      "mobileNo": "237650446479",
+      "joiningDate": "26 May 2021",
+      "externalId": "YTB-CAI-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-TBL"
+    },
+    {
+      "officeName": "Yaound\u00e9 T-Beli",
+      "firstname": "Bertrand",
+      "lastname": "Essomba",
+      "isLoanOfficer": false,
+      "mobileNo": "237680324643",
+      "joiningDate": "10 January 2024",
+      "externalId": "YTB-CAI-02",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-TBL"
+    },
+    {
+      "officeName": "Yaound\u00e9 T-Beli",
+      "firstname": "Marcel",
+      "lastname": "Djoumessi",
+      "isLoanOfficer": true,
+      "mobileNo": "237680354801",
+      "joiningDate": "26 May 2025",
+      "externalId": "YTB-AGC-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-TBL"
+    },
+    {
+      "officeName": "Yaound\u00e9 T-Beli",
+      "firstname": "Judith",
+      "lastname": "Ngo Bissa",
+      "isLoanOfficer": true,
+      "mobileNo": "237651201639",
+      "joiningDate": "01 January 2022",
+      "externalId": "YTB-AGC-02",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-TBL"
+    },
+    {
+      "officeName": "Yaound\u00e9 T-Beli",
+      "firstname": "Flore",
+      "lastname": "Ndongo",
+      "isLoanOfficer": true,
+      "mobileNo": "237677589710",
+      "joiningDate": "01 January 2022",
+      "externalId": "YTB-AGT-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-TBL"
+    },
+    {
+      "officeName": "Yaound\u00e9 Dama",
+      "firstname": "Alain",
+      "lastname": "Fotso",
+      "isLoanOfficer": false,
+      "mobileNo": "237677863587",
+      "joiningDate": "01 January 2022",
+      "externalId": "YDM-CHA-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-DAM"
+    },
+    {
+      "officeName": "Yaound\u00e9 Dama",
+      "firstname": "Patrick",
+      "lastname": "Ngo Bissa",
+      "isLoanOfficer": false,
+      "mobileNo": "237670662336",
+      "joiningDate": "08 July 2023",
+      "externalId": "YDM-CAI-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-DAM"
+    },
+    {
+      "officeName": "Yaound\u00e9 Dama",
+      "firstname": "Cedric",
+      "lastname": "Talla",
+      "isLoanOfficer": false,
+      "mobileNo": "237672585100",
+      "joiningDate": "27 May 2022",
+      "externalId": "YDM-CAI-02",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-DAM"
+    },
+    {
+      "officeName": "Yaound\u00e9 Dama",
+      "firstname": "Rodrigue",
+      "lastname": "Sonkeng",
+      "isLoanOfficer": true,
+      "mobileNo": "237696997546",
+      "joiningDate": "02 February 2024",
+      "externalId": "YDM-AGC-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-DAM"
+    },
+    {
+      "officeName": "Yaound\u00e9 Dama",
+      "firstname": "Paul",
+      "lastname": "Biya Fouda",
+      "isLoanOfficer": true,
+      "mobileNo": "237690976638",
+      "joiningDate": "31 January 2021",
+      "externalId": "YDM-AGC-02",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-DAM"
+    },
+    {
+      "officeName": "Yaound\u00e9 Dama",
+      "firstname": "Patrick",
+      "lastname": "Talla",
+      "isLoanOfficer": true,
+      "mobileNo": "237677609231",
+      "joiningDate": "01 January 2022",
+      "externalId": "YDM-AGT-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-DAM"
+    },
+    {
+      "officeName": "Kribi",
+      "firstname": "Blaise",
+      "lastname": "Abomo",
+      "isLoanOfficer": false,
+      "mobileNo": "237650272634",
+      "joiningDate": "16 February 2023",
+      "externalId": "KRI-CHA-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-KRI"
+    },
+    {
+      "officeName": "Kribi",
+      "firstname": "Chantal",
+      "lastname": "Ndongo",
+      "isLoanOfficer": false,
+      "mobileNo": "237694865990",
+      "joiningDate": "24 May 2025",
+      "externalId": "KRI-CAI-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-KRI"
+    },
+    {
+      "officeName": "Kribi",
+      "firstname": "Carine",
+      "lastname": "Ngo Bissa",
+      "isLoanOfficer": false,
+      "mobileNo": "237672328275",
+      "joiningDate": "07 June 2026",
+      "externalId": "KRI-CAI-02",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-KRI"
+    },
+    {
+      "officeName": "Kribi",
+      "firstname": "Marcel",
+      "lastname": "Kengne",
+      "isLoanOfficer": true,
+      "mobileNo": "237690163918",
+      "joiningDate": "12 March 2025",
+      "externalId": "KRI-AGC-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-KRI"
+    },
+    {
+      "officeName": "Kribi",
+      "firstname": "Sandrine",
+      "lastname": "Fotso",
+      "isLoanOfficer": true,
+      "mobileNo": "237691599948",
+      "joiningDate": "27 October 2022",
+      "externalId": "KRI-AGC-02",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-KRI"
+    },
+    {
+      "officeName": "Kribi",
+      "firstname": "Paul",
+      "lastname": "Manga",
+      "isLoanOfficer": true,
+      "mobileNo": "237651992697",
+      "joiningDate": "16 January 2022",
+      "externalId": "KRI-AGT-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-KRI"
+    },
+    {
+      "officeName": "Bertoua",
+      "firstname": "Olivier",
+      "lastname": "Mballa",
+      "isLoanOfficer": false,
+      "mobileNo": "237693346629",
+      "joiningDate": "07 April 2023",
+      "externalId": "BTA-CHA-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-BER"
+    },
+    {
+      "officeName": "Bertoua",
+      "firstname": "Marcel",
+      "lastname": "Tchoumi",
+      "isLoanOfficer": false,
+      "mobileNo": "237691723398",
+      "joiningDate": "23 March 2021",
+      "externalId": "BTA-CAI-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-BER"
+    },
+    {
+      "officeName": "Bertoua",
+      "firstname": "Cedric",
+      "lastname": "Essomba",
+      "isLoanOfficer": false,
+      "mobileNo": "237691692683",
+      "joiningDate": "01 January 2022",
+      "externalId": "BTA-CAI-02",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-BER"
+    },
+    {
+      "officeName": "Bertoua",
+      "firstname": "Pauline",
+      "lastname": "Ngo Bissa",
+      "isLoanOfficer": true,
+      "mobileNo": "237693850981",
+      "joiningDate": "06 October 2022",
+      "externalId": "BTA-AGC-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-BER"
+    },
+    {
+      "officeName": "Bertoua",
+      "firstname": "Bertrand",
+      "lastname": "Tabi",
+      "isLoanOfficer": true,
+      "mobileNo": "237652804318",
+      "joiningDate": "14 August 2024",
+      "externalId": "BTA-AGC-02",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-BER"
+    },
+    {
+      "officeName": "Bertoua",
+      "firstname": "Laure",
+      "lastname": "Fongang",
+      "isLoanOfficer": true,
+      "mobileNo": "237699888387",
+      "joiningDate": "01 April 2026",
+      "externalId": "BTA-AGT-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-BER"
+    },
+    {
+      "officeName": "Bafoussam",
+      "firstname": "Jean",
+      "lastname": "Wamba",
+      "isLoanOfficer": false,
+      "mobileNo": "237691690341",
+      "joiningDate": "24 July 2021",
+      "externalId": "BAF-CHA-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-BAF"
+    },
+    {
+      "officeName": "Bafoussam",
+      "firstname": "Carine",
+      "lastname": "Belinga",
+      "isLoanOfficer": false,
+      "mobileNo": "237675172132",
+      "joiningDate": "01 January 2022",
+      "externalId": "BAF-CAI-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-BAF"
+    },
+    {
+      "officeName": "Bafoussam",
+      "firstname": "Armand",
+      "lastname": "Onana",
+      "isLoanOfficer": false,
+      "mobileNo": "237652559469",
+      "joiningDate": "01 January 2022",
+      "externalId": "BAF-CAI-02",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-BAF"
+    },
+    {
+      "officeName": "Bafoussam",
+      "firstname": "Yvette",
+      "lastname": "Sonkeng",
+      "isLoanOfficer": true,
+      "mobileNo": "237693654634",
+      "joiningDate": "17 January 2021",
+      "externalId": "BAF-AGC-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-BAF"
+    },
+    {
+      "officeName": "Bafoussam",
+      "firstname": "Odile",
+      "lastname": "Abomo",
+      "isLoanOfficer": true,
+      "mobileNo": "237652377312",
+      "joiningDate": "25 August 2021",
+      "externalId": "BAF-AGC-02",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-BAF"
+    },
+    {
+      "officeName": "Bafoussam",
+      "firstname": "Landry",
+      "lastname": "Kamdem",
+      "isLoanOfficer": true,
+      "mobileNo": "237672395442",
+      "joiningDate": "23 May 2024",
+      "externalId": "BAF-AGT-01",
+      "isActive": true,
+      "dateFormat": "dd MMMM yyyy",
+      "locale": "en",
+      "officeCode": "UC-BAF"
+    }
+  ],
+  "roles": [
+    {
+      "name": "demo.dg.admin",
+      "description": "Super User / Admin SI",
+      "permissions": {
+        "ALL_FUNCTIONS": true,
+        "READ_COLLATERAL": true,
+        "READ_DOCUMENT": true,
+        "READ_CLIENTNOTE": true,
+        "READ_CLIENTIDENTIFIER": true,
+        "READ_CLIENTIMAGE": true,
+        "READ_CLIENTCHARGE": true,
+        "CREATE_COLLATERAL": true,
+        "READ_CONFIGURATION": true
+      }
+    },
+    {
+      "name": "demo.dir.credit",
+      "description": "Directeur du Cr\u00e9dit \u2014 Comit\u00e9 Central",
+      "permissions": {
+        "READ_LOAN": true,
+        "READ_CLIENT": true,
+        "READ_SAVINGSACCOUNT": true,
+        "APPROVE_LOAN": true,
+        "APPROVALUNDO_LOAN": true,
+        "DISBURSE_LOAN": true,
+        "READ_RESCHEDULELOAN": true,
+        "APPROVE_RESCHEDULELOAN": true,
+        "READ_REPORT": true,
+        "READ_COLLATERAL": true,
+        "READ_DOCUMENT": true,
+        "READ_CLIENTNOTE": true,
+        "READ_CLIENTIDENTIFIER": true,
+        "READ_CLIENTIMAGE": true,
+        "READ_CLIENTCHARGE": true,
+        "CREATE_COLLATERAL": true,
+        "READ_CONFIGURATION": true
+      }
+    },
+    {
+      "name": "demo.chef.akl",
+      "description": "Chef d'Agence",
+      "permissions": {
+        "READ_STANDINGINSTRUCTION ": true,
+        "READ_ACCOUNTINGRULE": true,
+        "READ_CEMACCODE": true,
+        "READ_FINANCIALACTIVITYACCOUNT": true,
+        "READ_GLACCOUNT": true,
+        "READ_GLCLOSURE": true,
+        "READ_JOURNALENTRY": true,
+        "READ_PASSWORD_PREFERENCES": true,
+        "READ_PERMISSION": true,
+        "READ_ROLE": true,
+        "READ_USER": true,
+        "READ_COLLECTIONSHEET": true,
+        "READ_ACCOUNTNUMBERFORMAT": true,
+        "READ_AUDIT": true,
+        "READ_CACHE": true,
+        "READ_CALENDAR": true,
+        "READ_CODE": true,
+        "READ_CODEVALUE": true,
+        "READ_CONFIGURATION": true,
+        "READ_CURRENCY": true,
+        "READ_DATATABLE": true,
+        "READ_EXTERNAL_EVENT_CONFIGURATION": true,
+        "READ_HOOK": true,
+        "READ_Client Details": true,
+        "READ_REPORT": true,
+        "READ_TWOFACTOR_CONFIGURATION": true,
+        "READ_ENTITY_DATATABLE_CHECK": true,
+        "READ_IMPORT": true,
+        "READ_INTERID": true,
+        "READ_INTERQUOTE": true,
+        "READ_INTERREQUEST": true,
+        "READ_INTERTRANSFER": true,
+        "READ_REPORTMAILINGJOB": true,
+        "READ_SCHEDULER": true,
+        "READ_RESCHEDULELOAN": true,
+        "READ_BUSINESS_DATE": true,
+        "READ_CHARGE": true,
+        "READ_DELINQUENCY_BUCKET": true,
+        "READ_DELINQUENCY_TAGS": true,
+        "READ_EMAIL": true,
+        "READ_EMAIL_CAMPAIGN": true,
+        "READ_EMAIL_CONFIGURATION": true,
+        "READ_FIXEDDEPOSITPRODUCT": true,
+        "READ_FUND": true,
+        "READ_HOLIDAY": true,
+        "READ_LOANPRODUCT": true,
+        "READ_OFFICE": true,
+        "READ_OFFICETRANSACTION": true,
+        "READ_RATE": true,
+        "READ_RECURRINGDEPOSITPRODUCT": true,
+        "READ_SAVINGSPRODUCT": true,
+        "READ_SMS": true,
+        "READ_SMSCAMPAIGN": true,
+        "READ_STAFF": true,
+        "READ_TAXCOMPONENT": true,
+        "READ_TAXGROUP": true,
+        "READ_TEMPLATE": true,
+        "READ_WORKINGCAPITALBREACH": true,
+        "READ_WORKINGCAPITALLOAN": true,
+        "READ_WORKINGCAPITALLOANPRODUCT": true,
+        "READ_WORKINGCAPITALNEARBREACH": true,
+        "READ_WORKINGDAYS": true,
+        "READ_ADDRESS": true,
+        "READ_CLIENT": true,
+        "READ_CLIENTCHARGE": true,
+        "READ_CLIENTIDENTIFIER": true,
+        "READ_CLIENTIMAGE": true,
+        "READ_CLIENTNOTE": true,
+        "READ_COLLATERAL": true,
+        "READ_DOCUMENT": true,
+        "READ_FAMILYMEMBERS": true,
+        "READ_FIXEDDEPOSITACCOUNT": true,
+        "READ_FLOATINGRATE": true,
+        "READ_GUARANTOR": true,
+        "READ_KYCCASE": true,
+        "READ_KYCDOCUMENT": true,
+        "READ_KYCDOCUMENTTYPE": true,
+        "READ_KYCTIER": true,
+        "READ_LOAN": true,
+        "READ_LOAN_ORIGINATOR": true,
+        "READ_LOANNOTE": true,
+        "READ_LOANTRANSACTIONNOTE": true,
+        "READ_MEETING": true,
+        "READ_PAYMENTTYPE": true,
+        "READ_PRODUCTMIX": true,
+        "READ_RECURRINGDEPOSITACCOUNT": true,
+        "READ_SAVINGNOTE": true,
+        "READ_SAVINGSACCOUNT": true,
+        "READ_SAVINGSACCOUNTCHARGE": true,
+        "READ_STAFFIMAGE": true,
+        "READ_WC_DELINQUENCY_ACTION": true,
+        "READ_CENTER": true,
+        "READ_GROUP": true,
+        "READ_GROUPNOTE": true,
+        "READ_Active Clients - Email": true,
+        "READ_Active Group Leaders - Email": true,
+        "READ_Active Loan Clients - Email": true,
+        "READ_Active Loan Summary per Branch": true,
+        "READ_Active Loans - Details": true,
+        "READ_Active Loans - Summary": true,
+        "READ_Active Loans by Disbursal Period": true,
+        "READ_Active Loans in last installment": true,
+        "READ_Active Loans in last installment Summary": true,
+        "READ_Active Loans Passed Final Maturity": true,
+        "READ_Active Loans Passed Final Maturity Summary": true,
+        "READ_Aging Detail": true,
+        "READ_Aging Summary (Arrears in Months)": true,
+        "READ_Aging Summary (Arrears in Weeks)": true,
+        "READ_Balance Outstanding": true,
+        "READ_Balance Sheet": true,
+        "READ_Branch Expected Cash Flow": true,
+        "READ_BranchManagerStats": true,
+        "READ_ChildrenStaffList": true,
+        "READ_Client Listing": true,
+        "READ_Client Loan Account Schedule": true,
+        "READ_Client Loans Listing": true,
+        "READ_Client Saving Transactions": true,
+        "READ_Client Savings Summary": true,
+        "READ_ClientSummary ": true,
+        "READ_ClientTrendsByDay": true,
+        "READ_ClientTrendsByMonth": true,
+        "READ_ClientTrendsByWeek": true,
+        "READ_Collection Report": true,
+        "READ_CoordinatorStats": true,
+        "READ_Demand_Vs_Collection": true,
+        "READ_Disbursal Report": true,
+        "READ_Disbursal_Vs_Awaitingdisbursal": true,
+        "READ_Dormant Prospects - Email": true,
+        "READ_Expected Payments By Date - Basic": true,
+        "READ_Expected Payments By Date - Formatted": true,
+        "READ_FieldAgentPrograms": true,
+        "READ_FieldAgentStats": true,
+        "READ_Funds Disbursed Between Dates Summary": true,
+        "READ_Funds Disbursed Between Dates Summary by Office": true,
+        "READ_General Ledger Report": true,
+        "READ_GroupNamesByStaff": true,
+        "READ_GroupSavingSummary": true,
+        "READ_GroupSummaryAmounts": true,
+        "READ_GroupSummaryCounts": true,
+        "READ_Happy Birthday - Email": true,
+        "READ_Income Statement": true,
+        "READ_Loan Account Schedule": true,
+        "READ_Loan Approved - Email": true,
+        "READ_Loan Fully Repaid - Email": true,
+        "READ_Loan payments due - Email": true,
+        "READ_Loan Payments Due (Overdue Loans) - Email": true,
+        "READ_Loan Payments Received (Active Loans) - Email": true,
+        "READ_Loan Payments Received (Overdue Loans) - Email": true,
+        "READ_Loan Rejected - Email": true,
+        "READ_Loan Repayment - Email": true,
+        "READ_LoanCyclePerProduct": true,
+        "READ_Loans Awaiting Disbursal": true,
+        "READ_Loans Awaiting Disbursal Summary": true,
+        "READ_Loans Awaiting Disbursal Summary by Month": true,
+        "READ_Loans disbursed to clients - Email": true,
+        "READ_Loans in arrears - Email": true,
+        "READ_Loans Outstanding after final instalment date - Email": true,
+        "READ_Loans Pending Approval": true,
+        "READ_LoanTrendsByDay": true,
+        "READ_LoanTrendsByMonth": true,
+        "READ_LoanTrendsByWeek": true,
+        "READ_Obligation Met Loans Details": true,
+        "READ_Obligation Met Loans Summary": true,
+        "READ_Portfolio at Risk": true,
+        "READ_Portfolio at Risk by Branch": true,
+        "READ_ProgramDetails": true,
+        "READ_ProgramDirectorStats": true,
+        "READ_ProgramStats": true,
+        "READ_Prospective Clients - Email": true,
+        "READ_Rescheduled Loans": true,
+        "READ_Savings Transactions": true,
+        "READ_Trial Balance": true,
+        "READ_TxnRunningBalances": true,
+        "READ_Written-Off Loans": true,
+        "READ_DIVIDEND_SHAREPRODUCT": true,
+        "READ_SELFSERVICEUSER": true,
+        "READ_SSBENEFICIARYTPT": true,
+        "READ_ACCOUNTTRANSFER": true,
+        "APPROVE_LOAN": true,
+        "APPROVE_SAVINGSACCOUNT": true,
+        "ACTIVATE_SAVINGSACCOUNT": true,
+        "CREATE_CLIENT": true,
+        "ACTIVATE_CLIENT": true,
+        "UPDATE_LOAN": true,
+        "UPDATE_CLIENT": true,
+        "CREATE_COLLATERAL": true
+      }
+    },
+    {
+      "name": "demo.caissier.akl",
+      "description": "Caissier / Teller",
+      "permissions": {
+        "READ_CLIENT": true,
+        "READ_SAVINGSACCOUNT": true,
+        "READ_LOAN": true,
+        "DEPOSIT_SAVINGSACCOUNT": true,
+        "WITHDRAWAL_SAVINGSACCOUNT": true,
+        "REPAYMENT_LOAN": true,
+        "DISBURSE_LOAN": true,
+        "ALLOCATECASHIER_TELLER": true,
+        "ALLOCATECASHTOCASHIER_TELLER": true,
+        "READ_COLLATERAL": true,
+        "READ_DOCUMENT": true,
+        "READ_CLIENTNOTE": true,
+        "READ_CLIENTIDENTIFIER": true,
+        "READ_CLIENTIMAGE": true,
+        "READ_CLIENTCHARGE": true,
+        "CREATE_COLLATERAL": true,
+        "READ_CONFIGURATION": true
+      }
+    },
+    {
+      "name": "demo.agent.credit",
+      "description": "Agent de Cr\u00e9dit",
+      "permissions": {
+        "READ_CLIENT": true,
+        "READ_LOAN": true,
+        "READ_SAVINGSACCOUNT": true,
+        "CREATE_CLIENT": true,
+        "CREATE_LOAN": true,
+        "UPDATE_LOAN": true,
+        "CREATE_CLIENT_COLLATERAL_PRODUCT": true,
+        "CREATE_COLLATERAL": true,
+        "READ_COLLATERAL": true,
+        "READ_DOCUMENT": true,
+        "READ_CLIENTNOTE": true,
+        "READ_CLIENTIDENTIFIER": true,
+        "READ_CLIENTIMAGE": true,
+        "READ_CLIENTCHARGE": true,
+        "READ_CONFIGURATION": true
+      }
+    },
+    {
+      "name": "demo.conformite",
+      "description": "Resp. Conformit\u00e9 / LBC-FT",
+      "permissions": {
+        "READ_CLIENT": true,
+        "READ_SAVINGSACCOUNT": true,
+        "READ_LOAN": true,
+        "READ_AUDIT": true,
+        "ACTIVATE_CLIENT": true,
+        "READ_REPORT": true,
+        "READ_COLLATERAL": true,
+        "READ_DOCUMENT": true,
+        "READ_CLIENTNOTE": true,
+        "READ_CLIENTIDENTIFIER": true,
+        "READ_CLIENTIMAGE": true,
+        "READ_CLIENTCHARGE": true,
+        "CREATE_COLLATERAL": true,
+        "READ_CONFIGURATION": true
+      }
+    },
+    {
+      "name": "demo.agent.terrain",
+      "description": "Agent Mobile / Collecte",
+      "permissions": {
+        "READ_CLIENT": true,
+        "READ_SAVINGSACCOUNT": true,
+        "CREATE_CLIENT": true,
+        "DEPOSIT_SAVINGSACCOUNT": true,
+        "REPAYMENT_LOAN": true,
+        "READ_COLLATERAL": true,
+        "READ_DOCUMENT": true,
+        "READ_CLIENTNOTE": true,
+        "READ_CLIENTIDENTIFIER": true,
+        "READ_CLIENTIMAGE": true,
+        "READ_CLIENTCHARGE": true,
+        "CREATE_COLLATERAL": true,
+        "READ_CONFIGURATION": true
+      }
+    }
+  ],
+  "users": [
+    {
+      "username": "jean.kengne",
+      "firstname": "Jean",
+      "lastname": "Kengne",
+      "email": "jean.kengne@unitedcredit.com",
+      "staffExternalId": "DG-ADM-01",
+      "roleName": "demo.dg.admin"
+    },
+    {
+      "username": "alain.essomba",
+      "firstname": "Alain",
+      "lastname": "Essomba",
+      "email": "alain.essomba@unitedcredit.com",
+      "staffExternalId": "DG-CRE-02",
+      "roleName": "demo.dir.credit"
+    },
+    {
+      "username": "sandrine.nkeng",
+      "firstname": "Sandrine",
+      "lastname": "Nkeng",
+      "email": "sandrine.nkeng@unitedcredit.com",
+      "staffExternalId": "DG-CON-03",
+      "roleName": "demo.conformite"
+    },
+    {
+      "username": "landry.ngobissa",
+      "firstname": "Landry",
+      "lastname": "Ngo Bissa",
+      "email": "landry.ngobissa@unitedcredit.com",
+      "staffExternalId": "DSC-CHA-01",
+      "roleName": "demo.chef.akl"
+    },
+    {
+      "username": "larissa.wamba",
+      "firstname": "Larissa",
+      "lastname": "Wamba",
+      "email": "larissa.wamba@unitedcredit.com",
+      "staffExternalId": "DSC-CAI-01",
+      "roleName": "demo.caissier.akl"
+    },
+    {
+      "username": "serge.nana",
+      "firstname": "Serge",
+      "lastname": "Nana",
+      "email": "serge.nana@unitedcredit.com",
+      "staffExternalId": "DSC-CAI-02",
+      "roleName": "demo.caissier.akl"
+    },
+    {
+      "username": "franck.mekongo",
+      "firstname": "Franck",
+      "lastname": "Mekongo",
+      "email": "franck.mekongo@unitedcredit.com",
+      "staffExternalId": "DSC-AGC-01",
+      "roleName": "demo.agent.credit"
+    },
+    {
+      "username": "odile.kenfack",
+      "firstname": "Odile",
+      "lastname": "Kenfack",
+      "email": "odile.kenfack@unitedcredit.com",
+      "staffExternalId": "DSC-AGC-02",
+      "roleName": "demo.agent.credit"
+    },
+    {
+      "username": "sandrine.kengne",
+      "firstname": "Sandrine",
+      "lastname": "Kengne",
+      "email": "sandrine.kengne@unitedcredit.com",
+      "staffExternalId": "DSC-AGT-01",
+      "roleName": "demo.agent.terrain"
+    },
+    {
+      "username": "aicha.nguemo",
+      "firstname": "Aicha",
+      "lastname": "Nguemo",
+      "email": "aicha.nguemo@unitedcredit.com",
+      "staffExternalId": "AKL-CHA-01",
+      "roleName": "demo.chef.akl"
+    },
+    {
+      "username": "solange.ngobissa",
+      "firstname": "Solange",
+      "lastname": "Ngo Bissa",
+      "email": "solange.ngobissa@unitedcredit.com",
+      "staffExternalId": "AKL-CAI-01",
+      "roleName": "demo.caissier.akl"
+    },
+    {
+      "username": "herve.mballa",
+      "firstname": "Herve",
+      "lastname": "Mballa",
+      "email": "herve.mballa@unitedcredit.com",
+      "staffExternalId": "AKL-CAI-02",
+      "roleName": "demo.caissier.akl"
+    },
+    {
+      "username": "blaise.ebogo",
+      "firstname": "Blaise",
+      "lastname": "Ebogo",
+      "email": "blaise.ebogo@unitedcredit.com",
+      "staffExternalId": "AKL-AGC-01",
+      "roleName": "demo.agent.credit"
+    },
+    {
+      "username": "josiane.kenfack",
+      "firstname": "Josiane",
+      "lastname": "Kenfack",
+      "email": "josiane.kenfack@unitedcredit.com",
+      "staffExternalId": "AKL-AGC-02",
+      "roleName": "demo.agent.credit"
+    },
+    {
+      "username": "aicha.atangana",
+      "firstname": "Aicha",
+      "lastname": "Atangana",
+      "email": "aicha.atangana@unitedcredit.com",
+      "staffExternalId": "AKL-AGT-01",
+      "roleName": "demo.agent.terrain"
+    },
+    {
+      "username": "serge.wamba",
+      "firstname": "Serge",
+      "lastname": "Wamba",
+      "email": "serge.wamba@unitedcredit.com",
+      "staffExternalId": "LGQ-CHA-01",
+      "roleName": "demo.chef.akl"
+    },
+    {
+      "username": "christian.tsafack",
+      "firstname": "Christian",
+      "lastname": "Tsafack",
+      "email": "christian.tsafack@unitedcredit.com",
+      "staffExternalId": "LGQ-CAI-01",
+      "roleName": "demo.caissier.akl"
+    },
+    {
+      "username": "paul.sonkeng",
+      "firstname": "Paul",
+      "lastname": "Sonkeng",
+      "email": "paul.sonkeng@unitedcredit.com",
+      "staffExternalId": "LGQ-CAI-02",
+      "roleName": "demo.caissier.akl"
+    },
+    {
+      "username": "franck.belinga",
+      "firstname": "Franck",
+      "lastname": "Belinga",
+      "email": "franck.belinga@unitedcredit.com",
+      "staffExternalId": "LGQ-AGC-01",
+      "roleName": "demo.agent.credit"
+    },
+    {
+      "username": "fabrice.tabi",
+      "firstname": "Fabrice",
+      "lastname": "Tabi",
+      "email": "fabrice.tabi@unitedcredit.com",
+      "staffExternalId": "LGQ-AGC-02",
+      "roleName": "demo.agent.credit"
+    },
+    {
+      "username": "bertrand.kamdem",
+      "firstname": "Bertrand",
+      "lastname": "Kamdem",
+      "email": "bertrand.kamdem@unitedcredit.com",
+      "staffExternalId": "LGQ-AGT-01",
+      "roleName": "demo.agent.terrain"
+    },
+    {
+      "username": "solange.ndongo",
+      "firstname": "Solange",
+      "lastname": "Ndongo",
+      "email": "solange.ndongo@unitedcredit.com",
+      "staffExternalId": "YAS-CHA-01",
+      "roleName": "demo.chef.akl"
+    },
+    {
+      "username": "larissa.kamdem",
+      "firstname": "Larissa",
+      "lastname": "Kamdem",
+      "email": "larissa.kamdem@unitedcredit.com",
+      "staffExternalId": "YAS-CAI-01",
+      "roleName": "demo.caissier.akl"
+    },
+    {
+      "username": "alain.kamdem",
+      "firstname": "Alain",
+      "lastname": "Kamdem",
+      "email": "alain.kamdem@unitedcredit.com",
+      "staffExternalId": "YAS-CAI-02",
+      "roleName": "demo.caissier.akl"
+    },
+    {
+      "username": "yvette.mballa",
+      "firstname": "Yvette",
+      "lastname": "Mballa",
+      "email": "yvette.mballa@unitedcredit.com",
+      "staffExternalId": "YAS-AGC-01",
+      "roleName": "demo.agent.credit"
+    },
+    {
+      "username": "nicole.ebogo",
+      "firstname": "Nicole",
+      "lastname": "Ebogo",
+      "email": "nicole.ebogo@unitedcredit.com",
+      "staffExternalId": "YAS-AGC-02",
+      "roleName": "demo.agent.credit"
+    },
+    {
+      "username": "landry.mekongo",
+      "firstname": "Landry",
+      "lastname": "Mekongo",
+      "email": "landry.mekongo@unitedcredit.com",
+      "staffExternalId": "YAS-AGT-01",
+      "roleName": "demo.agent.terrain"
+    },
+    {
+      "username": "odile.onana",
+      "firstname": "Odile",
+      "lastname": "Onana",
+      "email": "odile.onana@unitedcredit.com",
+      "staffExternalId": "MBP-CHA-01",
+      "roleName": "demo.chef.akl"
+    },
+    {
+      "username": "bertrand.manga",
+      "firstname": "Bertrand",
+      "lastname": "Manga",
+      "email": "bertrand.manga@unitedcredit.com",
+      "staffExternalId": "MBP-CAI-01",
+      "roleName": "demo.caissier.akl"
+    },
+    {
+      "username": "herve.tsafack",
+      "firstname": "Herve",
+      "lastname": "Tsafack",
+      "email": "herve.tsafack@unitedcredit.com",
+      "staffExternalId": "MBP-CAI-02",
+      "roleName": "demo.caissier.akl"
+    },
+    {
+      "username": "yves.kenfack",
+      "firstname": "Yves",
+      "lastname": "Kenfack",
+      "email": "yves.kenfack@unitedcredit.com",
+      "staffExternalId": "MBP-AGC-01",
+      "roleName": "demo.agent.credit"
+    },
+    {
+      "username": "olivier.fongang",
+      "firstname": "Olivier",
+      "lastname": "Fongang",
+      "email": "olivier.fongang@unitedcredit.com",
+      "staffExternalId": "MBP-AGC-02",
+      "roleName": "demo.agent.credit"
+    },
+    {
+      "username": "chantal.tchoumi",
+      "firstname": "Chantal",
+      "lastname": "Tchoumi",
+      "email": "chantal.tchoumi@unitedcredit.com",
+      "staffExternalId": "MBP-AGT-01",
+      "roleName": "demo.agent.terrain"
+    },
+    {
+      "username": "eric.kengne",
+      "firstname": "Eric",
+      "lastname": "Kengne",
+      "email": "eric.kengne@unitedcredit.com",
+      "staffExternalId": "DEI-CHA-01",
+      "roleName": "demo.chef.akl"
+    },
+    {
+      "username": "yves.essomba",
+      "firstname": "Yves",
+      "lastname": "Essomba",
+      "email": "yves.essomba@unitedcredit.com",
+      "staffExternalId": "DEI-CAI-01",
+      "roleName": "demo.caissier.akl"
+    },
+    {
+      "username": "nicole.youmbi",
+      "firstname": "Nicole",
+      "lastname": "Youmbi",
+      "email": "nicole.youmbi@unitedcredit.com",
+      "staffExternalId": "DEI-CAI-02",
+      "roleName": "demo.caissier.akl"
+    },
+    {
+      "username": "herve.tabi",
+      "firstname": "Herve",
+      "lastname": "Tabi",
+      "email": "herve.tabi@unitedcredit.com",
+      "staffExternalId": "DEI-AGC-01",
+      "roleName": "demo.agent.credit"
+    },
+    {
+      "username": "nicole.wamba",
+      "firstname": "Nicole",
+      "lastname": "Wamba",
+      "email": "nicole.wamba@unitedcredit.com",
+      "staffExternalId": "DEI-AGC-02",
+      "roleName": "demo.agent.credit"
+    },
+    {
+      "username": "christian.nkeng",
+      "firstname": "Christian",
+      "lastname": "Nkeng",
+      "email": "christian.nkeng@unitedcredit.com",
+      "staffExternalId": "DEI-AGT-01",
+      "roleName": "demo.agent.terrain"
+    },
+    {
+      "username": "jean.mballa",
+      "firstname": "Jean",
+      "lastname": "Mballa",
+      "email": "jean.mballa@unitedcredit.com",
+      "staffExternalId": "YTB-CHA-01",
+      "roleName": "demo.chef.akl"
+    },
+    {
+      "username": "eric.abomo",
+      "firstname": "Eric",
+      "lastname": "Abomo",
+      "email": "eric.abomo@unitedcredit.com",
+      "staffExternalId": "YTB-CAI-01",
+      "roleName": "demo.caissier.akl"
+    },
+    {
+      "username": "bertrand.essomba",
+      "firstname": "Bertrand",
+      "lastname": "Essomba",
+      "email": "bertrand.essomba@unitedcredit.com",
+      "staffExternalId": "YTB-CAI-02",
+      "roleName": "demo.caissier.akl"
+    },
+    {
+      "username": "marcel.djoumessi",
+      "firstname": "Marcel",
+      "lastname": "Djoumessi",
+      "email": "marcel.djoumessi@unitedcredit.com",
+      "staffExternalId": "YTB-AGC-01",
+      "roleName": "demo.agent.credit"
+    },
+    {
+      "username": "judith.ngobissa",
+      "firstname": "Judith",
+      "lastname": "Ngo Bissa",
+      "email": "judith.ngobissa@unitedcredit.com",
+      "staffExternalId": "YTB-AGC-02",
+      "roleName": "demo.agent.credit"
+    },
+    {
+      "username": "flore.ndongo",
+      "firstname": "Flore",
+      "lastname": "Ndongo",
+      "email": "flore.ndongo@unitedcredit.com",
+      "staffExternalId": "YTB-AGT-01",
+      "roleName": "demo.agent.terrain"
+    },
+    {
+      "username": "alain.fotso",
+      "firstname": "Alain",
+      "lastname": "Fotso",
+      "email": "alain.fotso@unitedcredit.com",
+      "staffExternalId": "YDM-CHA-01",
+      "roleName": "demo.chef.akl"
+    },
+    {
+      "username": "patrick.ngobissa",
+      "firstname": "Patrick",
+      "lastname": "Ngo Bissa",
+      "email": "patrick.ngobissa@unitedcredit.com",
+      "staffExternalId": "YDM-CAI-01",
+      "roleName": "demo.caissier.akl"
+    },
+    {
+      "username": "cedric.talla",
+      "firstname": "Cedric",
+      "lastname": "Talla",
+      "email": "cedric.talla@unitedcredit.com",
+      "staffExternalId": "YDM-CAI-02",
+      "roleName": "demo.caissier.akl"
+    },
+    {
+      "username": "rodrigue.sonkeng",
+      "firstname": "Rodrigue",
+      "lastname": "Sonkeng",
+      "email": "rodrigue.sonkeng@unitedcredit.com",
+      "staffExternalId": "YDM-AGC-01",
+      "roleName": "demo.agent.credit"
+    },
+    {
+      "username": "paul.biyafouda",
+      "firstname": "Paul",
+      "lastname": "Biya Fouda",
+      "email": "paul.biyafouda@unitedcredit.com",
+      "staffExternalId": "YDM-AGC-02",
+      "roleName": "demo.agent.credit"
+    },
+    {
+      "username": "patrick.talla",
+      "firstname": "Patrick",
+      "lastname": "Talla",
+      "email": "patrick.talla@unitedcredit.com",
+      "staffExternalId": "YDM-AGT-01",
+      "roleName": "demo.agent.terrain"
+    },
+    {
+      "username": "blaise.abomo",
+      "firstname": "Blaise",
+      "lastname": "Abomo",
+      "email": "blaise.abomo@unitedcredit.com",
+      "staffExternalId": "KRI-CHA-01",
+      "roleName": "demo.chef.akl"
+    },
+    {
+      "username": "chantal.ndongo",
+      "firstname": "Chantal",
+      "lastname": "Ndongo",
+      "email": "chantal.ndongo@unitedcredit.com",
+      "staffExternalId": "KRI-CAI-01",
+      "roleName": "demo.caissier.akl"
+    },
+    {
+      "username": "carine.ngobissa",
+      "firstname": "Carine",
+      "lastname": "Ngo Bissa",
+      "email": "carine.ngobissa@unitedcredit.com",
+      "staffExternalId": "KRI-CAI-02",
+      "roleName": "demo.caissier.akl"
+    },
+    {
+      "username": "marcel.kengne",
+      "firstname": "Marcel",
+      "lastname": "Kengne",
+      "email": "marcel.kengne@unitedcredit.com",
+      "staffExternalId": "KRI-AGC-01",
+      "roleName": "demo.agent.credit"
+    },
+    {
+      "username": "sandrine.fotso",
+      "firstname": "Sandrine",
+      "lastname": "Fotso",
+      "email": "sandrine.fotso@unitedcredit.com",
+      "staffExternalId": "KRI-AGC-02",
+      "roleName": "demo.agent.credit"
+    },
+    {
+      "username": "paul.manga",
+      "firstname": "Paul",
+      "lastname": "Manga",
+      "email": "paul.manga@unitedcredit.com",
+      "staffExternalId": "KRI-AGT-01",
+      "roleName": "demo.agent.terrain"
+    },
+    {
+      "username": "olivier.mballa",
+      "firstname": "Olivier",
+      "lastname": "Mballa",
+      "email": "olivier.mballa@unitedcredit.com",
+      "staffExternalId": "BTA-CHA-01",
+      "roleName": "demo.chef.akl"
+    },
+    {
+      "username": "marcel.tchoumi",
+      "firstname": "Marcel",
+      "lastname": "Tchoumi",
+      "email": "marcel.tchoumi@unitedcredit.com",
+      "staffExternalId": "BTA-CAI-01",
+      "roleName": "demo.caissier.akl"
+    },
+    {
+      "username": "cedric.essomba",
+      "firstname": "Cedric",
+      "lastname": "Essomba",
+      "email": "cedric.essomba@unitedcredit.com",
+      "staffExternalId": "BTA-CAI-02",
+      "roleName": "demo.caissier.akl"
+    },
+    {
+      "username": "pauline.ngobissa",
+      "firstname": "Pauline",
+      "lastname": "Ngo Bissa",
+      "email": "pauline.ngobissa@unitedcredit.com",
+      "staffExternalId": "BTA-AGC-01",
+      "roleName": "demo.agent.credit"
+    },
+    {
+      "username": "bertrand.tabi",
+      "firstname": "Bertrand",
+      "lastname": "Tabi",
+      "email": "bertrand.tabi@unitedcredit.com",
+      "staffExternalId": "BTA-AGC-02",
+      "roleName": "demo.agent.credit"
+    },
+    {
+      "username": "laure.fongang",
+      "firstname": "Laure",
+      "lastname": "Fongang",
+      "email": "laure.fongang@unitedcredit.com",
+      "staffExternalId": "BTA-AGT-01",
+      "roleName": "demo.agent.terrain"
+    },
+    {
+      "username": "jean.wamba",
+      "firstname": "Jean",
+      "lastname": "Wamba",
+      "email": "jean.wamba@unitedcredit.com",
+      "staffExternalId": "BAF-CHA-01",
+      "roleName": "demo.chef.akl"
+    },
+    {
+      "username": "carine.belinga",
+      "firstname": "Carine",
+      "lastname": "Belinga",
+      "email": "carine.belinga@unitedcredit.com",
+      "staffExternalId": "BAF-CAI-01",
+      "roleName": "demo.caissier.akl"
+    },
+    {
+      "username": "armand.onana",
+      "firstname": "Armand",
+      "lastname": "Onana",
+      "email": "armand.onana@unitedcredit.com",
+      "staffExternalId": "BAF-CAI-02",
+      "roleName": "demo.caissier.akl"
+    },
+    {
+      "username": "yvette.sonkeng",
+      "firstname": "Yvette",
+      "lastname": "Sonkeng",
+      "email": "yvette.sonkeng@unitedcredit.com",
+      "staffExternalId": "BAF-AGC-01",
+      "roleName": "demo.agent.credit"
+    },
+    {
+      "username": "odile.abomo",
+      "firstname": "Odile",
+      "lastname": "Abomo",
+      "email": "odile.abomo@unitedcredit.com",
+      "staffExternalId": "BAF-AGC-02",
+      "roleName": "demo.agent.credit"
+    },
+    {
+      "username": "landry.kamdem",
+      "firstname": "Landry",
+      "lastname": "Kamdem",
+      "email": "landry.kamdem@unitedcredit.com",
+      "staffExternalId": "BAF-AGT-01",
+      "roleName": "demo.agent.terrain"
+    }
+  ]
+}

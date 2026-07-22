@@ -46,6 +46,7 @@ import { GLAccountNode } from './gl-account-node.model';
 /** Custom Services */
 import { GlAccountTreeService } from './gl-account-tree.service';
 import { SyscohadadBulkImportDialogComponent } from './syscohada-bulk-import/syscohada-bulk-import.dialog';
+import { CemacBulkImportDialogComponent } from './cemac-bulk-import/cemac-bulk-import.dialog';
 import { PopoverService } from '../../configuration-wizard/popover/popover.service';
 import { ConfigurationWizardService } from '../../configuration-wizard/configuration-wizard.service';
 import { TreeControlService } from 'app/shared/common-logic/tree-control.service';
@@ -210,6 +211,16 @@ export class ChartOfAccountsComponent implements AfterViewInit, OnInit {
    */
   importAllSYSCOHADA(): void {
     this.dialog.open(SyscohadadBulkImportDialogComponent, {
+      width: '600px',
+      disableClose: true
+    });
+  }
+
+  /**
+   * Opens the CEMAC bulk import dialog which loads all CEMAC codes and creates them via the API.
+   */
+  importAllCEMAC(): void {
+    this.dialog.open(CemacBulkImportDialogComponent, {
       width: '600px',
       disableClose: true
     });

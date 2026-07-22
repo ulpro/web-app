@@ -1,0 +1,86 @@
+<h2 mat-dialog-title>United Credit Demo Seed</h2>
+
+<mat-dialog-content>
+  @if (phase === 'confirm') {
+    <p>Cette opération va charger automatiquement les données initiales de démonstration (Devises, Agences, Plan Comptable, Caisses, Produits, Clients).</p>
+    <p><strong>Note :</strong> Les données existantes ne seront pas écrasées. Si un enregistrement (ex: "UC-DG") existe déjà, il sera ignoré et lié dynamiquement.</p>
+
+    @if (seedData) {
+      <ul>
+        <li>Devises à activer: <strong>{{ seedData.currencies?.activate?.length || 0 }}</strong></li>
+        <li>Agences (Offices): <strong>{{ seedData.offices?.length || 0 }}</strong></li>
+        <li>Rôles (Roles): <strong>{{ seedData.roles?.length || 0 }}</strong></li>
+        <li>Personnel (Staff): <strong>{{ seedData.staff?.length || 0 }}</strong></li>
+        <li>Utilisateurs (Users): <strong>{{ seedData.users?.length || 0 }}</strong></li>
+        <li>Comptes GL Fineract: <strong>{{ (seedData.gl_accounts?.headers?.length || 0) + (seedData.gl_accounts?.details?.length || 0) }}</strong></li>
+        <li>Caisses (Tellers): <strong>{{ seedData.tellers?.length || 0 }}</strong></li>
+        <li>Produits d'épargne: <strong>{{ seedData.savings_products?.length || 0 }}</strong></li>
+        <li>Produits de crédit: <strong>{{ seedData.loan_products?.length || 0 }}</strong></li>
+        <li>Clients KYC: <strong>{{ seedData.clients?.length || 0 }}</strong></li>
+      </ul>
+    } @else {
+      <p style="color: red;">Chargement des données JSON en cours ou en erreur...</p>
+    }
+  }
+
+  @if (phase !== 'confirm' && phase !== 'done') {
+    <p><strong>Phase en cours :</strong> {{ phase | uppercase }}</p>
+    
+    <div class="progress-info">
+      <span>{{ currentItem }} / {{ totalItems }} éléments traités</span>
+      <span>{{ progress }}%</span>
+    </div>
+    
+    <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
+    
+    <div class="stats-grid">
+      <div class="stat success">
+        <mat-icon>check_circle</mat-icon>
+        <span>Succès: {{ successCount }}</span>
+      </div>
+      <div class="stat warning">
+        <mat-icon>skip_next</mat-icon>
+        <span>Ignorés: {{ skippedCount }}</span>
+      </div>
+      <div class="stat error">
+        <mat-icon>error</mat-icon>
+        <span>Erreurs: {{ errorCount }}</span>
+      </div>
+    </div>
+  }
+
+  @if (phase === 'done') {
+    <div class="success-banner">
+      <mat-icon color="primary">check_circle</mat-icon>
+      <h3>Initialisation terminée !</h3>
+    </div>
+  }
+
+  @if (errors.length > 0) {
+    <div class="error-log">
+      <h4>Erreurs rencontrées :</h4>
+      <ul>
+        @for (err of errors; track err) {
+          <li>{{ err }}</li>
+        }
+      </ul>
+    </div>
+  }
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  @if (phase === 'confirm') {
+    <button mat-button (click)="close()">Annuler</button>
+    <button mat-flat-button color="primary" (click)="startSeed()" [disabled]="!seedData">Démarrer l'initialisation</button>
+  }
+  
+  @if (phase === 'loading_state' || (phase !== 'confirm' && phase !== 'done')) {
+    <button mat-flat-button color="primary" disabled>
+      Traitement en cours...
+    </button>
+  }
+
+  @if (phase === 'done') {
+    <button mat-flat-button color="primary" (click)="close()">Fermer</button>
+  }
+</mat-dialog-actions>

@@ -1,0 +1,76 @@
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+mat-progress-bar {
+  margin-bottom: 16px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+
+  .stat {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 8px;
+    background: #f5f5f5;
+
+    mat-icon {
+      margin-right: 8px;
+    }
+
+    &.success mat-icon { color: #4caf50; }
+    &.warning mat-icon { color: #ff9800; }
+    &.error mat-icon { color: #f44336; }
+  }
+}
+
+.success-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  background: #e8f5e9;
+  border-radius: 8px;
+  margin-top: 16px;
+
+  mat-icon {
+    font-size: 48px;
+    height: 48px;
+    width: 48px;
+    margin-bottom: 16px;
+  }
+  h3 {
+    margin: 0;
+    color: #2e7d32;
+  }
+}
+
+.error-log {
+  margin-top: 24px;
+  padding: 16px;
+  background: #ffebee;
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+
+  h4 {
+    margin-top: 0;
+    color: #c62828;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #d32f2f;
+    font-size: 0.9em;
+  }
+}

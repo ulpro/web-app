@@ -8,6 +8,7 @@
 
 /** Angular Imports */
 import { AfterViewInit, Component, ElementRef, TemplateRef, ViewChild, inject } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router, RouterLink } from '@angular/router';
 
 /** Custom Services */
@@ -19,6 +20,7 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { MatLine } from '@angular/material/grid-list';
 import { NgClass } from '@angular/common';
 import { STANDALONE_SHARED_IMPORTS } from 'app/standalone-shared.module';
+import { UnitedCreditSeedDialogComponent } from '../accounting/united-credit-seed/united-credit-seed.dialog';
 
 @Component({
   selector: 'mifosx-system',
@@ -38,6 +40,7 @@ export class SystemComponent implements AfterViewInit {
   private router = inject(Router);
   private configurationWizardService = inject(ConfigurationWizardService);
   private popoverService = inject(PopoverService);
+  private dialog = inject(MatDialog);
 
   /* Reference of manage datatables */
   @ViewChild('datatables') datatables: ElementRef<any>;
@@ -256,5 +259,15 @@ export class SystemComponent implements AfterViewInit {
   arrowBooleansToggle(arrowNumber: number) {
     // Toggle the boolean value at the given index
     this.arrowBooleans[arrowNumber] = !this.arrowBooleans[arrowNumber];
+  }
+
+  /**
+   * Opens the United Credit Demo seed dialog.
+   */
+  importUnitedCreditSeed(): void {
+    this.dialog.open(UnitedCreditSeedDialogComponent, {
+      width: '600px',
+      disableClose: true
+    });
   }
 }

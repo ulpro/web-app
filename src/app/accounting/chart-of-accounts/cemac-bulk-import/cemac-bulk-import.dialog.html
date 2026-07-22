@@ -1,0 +1,91 @@
+<!--
+  Copyright since 2025 Mifos Initiative
+
+  This Source Code Form is subject to the terms of the Mozilla Public
+  License, v. 2.0. If a copy of the MPL was not distributed with this
+  file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-->
+
+<h2 mat-dialog-title>{{ 'labels.buttons.Import' | translate }} CEMAC</h2>
+
+<mat-dialog-content class="bulk-import-content">
+  <!-- Chargement initial -->
+  @if (state === 'confirm' && planTotal === 0) {
+  <div class="loading-row">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <p>{{ 'labels.text.Loading plan' | translate }}…</p>
+  </div>
+  }
+
+  <!-- Confirmation -->
+  @if (state === 'confirm' && planTotal > 0) {
+  <div class="confirm-info">
+    <mat-icon class="info-icon">account_balance</mat-icon>
+    @if (total > 0) {
+    <p>
+      <strong>{{ total }}</strong> {{ 'labels.text.accounts to create' | translate }} @if (skippedCount > 0) {
+      <span class="skip-note"> ({{ skippedCount }} {{ 'labels.text.already exist skipped' | translate }}) </span>
+      }
+    </p>
+    } @if (total === 0) {
+    <p class="all-exist-text">
+      <mat-icon class="ok-icon">check_circle</mat-icon>
+      {{ 'labels.text.All CEMAC accounts already exist' | translate }}.
+    </p>
+    } @if (total > 0) {
+    <p class="warn-text">
+      <mat-icon class="warn-icon">warning</mat-icon>
+      {{ 'labels.text.Existing accounts with the same GL code will not be overwritten' | translate }}.
+    </p>
+    }
+  </div>
+  }
+
+  <!-- Import en cours -->
+  @if (state === 'importing') {
+  <div class="progress-section">
+    <p class="progress-label">{{ current }} / {{ total }} — {{ progress }}%</p>
+    <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
+    <p class="counts">
+      <mat-icon class="ok-icon">check_circle</mat-icon> {{ successCount }}&nbsp;&nbsp;
+      <mat-icon class="err-icon">cancel</mat-icon> {{ errorCount }}
+    </p>
+  </div>
+  }
+
+  <!-- Terminé -->
+  @if (state === 'done') {
+  <div class="done-section">
+    <mat-icon class="done-icon">check_circle</mat-icon>
+    <p><strong>{{ successCount }}</strong> {{ 'labels.text.accounts created successfully' | translate }}.</p>
+    @if (errorCount > 0) {
+    <p class="err-summary">
+      <mat-icon class="err-icon">cancel</mat-icon>
+      {{ errorCount }} {{ 'labels.text.accounts could not be created' | translate }} ({{ 'labels.text.already exist or
+      invalid' | translate }}).
+    </p>
+    @if (errors.length > 0) {
+    <ul class="error-list">
+      @for (e of errors.slice(0, 20); track e) {
+      <li>{{ e }}</li>
+      } @if (errors.length > 20) {
+      <li>…{{ errors.length - 20 }} {{ 'labels.text.more' | translate }}</li>
+      }
+    </ul>
+    } }
+  </div>
+  }
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  @if (state === 'confirm') {
+  <button mat-button (click)="close()">{{ 'labels.buttons.Cancel' | translate }}</button>
+  <button mat-raised-button color="primary" [disabled]="total === 0 || planTotal === 0" (click)="startImport()">
+    {{ 'labels.buttons.Import' | translate }}
+  </button>
+  } @if (state === 'importing') {
+  <button mat-button disabled>{{ 'labels.buttons.Cancel' | translate }}</button>
+  } @if (state === 'done') {
+  <button mat-raised-button color="primary" (click)="close()">{{ 'labels.buttons.Close' | translate }}</button>
+  }
+</mat-dialog-actions>
