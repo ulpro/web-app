@@ -66,6 +66,14 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="filter-field">
+        <mat-label>Filter by Agency</mat-label>
+        <mat-select (selectionChange)="officeFilter = $event.value; applyFilter()">
+          <mat-option [value]="''">All Agencies</mat-option>
+          <mat-option *ngFor="let o of offices" [value]="o.name">{{ o.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="filter-field">
         <mat-label>Filter by Status</mat-label>
         <mat-select (selectionChange)="statusFilter = $event.value; applyFilter()">
           <mat-option [value]="''">All Statuses</mat-option>
@@ -94,7 +102,7 @@
             </div>
             <div class="client-details">
               <span class="client-name">{{ kycCase.clientName }}</span>
-              <span class="client-id">Case #{{ kycCase.id }} • Client #{{ kycCase.clientId }}</span>
+              <span class="client-id">Case #{{ kycCase.id }} • Client #{{ kycCase.clientId }} • Agence: {{ kycCase.officeName || 'N/A' }}</span>
             </div>
           </div>
         </td>

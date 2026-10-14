@@ -24,17 +24,14 @@ ENV PATH=/usr/src/app/node_modules/.bin:$PATH
 ENV PUPPETEER_DOWNLOAD_HOST=$PUPPETEER_DOWNLOAD_HOST_ARG
 ENV PUPPETEER_CHROMIUM_REVISION=$PUPPETEER_CHROMIUM_REVISION_ARG
 ENV PUPPETEER_SKIP_DOWNLOAD=$PUPPETEER_SKIP_DOWNLOAD_ARG
-ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
-ENV CYPRESS_INSTALL_BINARY=0
-
-COPY ./ /usr/src/app/
-
+COPY package.json package-lock.json version.js ./
+RUN mkdir -p src/environments
 RUN npm cache clear --force
-
 RUN npm config set fetch-retry-maxtimeout 120000
 RUN npm config set registry $NPM_REGISTRY_URL --location=global
-
 RUN npm ci
+
+COPY ./ /usr/src/app/
 
 RUN sh -c "ng build --output-path=/dist $BUILD_ENVIRONMENT_OPTIONS"
 

@@ -11,19 +11,17 @@ import { Injectable, inject } from '@angular/core';
 import { ActivatedRouteSnapshot } from '@angular/router';
 
 /** rxjs Imports */
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 
 /** Custom Services */
-import { ReportsService } from 'app/reports/reports.service';
-import { SettingsService } from 'app/settings/settings.service';
+import { SavingsService } from '../savings.service';
 
 /**
  * Savings Transaction Reciept resolver.
  */
 @Injectable()
 export class SavingsTransactionRecieptResolver {
-  private reportsService = inject(ReportsService);
-  private settingsService = inject(SettingsService);
+  private savingsService = inject(SavingsService);
 
   /**
    * Returns the Savings Transaction Reciept
@@ -32,16 +30,11 @@ export class SavingsTransactionRecieptResolver {
    */
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
     const transactionId = route.paramMap.get('id');
-    const data = {
-      'output-type': 'PDF',
-      R_transactionId: transactionId
-    };
-    return this.reportsService.getPentahoRunReportData(
-      'Savings Transaction Receipt',
-      data,
-      'default',
-      this.settingsService.language.code,
-      this.settingsService.dateFormat
-    );
+    const savingAccountId = route.parent.paramMap.get('savingAccountId');
+    
+    return forkJoin({
+      transaction: this.savingsService.getSavingsAccountTransaction(savingAccountId, transactionId),
+      account: this.savingsService.getSavingsAccountData(savingAccountId)
+    });
   }
 }

@@ -1,0 +1,114 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Bank Configuration</mat-card-title>
+      <mat-card-subtitle>Paramétrez l'identité visuelle de l'institution pour les documents officiels.</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="m-b-20">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Sélectionner l'Agence (Office)</mat-label>
+          <mat-select [(ngModel)]="selectedOfficeId" (selectionChange)="onOfficeChange()">
+            <mat-option *ngFor="let office of offices" [value]="office.id">
+              {{ office.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <form [formGroup]="configForm" class="config-form" (ngSubmit)="saveConfiguration()">
+        <div class="layout-row responsive-column gap-20px">
+          
+          <div class="flex-50">
+            <h3>Informations générales</h3>
+            
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Nom de la banque</mat-label>
+              <input matInput formControlName="bankName" placeholder="Ex: United Credit">
+              <mat-error *ngIf="configForm.get('bankName')?.hasError('required')">
+                Le nom de la banque est obligatoire.
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Slogan / Sous-titre</mat-label>
+              <input matInput formControlName="slogan" placeholder="Ex: Head Office">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Boîte Postale (BP)</mat-label>
+              <input matInput formControlName="bp" placeholder="Ex: BP 1234 Ville">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Téléphone</mat-label>
+              <input matInput formControlName="phone" placeholder="Ex: +237 600 00 00 00">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Registre du Commerce (RC)</mat-label>
+              <input matInput formControlName="rc" placeholder="Ex: RC N° 000000">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Email de contact</mat-label>
+              <input matInput formControlName="email" type="email" placeholder="Ex: contact@banque.com">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Couleur principale (Héxadécimal)</mat-label>
+              <input matInput type="color" formControlName="primaryColor">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Format d'impression du reçu</mat-label>
+              <mat-select formControlName="paperSize">
+                <mat-option value="A4">Standard (A4 / A5)</mat-option>
+                <mat-option value="POS">Ticket de Caisse (Thermique/Matricielle 80mm)</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="flex-50">
+            <h3>Logo de l'institution</h3>
+            
+            <div class="logo-upload-container">
+              <div class="logo-preview-box" [style.border-color]="configForm.get('primaryColor')?.value">
+                <ng-container *ngIf="logoPreview; else noLogo">
+                  <img [src]="logoPreview" alt="Logo preview">
+                </ng-container>
+                <ng-template #noLogo>
+                  <div class="no-logo">
+                    <fa-icon icon="image" size="3x"></fa-icon>
+                    <p>Aucun logo sélectionné</p>
+                  </div>
+                </ng-template>
+              </div>
+              
+              <div class="upload-actions">
+                <button type="button" mat-stroked-button color="primary" (click)="fileInput.click()">
+                  <fa-icon icon="upload"></fa-icon> Parcourir...
+                </button>
+                <input hidden (change)="onFileSelected($event)" #fileInput type="file" accept="image/*">
+                
+                <button type="button" *ngIf="logoPreview" mat-icon-button color="warn" (click)="removeLogo()" matTooltip="Supprimer le logo">
+                  <fa-icon icon="trash"></fa-icon>
+                </button>
+              </div>
+              <p class="help-text">Formats acceptés : PNG, JPG, SVG. Taille max : 2MB.</p>
+            </div>
+          </div>
+        </div>
+
+        <mat-divider class="m-t-20 m-b-20"></mat-divider>
+
+        <div class="action-buttons">
+          <button mat-raised-button color="primary" type="submit" [disabled]="configForm.invalid">
+            <fa-icon icon="save" class="m-r-10"></fa-icon> Sauvegarder la configuration
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

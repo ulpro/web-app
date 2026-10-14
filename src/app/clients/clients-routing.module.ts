@@ -55,6 +55,7 @@ import { ClientChargeViewResolver } from './common-resolvers/client-charge-view.
 import { ClientTransactionPayResolver } from './common-resolvers/client-transaction-pay.resolver';
 import { ClientDataAndTemplateResolver } from './common-resolvers/client-and-template.resolver';
 import { ClientCollateralResolver } from './common-resolvers/client-collateral.resolver';
+import { ForexComponent } from '../accounting/forex/forex.component';
 
 const routes: Routes = [
   Route.withShell([
@@ -179,6 +180,11 @@ const routes: Routes = [
               resolve: {
                 clientNotes: ClientNotesResolver
               }
+            },
+            {
+              path: 'change-devise',
+              component: ForexComponent,
+              data: { title: 'Change de Devises', breadcrumb: 'Change de Devises', routeParamBreadcrumb: false }
             },
             {
               path: 'datatables',

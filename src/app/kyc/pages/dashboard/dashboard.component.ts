@@ -5,6 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { KycService } from '../../services/kyc.service';
 import { ClientsService } from 'app/clients/clients.service';
+import { AuthenticationService } from 'app/core/authentication/authentication.service';
 import { KycDashboardStatsData, KycCaseData } from '../../models/kyc.model';
 import { Chart, registerables } from 'chart.js';
 import { forkJoin, of } from 'rxjs';
@@ -410,6 +411,7 @@ Chart.register(...registerables);
 export class KycDashboardComponent implements OnInit, OnDestroy {
   private kycService = inject(KycService);
   private clientsService = inject(ClientsService);
+  private authenticationService = inject(AuthenticationService);
 
   stats: KycDashboardStatsData;
   loading = false;
@@ -460,9 +462,7 @@ export class KycDashboardComponent implements OnInit, OnDestroy {
       })
     ).subscribe({
       next: (res: any) => {
-        this.stats = res.stats;
-
-        const allCases: KycCaseData[] = res.casesPage?.pageItems
+        let allCases: KycCaseData[] = res.casesPage?.pageItems
           ? res.casesPage.pageItems
           : (Array.isArray(res.casesPage) ? res.casesPage : []);
         const allClients: any[] = res.clientsPage?.pageItems
@@ -470,6 +470,36 @@ export class KycDashboardComponent implements OnInit, OnDestroy {
           : (Array.isArray(res.clientsPage) ? res.clientsPage : []);
         const allDocs: any[] = Array.isArray(res.allDocuments) ? res.allDocuments : [];
         const tiersList: any[] = res.tiers || [];
+
+        // Data Scoping logic
+        const creds = this.authenticationService.getCredentials();
+        const currentOfficeId = creds ? creds.officeId : null;
+        const clientOfficeIdMap = new Map<number, number>();
+        allClients.forEach((cl: any) => {
+           if (cl.id && cl.officeId) clientOfficeIdMap.set(cl.id, cl.officeId);
+        });
+
+        allCases = allCases.filter((item: any) => {
+             const clientOfficeId = clientOfficeIdMap.get(item.clientId);
+             if (!clientOfficeId) return false;
+             if (currentOfficeId && currentOfficeId !== 1) {
+                 return clientOfficeId === currentOfficeId;
+             }
+             return true;
+        });
+
+        // Recalculate stats based on filtered cases
+        this.stats = {
+           totalCases: allCases.length,
+           assignedCases: allCases.filter(c => c.assignedAgentId).length,
+           unassignedCases: allCases.filter(c => !c.assignedAgentId).length,
+           initiatedCases: allCases.filter(c => c.workflowStatusId === 100).length,
+           docsReceivedCases: allCases.filter(c => c.workflowStatusId === 200).length,
+           docsPendingCases: allCases.filter(c => c.workflowStatusId === 300).length,
+           verificationInProgressCases: allCases.filter(c => c.workflowStatusId === 400).length,
+           pendingApprovalCases: allCases.filter(c => c.workflowStatusId === 500).length,
+           approvedCases: allCases.filter(c => c.workflowStatusId === 600).length
+        } as any;
 
         // Map tier names to cases for chart
         allCases.forEach(c => {

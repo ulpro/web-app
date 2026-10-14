@@ -13,6 +13,12 @@
       {{ 'labels.buttons.Add/Edit' | translate }}
     </button>
   </div>
+  <div class="in-block" style="margin-left: 10px;">
+    <button mat-raised-button color="accent" (click)="openForexConfigDialog()" *mifosxHasPermission="'UPDATE_DATATABLE'">
+      <mat-icon>settings</mat-icon>
+      Configurer Comptes Change
+    </button>
+  </div>
 </div>
 
 <div class="container">
@@ -53,11 +59,8 @@
     <button mat-raised-button color="primary" (click)="popover.close(); previousStep()">
       {{ 'labels.buttons.Back' | translate }}
     </button>
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="popover.close(); showPopover(templateFilter, filter, 'bottom', true)"
-    >
+    <button mat-raised-button color="primary"
+      (click)="popover.close(); showPopover(templateFilter, filter, 'bottom', true)">
       {{ 'labels.buttons.Next' | translate }}
     </button>
   </div>
@@ -69,18 +72,12 @@
     <button mat-raised-button color="warn" (click)="popover.close(); configurationWizardService.closeConfigWizard()">
       {{ 'labels.buttons.Close' | translate }}
     </button>
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="popover.close(); showPopover(templateButtonAddEdit, buttonAddEdit, 'bottom', true)"
-    >
+    <button mat-raised-button color="primary"
+      (click)="popover.close(); showPopover(templateButtonAddEdit, buttonAddEdit, 'bottom', true)">
       {{ 'labels.buttons.Back' | translate }}
     </button>
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="popover.close(); showPopover(templateTableCurrencies, tableCurrencies, 'top', true)"
-    >
+    <button mat-raised-button color="primary"
+      (click)="popover.close(); showPopover(templateTableCurrencies, tableCurrencies, 'top', true)">
       {{ 'labels.buttons.Next' | translate }}
     </button>
   </div>
@@ -92,11 +89,8 @@
     <button mat-raised-button color="warn" (click)="popover.close(); configurationWizardService.closeConfigWizard()">
       {{ 'labels.buttons.Close' | translate }}
     </button>
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="popover.close(); showPopover(templateFilter, filter, 'bottom', true)"
-    >
+    <button mat-raised-button color="primary"
+      (click)="popover.close(); showPopover(templateFilter, filter, 'bottom', true)">
       {{ 'labels.buttons.Back' | translate }}
     </button>
     <button mat-raised-button color="primary" (click)="popover.close(); nextStep()">

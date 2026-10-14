@@ -196,6 +196,26 @@
           </mat-icon>
           <a matLine #createJournalEntry>{{ 'labels.menus.Create Journal Entry' | translate }}</a>
         </mat-list-item>
+        <a
+          mat-list-item
+          class="mat-list-item-nested"
+          [routerLink]="['/accounting/journal-entries/search-journal-entry']"
+          [routerLinkActive]="['active']"
+          *mifosxHasPermission="'READ_JOURNALENTRY'"
+        >
+          <mat-icon matListItemIcon>search</mat-icon>
+          <span matListItemTitle>{{ 'labels.menus.Search Journal Entries' | translate }}</span>
+        </a>
+        <a
+          mat-list-item
+          class="mat-list-item-nested"
+          [routerLink]="['/accounting/forex']"
+          [routerLinkActive]="['active']"
+          *mifosxHasPermission="'CREATE_JOURNALENTRY'"
+        >
+          <mat-icon matListItemIcon>currency_exchange</mat-icon>
+          <span matListItemTitle>Change de Devises</span>
+        </a>
         <mat-list-item
           [routerLink]="['/accounting/chart-of-accounts']"
           [matTooltipPosition]="tooltipPosition"

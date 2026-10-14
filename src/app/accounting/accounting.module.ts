@@ -44,6 +44,7 @@ import { CreateProvisioningEntryComponent } from './provisioning-entries/create-
 import { ViewProvisioningEntryComponent } from './provisioning-entries/view-provisioning-entry/view-provisioning-entry.component';
 import { ViewProvisioningJournalEntriesComponent } from './provisioning-entries/view-provisioning-journal-entries/view-provisioning-journal-entries.component';
 import { PipesModule } from 'app/pipes/pipes.module';
+import { ForexComponent } from './forex/forex.component';
 
 /**
  * Accounting Module
@@ -83,7 +84,8 @@ import { PipesModule } from 'app/pipes/pipes.module';
     ProvisioningEntriesComponent,
     CreateProvisioningEntryComponent,
     ViewProvisioningEntryComponent,
-    ViewProvisioningJournalEntriesComponent
+    ViewProvisioningJournalEntriesComponent,
+    ForexComponent
   ]
 })
 export class AccountingModule {}

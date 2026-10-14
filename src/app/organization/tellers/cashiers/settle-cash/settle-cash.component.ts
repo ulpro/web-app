@@ -103,14 +103,19 @@ export class SettleCashComponent implements OnInit {
    */
   submit() {
     const settleCashFormData = this.settleCashForm.value;
-    const locale = this.settingsService.language.code;
+    const locale = this.settingsService.language.code.replace('-', '_');
     const dateFormat = this.settingsService.dateFormat;
     const prevTxnDate: Date = this.settleCashForm.value.txnDate;
-    if (settleCashFormData.txnDate instanceof Date) {
-      settleCashFormData.txnDate = this.dateUtils.formatDate(prevTxnDate, dateFormat);
+    if (prevTxnDate) {
+      settleCashFormData.txnDate = this.dateUtils.formatDate(new Date(prevTxnDate), dateFormat);
+    }
+    let parsedAmount = settleCashFormData.txnAmount;
+    if (typeof parsedAmount === 'string') {
+      parsedAmount = parsedAmount.replace(/,/g, '.');
     }
     const data = {
       ...settleCashFormData,
+      txnAmount: Number(parsedAmount),
       dateFormat,
       locale
     };

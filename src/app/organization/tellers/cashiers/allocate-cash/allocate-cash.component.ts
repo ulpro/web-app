@@ -106,14 +106,19 @@ export class AllocateCashComponent implements OnInit {
    */
   submit() {
     const allocateCashFormData = this.allocateCashForm.value;
-    const locale = this.settingsService.language.code;
+    const locale = this.settingsService.language.code.replace('-', '_');
     const dateFormat = this.settingsService.dateFormat;
     const txnDate = this.allocateCashForm.value.txnDate;
-    if (allocateCashFormData.txnDate instanceof Date) {
-      allocateCashFormData.txnDate = this.dateUtils.formatDate(txnDate, dateFormat);
+    if (txnDate) {
+      allocateCashFormData.txnDate = this.dateUtils.formatDate(new Date(txnDate), dateFormat);
+    }
+    let parsedAmount = allocateCashFormData.txnAmount;
+    if (typeof parsedAmount === 'string') {
+      parsedAmount = parsedAmount.replace(/,/g, '.');
     }
     const data = {
       ...allocateCashFormData,
+      txnAmount: Number(parsedAmount),
       dateFormat,
       locale
     };

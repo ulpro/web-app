@@ -1,25 +1,59 @@
-<h2 mat-dialog-title>United Credit Demo Seed</h2>
+<h2 mat-dialog-title>Importation de Données (Excel)</h2>
 
 <mat-dialog-content>
   @if (phase === 'confirm') {
-    <p>Cette opération va charger automatiquement les données initiales de démonstration (Devises, Agences, Plan Comptable, Caisses, Produits, Clients).</p>
-    <p><strong>Note :</strong> Les données existantes ne seront pas écrasées. Si un enregistrement (ex: "UC-DG") existe déjà, il sera ignoré et lié dynamiquement.</p>
+    <p>Cette opération permet d'injecter facilement des données d'initialisation depuis un fichier Excel.</p>
+    
+    <div class="template-section" style="margin: 20px 0; padding: 15px; border: 1px dashed #ccc; border-radius: 8px;">
+      <h3>1. Obtenir le modèle</h3>
+      <p>Téléchargez le template et remplissez les onglets dont vous avez besoin :</p>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <button mat-stroked-button (click)="downloadTemplate('Complet')">
+          <mat-icon>file_download</mat-icon> Complet (Tous onglets)
+        </button>
+        <button mat-stroked-button (click)="downloadTemplate('Parametrage')">
+          <mat-icon>settings</mat-icon> Paramétrage (Rôles, GL, Devises...)
+        </button>
+        <button mat-stroked-button (click)="downloadTemplate('Agences')">
+          <mat-icon>business</mat-icon> Agences & Caisses
+        </button>
+        <button mat-stroked-button (click)="downloadTemplate('Clients')">
+          <mat-icon>people</mat-icon> Clients & Produits
+        </button>
+      </div>
+    </div>
+
+    <div class="upload-section" style="margin: 20px 0; padding: 15px; border: 1px dashed #ccc; border-radius: 8px; background: #f9f9f9;">
+      <h3>2. Importer vos données</h3>
+      <input type="file" accept=".xlsx, .xls" (change)="onFileChange($event)" #fileInput style="display: none;">
+      
+      @if (!seedData) {
+        <button mat-stroked-button color="primary" (click)="fileInput.click()">
+          <mat-icon>upload_file</mat-icon> Sélectionner un fichier Excel
+        </button>
+      } @else {
+        <div class="file-success" style="color: green; font-weight: bold;">
+          <mat-icon style="vertical-align: middle;">check_circle</mat-icon> Fichier chargé et analysé avec succès !
+        </div>
+      }
+    </div>
 
     @if (seedData) {
-      <ul>
-        <li>Devises à activer: <strong>{{ seedData.currencies?.activate?.length || 0 }}</strong></li>
-        <li>Agences (Offices): <strong>{{ seedData.offices?.length || 0 }}</strong></li>
-        <li>Rôles (Roles): <strong>{{ seedData.roles?.length || 0 }}</strong></li>
-        <li>Personnel (Staff): <strong>{{ seedData.staff?.length || 0 }}</strong></li>
-        <li>Utilisateurs (Users): <strong>{{ seedData.users?.length || 0 }}</strong></li>
-        <li>Comptes GL Fineract: <strong>{{ (seedData.gl_accounts?.headers?.length || 0) + (seedData.gl_accounts?.details?.length || 0) }}</strong></li>
-        <li>Caisses (Tellers): <strong>{{ seedData.tellers?.length || 0 }}</strong></li>
-        <li>Produits d'épargne: <strong>{{ seedData.savings_products?.length || 0 }}</strong></li>
-        <li>Produits de crédit: <strong>{{ seedData.loan_products?.length || 0 }}</strong></li>
-        <li>Clients KYC: <strong>{{ seedData.clients?.length || 0 }}</strong></li>
-      </ul>
-    } @else {
-      <p style="color: red;">Chargement des données JSON en cours ou en erreur...</p>
+      <div style="margin-top: 15px;">
+        <strong>Données détectées dans le fichier :</strong>
+        <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
+          <li *ngIf="seedData.currencies?.activate?.length">Devises: <strong>{{ seedData.currencies.activate.length }}</strong></li>
+          <li *ngIf="seedData.roles?.length">Rôles: <strong>{{ seedData.roles.length }}</strong></li>
+          <li *ngIf="seedData.staff?.length">Personnel: <strong>{{ seedData.staff.length }}</strong></li>
+          <li *ngIf="seedData.users?.length">Utilisateurs: <strong>{{ seedData.users.length }}</strong></li>
+          <li *ngIf="seedData.gl_accounts?.headers?.length || seedData.gl_accounts?.details?.length">Comptes GL: <strong>{{ (seedData.gl_accounts?.headers?.length || 0) + (seedData.gl_accounts?.details?.length || 0) }}</strong></li>
+          <li *ngIf="seedData.offices?.length">Agences: <strong>{{ seedData.offices.length }}</strong></li>
+          <li *ngIf="seedData.tellers?.length">Caisses: <strong>{{ seedData.tellers.length }}</strong></li>
+          <li *ngIf="seedData.savings_products?.length">Produits d'épargne: <strong>{{ seedData.savings_products.length }}</strong></li>
+          <li *ngIf="seedData.loan_products?.length">Produits de prêt: <strong>{{ seedData.loan_products.length }}</strong></li>
+          <li *ngIf="seedData.clients?.length">Clients: <strong>{{ seedData.clients.length }}</strong></li>
+        </ul>
+      </div>
     }
   }
 
@@ -33,16 +67,16 @@
     
     <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
     
-    <div class="stats-grid">
-      <div class="stat success">
+    <div class="stats-grid" style="display: flex; gap: 15px; margin-top: 15px;">
+      <div class="stat success" style="color: green;">
         <mat-icon>check_circle</mat-icon>
         <span>Succès: {{ successCount }}</span>
       </div>
-      <div class="stat warning">
+      <div class="stat warning" style="color: orange;">
         <mat-icon>skip_next</mat-icon>
         <span>Ignorés: {{ skippedCount }}</span>
       </div>
-      <div class="stat error">
+      <div class="stat error" style="color: red;">
         <mat-icon>error</mat-icon>
         <span>Erreurs: {{ errorCount }}</span>
       </div>
@@ -50,16 +84,16 @@
   }
 
   @if (phase === 'done') {
-    <div class="success-banner">
-      <mat-icon color="primary">check_circle</mat-icon>
-      <h3>Initialisation terminée !</h3>
+    <div class="success-banner" style="margin-top: 20px; padding: 15px; background: #e8f5e9; border-radius: 8px;">
+      <mat-icon color="primary" style="vertical-align: middle;">check_circle</mat-icon>
+      <span style="font-size: 1.2em; font-weight: bold; margin-left: 10px;">Importation terminée !</span>
     </div>
   }
 
   @if (errors.length > 0) {
-    <div class="error-log">
+    <div class="error-log" style="margin-top: 20px; padding: 10px; background: #ffebee; border-left: 4px solid red;">
       <h4>Erreurs rencontrées :</h4>
-      <ul>
+      <ul style="color: #c62828;">
         @for (err of errors; track err) {
           <li>{{ err }}</li>
         }
@@ -71,7 +105,7 @@
 <mat-dialog-actions align="end">
   @if (phase === 'confirm') {
     <button mat-button (click)="close()">Annuler</button>
-    <button mat-flat-button color="primary" (click)="startSeed()" [disabled]="!seedData">Démarrer l'initialisation</button>
+    <button mat-flat-button color="primary" (click)="startSeed()" [disabled]="!seedData">Lancer l'injection</button>
   }
   
   @if (phase === 'loading_state' || (phase !== 'confirm' && phase !== 'done')) {

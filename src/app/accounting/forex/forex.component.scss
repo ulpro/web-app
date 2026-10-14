@@ -1,0 +1,113 @@
+.forex-container {
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+
+  .forex-card {
+    max-width: 900px;
+    width: 100%;
+    border-radius: 12px;
+
+    .forex-header-image {
+      background-color: rgba(63, 81, 181, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      height: 48px;
+      width: 48px;
+      
+      mat-icon {
+        transform: scale(1.2);
+      }
+    }
+
+    mat-card-content {
+      margin-top: 24px;
+
+      .form-row {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+        flex-wrap: wrap;
+
+        .flex-grow {
+          flex: 1 1 calc(33.333% - 16px);
+          min-width: 200px;
+        }
+        
+        .full-width {
+          flex: 1 1 100%;
+        }
+      }
+
+      .result-field {
+        ::ng-deep .mat-mdc-text-field-wrapper {
+          background-color: rgba(76, 175, 80, 0.05);
+        }
+        input {
+          font-weight: bold;
+          color: #2e7d32;
+          font-size: 1.1em;
+        }
+      }
+
+      .section-title {
+        margin: 24px 0 16px 0;
+        color: rgba(0, 0, 0, 0.6);
+        font-weight: 500;
+        font-size: 1.1em;
+      }
+
+      .clients-list {
+        margin-bottom: 16px;
+        border: 1px solid rgba(0,0,0,0.1);
+        border-radius: 4px;
+        max-height: 200px;
+        overflow-y: auto;
+
+        .client-item {
+          cursor: pointer;
+          &:hover {
+            background-color: rgba(0,0,0,0.04);
+          }
+        }
+      }
+
+      .accounting-panel {
+        margin-top: 24px;
+        box-shadow: none;
+        border: 1px solid rgba(0,0,0,0.12);
+        
+        mat-icon {
+          margin-right: 8px;
+          color: rgba(0,0,0,0.54);
+        }
+      }
+
+      .actions {
+        margin-top: 32px;
+        display: flex;
+        justify-content: flex-end;
+
+        button {
+          padding: 8px 24px;
+          font-size: 1.1em;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          .btn-spinner {
+            margin-right: 8px;
+          }
+        }
+      }
+    }
+  }
+}
+
+::ng-deep .success-snackbar {
+  background-color: #2e7d32;
+  color: white;
+}

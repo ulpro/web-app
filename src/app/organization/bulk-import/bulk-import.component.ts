@@ -10,8 +10,12 @@
 import { Component } from '@angular/core';
 import { MatNavList, MatListItem } from '@angular/material/list';
 import { MatIcon } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { STANDALONE_SHARED_IMPORTS } from 'app/standalone-shared.module';
+import { MatDialog } from '@angular/material/dialog';
+import { UnitedCreditSeedDialogComponent } from 'app/accounting/united-credit-seed/united-credit-seed.dialog';
 
 /**
  * Bulk Import component.
@@ -25,7 +29,9 @@ import { STANDALONE_SHARED_IMPORTS } from 'app/standalone-shared.module';
     MatNavList,
     MatListItem,
     MatIcon,
-    FaIconComponent
+    FaIconComponent,
+    MatCardModule,
+    MatButtonModule
   ]
 })
 export class BulkImportComponent {
@@ -174,7 +180,13 @@ export class BulkImportComponent {
     }
   ];
 
-  constructor() {}
+  constructor(private dialog: MatDialog) {}
+
+  openSeedDialog() {
+    this.dialog.open(UnitedCreditSeedDialogComponent, {
+      width: '600px'
+    });
+  }
 
   /**
    * Popover function

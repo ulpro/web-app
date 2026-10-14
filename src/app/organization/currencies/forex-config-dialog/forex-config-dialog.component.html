@@ -1,0 +1,60 @@
+<h2 mat-dialog-title>Configuration des Comptes de Change (Forex)</h2>
+
+<mat-dialog-content>
+  <div *ngIf="isLoading" class="loading-container">
+    <mat-spinner diameter="40"></mat-spinner>
+    <p>Chargement de la configuration...</p>
+  </div>
+
+  <form *ngIf="!isLoading" [formGroup]="configForm">
+    <div formArrayName="mappings">
+      <div *ngFor="let mapping of mappings.controls; let i=index" [formGroupName]="i" class="currency-block mat-elevation-z1">
+        
+        <div class="currency-header">
+          <mat-icon>monetization_on</mat-icon>
+          <h3>{{ mapping.get('currency_code')?.value }} - {{ mapping.get('currency_name')?.value }}</h3>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="flex-grow">
+            <mat-label>Compte Caisse (Source Réelle)</mat-label>
+            <mat-select formControlName="cash_gl_account_id">
+              <mat-option *ngFor="let gl of glAccounts" [value]="gl.id">{{gl.name}} ({{gl.glCode}})</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="flex-grow">
+            <mat-label>Compte d'Attente (Transit)</mat-label>
+            <mat-select formControlName="transit_gl_account_id">
+              <mat-option *ngFor="let gl of glAccounts" [value]="gl.id">{{gl.name}} ({{gl.glCode}})</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="flex-grow">
+            <mat-label>Compte de Commission / Marge (Produit)</mat-label>
+            <mat-select formControlName="margin_gl_account_id">
+              <mat-option *ngFor="let gl of glAccounts" [value]="gl.id">{{gl.name}} ({{gl.glCode}})</mat-option>
+            </mat-select>
+            <mat-hint>Produit d'exploitation pour le gain de change</mat-hint>
+          </mat-form-field>
+        </div>
+
+      </div>
+    </div>
+    
+    <div *ngIf="mappings.length === 0" class="no-currency">
+      <p>Aucune devise n'est activée dans le système.</p>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()" [disabled]="isSaving">Annuler</button>
+  <button mat-raised-button color="primary" (click)="save()" [disabled]="configForm.invalid || isSaving || isLoading">
+    <mat-icon *ngIf="!isSaving">save</mat-icon>
+    <mat-spinner diameter="20" *ngIf="isSaving" class="btn-spinner"></mat-spinner>
+    Sauvegarder
+  </button>
+</mat-dialog-actions>

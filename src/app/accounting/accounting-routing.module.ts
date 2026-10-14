@@ -44,6 +44,7 @@ import { CreateProvisioningEntryComponent } from './provisioning-entries/create-
 import { ViewProvisioningEntryComponent } from './provisioning-entries/view-provisioning-entry/view-provisioning-entry.component';
 import { ViewProvisioningJournalEntriesComponent } from './provisioning-entries/view-provisioning-journal-entries/view-provisioning-journal-entries.component';
 
+
 /** Custom Resolvers */
 import { OfficesResolver } from './common-resolvers/offices.resolver';
 import { AccountingRulesAssociationsResolver } from './common-resolvers/accounting-rules-associations.resolver';
@@ -85,6 +86,7 @@ const routes: Routes = [
           path: '',
           component: AccountingComponent
         },
+
         {
           path: 'journal-entries',
           data: { title: 'Search Journal Entry', breadcrumb: 'Journal Entries' },

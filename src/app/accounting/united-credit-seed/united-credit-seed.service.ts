@@ -32,16 +32,6 @@ export class UnitedCreditSeedService {
     clients: {} as Record<string, number>
   };
 
-  /**
-   * Loads the JSON seed data file.
-   */
-  getSeedData(): Observable<any> {
-    const timestamp = new Date().getTime();
-    return from(fetch(`assets/united_credit_seed_data.json?t=${timestamp}`).then(res => {
-      if (!res.ok) throw new Error('Network response was not ok');
-      return res.json();
-    }));
-  }
 
   fetchExistingGLAccounts(): Observable<any> {
     return this.http.get('/glaccounts?fetchRunningBalance=false').pipe(
@@ -161,6 +151,36 @@ export class UnitedCreditSeedService {
   }
 
   /**
+   * 2.0.1 Financial Activities (Inter-Branch / Transfer Mappings)
+   */
+  runPhaseFinancialActivities(): Observable<any> {
+    const assetGlId = this.state.glAccounts['47100'] || this.state.glAccounts['47'] || this.state.glAccounts['57100'] || 1;
+    const liabilityGlId = this.state.glAccounts['181'] || this.state.glAccounts['18'] || this.state.glAccounts['40100'] || 1;
+    const cashGlId = this.state.glAccounts['57100'] || 1;
+    const equityGlId = this.state.glAccounts['10100'] || 1;
+
+    const activities = [
+      { financialActivityId: 100, glAccountId: assetGlId, name: 'Asset Transfer' },
+      { financialActivityId: 200, glAccountId: liabilityGlId, name: 'Liability Transfer' },
+      { financialActivityId: 101, glAccountId: cashGlId, name: 'Cash at Main Vault' },
+      { financialActivityId: 102, glAccountId: cashGlId, name: 'Cash at Teller' },
+      { financialActivityId: 103, glAccountId: cashGlId, name: 'Fund Source' },
+      { financialActivityId: 300, glAccountId: equityGlId, name: 'Opening Balances Contra' }
+    ];
+
+    return from(activities).pipe(
+      concatMap(act => {
+        return this.http.post('/financialactivityaccounts', {
+          financialActivityId: act.financialActivityId,
+          glAccountId: act.glAccountId
+        }).pipe(
+          catchError(() => of({ status: 'skipped', item: act.name }))
+        );
+      })
+    );
+  }
+
+  /**
    * 2.1 Roles
    */
   runPhaseRoles(roles: any[]): Observable<any> {
@@ -272,7 +292,7 @@ export class UnitedCreditSeedService {
           firstname: u.firstname,
           lastname: u.lastname,
           email: u.email,
-          officeId: staffObj ? staffObj.officeId : 1,
+          officeId: u.roleName === 'demo.caissier.national' ? 1 : (staffObj ? staffObj.officeId : 1),
           staffId: staffId,
           roles: [roleId],
           sendPasswordToEmail: false,
@@ -382,11 +402,11 @@ export class UnitedCreditSeedService {
             }
           }),
           catchError((err: any) => {
-            return this.http.get('/loanproducts').pipe(
+            return this.http.get('/savingsproducts').pipe(
               concatMap((list: any) => {
                 const existing = list.find((x: any) => x.name === p.name);
                 if (existing) {
-                  this.state.loanProducts[p.name] = existing.id;
+                  this.state.savingsProducts[p.name] = existing.id;
                   return of({ status: 'skipped', code: p.name });
                 }
                 return of({ error: err, item: p.name });
@@ -508,6 +528,123 @@ export class UnitedCreditSeedService {
           }),
           catchError((err: any) => {
             return of({ status: 'skipped', code: c.id });
+          })
+        );
+      })
+    );
+  }
+
+  runPhaseForex(forexConfig: any = {}): Observable<any> {
+    const products = forexConfig.products || [
+      { name: 'Portefeuille FX XAF', code: 'FXAF', currency: 'XAF' },
+      { name: 'Portefeuille FX EUR', code: 'FEUR', currency: 'EUR' },
+      { name: 'Portefeuille FX USD', code: 'FUSD', currency: 'USD' }
+    ];
+
+    const refAccount = this.state.glAccounts[forexConfig.transit_gl_account || '47100'] || 1;
+    const feeAccount = this.state.glAccounts[forexConfig.margin_gl_account || '71600'] || 1;
+    const interestAccount = this.state.glAccounts[forexConfig.interest_gl_account || '61100'] || 1;
+    const cashAccount = this.state.glAccounts[forexConfig.cash_gl_account || '57100'] || 1;
+
+    // 1. Create FX Products
+    return from(products).pipe(
+      concatMap((p: any) => {
+        const payload = {
+          name: p.name,
+          shortName: p.code,
+          currencyCode: p.currency,
+          digitsAfterDecimal: 0,
+          nominalAnnualInterestRate: 0,
+          interestCompoundingPeriodType: 1,
+          interestPostingPeriodType: 4,
+          interestCalculationType: 1,
+          interestCalculationDaysInYearType: 365,
+          minRequiredOpeningBalance: 0,
+          accountingRule: 2,
+          savingsReferenceAccountId: refAccount,
+          savingsControlAccountId: refAccount,
+          transfersInSuspenseAccountId: refAccount,
+          incomeFromFeeAccountId: feeAccount,
+          incomeFromPenaltyAccountId: feeAccount,
+          interestOnSavingsAccountId: interestAccount,
+          incomeFromInterestId: feeAccount,
+          overdraftPortfolioControlId: refAccount,
+          writeOffAccountId: refAccount,
+          locale: 'en'
+        };
+
+        return this.http.post('/savingsproducts', payload).pipe(
+          tap((res: any) => {
+            if (res && res.resourceId) {
+              this.state.savingsProducts[p.name] = res.resourceId;
+            }
+          }),
+          catchError((err: any) => {
+            return this.http.get('/savingsproducts').pipe(
+              concatMap((list: any) => {
+                const existing = list.find((x: any) => x.name === p.name);
+                if (existing) {
+                  this.state.savingsProducts[p.name] = existing.id;
+                  return of({ status: 'skipped', code: p.name });
+                }
+                return of({ error: err, item: p.name });
+              })
+            );
+          })
+        );
+      }),
+      // After products, handle Datatable
+      concatMap(() => {
+        const dtPayload = {
+          datatableName: "forex_currency_mapping",
+          apptableName: "m_office",
+          multiRow: true,
+          columns: [
+            { name: "currency_code", type: "String", length: 10 },
+            { name: "cash_gl_account_id", type: "Number" },
+            { name: "transit_gl_account_id", type: "Number" },
+            { name: "margin_gl_account_id", type: "Number" }
+          ]
+        };
+        return this.http.post('/datatables', dtPayload).pipe(
+          catchError(() => of({ status: 'skipped', item: 'datatable' }))
+        );
+      }),
+      // Handle History Datatable
+      concatMap(() => {
+        const historyDtPayload = {
+          datatableName: "forex_history",
+          apptableName: "m_office",
+          multiRow: true,
+          columns: [
+            { name: "client_id", type: "Number" },
+            { name: "transaction_date", type: "Date" },
+            { name: "source_currency", type: "String", length: 10 },
+            { name: "source_amount", type: "Decimal" },
+            { name: "target_currency", type: "String", length: 10 },
+            { name: "target_amount", type: "Decimal" },
+            { name: "exchange_rate", type: "Decimal" }
+          ]
+        };
+        return this.http.post('/datatables', historyDtPayload).pipe(
+          catchError(() => of({ status: 'skipped', item: 'history_datatable' }))
+        );
+      }),
+      // Finally, default mappings for Office 1
+      concatMap(() => {
+        const entries = products.map((p: any) => ({
+          currency_code: p.currency, 
+          cash_gl_account_id: cashAccount, 
+          transit_gl_account_id: refAccount, 
+          margin_gl_account_id: feeAccount, 
+          locale: 'en', 
+          dateFormat: 'dd MMMM yyyy'
+        }));
+        return from(entries).pipe(
+          concatMap((entry: any) => {
+            return this.http.post('/datatables/forex_currency_mapping/1', entry).pipe(
+              catchError(() => of({ status: 'skipped', item: entry.currency_code }))
+            );
           })
         );
       })

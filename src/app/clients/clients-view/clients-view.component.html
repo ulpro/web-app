@@ -386,6 +386,10 @@
         *mifosxHasPermission="'READ_CLIENTNOTE'">
         {{ 'labels.inputs.Notes' | translate }}
       </a>
+      <a mat-tab-link [routerLink]="['./change-devise']" routerLinkActive #changeDevise="routerLinkActive" [active]="changeDevise.isActive"
+        *mifosxHasPermission="'CREATE_JOURNALENTRY'">
+        Change de Devise
+      </a>
       @for (clientDatatable of clientDatatables; track clientDatatable) {
       <a mat-tab-link [routerLink]="['./datatables', clientDatatable.registeredTableName]" routerLinkActive
         #datatable="routerLinkActive" [active]="datatable.isActive"

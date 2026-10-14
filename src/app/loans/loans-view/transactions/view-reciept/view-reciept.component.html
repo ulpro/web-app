@@ -1,17 +1,125 @@
-<!--
-  Copyright since 2025 Mifos Initiative
+<div class="action-bar">
+  <button class="print-btn" (click)="printReceipt()">
+    <fa-icon icon="print"></fa-icon> Imprimer le reçu
+  </button>
+</div>
 
-  This Source Code Form is subject to the terms of the Mozilla Public
-  License, v. 2.0. If a copy of the MPL was not distributed with this
-  file, You can obtain one at http://mozilla.org/MPL/2.0/.
--->
+<div class="receipt" *ngIf="bankConfig$ | async as config" [ngClass]="{'format-pos': config.paperSize === 'POS'}">
+  <div class="inner" [style.--green]="config.primaryColor" [style.--brass]="config.primaryColor"
+       [style.--bg-logo]="config.logoBase64 ? 'url(' + config.logoBase64 + ')' : 'none'">
 
-<mat-card class="container">
-  <div class="back-button">
-    <button type="button" color="primary" mat-raised-button [routerLink]="['../../../general']">
-      <fa-icon icon="arrow-left" class="m-r-10"></fa-icon>{{ 'labels.buttons.Back' | translate }}
-    </button>
+    <div class="bank-header">
+      <div style="display:flex;align-items:center;">
+        <ng-container *ngIf="config.logoBase64; else defaultMark">
+          <img [src]="config.logoBase64" alt="Logo" class="bank-logo-img">
+        </ng-container>
+        <ng-template #defaultMark>
+          <div class="bank-mark">{{ config.bankName.substring(0, 2).toUpperCase() }}</div>
+        </ng-template>
+        <div class="bank-name-block">
+          <div class="bank-name">{{ config.bankName }}</div>
+          <div class="bank-sub">{{ officeName }}</div>
+          <div class="bank-contact">
+            <span *ngIf="config.bp">BP: {{ config.bp }}</span>
+            <span *ngIf="config.phone">Tél: {{ config.phone }}</span>
+            <span *ngIf="config.rc">RC: {{ config.rc }}</span>
+            <span *ngIf="config.email">Email: {{ config.email }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="doc-tag">
+        N° Trans. <strong>{{ transaction?.id || transaction?.accountId || 'N/A' }}</strong><br>
+        <span id="live-date">{{ transactionDate }}</span> — <span id="live-time">{{ transactionTime }}</span>
+      </div>
+    </div>
+
+    <div class="title-row">
+      <h1>Reçu de caisse</h1>
+      <div class="op-type" [class.withdrawal]="!isDeposit">
+        ◆ {{ transaction?.transactionType?.value | translateKey: 'catalogs' }} ◆
+      </div>
+    </div>
+
+    <div class="field-grid">
+      <div class="field">
+        <span class="label">Nom du client</span>
+        <span class="value">{{ account?.clientName || 'N/A' }}</span>
+      </div>
+      <div class="field">
+        <span class="label">N° de compte</span>
+        <span class="value">{{ account?.accountNo || 'N/A' }}</span>
+      </div>
+      <div class="field">
+        <span class="label">Agence</span>
+        <span class="value">{{ clientOfficeName || 'N/A' }}</span>
+      </div>
+      <div class="field">
+        <span class="label">Produit de Prêt</span>
+        <span class="value">{{ account?.loanProductName || 'N/A' }}</span>
+      </div>
+      <div class="field">
+        <span class="label">Moyen de paiement</span>
+        <span class="value">{{ paymentTypeName || 'Espèces' }}</span>
+      </div>
+      <div class="field">
+        <span class="label">Référence / Motif</span>
+        <span class="value">{{ transaction?.routingCode || transaction?.receiptNumber || 'N/A' }}</span>
+      </div>
+    </div>
+
+    <div class="amount-box" [class.withdrawal-box]="!isDeposit">
+      <div class="row">
+        <span>Montant de l'opération</span>
+        <span class="amount-figures">{{ transaction?.amount | number:'1.2-2' }} {{ currency?.displayLabel }}</span>
+      </div>
+      <div class="row amount-in-words">
+        Arrêté à la somme de : <strong>{{ transaction?.amount | amountInWordsFr:(currency?.displaySymbol || 'FCFA') }}</strong>
+      </div>
+    </div>
+
+    <div class="field-grid">
+      <div class="field">
+        <span class="label">Solde avant opération</span>
+        <span class="value">{{ balanceBefore | number: '1.2-2' }} {{ currency?.displaySymbol || 'FCFA' }}</span>
+      </div>
+      <div class="field">
+        <span class="label">Solde après opération</span>
+        <span class="value">{{ balanceAfter | number: '1.2-2' }} {{ currency?.displaySymbol || 'FCFA' }}</span>
+      </div>
+    </div>
+
+    <div class="perforation">
+      <div class="line"></div>
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <div class="line"></div>
+    </div>
+
+    <div class="sign-row">
+      <div class="sign-block">
+        <div class="sign-line"></div>
+        <div class="sign-label">Signature du client</div>
+      </div>
+
+      <div class="stamp-box-wrapper">
+        <div class="operation-text">
+          <span>OPÉRATION EFFECTUÉE</span>
+        </div>
+        <div class="stamp-box">
+          <span>Cadre réservé au cachet</span>
+        </div>
+      </div>
+
+      <div class="sign-block">
+        <div class="sign-line" style="display:flex;align-items:flex-end;justify-content:center;">
+            <span style="font-family:'Courier New';font-size:12px;font-style:italic;">{{ tellerName }}</span>
+        </div>
+        <div class="sign-label">Visa du guichetier</div>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <strong>Avis légal :</strong> Toute réclamation doit être faite dans un délai de 48h muni de ce bordereau.
+    </div>
+
   </div>
-
-  <iframe [src]="pentahoUrl" frameborder="0" width="100%" height="600px;"></iframe>
-</mat-card>
+</div>

@@ -181,17 +181,17 @@
                 <mat-icon><fa-icon icon="undo" size="sm"></fa-icon></mat-icon>
                 <span>{{ 'tooltips.Undo Transaction' | translate }}</span>
               </button>
-              <button
-                mat-menu-item
-                class="account-action-button"
-                (click)="routeEdit($event)"
-                [routerLink]="[transaction.id, 'reciept']"
-              >
-                <mat-icon><fa-icon icon="receipt" size="sm"></fa-icon></mat-icon>
-                <span>{{ 'tooltips.View Receipts' | translate }}</span>
-              </button>
             </span>
           }
+          <button
+            mat-menu-item
+            class="account-action-button"
+            (click)="routeEdit($event)"
+            [routerLink]="[transaction.id, 'reciept']"
+          >
+            <mat-icon><fa-icon icon="receipt" size="sm"></fa-icon></mat-icon>
+            <span>{{ 'tooltips.View Receipts' | translate }}</span>
+          </button>
           @if (isReAge(transaction.type) && !transaction.manuallyReversed) {
             <span>
               <button

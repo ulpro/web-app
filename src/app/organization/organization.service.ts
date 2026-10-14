@@ -435,8 +435,7 @@ export class OrganizationService {
    * @returns {Observable<any>}
    */
   settleCash(tellerId: string, cashierId: string, cashData: any): Observable<any> {
-    const httpParams = new HttpParams().set('command', 'settle');
-    return this.http.post(`/tellers/${tellerId}/cashiers/${cashierId}/settle`, cashData, { params: httpParams });
+    return this.http.post(`/tellers/${tellerId}/cashiers/${cashierId}/settle`, cashData);
   }
 
   /**
@@ -446,8 +445,7 @@ export class OrganizationService {
    * @returns {Observable<any>}
    */
   allocateCash(tellerId: string, cashierId: string, cashData: any): Observable<any> {
-    const httpParams = new HttpParams().set('command', 'allocate');
-    return this.http.post(`/tellers/${tellerId}/cashiers/${cashierId}/allocate`, cashData, { params: httpParams });
+    return this.http.post(`/tellers/${tellerId}/cashiers/${cashierId}/allocate`, cashData);
   }
 
   /** Get Cashier Template.

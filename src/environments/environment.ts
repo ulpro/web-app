@@ -67,7 +67,7 @@ export const environment = {
 
   defaultCharDelimiter: loadedEnv.defaultCharDelimiter || ',',
 
-  displayBackEndInfo: loadedEnv.displayBackEndInfo || 'true',
+  displayBackEndInfo: loadedEnv.displayBackEndInfo || 'false',
   displayTenantSelector: loadedEnv.displayTenantSelector || 'true',
   /** Production mode - when true, shows minimal hero with only branding at bottom */
   productionMode: loadedEnv.productionMode === 'true' || loadedEnv.productionMode === true || false,

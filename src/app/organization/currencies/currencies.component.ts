@@ -23,6 +23,7 @@ import {
   MatRowDef,
   MatRow
 } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 /** rxjs Imports */
@@ -64,6 +65,7 @@ export class CurrenciesComponent implements OnInit, AfterViewInit {
   private router = inject(Router);
   private configurationWizardService = inject(ConfigurationWizardService);
   private popoverService = inject(PopoverService);
+  private dialog = inject(MatDialog);
 
   /** Currencies data. */
   currenciesData: any;
@@ -177,5 +179,14 @@ export class CurrenciesComponent implements OnInit, AfterViewInit {
     this.configurationWizardService.showCurrencyList = false;
     this.configurationWizardService.showAddEditCurrency = true;
     this.router.navigate(['/organization']);
+  }
+
+  openForexConfigDialog() {
+    import('./forex-config-dialog/forex-config-dialog.component').then((m) => {
+      this.dialog.open(m.ForexConfigDialogComponent, {
+        width: '600px',
+        data: { currencies: this.currenciesData }
+      });
+    });
   }
 }

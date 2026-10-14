@@ -6,6 +6,22 @@
   file, You can obtain one at http://mozilla.org/MPL/2.0/.
 -->
 <div class="container">
+  <mat-card class="m-b-20">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>star</mat-icon> Paramétrage & Import Complet (Nouveau)
+      </mat-card-title>
+      <mat-card-subtitle>
+        Initialisez toutes vos données en une seule fois via notre modèle hybride.
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="p-t-20 p-b-20">
+      <button mat-raised-button color="primary" (click)="openSeedDialog()">
+        <mat-icon>cloud_upload</mat-icon> Lancer l'Import Complet
+      </button>
+    </mat-card-content>
+  </mat-card>
+
   <mat-card>
     <div class="layout-row responsive-column gap-12px">
       <!-- Left Column -->

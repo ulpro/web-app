@@ -7,12 +7,16 @@
  */
 
 /** Angular Imports */
-import { Component, OnInit, OnDestroy, inject } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { STANDALONE_SHARED_IMPORTS } from 'app/standalone-shared.module';
-import { HttpResponse } from '@angular/common/http';
+import { AuthenticationService } from 'app/core/authentication/authentication.service';
+import { Currency } from 'app/shared/models/general.model';
+import { BankConfigurationService, BankConfiguration } from 'app/system/bank-configuration/bank-configuration.service';
+import { Observable } from 'rxjs';
+import { AmountInWordsFrPipe } from 'app/pipes/amount-in-words-fr.pipe';
+import { ClientsService } from 'app/clients/clients.service';
 
 /**
  * View Transaction Reciept Component
@@ -23,50 +27,87 @@ import { HttpResponse } from '@angular/common/http';
   styleUrls: ['./view-reciept.component.scss'],
   imports: [
     ...STANDALONE_SHARED_IMPORTS,
-    FaIconComponent
+    FaIconComponent,
+    AmountInWordsFrPipe
   ]
 })
-export class ViewRecieptComponent implements OnInit, OnDestroy {
-  private sanitizer = inject(DomSanitizer);
+export class ViewRecieptComponent implements OnInit {
   private route = inject(ActivatedRoute);
+  private authService = inject(AuthenticationService);
+  private bankConfigService = inject(BankConfigurationService);
+  private clientsService = inject(ClientsService);
 
-  /** trusted resource url for pentaho output */
-  pentahoUrl: SafeResourceUrl | null = null;
   /** Transaction Reciept Data */
-  transactionRecieptData: HttpResponse<Blob>;
-  /** Blob URL for cleanup */
-  private blobUrl: string | null = null;
+  transaction: any;
+  account: any;
+  
+  tellerName = '';
+  officeName = '';
+  clientOfficeName = '';
+  transactionDate = '';
+  transactionTime = '';
+  currency: Currency | null = null;
+  balanceBefore = 0;
+  balanceAfter = 0;
+  isDeposit = false;
+  paymentTypeName = '';
+
+  bankConfig$!: Observable<BankConfiguration>;
+
+  private cdr = inject(ChangeDetectorRef);
 
   /**
    * Fetches transaction reciept `resolve`
-   * @param {DomSanitizer} sanitizer DOM Sanitizer
-   * @param {ActivatedRoute} route Activated Route
    */
   constructor() {
-    this.route.data.subscribe((data: { savingsTransactionReciept: HttpResponse<Blob> }) => {
-      this.transactionRecieptData = data.savingsTransactionReciept;
+    this.route.data.subscribe((data: { savingsTransactionReciept: {transaction: any, account: any} }) => {
+      this.transaction = data.savingsTransactionReciept.transaction;
+      this.account = data.savingsTransactionReciept.account;
     });
   }
 
   ngOnInit() {
-    if (!this.transactionRecieptData || !this.transactionRecieptData.body) {
-      return;
+    const credentials = this.authService.getCredentials();
+    this.tellerName = credentials?.staffDisplayName || credentials?.username || 'Guichetier';
+    this.officeName = credentials?.officeName || 'United Credit';
+    
+    // Fallback if client service fails or while loading
+    this.clientOfficeName = this.account?.timeline?.submittedOnOfficeName || this.account?.officeName || this.transaction?.officeName || this.officeName;
+    
+    // Load specific bank config based on the account's office ID, fallback to 1
+    const receiptOfficeId = this.account?.officeId || this.transaction?.officeId || 1;
+    this.bankConfig$ = this.bankConfigService.getConfigForOffice(receiptOfficeId);
+    
+    // Fetch precise client office name if clientId exists
+    if (this.account?.clientId) {
+      this.clientsService.getClientData(this.account.clientId).subscribe((clientData: any) => {
+        if (clientData?.officeName) {
+          this.clientOfficeName = clientData.officeName;
+          this.cdr.detectChanges();
+        }
+      });
     }
 
-    const contentType = this.transactionRecieptData.headers.get('Content-Type');
-    const file = new Blob([this.transactionRecieptData.body], { type: contentType });
-
-    if (file.size === 0) {
-      return;
-    }
-
-    this.blobUrl = URL.createObjectURL(file);
-    this.pentahoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.blobUrl);
+    this.currency = this.account?.currency;
+    
+    const txnDateObj = this.transaction?.date ? new Date(this.transaction.date) : new Date();
+    this.transactionDate = txnDateObj.toLocaleDateString('fr-FR', {
+      day: '2-digit', month: '2-digit', year: 'numeric'
+    });
+    this.transactionTime = txnDateObj.toLocaleTimeString('fr-FR', {
+      hour: '2-digit', minute: '2-digit'
+    });
+    
+    this.isDeposit = this.transaction?.transactionType?.deposit;
+    this.balanceAfter = this.transaction?.runningBalance || 0;
+    this.balanceBefore = this.isDeposit 
+      ? this.balanceAfter - this.transaction?.amount
+      : this.balanceAfter + this.transaction?.amount;
+      
+    this.paymentTypeName = this.transaction?.paymentDetailData?.paymentType?.name || 'Cash';
   }
 
-  ngOnDestroy() {
-    if (this.blobUrl) {
-      URL.revokeObjectURL(this.blobUrl);
-    }
+  printReceipt() {
+    window.print();
   }
 }

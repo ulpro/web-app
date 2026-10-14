@@ -110,9 +110,14 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
       }
     }
     const isClientImage404 = status === 404 && request.url.includes('/clients/') && request.url.includes('/images');
+    const isBankConfigError = (status === 404 || status === 403) && request.url.includes('/datatables/bank_configuration');
 
-    if (!environment.production && !isClientImage404) {
+    if (!environment.production && !isClientImage404 && !isBankConfigError) {
       log.error(`Request Error: ${errorMessage}`);
+    }
+
+    if (isBankConfigError) {
+      return throwError(() => response);
     }
 
     if (status === 401 || (environment.oauth.enabled && status === 400)) {

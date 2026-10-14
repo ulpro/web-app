@@ -22,6 +22,7 @@ import { TranslatePipe } from './translate.pipe';
 import { TruncateTextPipe } from './truncate-text.pipe';
 import { UrlToStringPipe } from './url-to-string.pipe';
 import { YesnoPipe } from './yesno.pipe';
+import { AmountInWordsFrPipe } from './amount-in-words-fr.pipe';
 
 @NgModule({
   imports: [
@@ -39,23 +40,8 @@ import { YesnoPipe } from './yesno.pipe';
     YesnoPipe,
     PrettyPrintPipe,
     TruncateTextPipe,
-    TranslatePipe
-  ],
-  providers: [
-    StatusLookupPipe,
-    AccountsFilterPipe,
-    ChargesFilterPipe,
-    ChargesPenaltyFilterPipe,
-    FindPipe,
-    UrlToStringPipe,
-    DateFormatPipe,
-    DatetimeFormatPipe,
-    ExternalIdentifierPipe,
-    FormatNumberPipe,
-    YesnoPipe,
-    PrettyPrintPipe,
     TranslatePipe,
-    TruncateTextPipe
+    AmountInWordsFrPipe
   ],
   exports: [
     StatusLookupPipe,
@@ -71,7 +57,8 @@ import { YesnoPipe } from './yesno.pipe';
     YesnoPipe,
     PrettyPrintPipe,
     TranslatePipe,
-    TruncateTextPipe
+    TruncateTextPipe,
+    AmountInWordsFrPipe
   ]
 })
 export class PipesModule {}

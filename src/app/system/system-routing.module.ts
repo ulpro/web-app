@@ -56,6 +56,7 @@ import { ViewRoleComponent } from './roles-and-permissions/view-role/view-role.c
 import { SystemComponent } from './system.component';
 import { SystemInformationComponent } from './system-information/system-information.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { BankConfigurationComponent } from './bank-configuration/bank-configuration.component';
 
 /** Custom Resolvers */
 import { AccountNumberPreferencesResolver } from './account-number-preferences/account-number-preferences.resolver';
@@ -108,6 +109,11 @@ const routes: Routes = [
         {
           path: '',
           component: SystemComponent
+        },
+        {
+          path: 'bank-configuration',
+          component: BankConfigurationComponent,
+          data: { title: 'Bank Configuration', breadcrumb: 'Bank Configuration' }
         },
         {
           path: 'codes',

@@ -56,6 +56,22 @@
             </mat-list-item>
           </div>
 
+          <mat-list-item [routerLink]="['bank-configuration']">
+            <div class="menu-list-item-content">
+              <div class="menu-left-section" [routerLink]="['bank-configuration']">
+                <mat-icon matListIcon>
+                  <fa-icon icon="university" size="sm"></fa-icon>
+                </mat-icon>
+                <div matLine>
+                  Bank Configuration
+                  <p matLine [routerLink]="['bank-configuration']" class="menu-explanation">
+                    Manage the visual identity and general settings of the institution.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </mat-list-item>
+
           <div #codes>
             <mat-list-item matListIcon [routerLink]="['codes']">
               <div class="menu-list-item-content">

@@ -140,17 +140,41 @@ export class SavingsAccountTransactionsComponent implements OnInit {
   addPaymentDetails() {
     this.addPaymentDetailsFlag = !this.addPaymentDetailsFlag;
     if (this.addPaymentDetailsFlag) {
-      this.savingAccountTransactionForm.addControl('accountNumber', new UntypedFormControl(''));
-      this.savingAccountTransactionForm.addControl('checkNumber', new UntypedFormControl(''));
-      this.savingAccountTransactionForm.addControl('routingCode', new UntypedFormControl(''));
-      this.savingAccountTransactionForm.addControl('receiptNumber', new UntypedFormControl(''));
-      this.savingAccountTransactionForm.addControl('bankNumber', new UntypedFormControl(''));
+      if (this.transactionType.deposit) {
+        // Depositor information fields
+        this.savingAccountTransactionForm.addControl('depositorName', new UntypedFormControl(''));
+        this.savingAccountTransactionForm.addControl('depositorNationality', new UntypedFormControl(''));
+        this.savingAccountTransactionForm.addControl('depositorIdType', new UntypedFormControl(''));
+        this.savingAccountTransactionForm.addControl('depositorIdTypeOther', new UntypedFormControl(''));
+        this.savingAccountTransactionForm.addControl('depositorIdNumber', new UntypedFormControl(''));
+        this.savingAccountTransactionForm.addControl('depositorIdIssueDate', new UntypedFormControl(''));
+        this.savingAccountTransactionForm.addControl('depositorIdIssuePlace', new UntypedFormControl(''));
+        this.savingAccountTransactionForm.addControl('depositorPurpose', new UntypedFormControl(''));
+      } else {
+        // Standard payment detail fields (for withdrawals)
+        this.savingAccountTransactionForm.addControl('accountNumber', new UntypedFormControl(''));
+        this.savingAccountTransactionForm.addControl('checkNumber', new UntypedFormControl(''));
+        this.savingAccountTransactionForm.addControl('routingCode', new UntypedFormControl(''));
+        this.savingAccountTransactionForm.addControl('receiptNumber', new UntypedFormControl(''));
+        this.savingAccountTransactionForm.addControl('bankNumber', new UntypedFormControl(''));
+      }
     } else {
-      this.savingAccountTransactionForm.removeControl('accountNumber');
-      this.savingAccountTransactionForm.removeControl('checkNumber');
-      this.savingAccountTransactionForm.removeControl('routingCode');
-      this.savingAccountTransactionForm.removeControl('receiptNumber');
-      this.savingAccountTransactionForm.removeControl('bankNumber');
+      if (this.transactionType.deposit) {
+        this.savingAccountTransactionForm.removeControl('depositorName');
+        this.savingAccountTransactionForm.removeControl('depositorNationality');
+        this.savingAccountTransactionForm.removeControl('depositorIdType');
+        this.savingAccountTransactionForm.removeControl('depositorIdTypeOther');
+        this.savingAccountTransactionForm.removeControl('depositorIdNumber');
+        this.savingAccountTransactionForm.removeControl('depositorIdIssueDate');
+        this.savingAccountTransactionForm.removeControl('depositorIdIssuePlace');
+        this.savingAccountTransactionForm.removeControl('depositorPurpose');
+      } else {
+        this.savingAccountTransactionForm.removeControl('accountNumber');
+        this.savingAccountTransactionForm.removeControl('checkNumber');
+        this.savingAccountTransactionForm.removeControl('routingCode');
+        this.savingAccountTransactionForm.removeControl('receiptNumber');
+        this.savingAccountTransactionForm.removeControl('bankNumber');
+      }
     }
   }
 
@@ -188,6 +212,21 @@ export class SavingsAccountTransactionsComponent implements OnInit {
       dateFormat,
       locale
     };
+    if (data['depositorIdType'] === 'Autre' && data['depositorIdTypeOther']) {
+      data['depositorIdType'] = data['depositorIdTypeOther'];
+    }
+    if (data['depositorIdIssueDate'] || data['depositorIdIssuePlace']) {
+      let dateStr = '';
+      if (data['depositorIdIssueDate']) {
+        dateStr = this.dateUtils.formatDate(data['depositorIdIssueDate'], dateFormat);
+      }
+      let placeStr = data['depositorIdIssuePlace'] || '';
+      data['depositorIdIssuedAt'] = dateStr ? (dateStr + ' ' + placeStr).trim() : placeStr;
+    }
+    delete data['depositorIdTypeOther'];
+    delete data['depositorIdIssueDate'];
+    delete data['depositorIdIssuePlace'];
+
     data['transactionAmount'] = data['transactionAmount'] * 1;
     this.savingsService
       .executeSavingsAccountTransactionsCommand(this.savingAccountId, this.transactionCommand, data)
@@ -238,10 +277,26 @@ export class SavingsAccountTransactionsComponent implements OnInit {
       dateFormat,
       locale
     };
+    if (data['depositorIdType'] === 'Autre' && data['depositorIdTypeOther']) {
+      data['depositorIdType'] = data['depositorIdTypeOther'];
+    }
+    if (data['depositorIdIssueDate'] || data['depositorIdIssuePlace']) {
+      let dateStr = '';
+      if (data['depositorIdIssueDate']) {
+        dateStr = this.dateUtils.formatDate(data['depositorIdIssueDate'], dateFormat);
+      }
+      let placeStr = data['depositorIdIssuePlace'] || '';
+      data['depositorIdIssuedAt'] = dateStr ? (dateStr + ' ' + placeStr).trim() : placeStr;
+    }
+    delete data['depositorIdTypeOther'];
+    delete data['depositorIdIssueDate'];
+    delete data['depositorIdIssuePlace'];
+
     data['transactionAmount'] = data['transactionAmount'] * 1;
     this.savingsService
       .executeSavingsAccountTransactionsCommand(this.savingAccountId, this.transactionCommand, data)
-      .subscribe((res) => {
+      .pipe(finalize(() => (this.isSubmitting = false)))
+      .subscribe(() => {
         this.router.navigate(['../../transactions'], { relativeTo: this.route });
       });
   }

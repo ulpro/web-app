@@ -11,17 +11,17 @@ import { Injectable, inject } from '@angular/core';
 import { ActivatedRouteSnapshot } from '@angular/router';
 
 /** rxjs Imports */
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 
 /** Custom Services */
-import { ReportsService } from 'app/reports/reports.service';
+import { LoansService } from '../loans.service';
 
 /**
  * Loans Transaction Reciept resolver.
  */
 @Injectable()
 export class LoansTransactionRecieptResolver {
-  private reportsService = inject(ReportsService);
+  private loansService = inject(LoansService);
 
   /**
    * Returns the Loans Transaction Reciept
@@ -30,16 +30,11 @@ export class LoansTransactionRecieptResolver {
    */
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
     const transactionId = route.paramMap.get('id');
-    const data = {
-      'output-type': 'PDF',
-      R_transactionId: transactionId
-    };
-    return this.reportsService.getPentahoRunReportData(
-      'Loan Transaction Receipt',
-      data,
-      'default',
-      'en',
-      'dd MMMM yyyy'
-    );
+    const loanId = route.parent.paramMap.get('loanId');
+    
+    return forkJoin({
+      transaction: this.loansService.getLoansAccountTransaction(loanId, transactionId),
+      account: this.loansService.getLoanAccountDetails(loanId)
+    });
   }
 }

@@ -47,6 +47,8 @@ export class CaseListComponent implements OnInit {
   private clientsService = inject(ClientsService);
   private authenticationService = inject(AuthenticationService);
   clientTypeMap = new Map<number, string>();
+  clientOfficeMap = new Map<number, string>();
+  clientOfficeIdMap = new Map<number, number>();
   dataSource = new MatTableDataSource<KycCaseData>([]);
 
   get currentAgentId(): number {
@@ -70,7 +72,9 @@ export class CaseListComponent implements OnInit {
   searchFilter = '';
   tierFilter: any = '';
   statusFilter: any = '';
+  officeFilter: any = '';
   tiers: any[] = [];
+  offices: any[] = [];
   
   // KPIs
   closedRejectedCases = 0;
@@ -106,13 +110,25 @@ export class CaseListComponent implements OnInit {
 
         // Build client type map
         const allClients = res.clients?.pageItems || (Array.isArray(res.clients) ? res.clients : []);
+        const uniqueOffices = new Map<string, any>();
+        
         allClients.forEach((cl: any) => {
-          if (cl.id && cl.clientType?.name) {
-            this.clientTypeMap.set(cl.id, cl.clientType.name);
+          if (cl.id) {
+            if (cl.clientType?.name) {
+              this.clientTypeMap.set(cl.id, cl.clientType.name);
+            }
+            if (cl.officeName) {
+              this.clientOfficeMap.set(cl.id, cl.officeName);
+              if (cl.officeId) {
+                this.clientOfficeIdMap.set(cl.id, cl.officeId);
+              }
+              uniqueOffices.set(cl.officeName, { id: cl.officeId || cl.officeName, name: cl.officeName });
+            }
           }
         });
+        this.offices = Array.from(uniqueOffices.values());
         
-        const items = res.cases?.pageItems ? res.cases.pageItems : res.cases;
+        let items = res.cases?.pageItems ? res.cases.pageItems : res.cases;
         
         if (items && items.length > 0) {
           items.forEach((item: any) => {
@@ -128,6 +144,23 @@ export class CaseListComponent implements OnInit {
                 (!item.assignedAgentName || item.assignedAgentName.startsWith('Agent '))) {
               item.assignedAgentName = this.currentAgentName;
             }
+            
+            // Map officeName
+            item.officeName = this.clientOfficeMap.get(item.clientId);
+          });
+          
+          const creds = this.authenticationService.getCredentials();
+          const currentOfficeId = creds ? creds.officeId : null;
+          
+          // Data Scoping: strictly filter by the agent's branch (unless Head Office = 1)
+          items = items.filter((item: any) => {
+             const clientOfficeId = this.clientOfficeIdMap.get(item.clientId);
+             if (!clientOfficeId) return false;
+             
+             if (currentOfficeId && currentOfficeId !== 1) {
+                 return clientOfficeId === currentOfficeId;
+             }
+             return true;
           });
         }
         
@@ -155,7 +188,8 @@ export class CaseListComponent implements OnInit {
     this.dataSource.filter = JSON.stringify({
       search: this.searchFilter.trim().toLowerCase(),
       tier: this.tierFilter,
-      status: this.statusFilter
+      status: this.statusFilter,
+      office: this.officeFilter
     });
   }
 
@@ -169,8 +203,9 @@ export class CaseListComponent implements OnInit {
         
         const matchTier = searchObj.tier ? data.tier?.id === searchObj.tier : true;
         const matchStatus = searchObj.status ? data.workflowStatusId === searchObj.status : true;
+        const matchOffice = searchObj.office ? (data as any).officeName === searchObj.office : true;
 
-        return matchSearch && matchTier && matchStatus;
+        return matchSearch && matchTier && matchStatus && matchOffice;
       } catch (e) {
         // Fallback to simple search if not JSON
         return data.clientName?.toLowerCase().includes(filter) || data.id?.toString().includes(filter);
