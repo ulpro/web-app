@@ -6,7 +6,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-import { Component, OnInit, Input, Output, EventEmitter, inject } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, inject, ChangeDetectorRef } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder, Validators, UntypedFormControl } from '@angular/forms';
 import { LoanProducts } from '../../loan-products';
 import { rangeValidator } from 'app/shared/validators/percentage.validator';
@@ -20,6 +20,7 @@ import { MatIconButton } from '@angular/material/button';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { MatStepperPrevious, MatStepperNext } from '@angular/material/stepper';
 import { STANDALONE_SHARED_IMPORTS } from 'app/standalone-shared.module';
+import { ProductsService } from 'app/products/products.service';
 import { LoanProductBaseComponent } from '../../common/loan-product-base.component';
 import { Breach, NearBreach } from '../../models/loan-product.model';
 import { BreachDisplayComponent } from 'app/shared/loan/breach-display/breach-display.component';
@@ -47,6 +48,8 @@ import { InputPositiveIntegerComponent } from 'app/shared/input-positive-integer
 export class LoanProductSettingsStepComponent extends LoanProductBaseComponent implements OnInit {
   private formBuilder = inject(UntypedFormBuilder);
   private processingStrategyService = inject(ProcessingStrategyService);
+  private productsService = inject(ProductsService);
+  protected cdr = inject(ChangeDetectorRef);
 
   DAYS_BEFORE_REPAYMENT_IS_DUE = LoanProducts.DAYS_BEFORE_REPAYMENT_IS_DUE;
   DAYS_AFTER_REPAYMENT_IS_OVERDUE = LoanProducts.DAYS_AFTER_REPAYMENT_IS_OVERDUE;
@@ -58,6 +61,8 @@ export class LoanProductSettingsStepComponent extends LoanProductBaseComponent i
 
   loanProductSettingsForm: UntypedFormGroup;
 
+  isKycRequired: boolean = false;
+  kycTierOptions: any[] = [];
   amortizationTypeData: any;
   interestTypeData: any;
   interestCalculationPeriodTypeData: any;
@@ -110,6 +115,25 @@ export class LoanProductSettingsStepComponent extends LoanProductBaseComponent i
       });
     }
     let transactionProcessingStrategyCode: string | null = null;
+
+    this.kycTierOptions = this.loanProductsTemplate.kycTierOptions || [];
+    if (!this.kycTierOptions || this.kycTierOptions.length === 0) {
+      this.productsService.getKycTiers().subscribe((tiers: any) => {
+        this.kycTierOptions = tiers || [];
+      });
+    }
+
+    const kycTier = this.loanProductsTemplate.kycTier || null;
+    const kycTierId = kycTier ? kycTier.id : (this.loanProductsTemplate.kycTierId || null);
+    if (kycTierId) {
+      this.isKycRequired = true;
+      this.loanProductSettingsForm.patchValue({
+        requireKyc: true,
+        kycTierId: Number(kycTierId)
+      });
+      this.loanProductSettingsForm.get('kycTierId')?.setValidators([Validators.required]);
+      this.loanProductSettingsForm.get('kycTierId')?.updateValueAndValidity();
+    }
 
     this.amortizationTypeData = this.loanProductsTemplate.amortizationTypeOptions;
     this.delinquencyBucketData = this.loanProductsTemplate.delinquencyBucketOptions;
@@ -433,7 +457,9 @@ export class LoanProductSettingsStepComponent extends LoanProductBaseComponent i
           LoanProducts.LOAN_SCHEDULE_TYPE_CUMULATIVE,
           Validators.required
         ],
-        allowAccrualPostingInArrears: [false]
+        allowAccrualPostingInArrears: [false],
+        requireKyc: [false],
+        kycTierId: [null]
       });
     } else if (this.loanProductService.isWorkingCapital) {
       this.loanProductSettingsForm = this.formBuilder.group({
@@ -465,12 +491,25 @@ export class LoanProductSettingsStepComponent extends LoanProductBaseComponent i
         ],
         delinquencyStartType: [''],
         breachId: [''],
-        nearBreachId: ['']
+        nearBreachId: [''],
+        requireKyc: [false],
+        kycTierId: [null]
       });
     }
   }
 
   setConditionalControls() {
+    this.loanProductSettingsForm.get('requireKyc')?.valueChanges.subscribe((requireKyc: boolean) => {
+      const kycTierIdControl = this.loanProductSettingsForm.get('kycTierId');
+      if (requireKyc) {
+        kycTierIdControl?.setValidators([Validators.required]);
+      } else {
+        kycTierIdControl?.clearValidators();
+        kycTierIdControl?.setValue(null);
+      }
+      kycTierIdControl?.updateValueAndValidity();
+    });
+
     if (this.loanProductService.isLoanProduct) {
       const allowAttributeOverrides = this.loanProductSettingsForm.get('allowAttributeOverrides');
 
@@ -951,15 +990,50 @@ export class LoanProductSettingsStepComponent extends LoanProductBaseComponent i
     return id ? (this.nearBreachOptions ? this.nearBreachOptions.find((b) => b.id === id) : undefined) : undefined;
   }
 
+  onRequireKycChange(event: any) {
+    const isChecked = event.checked;
+    this.loanProductSettingsForm.get('requireKyc')?.setValue(isChecked);
+    const kycTierIdControl = this.loanProductSettingsForm.get('kycTierId');
+    if (isChecked) {
+      kycTierIdControl?.setValidators([Validators.required]);
+      if (!kycTierIdControl?.value && this.kycTierOptions?.length > 0) {
+        kycTierIdControl?.setValue(this.kycTierOptions[0].id);
+      }
+    } else {
+      kycTierIdControl?.clearValidators();
+      kycTierIdControl?.setValue(null);
+    }
+    kycTierIdControl?.updateValueAndValidity({ emitEvent: false });
+    this.cdr.markForCheck();
+    this.cdr.detectChanges();
+  }
+
+  compareKycTiers(o1: any, o2: any): boolean {
+    if (o1 === o2) return true;
+    if (o1 == null || o2 == null) return false;
+    return String(o1) === String(o2);
+  }
+
+  get requireKyc(): boolean {
+    return !!this.loanProductSettingsForm.get('requireKyc')?.value;
+  }
+
   get loanProductSettings() {
-    const productSettings = this.loanProductSettingsForm.value;
-    if (this.loanProductSettingsForm.value.useDueForRepaymentsConfigurations) {
+    const productSettings = { ...this.loanProductSettingsForm.getRawValue() };
+    if (productSettings['useDueForRepaymentsConfigurations']) {
       productSettings['dueDaysForRepaymentEvent'] = null;
       productSettings['overDueDaysForRepaymentEvent'] = null;
     }
     if (productSettings['delinquencyBucketId'] === '') {
       productSettings['delinquencyBucketId'] = null;
     }
+    const requireKyc = !!productSettings['requireKyc'];
+    if (!requireKyc) {
+      productSettings['kycTierId'] = null;
+    } else if (productSettings['kycTierId']) {
+      productSettings['kycTierId'] = Number(productSettings['kycTierId']);
+    }
+    delete productSettings['requireKyc'];
     return productSettings;
   }
 

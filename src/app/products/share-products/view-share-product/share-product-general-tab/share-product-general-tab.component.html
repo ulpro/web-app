@@ -129,6 +129,13 @@
     <span class="flex-60">{{ shareProduct.allowDividendCalculationForInactiveClients | yesNo }}</span>
   </div>
 
+  @if (kycTierName) {
+    <div class="flex-fill layout-row">
+      <span class="flex-40">Niveau KYC Requis:</span>
+      <span class="flex-60">{{ kycTierName }}</span>
+    </div>
+  }
+
   @if (shareProduct.marketPrice?.length) {
     <div class="layout-row-wrap responsive-column flex-fill">
       <h3 class="mat-h3 flex-fill">{{ 'labels.inputs.Market Price Period' | translate }}</h3>

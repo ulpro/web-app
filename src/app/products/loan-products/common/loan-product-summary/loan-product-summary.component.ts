@@ -27,6 +27,7 @@ import {
 } from '../../loan-product-stepper/loan-product-payment-strategy-step/payment-allocation-model';
 import { LoanProducts } from '../../loan-products';
 import { CodeName, OptionData, StringEnumOptionData } from '../../../../shared/models/option-data.model';
+import { ProductsService } from '../../../products.service';
 import { Accounting } from 'app/core/utils/accounting';
 import { DecimalPipe } from '@angular/common';
 import { MatDivider } from '@angular/material/divider';
@@ -123,6 +124,28 @@ export class LoanProductSummaryComponent extends LoanProductBaseComponent implem
 
   isAdvancedPaymentAllocation = false;
 
+  private productsService = inject(ProductsService);
+
+  kycTierOptions: any[] = [];
+
+  get kycTierName(): string | null {
+    if (this.loanProduct?.kycTier?.name) {
+      return this.loanProduct.kycTier.name;
+    }
+    if ((this.loanProduct as any)?.kycTierName) {
+      return (this.loanProduct as any).kycTierName;
+    }
+    const kycTierId = (this.loanProduct as any)?.kycTierId;
+    if (kycTierId) {
+      const options = (this.loanProductsTemplate as any)?.kycTierOptions || this.kycTierOptions || [];
+      const tier = options.find((t: any) => String(t.id) === String(kycTierId));
+      if (tier) {
+        return tier.name;
+      }
+    }
+    return null;
+  }
+
   advancePaymentAllocationData: AdvancePaymentAllocationData;
 
   accountingMappings: any = {};
@@ -136,6 +159,11 @@ export class LoanProductSummaryComponent extends LoanProductBaseComponent implem
 
   ngOnInit() {
     this.accountingRuleData = this.accounting.getAccountingRulesForLoans();
+    if (!this.kycTierOptions || this.kycTierOptions.length === 0) {
+      this.productsService.getKycTiers().subscribe((tiers: any) => {
+        this.kycTierOptions = tiers || [];
+      });
+    }
     this.setCurrentValues();
   }
 

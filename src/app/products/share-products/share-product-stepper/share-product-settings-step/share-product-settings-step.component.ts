@@ -6,13 +6,15 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-import { Component, OnInit, Input, inject } from '@angular/core';
+import { Component, OnInit, Input, inject, ChangeDetectorRef } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatCheckbox } from '@angular/material/checkbox';
+import { MatDivider } from '@angular/material/divider';
 import { MatStepperPrevious, MatStepperNext } from '@angular/material/stepper';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { STANDALONE_SHARED_IMPORTS } from 'app/standalone-shared.module';
+import { ProductsService } from 'app/products/products.service';
 
 @Component({
   selector: 'mifosx-share-product-settings-step',
@@ -22,6 +24,7 @@ import { STANDALONE_SHARED_IMPORTS } from 'app/standalone-shared.module';
     ...STANDALONE_SHARED_IMPORTS,
     MatTooltip,
     MatCheckbox,
+    MatDivider,
     MatStepperPrevious,
     FaIconComponent,
     MatStepperNext
@@ -29,21 +32,32 @@ import { STANDALONE_SHARED_IMPORTS } from 'app/standalone-shared.module';
 })
 export class ShareProductSettingsStepComponent implements OnInit {
   private formBuilder = inject(UntypedFormBuilder);
+  private productsService = inject(ProductsService);
+  protected cdr = inject(ChangeDetectorRef);
 
   @Input() shareProductsTemplate: any;
 
   shareProductSettingsForm: UntypedFormGroup;
 
+  kycTierOptions: any[] = [];
   minimumActivePeriodFrequencyTypeData: any;
   lockinPeriodFrequencyTypeData: any;
 
   constructor() {
     this.createShareProductSettingsForm();
+    this.setConditionalControls();
   }
 
   ngOnInit() {
     this.minimumActivePeriodFrequencyTypeData = this.shareProductsTemplate.minimumActivePeriodFrequencyTypeOptions;
     this.lockinPeriodFrequencyTypeData = this.shareProductsTemplate.lockinPeriodFrequencyTypeOptions;
+
+    this.kycTierOptions = this.shareProductsTemplate.kycTierOptions || [];
+    if (!this.kycTierOptions || this.kycTierOptions.length === 0) {
+      this.productsService.getKycTiers().subscribe((tiers: any) => {
+        this.kycTierOptions = tiers || [];
+      });
+    }
 
     this.shareProductSettingsForm.patchValue({
       minimumShares: this.shareProductsTemplate.minimumShares,
@@ -58,6 +72,18 @@ export class ShareProductSettingsStepComponent implements OnInit {
         this.shareProductsTemplate.lockPeriodTypeEnum && this.shareProductsTemplate.lockPeriodTypeEnum.id,
       allowDividendCalculationForInactiveClients: this.shareProductsTemplate.allowDividendCalculationForInactiveClients
     });
+
+    const kycTier = this.shareProductsTemplate.kycTier || null;
+    const kycTierId = kycTier ? kycTier.id : (this.shareProductsTemplate.kycTierId || null);
+    if (kycTierId) {
+      this.isKycRequired = true;
+      this.shareProductSettingsForm.patchValue({
+        requireKyc: true,
+        kycTierId: Number(kycTierId)
+      });
+      this.shareProductSettingsForm.get('kycTierId')?.setValidators([Validators.required]);
+      this.shareProductSettingsForm.get('kycTierId')?.updateValueAndValidity();
+    }
   }
 
   createShareProductSettingsForm() {
@@ -98,12 +124,27 @@ export class ShareProductSettingsStepComponent implements OnInit {
         minimumactiveperiodFrequencyType: [''],
         lockinPeriodFrequency: [''],
         lockinPeriodFrequencyType: [''],
-        allowDividendCalculationForInactiveClients: [false]
+        allowDividendCalculationForInactiveClients: [false],
+        requireKyc: [false],
+        kycTierId: [null]
       },
       {
         validators: this.validateSharesOrder
       }
     );
+  }
+
+  setConditionalControls() {
+    this.shareProductSettingsForm.get('requireKyc')?.valueChanges.subscribe((requireKyc: boolean) => {
+      const kycTierIdControl = this.shareProductSettingsForm.get('kycTierId');
+      if (requireKyc) {
+        kycTierIdControl?.setValidators([Validators.required]);
+      } else {
+        kycTierIdControl?.clearValidators();
+        kycTierIdControl?.setValue(null);
+      }
+      kycTierIdControl?.updateValueAndValidity();
+    });
   }
 
   private validateSharesOrder(group: UntypedFormGroup): { [key: string]: any } | null {
@@ -118,7 +159,45 @@ export class ShareProductSettingsStepComponent implements OnInit {
     return null;
   }
 
+  isKycRequired: boolean = false;
+
+  onRequireKycChange(event: any) {
+    const isChecked = event.checked;
+    this.shareProductSettingsForm.get('requireKyc')?.setValue(isChecked);
+    const kycTierIdControl = this.shareProductSettingsForm.get('kycTierId');
+    if (isChecked) {
+      kycTierIdControl?.setValidators([Validators.required]);
+      if (!kycTierIdControl?.value && this.kycTierOptions?.length > 0) {
+        kycTierIdControl?.setValue(this.kycTierOptions[0].id);
+      }
+    } else {
+      kycTierIdControl?.clearValidators();
+      kycTierIdControl?.setValue(null);
+    }
+    kycTierIdControl?.updateValueAndValidity({ emitEvent: false });
+    this.cdr.markForCheck();
+    this.cdr.detectChanges();
+  }
+
+  compareKycTiers(o1: any, o2: any): boolean {
+    if (o1 === o2) return true;
+    if (o1 == null || o2 == null) return false;
+    return String(o1) === String(o2);
+  }
+
+  get requireKyc(): boolean {
+    return !!this.shareProductSettingsForm.get('requireKyc')?.value;
+  }
+
   get shareProductSettings() {
-    return this.shareProductSettingsForm.value;
+    const formValue = { ...this.shareProductSettingsForm.getRawValue() };
+    const requireKyc = !!formValue.requireKyc;
+    if (!requireKyc) {
+      formValue.kycTierId = null;
+    } else if (formValue.kycTierId) {
+      formValue.kycTierId = Number(formValue.kycTierId);
+    }
+    delete formValue.requireKyc;
+    return formValue;
   }
 }

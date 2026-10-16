@@ -6,7 +6,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-import { Component, OnInit, Input, inject } from '@angular/core';
+import { Component, OnInit, Input, inject, ChangeDetectorRef } from '@angular/core';
 import {
   UntypedFormGroup,
   UntypedFormBuilder,
@@ -20,6 +20,7 @@ import { MatDivider } from '@angular/material/divider';
 import { MatStepperPrevious, MatStepperNext } from '@angular/material/stepper';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { STANDALONE_SHARED_IMPORTS } from 'app/standalone-shared.module';
+import { ProductsService } from 'app/products/products.service';
 
 @Component({
   selector: 'mifosx-recurring-deposit-product-settings-step',
@@ -37,11 +38,14 @@ import { STANDALONE_SHARED_IMPORTS } from 'app/standalone-shared.module';
 })
 export class RecurringDepositProductSettingsStepComponent implements OnInit {
   private formBuilder = inject(UntypedFormBuilder);
+  private productsService = inject(ProductsService);
+  protected cdr = inject(ChangeDetectorRef);
 
   @Input() recurringDepositProductsTemplate: any;
 
   recurringDepositProductSettingsForm: UntypedFormGroup;
 
+  kycTierOptions: any[] = [];
   lockinPeriodFrequencyTypeData: any;
   periodFrequencyTypeData: any;
   preClosurePenalInterestOnTypeData: any;
@@ -57,6 +61,13 @@ export class RecurringDepositProductSettingsStepComponent implements OnInit {
     this.periodFrequencyTypeData = this.recurringDepositProductsTemplate.periodFrequencyTypeOptions.slice(0, -1);
     this.preClosurePenalInterestOnTypeData = this.recurringDepositProductsTemplate.preClosurePenalInterestOnTypeOptions;
     this.taxGroupData = this.recurringDepositProductsTemplate.taxGroupOptions;
+
+    this.kycTierOptions = this.recurringDepositProductsTemplate.kycTierOptions || [];
+    if (!this.kycTierOptions || this.kycTierOptions.length === 0) {
+      this.productsService.getKycTiers().subscribe((tiers: any) => {
+        this.kycTierOptions = tiers || [];
+      });
+    }
 
     if (!(this.recurringDepositProductsTemplate === undefined) && this.recurringDepositProductsTemplate.id) {
       this.recurringDepositProductSettingsForm.patchValue({
@@ -86,6 +97,18 @@ export class RecurringDepositProductSettingsStepComponent implements OnInit {
           : '',
         withHoldTax: this.recurringDepositProductsTemplate.withHoldTax
       });
+    }
+
+    const kycTier = this.recurringDepositProductsTemplate.kycTier || null;
+    const kycTierId = kycTier ? kycTier.id : (this.recurringDepositProductsTemplate.kycTierId || null);
+    if (kycTierId) {
+      this.isKycRequired = true;
+      this.recurringDepositProductSettingsForm.patchValue({
+        requireKyc: true,
+        kycTierId: Number(kycTierId)
+      });
+      this.recurringDepositProductSettingsForm.get('kycTierId')?.setValidators([Validators.required]);
+      this.recurringDepositProductSettingsForm.get('kycTierId')?.updateValueAndValidity();
     }
 
     if (this.recurringDepositProductsTemplate.withHoldTax) {
@@ -134,11 +157,24 @@ export class RecurringDepositProductSettingsStepComponent implements OnInit {
         Validators.min(0)
       ],
       preClosurePenalInterestOnTypeId: [''],
-      withHoldTax: [false]
+      withHoldTax: [false],
+      requireKyc: [false],
+      kycTierId: [null]
     });
   }
 
   setConditionalControls() {
+    this.recurringDepositProductSettingsForm.get('requireKyc')?.valueChanges.subscribe((requireKyc: boolean) => {
+      const kycTierIdControl = this.recurringDepositProductSettingsForm.get('kycTierId');
+      if (requireKyc) {
+        kycTierIdControl?.setValidators([Validators.required]);
+      } else {
+        kycTierIdControl?.clearValidators();
+        kycTierIdControl?.setValue(null);
+      }
+      kycTierIdControl?.updateValueAndValidity();
+    });
+
     this.recurringDepositProductSettingsForm.get('withHoldTax').valueChanges.subscribe((withHoldTax: any) => {
       if (withHoldTax) {
         this.recurringDepositProductSettingsForm.addControl(
@@ -151,8 +187,45 @@ export class RecurringDepositProductSettingsStepComponent implements OnInit {
     });
   }
 
+  isKycRequired: boolean = false;
+
+  onRequireKycChange(event: any) {
+    const isChecked = event.checked;
+    this.recurringDepositProductSettingsForm.get('requireKyc')?.setValue(isChecked);
+    const kycTierIdControl = this.recurringDepositProductSettingsForm.get('kycTierId');
+    if (isChecked) {
+      kycTierIdControl?.setValidators([Validators.required]);
+      if (!kycTierIdControl?.value && this.kycTierOptions?.length > 0) {
+        kycTierIdControl?.setValue(this.kycTierOptions[0].id);
+      }
+    } else {
+      kycTierIdControl?.clearValidators();
+      kycTierIdControl?.setValue(null);
+    }
+    kycTierIdControl?.updateValueAndValidity({ emitEvent: false });
+    this.cdr.markForCheck();
+    this.cdr.detectChanges();
+  }
+
+  compareKycTiers(o1: any, o2: any): boolean {
+    if (o1 === o2) return true;
+    if (o1 == null || o2 == null) return false;
+    return String(o1) === String(o2);
+  }
+
+  get requireKyc(): boolean {
+    return !!this.recurringDepositProductSettingsForm.get('requireKyc')?.value;
+  }
+
   get recurringDepositProductSettings() {
-    const recurringDepositProductSettings = this.recurringDepositProductSettingsForm.value;
+    const recurringDepositProductSettings = { ...this.recurringDepositProductSettingsForm.getRawValue() };
+    const requireKyc = !!recurringDepositProductSettings.requireKyc;
+    if (!requireKyc) {
+      recurringDepositProductSettings.kycTierId = null;
+    } else if (recurringDepositProductSettings.kycTierId) {
+      recurringDepositProductSettings.kycTierId = Number(recurringDepositProductSettings.kycTierId);
+    }
+    delete recurringDepositProductSettings.requireKyc;
     for (const key in recurringDepositProductSettings) {
       if (recurringDepositProductSettings[key] === '') {
         delete recurringDepositProductSettings[key];

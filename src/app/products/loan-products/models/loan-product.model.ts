@@ -192,6 +192,10 @@ export interface LoanProduct {
   breachId?: number;
   nearBreach?: NearBreach;
   nearBreachId?: number;
+
+  kycTier?: any;
+  kycTierName?: string;
+  kycTierId?: number;
 }
 
 export interface AllowAttributeOverrides {

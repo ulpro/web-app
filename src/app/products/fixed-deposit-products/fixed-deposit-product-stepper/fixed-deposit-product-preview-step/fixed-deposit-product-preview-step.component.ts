@@ -8,6 +8,7 @@
 
 import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges, inject } from '@angular/core';
 import { trigger, state, transition, animate, style } from '@angular/animations';
+import { ProductsService } from '../../../products.service';
 import { Accounting } from 'app/core/utils/accounting';
 import { OptionData } from 'app/shared/models/option-data.model';
 import { MatDivider } from '@angular/material/divider';
@@ -68,6 +69,7 @@ import { STANDALONE_SHARED_IMPORTS } from 'app/standalone-shared.module';
 })
 export class FixedDepositProductPreviewStepComponent implements OnInit, OnChanges {
   private accounting = inject(Accounting);
+  private productsService = inject(ProductsService);
 
   @Input() fixedDepositProductsTemplate: any;
   @Input() chartSlabsDisplayedColumns: any[];
@@ -103,8 +105,33 @@ export class FixedDepositProductPreviewStepComponent implements OnInit, OnChange
 
   accountingMappings: any = {};
   accountingRule: OptionData;
+  kycTierOptions: any[] = [];
+
+  get kycTierName(): string | null {
+    if (this.fixedDepositProduct?.kycTier?.name) {
+      return this.fixedDepositProduct.kycTier.name;
+    }
+    if ((this.fixedDepositProduct as any)?.kycTierName) {
+      return (this.fixedDepositProduct as any).kycTierName;
+    }
+    const kycTierId = (this.fixedDepositProduct as any)?.kycTierId;
+    if (kycTierId) {
+      const options = (this.fixedDepositProductsTemplate as any)?.kycTierOptions || this.kycTierOptions || [];
+      const tier = options.find((t: any) => String(t.id) === String(kycTierId));
+      if (tier) {
+        return tier.name;
+      }
+    }
+    return null;
+  }
 
   ngOnInit() {
+    this.kycTierOptions = this.fixedDepositProductsTemplate?.kycTierOptions || [];
+    if (!this.kycTierOptions || this.kycTierOptions.length === 0) {
+      this.productsService.getKycTiers().subscribe((tiers: any) => {
+        this.kycTierOptions = tiers || [];
+      });
+    }
     this.setCurrentValues();
   }
 

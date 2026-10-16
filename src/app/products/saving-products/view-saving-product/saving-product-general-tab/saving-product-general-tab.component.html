@@ -63,6 +63,13 @@
 
     <mat-divider [inset]="true"></mat-divider>
 
+    @if (savingProduct.kycTier) {
+      <div class="flex-fill layout-row">
+        <span class="flex-40">Niveau KYC Requis:</span>
+        <span class="flex-60">{{ savingProduct.kycTier.name }}</span>
+      </div>
+    }
+
     <div class="flex-fill layout-row">
       <span class="flex-40">{{ 'labels.inputs.Nominal Annual Interest' | translate }}:</span>
       <span class="flex-60">{{ savingProduct.nominalAnnualInterestRate | formatNumber }} %</span>
@@ -93,6 +100,13 @@
     <h3 class="mat-h3 flex-fill">{{ 'labels.heading.Settings' | translate }}</h3>
 
     <mat-divider [inset]="true"></mat-divider>
+
+    @if (kycTierName) {
+      <div class="flex-fill layout-row">
+        <span class="flex-40">Niveau KYC Requis:</span>
+        <span class="flex-60">{{ kycTierName }}</span>
+      </div>
+    }
 
     @if (savingProduct.minRequiredOpeningBalance) {
       <div class="flex-fill layout-row">
@@ -143,6 +157,13 @@
       <div class="flex-fill layout-row">
         <span class="flex-40">{{ 'labels.inputs.Tax Group' | translate }}:</span>
         <span class="flex-60">{{ savingProduct.taxGroup.name }}</span>
+      </div>
+    }
+
+    @if (savingProduct.kycTier) {
+      <div class="flex-fill layout-row">
+        <span class="flex-40">Niveau KYC Requis:</span>
+        <span class="flex-60">{{ savingProduct.kycTier.name }}</span>
       </div>
     }
 

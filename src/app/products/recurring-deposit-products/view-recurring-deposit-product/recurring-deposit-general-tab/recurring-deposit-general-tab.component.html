@@ -62,6 +62,13 @@
 
         <mat-divider [inset]="true"></mat-divider>
 
+        @if (recurringDepositProduct.kycTier) {
+          <div class="flex-100 layout-row">
+            <span class="flex-40">Niveau KYC Requis:</span>
+            <span class="flex-60">{{ recurringDepositProduct.kycTier.name }}</span>
+          </div>
+        }
+
         <div class="flex-100 layout-row">
           <span class="flex-40">{{ 'labels.inputs.Deposit Amount' | translate }}:</span>
           <span class="flex-60">{{
@@ -101,6 +108,13 @@
         <h3 class="mat-h3 flex-100">{{ 'labels.heading.Settings' | translate }}</h3>
 
         <mat-divider [inset]="true"></mat-divider>
+
+        @if (kycTierName) {
+          <div class="flex-100 layout-row">
+            <span class="flex-40">Niveau KYC Requis:</span>
+            <span class="flex-60">{{ kycTierName }}</span>
+          </div>
+        }
 
         @if (recurringDepositProduct.lockinPeriodFrequency) {
           <div class="flex-100 layout-row">

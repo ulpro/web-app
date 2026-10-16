@@ -8,6 +8,7 @@
 
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ProductsService } from '../../../products.service';
 import { Accounting } from 'app/core/utils/accounting';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { MatDivider } from '@angular/material/divider';
@@ -56,8 +57,10 @@ import { STANDALONE_SHARED_IMPORTS } from 'app/standalone-shared.module';
 export class ShareProductGeneralTabComponent {
   private route = inject(ActivatedRoute);
   private accounting = inject(Accounting);
+  private productsService = inject(ProductsService);
 
   shareProduct: any;
+  kycTierOptions: any[] = [];
 
   marketPriceDisplayedColumns: string[] = [
     'fromDate',
@@ -70,9 +73,30 @@ export class ShareProductGeneralTabComponent {
     'chargeTimeType'
   ];
 
+  get kycTierName(): string | null {
+    if (this.shareProduct?.kycTier?.name) {
+      return this.shareProduct.kycTier.name;
+    }
+    if ((this.shareProduct as any)?.kycTierName) {
+      return (this.shareProduct as any).kycTierName;
+    }
+    const kycTierId = (this.shareProduct as any)?.kycTierId;
+    if (kycTierId) {
+      const options = this.kycTierOptions || [];
+      const tier = options.find((t: any) => String(t.id) === String(kycTierId));
+      if (tier) {
+        return tier.name;
+      }
+    }
+    return null;
+  }
+
   constructor() {
     this.route.data.subscribe((data: { shareProduct: any }) => {
       this.shareProduct = data.shareProduct;
+    });
+    this.productsService.getKycTiers().subscribe((tiers: any) => {
+      this.kycTierOptions = tiers || [];
     });
   }
 

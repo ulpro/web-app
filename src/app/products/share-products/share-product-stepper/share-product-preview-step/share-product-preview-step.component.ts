@@ -6,7 +6,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
+import { ProductsService } from '../../../products.service';
 import { MatDivider } from '@angular/material/divider';
 import {
   MatTable,
@@ -54,6 +55,8 @@ import { STANDALONE_SHARED_IMPORTS } from 'app/standalone-shared.module';
   ]
 })
 export class ShareProductPreviewStepComponent {
+  private productsService = inject(ProductsService);
+
   @Input() shareProductsTemplate: any;
   @Input() accountingRuleData: any;
   @Input() shareProduct: any;
@@ -71,5 +74,29 @@ export class ShareProductPreviewStepComponent {
     'chargeTimeType'
   ];
 
-  constructor() {}
+  kycTierOptions: any[] = [];
+
+  get kycTierName(): string | null {
+    if (this.shareProduct?.kycTier?.name) {
+      return this.shareProduct.kycTier.name;
+    }
+    if ((this.shareProduct as any)?.kycTierName) {
+      return (this.shareProduct as any).kycTierName;
+    }
+    const kycTierId = (this.shareProduct as any)?.kycTierId;
+    if (kycTierId) {
+      const options = (this.shareProductsTemplate as any)?.kycTierOptions || this.kycTierOptions || [];
+      const tier = options.find((t: any) => String(t.id) === String(kycTierId));
+      if (tier) {
+        return tier.name;
+      }
+    }
+    return null;
+  }
+
+  constructor() {
+    this.productsService.getKycTiers().subscribe((tiers: any) => {
+      this.kycTierOptions = tiers || [];
+    });
+  }
 }

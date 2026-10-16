@@ -8,6 +8,7 @@
 
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges, inject } from '@angular/core';
 import { trigger, state, transition, animate, style } from '@angular/animations';
+import { ProductsService } from '../../../products.service';
 import { OptionData } from 'app/shared/models/option-data.model';
 import { Accounting } from 'app/core/utils/accounting';
 import { MatDivider } from '@angular/material/divider';
@@ -68,6 +69,7 @@ import { STANDALONE_SHARED_IMPORTS } from 'app/standalone-shared.module';
 })
 export class RecurringDepositProductPreviewStepComponent implements OnInit, OnChanges {
   private accounting = inject(Accounting);
+  private productsService = inject(ProductsService);
 
   @Input() recurringDepositProductsTemplate: any;
   @Input() chartSlabsDisplayedColumns: any[];
@@ -103,8 +105,33 @@ export class RecurringDepositProductPreviewStepComponent implements OnInit, OnCh
 
   accountingMappings: any = {};
   accountingRule: OptionData;
+  kycTierOptions: any[] = [];
+
+  get kycTierName(): string | null {
+    if (this.recurringDepositProduct?.kycTier?.name) {
+      return this.recurringDepositProduct.kycTier.name;
+    }
+    if ((this.recurringDepositProduct as any)?.kycTierName) {
+      return (this.recurringDepositProduct as any).kycTierName;
+    }
+    const kycTierId = (this.recurringDepositProduct as any)?.kycTierId;
+    if (kycTierId) {
+      const options = (this.recurringDepositProductsTemplate as any)?.kycTierOptions || this.kycTierOptions || [];
+      const tier = options.find((t: any) => String(t.id) === String(kycTierId));
+      if (tier) {
+        return tier.name;
+      }
+    }
+    return null;
+  }
 
   ngOnInit() {
+    this.kycTierOptions = this.recurringDepositProductsTemplate?.kycTierOptions || [];
+    if (!this.kycTierOptions || this.kycTierOptions.length === 0) {
+      this.productsService.getKycTiers().subscribe((tiers: any) => {
+        this.kycTierOptions = tiers || [];
+      });
+    }
     this.setCurrentValues();
   }
 

@@ -8,6 +8,7 @@
 
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ProductsService } from '../../../products.service';
 import { Accounting } from 'app/core/utils/accounting';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { MatDivider } from '@angular/material/divider';
@@ -54,8 +55,10 @@ import { STANDALONE_SHARED_IMPORTS } from 'app/standalone-shared.module';
 export class SavingProductGeneralTabComponent {
   private route = inject(ActivatedRoute);
   private accounting = inject(Accounting);
+  private productsService = inject(ProductsService);
 
   savingProduct: any;
+  kycTierOptions: any[] = [];
 
   chargesDisplayedColumns: string[] = [
     'name',
@@ -72,9 +75,30 @@ export class SavingProductGeneralTabComponent {
     'incomeAccountId'
   ];
 
+  get kycTierName(): string | null {
+    if (this.savingProduct?.kycTier?.name) {
+      return this.savingProduct.kycTier.name;
+    }
+    if ((this.savingProduct as any)?.kycTierName) {
+      return (this.savingProduct as any).kycTierName;
+    }
+    const kycTierId = (this.savingProduct as any)?.kycTierId;
+    if (kycTierId) {
+      const options = this.kycTierOptions || [];
+      const tier = options.find((t: any) => String(t.id) === String(kycTierId));
+      if (tier) {
+        return tier.name;
+      }
+    }
+    return null;
+  }
+
   constructor() {
     this.route.data.subscribe((data: { savingProduct: any }) => {
       this.savingProduct = data.savingProduct;
+    });
+    this.productsService.getKycTiers().subscribe((tiers: any) => {
+      this.kycTierOptions = tiers || [];
     });
   }
 

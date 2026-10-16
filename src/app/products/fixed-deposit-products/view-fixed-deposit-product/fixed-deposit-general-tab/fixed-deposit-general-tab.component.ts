@@ -8,6 +8,7 @@
 
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ProductsService } from '../../../products.service';
 import { trigger, state, transition, animate, style } from '@angular/animations';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { MatDivider } from '@angular/material/divider';
@@ -65,10 +66,12 @@ import { STANDALONE_SHARED_IMPORTS } from 'app/standalone-shared.module';
 })
 export class FixedDepositGeneralTabComponent {
   private route = inject(ActivatedRoute);
+  private productsService = inject(ProductsService);
 
   /** Fixed Deposit Product data. */
   fixedDepositProductData: any;
   fixedDepositProductsTemplate: any;
+  kycTierOptions: any[] = [];
 
   chartSlabsIncentivesDisplayedColumns: string[] = ['incentives'];
   chartSlabsDisplayedColumns: string[] = [
@@ -101,6 +104,24 @@ export class FixedDepositGeneralTabComponent {
     'incomeAccountId'
   ];
 
+  get kycTierName(): string | null {
+    if (this.fixedDepositProductData?.kycTier?.name) {
+      return this.fixedDepositProductData.kycTier.name;
+    }
+    if ((this.fixedDepositProductData as any)?.kycTierName) {
+      return (this.fixedDepositProductData as any).kycTierName;
+    }
+    const kycTierId = (this.fixedDepositProductData as any)?.kycTierId;
+    if (kycTierId) {
+      const options = this.kycTierOptions || [];
+      const tier = options.find((t: any) => String(t.id) === String(kycTierId));
+      if (tier) {
+        return tier.name;
+      }
+    }
+    return null;
+  }
+
   /**
    * Retrieves the fixed deposit product data from `resolve`.
    * @param {ActivatedRoute} route Activated Route.
@@ -109,6 +130,9 @@ export class FixedDepositGeneralTabComponent {
     this.route.data.subscribe((data: { fixedDepositProduct: any; fixedDepositProductsTemplate: any }) => {
       this.fixedDepositProductData = data.fixedDepositProduct;
       this.fixedDepositProductsTemplate = data.fixedDepositProductsTemplate;
+    });
+    this.productsService.getKycTiers().subscribe((tiers: any) => {
+      this.kycTierOptions = tiers || [];
     });
   }
 }

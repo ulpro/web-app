@@ -685,4 +685,11 @@ export class ProductsService {
   deleteWrokingCapitalNearBreach(nearBreachId: number): Observable<any> {
     return this.http.delete(`/working-capital/near-breach/${nearBreachId}`);
   }
+
+  /**
+   * @returns {Observable<any>} Active KYC Tiers data.
+   */
+  getKycTiers(): Observable<any> {
+    return this.http.get('/kyc/tiers');
+  }
 }

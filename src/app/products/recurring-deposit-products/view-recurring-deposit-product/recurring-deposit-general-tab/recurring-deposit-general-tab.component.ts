@@ -8,6 +8,7 @@
 
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ProductsService } from '../../../products.service';
 import { trigger, state, transition, animate, style } from '@angular/animations';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { MatDivider } from '@angular/material/divider';
@@ -65,9 +66,11 @@ import { STANDALONE_SHARED_IMPORTS } from 'app/standalone-shared.module';
 })
 export class RecurringDepositGeneralTabComponent {
   private route = inject(ActivatedRoute);
+  private productsService = inject(ProductsService);
 
   recurringDepositProduct: any;
   recurringDepositProductTemplate: any;
+  kycTierOptions: any[] = [];
 
   chartSlabsIncentivesDisplayedColumns: string[] = ['incentives'];
   chartSlabsDisplayedColumns: string[] = [
@@ -100,10 +103,31 @@ export class RecurringDepositGeneralTabComponent {
     'incomeAccountId'
   ];
 
+  get kycTierName(): string | null {
+    if (this.recurringDepositProduct?.kycTier?.name) {
+      return this.recurringDepositProduct.kycTier.name;
+    }
+    if ((this.recurringDepositProduct as any)?.kycTierName) {
+      return (this.recurringDepositProduct as any).kycTierName;
+    }
+    const kycTierId = (this.recurringDepositProduct as any)?.kycTierId;
+    if (kycTierId) {
+      const options = this.kycTierOptions || [];
+      const tier = options.find((t: any) => String(t.id) === String(kycTierId));
+      if (tier) {
+        return tier.name;
+      }
+    }
+    return null;
+  }
+
   constructor() {
     this.route.data.subscribe((data: { recurringDepositProduct: any; recurringDepositProductsTemplate: any }) => {
       this.recurringDepositProduct = data.recurringDepositProduct;
       this.recurringDepositProductTemplate = data.recurringDepositProductsTemplate;
+    });
+    this.productsService.getKycTiers().subscribe((tiers: any) => {
+      this.kycTierOptions = tiers || [];
     });
   }
 }
